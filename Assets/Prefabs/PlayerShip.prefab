@@ -32,8 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 288174171816474201}
   - {fileID: 284132649748257567}
+  - {fileID: 288174171816474201}
   - {fileID: 3790462551798622145}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,7 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40decbcba9acc490fb9455a2af977d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AppearEffect: {fileID: 0}
   shipSpeed: 10
   bulletPrefab: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
     type: 3}
@@ -109,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973da2538d15dc04a9fc7c4ea4033e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBulletWrapped: 0
 --- !u!1 &288174171816474206
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 283916882501771349}
   m_Father: {fileID: 288174170244224249}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &288174171816474200
 MonoBehaviour:
@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4149291233437366, guid: 2a4573fd70efa094d84f72d5723ef9a6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4149291233437366, guid: 2a4573fd70efa094d84f72d5723ef9a6, type: 3}
       propertyPath: m_LocalPosition.x

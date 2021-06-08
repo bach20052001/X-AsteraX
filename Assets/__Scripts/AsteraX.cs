@@ -14,7 +14,7 @@ public class AsteraX : MonoBehaviour
     static List<Asteroid> ASTEROIDS;
 
     [SerializeField] private GUIController GUI;
-    
+
     public GameObject Asteroids;
 
     private int nRow = 9;
@@ -29,6 +29,8 @@ public class AsteraX : MonoBehaviour
     public ParticleSystem shipExplosion;
 
     public ParticleSystem warp;
+
+    public GameObject Magnetic;
 
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
@@ -100,9 +102,9 @@ public class AsteraX : MonoBehaviour
     {
         Time.timeScale = 0;
     }
-    private void GameOverUI() 
+    private void GameOverUI()
     {
-        
+
     }
 
 
@@ -141,7 +143,7 @@ public class AsteraX : MonoBehaviour
 
     void Start()
     {
-        levelManager = LevelManager.Instance; 
+        levelManager = LevelManager.Instance;
         TransitionState(BaseGameState.PLAY);
         jumpRemaining = 3;
         score = 0;
@@ -260,10 +262,10 @@ public class AsteraX : MonoBehaviour
     private void OnPlayerDamagedHanler()
     {
         jumpRemaining--;
-        
+
         if (jumpRemaining < 0)
         {
-            Instantiate(shipExplosion,playerShip.transform.position,Quaternion.identity);
+            Instantiate(shipExplosion, playerShip.transform.position, Quaternion.identity);
             jumpRemaining = 0;
             StartCoroutine(GameOver());
         }
@@ -281,7 +283,7 @@ public class AsteraX : MonoBehaviour
         score += scoreToIncrease;
         Debug.Log(ASTEROIDS.Count);
         GUIController.Instance.UpdateScore(score);
-        
+
         if (ASTEROIDS.Count - 1 == 0)
         {
             StartCoroutine(LevelPassing());
@@ -318,6 +320,11 @@ public class AsteraX : MonoBehaviour
 
         ast.transform.position = pos;
         ast.size = levelManager.asteroidsSOByLevel[LevelManager.level].initialSize;
+
+        GameObject magnetic = Instantiate(Magnetic);
+        magnetic.transform.parent = ast.transform;
+        magnetic.transform.localPosition = Vector3.zero;
+        magnetic.transform.localScale = Vector3.one;
     }
 
     #endregion

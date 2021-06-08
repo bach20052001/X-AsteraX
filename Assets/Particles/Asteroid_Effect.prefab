@@ -4819,12 +4819,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speedInMagneticField: 0
+  speedInMagneticField: 5
   colorInMagneticField:
     serializedVersion: 2
-    rgba: 0
+    rgba: 16776850
   shipBody: {fileID: 0}
-  force: 0
+  force: 25
 --- !u!135 &2007232002
 SphereCollider:
   m_ObjectHideFlags: 0
