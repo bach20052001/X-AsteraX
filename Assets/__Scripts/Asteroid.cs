@@ -15,11 +15,10 @@ using UnityEditor;
 public class Asteroid : MonoBehaviour
 {
     [Header("Set Dynamically")]
-    public int          size = 3;
+    public int size = 3;
     private int mass;
-    public bool         immune = false;
+    public bool immune = false;
     private int score = 0;
-
     public GameObject bulletCollision;
 
     public int Score
@@ -30,8 +29,8 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    Rigidbody           rigid; // protected
-    OffScreenWrapper    offScreenWrapper;
+    Rigidbody rigid; // protected
+    OffScreenWrapper offScreenWrapper;
 
 #if DEBUG_Asteroid_ShotOffscreenDebugLines
     [Header("ShotOffscreenDebugLines")]
@@ -93,7 +92,6 @@ public class Asteroid : MonoBehaviour
 
     private void OnDestroy()
     {
-        
         AsteraX.RemoveAsteroid(this);
     }
 
@@ -142,7 +140,6 @@ public class Asteroid : MonoBehaviour
 			trackOffscreen = true;
 			trackOffscreenOrigin = transform.position;
 #endif
-
         }
         else
         {
@@ -220,9 +217,9 @@ public class Asteroid : MonoBehaviour
             if (otherGO.tag == "Bullet")
             {
                 bulletCollision = otherGO;
-                this.PostEvent(Event.OnHitAsteroid, this);
                 Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
                 Destroy(otherGO);
+                this.PostEvent(Event.OnHitAsteroid, this);
             }
 
             if (size > 1)
@@ -242,6 +239,13 @@ public class Asteroid : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        else if (otherGO.tag == "Asteroid" && !otherGO.GetComponent<Asteroid>().parentIsAsteroid && !parentIsAsteroid)
+        {
+            Vector3 distance = otherGO.transform.position - this.transform.position;
+            distance = new Vector3(distance.x, distance.y, 0);
+            otherGO.GetComponent<Rigidbody>().velocity = distance * 10f / otherGO.GetComponent<Asteroid>().size;
+            rigid.velocity = -distance * 10f / size;
+        }
     }
 
     private void Update()
@@ -252,7 +256,7 @@ public class Asteroid : MonoBehaviour
 
     static public Asteroid SpawnAsteroid()
     {
-        GameObject aGO = Instantiate<GameObject>(AsteraX.AsteroidsSO.GetAsteroidPrefab(),AsteraX.S.Asteroids.transform);
+        GameObject aGO = Instantiate<GameObject>(AsteraX.AsteroidsSO.GetAsteroidPrefab(), AsteraX.S.Asteroids.transform);
         Asteroid ast = aGO.GetComponent<Asteroid>();
         return ast;
     }
