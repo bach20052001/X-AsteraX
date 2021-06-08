@@ -10,11 +10,12 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerShip : MonoBehaviour
 {
 
+    private bool canDestroy;
     //public event System.Action CollisionWithAsteroidHandler;
     private ParticleSystem AppearEffect;
     // This is a somewhat protected private singleton for PlayerShip
-    static private PlayerShip   _S;
-    static public PlayerShip    S
+    static private PlayerShip _S;
+    static public PlayerShip S
     {
         get
         {
@@ -31,14 +32,26 @@ public class PlayerShip : MonoBehaviour
     }
 
     [Header("Set in Inspector")]
-    public float        shipSpeed = 10f;
-    public GameObject   bulletPrefab;
+    public float shipSpeed = 10f;
+    public GameObject bulletPrefab;
 
-    Rigidbody           rigid;
+    Rigidbody rigid;
 
     private void Start()
     {
         AppearEffect = AsteraX.S.warp;
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(shieldWhenActive());
+    }
+
+    IEnumerator shieldWhenActive()
+    {
+        canDestroy = false;
+        yield return new WaitForSeconds(2);
+        canDestroy = true;
     }
 
     void Awake()
@@ -81,17 +94,20 @@ public class PlayerShip : MonoBehaviour
         else
         {
             rigid.velocity = Vector3.zero;
-        }        
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Asteroid")
         {
-            this.PostEvent(Event.OnPlayerDamaged);
-            gameObject.SetActive(false);
-            if (AsteraX.jumpRemaining > 0)
+            if (canDestroy)
             {
-                ActiveEffect(transform.position);
+                this.PostEvent(Event.OnPlayerDamaged);
+                gameObject.SetActive(false);
+                if (AsteraX.jumpRemaining > 0)
+                {
+                    ActiveEffect(transform.position);
+                }
             }
         }
     }
@@ -122,8 +138,8 @@ public class PlayerShip : MonoBehaviour
             return S.shipSpeed;
         }
     }
-    
-	static public Vector3 POSITION
+
+    static public Vector3 POSITION
     {
         get
         {

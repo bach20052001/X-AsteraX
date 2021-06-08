@@ -30,6 +30,11 @@ public class Magnetic : MonoBehaviour
         originalColor = shipBody.material.color;
     }
 
+    private void OnEnable()
+    {
+        ResetPlayership();
+    }
+
     private void Start()
     {
         this.RegisterListener(Event.OnPlayerDamaged, (param) => ResetPlayership());
@@ -64,10 +69,5 @@ public class Magnetic : MonoBehaviour
     {
         player.shipSpeed = originalSpeed;
         shipBody.material.color = originalColor;
-    }
-
-    private void OnDestroy()
-    {
-        ResetPlayership();
     }
 }
