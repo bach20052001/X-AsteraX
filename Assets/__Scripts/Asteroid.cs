@@ -15,11 +15,12 @@ using UnityEditor;
 public class Asteroid : MonoBehaviour
 {
     [Header("Set Dynamically")]
-    public int          size = 3;
+    public int size = 3;
     private int mass;
-    public bool         immune = false;
+    public bool immune = false;
     private int score = 0;
-
+    public GameObject Health;
+    private Health healthController;
     public GameObject bulletCollision;
 
     public int Score
@@ -30,8 +31,8 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    Rigidbody           rigid; // protected
-    OffScreenWrapper    offScreenWrapper;
+    Rigidbody rigid; // protected
+    OffScreenWrapper offScreenWrapper;
 
 #if DEBUG_Asteroid_ShotOffscreenDebugLines
     [Header("ShotOffscreenDebugLines")]
@@ -93,7 +94,6 @@ public class Asteroid : MonoBehaviour
 
     private void OnDestroy()
     {
-        
         AsteraX.RemoveAsteroid(this);
     }
 
@@ -109,6 +109,7 @@ public class Asteroid : MonoBehaviour
         pos.z = 0;
         transform.position = pos;
         InitVelocity();
+        InitHealth();
     }
 
     public void InitAsteroidChild()
@@ -117,6 +118,14 @@ public class Asteroid : MonoBehaviour
         rigid.isKinematic = true;
         // Make use of the ComponentDivision extension method in Vector3Extensions
         transform.localScale = transform.localScale.ComponentDivide(transform.parent.lossyScale);
+    }
+
+    public void InitHealth()
+    {
+        GameObject health = Instantiate(Health);
+        health.transform.position = this.transform.position;
+        health.transform.parent = this.transform;
+        healthController = health.GetComponent<Health>();
     }
 
     public void InitVelocity()
@@ -142,7 +151,6 @@ public class Asteroid : MonoBehaviour
 			trackOffscreen = true;
 			trackOffscreenOrigin = transform.position;
 #endif
-
         }
         else
         {
@@ -217,30 +225,46 @@ public class Asteroid : MonoBehaviour
 
         if (otherGO.tag == "Bullet" || otherGO.transform.root.gameObject.tag == "Player")
         {
+
+            healthController.damaged();
             if (otherGO.tag == "Bullet")
             {
                 bulletCollision = otherGO;
-                this.PostEvent(Event.OnHitAsteroid, this);
                 Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
                 Destroy(otherGO);
             }
 
-            if (size > 1)
+            if (healthController.GetHp() == 0)
             {
-                // Detach the children Asteroids
-                Asteroid[] children = GetComponentsInChildren<Asteroid>();
-                for (int i = 0; i < children.Length; i++)
+                if (otherGO.tag == "Bullet")
                 {
-                    children[i].immune = true;
-                    if (children[i] == this || children[i].transform.parent != transform)
-                    {
-                        continue;
-                    }
-                    children[i].transform.SetParent(null, true);
-                    children[i].InitAsteroidParent();
+                    this.PostEvent(Event.OnHitAsteroid, this);
                 }
+
+                if (size > 1)
+                {
+                    // Detach the children Asteroids
+                    Asteroid[] children = GetComponentsInChildren<Asteroid>();
+                    for (int i = 0; i < children.Length; i++)
+                    {
+                        children[i].immune = true;
+                        if (children[i] == this || children[i].transform.parent != transform)
+                        {
+                            continue;
+                        }
+                        children[i].transform.SetParent(null, true);
+                        children[i].InitAsteroidParent();
+                    }
+                }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+        }
+        else if (otherGO.tag == "Asteroid" && !otherGO.GetComponent<Asteroid>().parentIsAsteroid && !parentIsAsteroid)
+        {
+            Vector3 distance = otherGO.transform.position - this.transform.position;
+            distance = new Vector3(distance.x, distance.y, 0);
+            otherGO.GetComponent<Rigidbody>().velocity = distance * 10f / otherGO.GetComponent<Asteroid>().size;
+            rigid.velocity = -distance * 10f / size;
         }
     }
 
@@ -252,7 +276,7 @@ public class Asteroid : MonoBehaviour
 
     static public Asteroid SpawnAsteroid()
     {
-        GameObject aGO = Instantiate<GameObject>(AsteraX.AsteroidsSO.GetAsteroidPrefab(),AsteraX.S.Asteroids.transform);
+        GameObject aGO = Instantiate<GameObject>(AsteraX.AsteroidsSO.GetAsteroidPrefab(), AsteraX.S.Asteroids.transform);
         Asteroid ast = aGO.GetComponent<Asteroid>();
         return ast;
     }

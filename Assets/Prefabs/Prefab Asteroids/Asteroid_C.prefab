@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 3
   immune: 0
+  Health: {fileID: 1991297926857518203, guid: ae1afa111881146c6a4541345036080f, type: 3}
   bulletCollision: {fileID: 0}
 --- !u!114 &114154410821183000
 MonoBehaviour:
