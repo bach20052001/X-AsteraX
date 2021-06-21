@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2007232002}
   m_Layer: 14
   m_Name: Asteroid_Effect
-  m_TagString: Untagged
+  m_TagString: Magnetic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

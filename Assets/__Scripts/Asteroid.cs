@@ -225,45 +225,59 @@ public class Asteroid : MonoBehaviour
 
         if (otherGO.tag == "Bullet" || otherGO.transform.root.gameObject.tag == "Player")
         {
-            healthController.damaged();
+
             if (otherGO.tag == "Bullet")
             {
+                healthController.damaged();
                 bulletCollision = otherGO;
                 Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
                 Destroy(otherGO);
-            }
 
-            if (healthController.GetHp() == 0)
-            {
-                if (otherGO.tag == "Bullet")
+                if (healthController.GetHp() == 0)
                 {
                     this.PostEvent(Event.OnHitAsteroid, this);
-                }
 
-                if (size > 1)
-                {
-                    // Detach the children Asteroids
-                    Asteroid[] children = GetComponentsInChildren<Asteroid>();
-                    for (int i = 0; i < children.Length; i++)
+                    if (size > 1)
                     {
-                        children[i].immune = true;
-                        if (children[i] == this || children[i].transform.parent != transform)
+                        // Detach the children Asteroids
+                        Asteroid[] children = GetComponentsInChildren<Asteroid>();
+                        for (int i = 0; i < children.Length; i++)
                         {
-                            continue;
+                            children[i].immune = true;
+                            if (children[i] == this || children[i].transform.parent != transform)
+                            {
+                                continue;
+                            }
+                            children[i].transform.SetParent(null, true);
+                            children[i].InitAsteroidParent();
                         }
-                        children[i].transform.SetParent(null, true);
-                        children[i].InitAsteroidParent();
                     }
+                    Destroy(gameObject);
                 }
-                Destroy(gameObject);
+            }
+            else
+            {
+                Vector3 distance = otherGO.transform.position - this.transform.position;
+
+                distance = new Vector3(distance.x, distance.y, 0);
+
+                rigid.velocity = - distance * 10f / size;
+
+                otherGO.GetComponent<Rigidbody>().AddForce(distance * 35f, ForceMode.VelocityChange);
             }
         }
-        else if (otherGO.tag == "Asteroid" && !otherGO.GetComponent<Asteroid>().parentIsAsteroid && !parentIsAsteroid)
+
+        else if (otherGO.tag == "Asteroid")
         {
             Vector3 distance = otherGO.transform.position - this.transform.position;
+
             distance = new Vector3(distance.x, distance.y, 0);
+
             otherGO.GetComponent<Rigidbody>().velocity = distance * 10f / otherGO.GetComponent<Asteroid>().size;
-            rigid.velocity = -distance * 10f / size;
+
+            distance.Normalize();
+
+            rigid.velocity = - distance * 10f / size;
         }
     }
 

@@ -32,11 +32,20 @@ public class AsteraX : MonoBehaviour
 
     public GameObject Magnetic;
 
+    public MagneticFactory magneticFactory;
+
+    private SceneController sceneController;
+
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
+
+    public List<GameObject> listSpaceShips;
+
     [SerializeField]
     private GameObject playerShip;
+
+    
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple 
     //  values be selected simultaneously (similar to how Physics Layers are selected).
     // It's only valid for the game to ever be in one state, but I've added System.Flags
@@ -76,6 +85,11 @@ public class AsteraX : MonoBehaviour
         {
             return gameState;
         }
+    }
+
+    public static List<Asteroid> GetAsteroids()
+    {
+        return ASTEROIDS;
     }
 
     private void Update()
@@ -139,6 +153,19 @@ public class AsteraX : MonoBehaviour
 #endif
 
         S = this;
+        sceneController = FindObjectOfType<SceneController>();
+
+        if (sceneController != null)
+        {
+            playerShip = listSpaceShips[sceneController.SelectedIndex];
+        }
+
+        else
+        {
+            playerShip = listSpaceShips[1];
+        }
+
+        Instantiate(playerShip);
     }
 
     void Start()
@@ -158,7 +185,7 @@ public class AsteraX : MonoBehaviour
         StartCoroutine(FadeGate());
 
         this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
-        this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHanler());
+        this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
     }
 
@@ -188,7 +215,7 @@ public class AsteraX : MonoBehaviour
     }
 
     #region Handler Event
-    private Vector3 SafePosition()
+    public Vector3 SafePosition()
     {
         int preventSpawnInEdges = 2;
         Vector3[,] listPosition = new Vector3[nRow, nCol];
@@ -255,17 +282,15 @@ public class AsteraX : MonoBehaviour
 
         GUIController.Instance.ShowGameOver();
         LevelManager.Instance.ResetLevel();
-        yield return new WaitForSeconds(4);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void OnPlayerDamagedHanler()
+    private void OnPlayerShipDestroyedHanler()
     {
         jumpRemaining--;
 
         if (jumpRemaining < 0)
         {
-            Instantiate(shipExplosion, playerShip.transform.position, Quaternion.identity);
+            Instantiate(shipExplosion, PlayerShip.POSITION, Quaternion.identity);
             jumpRemaining = 0;
             StartCoroutine(GameOver());
         }
@@ -281,7 +306,7 @@ public class AsteraX : MonoBehaviour
     {
         int scoreToIncrease = (scoreValue as Asteroid).Score;
         score += scoreToIncrease;
-        Debug.Log(ASTEROIDS.Count);
+        //Debug.Log(ASTEROIDS.Count);
         GUIController.Instance.UpdateScore(score);
 
         if (ASTEROIDS.Count - 1 == 0)
@@ -296,7 +321,7 @@ public class AsteraX : MonoBehaviour
 
         this.PostEvent(Event.OnNextLevel, LevelManager.level);
 
-        Debug.Log("Finish level");
+        //Debug.Log("Finish level");
         yield return new WaitForSeconds(3f);
 
         SpawnAsteroids();
@@ -321,7 +346,8 @@ public class AsteraX : MonoBehaviour
         ast.transform.position = pos;
         ast.size = levelManager.asteroidsSOByLevel[LevelManager.level].initialSize;
 
-        GameObject magnetic = Instantiate(Magnetic);
+        GameObject magnetic = magneticFactory.CreateMagnetic();
+
         magnetic.transform.parent = ast.transform;
         magnetic.transform.localPosition = Vector3.zero;
         magnetic.transform.localScale = Vector3.one;
@@ -331,13 +357,18 @@ public class AsteraX : MonoBehaviour
 
     public void QuitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBPLAYER
-         Application.OpenURL(webplayerQuitURL);
-#else
-         Application.Quit();
-#endif
+        if (sceneController != null)
+        {
+            sceneController.QuitGame();
+        }
+    }
+
+    public void Return()
+    {
+        if (sceneController != null)
+        {
+            sceneController.Return();
+        }
     }
 
     // ---------------- Static Section ---------------- //

@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     public void damaged()
     {
         hp--;
-        Debug.Log(hp);
+        //Debug.Log(hp);
         if (hp >= 0)
         {
             hps[hp].gameObject.SetActive(false);
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
     {
         size = GetComponentInParent<Asteroid>().size;
         hp = size;
-        Debug.Log(hp);
+        //Debug.Log(hp);
 
         InitialBar(hp);
     }
@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
         GameObject bar = Instantiate(healthBar[hp - 1]);
         bar.transform.localScale = bar.transform.localScale * size / 3;
         bar.GetComponent<Canvas>().worldCamera = Camera.main;
-        bar.transform.parent = gameObject.transform;
+        bar.transform.SetParent(gameObject.transform);
         bar.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
         Image[] images = bar.GetComponentsInChildren<Image>();

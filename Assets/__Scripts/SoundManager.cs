@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
 
-        this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHandler());
+        this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHandler());
         this.RegisterListener(Event.OnPlayerFired, (param) => OnPlayerFiredHandler());
         this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroid());
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevel());
@@ -41,7 +41,7 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(Shoot);
     }
 
-    private void OnPlayerDamagedHandler()
+    private void OnPlayerShipDestroyedHandler()
     {
         audioSource.PlayOneShot(ShipExplosion);
     }

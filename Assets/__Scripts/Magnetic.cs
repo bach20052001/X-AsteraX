@@ -2,42 +2,37 @@ using UnityEngine;
 
 public class Magnetic : MonoBehaviour
 {
-    public PlayerShip player;
+    private PlayerShip player;
 
     private Rigidbody rb;
 
-    private float originalSpeed;
+    private float originalSpeed = 10;
 
-    public float speedInMagneticField;
+    private float speedInMagneticField;
 
     private Color32 originalColor;
 
-    public Color32 colorInMagneticField;
+    private Color32 colorInMagneticField;
 
-    public MeshRenderer shipBody;
+    private MeshRenderer shipBody;
 
-    public float force;
+    private float force;
 
-    private void Awake()
+    public void Promote(PlayerShip player, Rigidbody rb, float originalSpeed, float speedInMagneticField, Color32 originalColor, Color32 colorInMagneticField, MeshRenderer shipBody,float force)
     {
-        player = FindObjectOfType<PlayerShip>();
-        rb = player.GetComponent<Rigidbody>();
-
-        originalSpeed = player.shipSpeed;
-
-        shipBody = player.gameObject.GetComponentInChildren<MeshRenderer>();
-
-        originalColor = shipBody.material.color;
-    }
-
-    private void OnEnable()
-    {
-        ResetPlayership();
+        this.player = player;
+        this.rb = rb;
+        this.originalSpeed = originalSpeed;
+        this.speedInMagneticField = speedInMagneticField;
+        this.originalColor = originalColor;
+        this.colorInMagneticField = colorInMagneticField;
+        this.shipBody = shipBody;
+        this.force = force;
     }
 
     private void Start()
     {
-        this.RegisterListener(Event.OnPlayerDamaged, (param) => ResetPlayership());
+        this.RegisterListener(Event.PlayerShipDestroyed, (param) => ResetPlayership());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +42,10 @@ public class Magnetic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        ResetPlayership();
+        if (other.CompareTag("Player"))
+        {
+            ResetPlayership();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -61,13 +59,19 @@ public class Magnetic : MonoBehaviour
 
     private void AffectToPlayership()
     {
-        player.shipSpeed = speedInMagneticField;
+        player.SetShipSpeed(speedInMagneticField);
         shipBody.material.color = colorInMagneticField;
     }
 
     private void ResetPlayership()
     {
-        player.shipSpeed = originalSpeed;
+        player.SetShipSpeed(originalSpeed);
         shipBody.material.color = originalColor;
+    }
+
+    private void OnDestroy()
+    {
+        player.SetShipSpeed(originalSpeed);
+        //shipBody.material.color = originalColor;
     }
 }
