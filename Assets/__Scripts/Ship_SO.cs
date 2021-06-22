@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/ShipSO", fileName = "ShipSO.asset")]
+
 [System.Serializable]
 public class Ship_SO : ScriptableObject
 {

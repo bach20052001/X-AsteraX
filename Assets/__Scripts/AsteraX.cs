@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AsteraX : MonoBehaviour
 {
@@ -12,8 +11,6 @@ public class AsteraX : MonoBehaviour
     static private AsteraX _S;
 
     static List<Asteroid> ASTEROIDS;
-
-    [SerializeField] private GUIController GUI;
 
     public GameObject Asteroids;
 
@@ -42,7 +39,6 @@ public class AsteraX : MonoBehaviour
 
     public List<GameObject> listSpaceShips;
 
-    [SerializeField]
     private GameObject playerShip;
 
     
@@ -90,21 +86,6 @@ public class AsteraX : MonoBehaviour
     public static List<Asteroid> GetAsteroids()
     {
         return ASTEROIDS;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (gameState == BaseGameState.PLAY)
-            {
-                TransitionState(BaseGameState.PAUSE);
-            }
-            else if (gameState == BaseGameState.PAUSE)
-            {
-                TransitionState(BaseGameState.PLAY);
-            }
-        }
     }
 
     private void PlayGame()
@@ -166,12 +147,17 @@ public class AsteraX : MonoBehaviour
         }
 
         Instantiate(playerShip);
+
+        TransitionState(BaseGameState.PLAY);
     }
 
     void Start()
     {
-        levelManager = LevelManager.Instance;
         TransitionState(BaseGameState.PLAY);
+
+
+        levelManager = LevelManager.Instance;
+
         jumpRemaining = 3;
         score = 0;
 #if DEBUG_AsteraX_LogMethods

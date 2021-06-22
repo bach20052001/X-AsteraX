@@ -6,9 +6,9 @@ public class Magnetic : MonoBehaviour
 
     private Rigidbody rb;
 
-    private float originalSpeed = 10;
+    private float originalSpeed = 10f;
 
-    private float speedInMagneticField;
+    private float speedInMagneticField = 5f;
 
     private Color32 originalColor;
 
@@ -72,6 +72,5 @@ public class Magnetic : MonoBehaviour
     private void OnDestroy()
     {
         player.SetShipSpeed(originalSpeed);
-        //shipBody.material.color = originalColor;
     }
 }

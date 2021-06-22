@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+//using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerShip : MonoBehaviour
@@ -54,8 +54,6 @@ public class PlayerShip : MonoBehaviour
 
     public GameObject bulletPrefab;
 
-    public GameObject rocket;
-
     Rigidbody rigid;
 
     private void Start()
@@ -68,7 +66,6 @@ public class PlayerShip : MonoBehaviour
         skill = shipParameter.skill;
 
         AppearEffect = AsteraX.S.warp;
-        //Debug.Log(Ship_HP);
 
         switch (skill)
         {
@@ -102,8 +99,6 @@ public class PlayerShip : MonoBehaviour
 
     private void OnEnable()
     {
-        shipSpeed = maxSpeed * shipParameter.speed / 5;
-
         Ship_HP = shipParameter.HP;
 
         StartCoroutine(shieldWhenActive());
@@ -132,8 +127,8 @@ public class PlayerShip : MonoBehaviour
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
         {
             // Using Horizontal and Vertical axes to set velocity
-            float aX = CrossPlatformInputManager.GetAxis("Horizontal");
-            float aY = CrossPlatformInputManager.GetAxis("Vertical");
+            float aX = Input.GetAxis("Horizontal");
+            float aY = Input.GetAxis("Vertical");
 
 
             Vector3 vel = new Vector3(aX, aY , 0);
@@ -152,7 +147,7 @@ public class PlayerShip : MonoBehaviour
             rigid.velocity = vel * shipSpeed;
 
             // Mouse input for firing
-            if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
             {
                 {
                     Fire();
@@ -161,13 +156,14 @@ public class PlayerShip : MonoBehaviour
 
             }
 
-            if (CrossPlatformInputManager.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2"))
             {
                 shipSkill.Execute();
             }
 
             this.transform.up = currentVel;
         }
+
         else
         {
             rigid.velocity = Vector3.zero;
@@ -210,10 +206,8 @@ public class PlayerShip : MonoBehaviour
                     {
                         ActiveEffect(transform.position);
                     }
-
                     //this.PostEvent(Event.OnPlayerDamaged, Ship_HP);
                 }
-                rigid.velocity = Vector3.zero;
             }
         }
     }

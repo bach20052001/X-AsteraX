@@ -16,7 +16,7 @@ public class GUIController : MonoBehaviour
     [SerializeField] private Text score;
 
 
-    [SerializeField] private Skill skill;
+    public Skill skill;
     public static GUIController Instance
     {
         get

@@ -22,7 +22,6 @@ public class Health : MonoBehaviour
     public void damaged()
     {
         hp--;
-        //Debug.Log(hp);
         if (hp >= 0)
         {
             hps[hp].gameObject.SetActive(false);
@@ -33,7 +32,6 @@ public class Health : MonoBehaviour
     {
         size = GetComponentInParent<Asteroid>().size;
         hp = size;
-        //Debug.Log(hp);
 
         InitialBar(hp);
     }
