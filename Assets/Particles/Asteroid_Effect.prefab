@@ -4818,13 +4818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207831fc071b14eeda04b6a8cca8c7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speedInMagneticField: 5
-  colorInMagneticField:
-    serializedVersion: 2
-    rgba: 16776850
-  shipBody: {fileID: 0}
-  force: 25
 --- !u!135 &2007232002
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4836,5 +4829,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.75
-  m_Center: {x: 0.00000023841858, y: -0, z: 0}
+  m_Radius: 1.3402563
+  m_Center: {x: 0, y: 0, z: 0}

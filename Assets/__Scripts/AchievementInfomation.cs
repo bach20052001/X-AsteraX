@@ -1,5 +1,4 @@
-﻿
-public class AchievementInfomation
+﻿public class AchievementInfomation
 {
     public string displayName;
 

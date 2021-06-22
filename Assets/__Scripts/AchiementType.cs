@@ -1,5 +1,4 @@
-﻿
-public enum AchiementType
+﻿public enum AchiementType
 {
     FirstShot,
     FirstDust,

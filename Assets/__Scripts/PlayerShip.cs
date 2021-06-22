@@ -13,11 +13,13 @@ public class PlayerShip : MonoBehaviour
     public Ship_SO shipParameter;
 
     private bool canDestroy;
-    //public event System.Action CollisionWithAsteroidHandler;
+
     private ParticleSystem AppearEffect;
+
     Vector3 currentVel = new Vector3();
-    // This is a somewhat protected private singleton for PlayerShip
+
     static private PlayerShip _S;
+
     static public PlayerShip S
     {
         get
@@ -121,7 +123,6 @@ public class PlayerShip : MonoBehaviour
 
     }
 
-
     void Update()
     {
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
@@ -131,7 +132,7 @@ public class PlayerShip : MonoBehaviour
             float aY = Input.GetAxis("Vertical");
 
 
-            Vector3 vel = new Vector3(aX, aY , 0);
+            Vector3 vel = new Vector3(aX, aY, 0);
 
             if (vel != Vector3.zero)
             {
@@ -163,15 +164,11 @@ public class PlayerShip : MonoBehaviour
 
             this.transform.up = currentVel;
         }
-
         else
         {
             rigid.velocity = Vector3.zero;
         }
     }
-
-
-
 
     public float GetShipSpeed()
     {
@@ -212,7 +209,6 @@ public class PlayerShip : MonoBehaviour
         }
     }
 
-
     public void ActiveEffect(Vector3 position)
     {
         Instantiate(AppearEffect, position, Quaternion.identity);
@@ -235,7 +231,7 @@ public class PlayerShip : MonoBehaviour
 
         else if (shipAttack == 2)
         {
-            
+
             GameObject b1 = Instantiate<GameObject>(bulletPrefab);
             GameObject b2 = Instantiate<GameObject>(bulletPrefab);
 

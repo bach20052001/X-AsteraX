@@ -18,7 +18,7 @@ public class MagneticFactory : MonoBehaviour
 
     public MeshRenderer shipBody;
 
-    public SceneController sceneController;
+    private SceneController sceneController;
 
     public GameObject Magnetic;
 
