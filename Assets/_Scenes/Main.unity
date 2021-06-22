@@ -172,7 +172,7 @@ Animator:
   m_GameObject: {fileID: 23511166}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bd7386647b8a4d48b0a20783fee337b, type: 2}
+  m_Controller: {fileID: 9100000, guid: c881dc5a7666f4223bc5c51b53b0fb5f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1164,7 +1164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac05fa88f37f84120b45a830d68341b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GUI: {fileID: 1487718066}
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosion: {fileID: 198231724666311192, guid: e8335af2e6e050a4c9342af2fda58d35,
@@ -1179,7 +1178,6 @@ MonoBehaviour:
   - {fileID: 7640424413477587657, guid: 63c93b8624b3a49f4839b2246bb34b66, type: 3}
   - {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab, type: 3}
   - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
-  playerShip: {fileID: 0}
 --- !u!1 &636235016
 GameObject:
   m_ObjectHideFlags: 0
