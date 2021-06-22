@@ -4,7 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/ShipSO", fileName = "ShipSO.asset")]
 
-[System.Serializable]
 public class Ship_SO : ScriptableObject
 {
     static public Ship_SO S; // This Scriptable Object is an unprotected Singleton

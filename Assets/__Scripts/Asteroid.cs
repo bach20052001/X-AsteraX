@@ -47,6 +47,8 @@ public class Asteroid : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        AsteraX.AddAsteroid(this);
+
         mass = size * 5;
         switch (size)
         {
@@ -60,10 +62,9 @@ public class Asteroid : MonoBehaviour
                 score = 100;
                 break;
         }
-
+        
         rigid.mass = mass;
 
-        AsteraX.AddAsteroid(this);
 
         transform.localScale = Vector3.one * size;
 

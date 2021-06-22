@@ -78,7 +78,7 @@ public class ScreenBounds : MonoBehaviour
         Vector3 scaleDesired, scaleColl;
 
         scaleDesired.z = zScale;
-        scaleDesired.y = cam.orthographicSize * 2;
+        scaleDesired.y = cam.orthographicSize * 2f;
         scaleDesired.x = scaleDesired.y * cam.aspect;
 
         // This line makes use of the Vector3 extension method defined in Vector3Extensions
