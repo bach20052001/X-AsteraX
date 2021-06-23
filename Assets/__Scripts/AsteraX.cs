@@ -1,6 +1,5 @@
 ﻿//#define DEBUG_AsteraX_LogMethods
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,13 +40,13 @@ public class AsteraX : MonoBehaviour
 
     private GameObject playerShip;
 
-    
-    // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple 
+
+    // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
     // It's only valid for the game to ever be in one state, but I've added System.Flags
     //  here to demonstrate it and to make the ActiveOnlyDuringSomeGameStates script easier
     //  to view and modify in the Inspector.
-    // When you use System.Flags, you still need to set each enum value so that it aligns 
+    // When you use System.Flags, you still need to set each enum value so that it aligns
     //  with a power of 2. You can also define enums that combine two or more values,
     //  for example the all value below that combines all other possible values.
     //[System.Flags]
@@ -155,7 +154,6 @@ public class AsteraX : MonoBehaviour
     {
         TransitionState(BaseGameState.PLAY);
 
-
         levelManager = LevelManager.Instance;
 
         jumpRemaining = 3;
@@ -193,6 +191,7 @@ public class AsteraX : MonoBehaviour
 
     private void SpawnAsteroids()
     {
+        //Debug.Log(levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid);
         // Spawn the parent Asteroids, child Asteroids are taken care of by them
         for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid; i++)
         {
@@ -292,7 +291,7 @@ public class AsteraX : MonoBehaviour
     {
         int scoreToIncrease = (scoreValue as Asteroid).Score;
         score += scoreToIncrease;
-        //Debug.Log(ASTEROIDS.Count);
+
         GUIController.Instance.UpdateScore(score);
 
         if (ASTEROIDS.Count - 1 == 0)
@@ -307,7 +306,6 @@ public class AsteraX : MonoBehaviour
 
         this.PostEvent(Event.OnNextLevel, LevelManager.level);
 
-        //Debug.Log("Finish level");
         yield return new WaitForSeconds(3f);
 
         SpawnAsteroids();
@@ -364,7 +362,7 @@ public class AsteraX : MonoBehaviour
     /// <para>get {} does return null, but throws an error first.</para>
     /// <para>set {} allows overwrite of _S by a 2nd instance, but throws an error first.</para>
     /// <para>Another advantage of using a property here is that it allows you to place
-    /// a breakpoint in the set clause and then look at the call stack if you fear that 
+    /// a breakpoint in the set clause and then look at the call stack if you fear that
     /// something random is setting your _S value.</para>
     /// </summary>
     static public AsteraX S

@@ -4,7 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/AsteroidsSO", fileName = "AsteroidsSO.asset")]
 
-[System.Serializable]
 public class AsteroidsScriptableObject : ScriptableObject
 {
     static public AsteroidsScriptableObject S; // This Scriptable Object is an unprotected Singleton

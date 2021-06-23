@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1229204583961088083}
   - component: {fileID: 1229204583961088085}
   - component: {fileID: 1229204583961088084}
-  - component: {fileID: 8417158060361388407}
   - component: {fileID: 2007232002}
+  - component: {fileID: -4816573787525054735}
   m_Layer: 14
   m_Name: Asteroid_Effect
   m_TagString: Magnetic
@@ -4806,18 +4806,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &8417158060361388407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229204583961088086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207831fc071b14eeda04b6a8cca8c7a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &2007232002
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4831,3 +4819,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.3402563
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4816573787525054735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229204583961088086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207831fc071b14eeda04b6a8cca8c7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

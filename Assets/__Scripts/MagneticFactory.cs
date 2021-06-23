@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MagneticFactory : MonoBehaviour
@@ -8,9 +6,9 @@ public class MagneticFactory : MonoBehaviour
 
     public Rigidbody rb;
 
-    public float originalSpeed = 10;
+    [HideInInspector] public float originalSpeed = 10f;
 
-    public float speedInMagneticField;
+    [HideInInspector] public float speedInMagneticField = 5f;
 
     public Color32 originalColor;
 
@@ -22,23 +20,24 @@ public class MagneticFactory : MonoBehaviour
 
     public GameObject Magnetic;
 
-    public float force;
-
+    [HideInInspector] public float force = 7.5f;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerShip>();
+
         rb = player.GetComponent<Rigidbody>();
 
         shipBody = player.gameObject.GetComponentInChildren<MeshRenderer>();
 
         originalColor = shipBody.material.color;
 
-        sceneController = GetComponent<SceneController>();
+        sceneController = FindObjectOfType<SceneController>();
 
         if (sceneController != null)
         {
             originalSpeed = sceneController.shipInfo[sceneController.SelectedIndex].speed * 12.5f / 5f;
+            speedInMagneticField = originalSpeed / 2f;
         }
     }
 

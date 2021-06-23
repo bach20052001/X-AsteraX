@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75459cb0ced0a467fa245b508988c536, type: 3}
   m_Name: _AsteroidsSO 2
   m_EditorClassIdentifier: 
-  numberOfAsteroid: 7
+  numberOfAsteroid: 5
   minVel: 5
   maxVel: 10
   maxAngularVel: 10

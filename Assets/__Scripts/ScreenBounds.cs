@@ -1,7 +1,4 @@
-﻿//using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // NOTE: If Camera.main is going to move or rotate at all, then it will need to
 //  have a Rigidbody attached so that the physics engine properly updates the 

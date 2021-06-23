@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +38,7 @@ public class Health : MonoBehaviour
     {
         GameObject bar = Instantiate(healthBar[hp - 1]);
         bar.transform.localScale = bar.transform.localScale * size / 3;
-        bar.GetComponent<Canvas>().worldCamera = Camera.main;
+        bar.GetComponent<Canvas>().worldCamera = GameObject.Find("Camera").GetComponent<Camera>();
         bar.transform.SetParent(gameObject.transform);
         bar.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
@@ -52,5 +50,10 @@ public class Health : MonoBehaviour
         {
             hps.Add(images[i]);
         }
+    }
+
+    private void Update()
+    {
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 }

@@ -2,8 +2,6 @@
 //#define DEBUG_Asteroid_TestOOBVel 
 //#define DEBUG_Asteroid_ShotOffscreenDebugLines
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #if DEBUG_Asteroid_TestOOBVel
@@ -20,7 +18,7 @@ public class Asteroid : MonoBehaviour
     private int score = 0;
     public GameObject Health;
     private Health healthController;
-    public GameObject bulletCollision;
+    [HideInInspector]public GameObject bulletCollision;
 
     public int Score
     {
@@ -162,13 +160,14 @@ public class Asteroid : MonoBehaviour
 
                 if (healthController.GetHp() == 0)
                 {
-                    this.PostEvent(Event.OnHitAsteroid, this);
-
                     if (size > 1)
                     {
                         int childSize = --size;
                         SpawnChildAsteroid(childSize, this.transform.localPosition);
                     }
+
+                    this.PostEvent(Event.OnHitAsteroid, this);
+
                     Destroy(gameObject);
                 }
             }

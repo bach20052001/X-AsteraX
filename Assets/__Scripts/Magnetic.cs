@@ -16,7 +16,7 @@ public class Magnetic : MonoBehaviour
 
     private MeshRenderer shipBody;
 
-    private float force;
+    private float force = 7.5f;
 
     public void Promote(PlayerShip player, Rigidbody rb, float originalSpeed, float speedInMagneticField, Color32 originalColor, Color32 colorInMagneticField, MeshRenderer shipBody,float force)
     {
@@ -28,11 +28,6 @@ public class Magnetic : MonoBehaviour
         this.colorInMagneticField = colorInMagneticField;
         this.shipBody = shipBody;
         this.force = force;
-    }
-
-    private void Start()
-    {
-        this.RegisterListener(Event.PlayerShipDestroyed, (param) => ResetPlayership());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,6 +66,9 @@ public class Magnetic : MonoBehaviour
 
     private void OnDestroy()
     {
-        player.SetShipSpeed(originalSpeed);
+        if (player != null)
+        {
+            ResetPlayership();
+        }
     }
 }

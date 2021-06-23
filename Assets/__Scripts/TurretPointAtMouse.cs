@@ -1,7 +1,5 @@
 ﻿//#define DEBUG_TurretPointAtMouse_DrawMousePoint
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretPointAtMouse : MonoBehaviour {
