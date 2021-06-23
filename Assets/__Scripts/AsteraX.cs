@@ -294,7 +294,7 @@ public class AsteraX : MonoBehaviour
 
         GUIController.Instance.UpdateScore(score);
 
-        if (ASTEROIDS.Count - 1 == 0)
+        if (ASTEROIDS.Count - 1 == 0 && Asteroids.transform.childCount == 1)
         {
             StartCoroutine(LevelPassing());
         }
