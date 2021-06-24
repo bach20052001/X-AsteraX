@@ -1,10 +1,8 @@
 ﻿//#define DEBUG_AsteraX_LogMethods
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AsteraX : MonoBehaviour
 {
@@ -12,8 +10,6 @@ public class AsteraX : MonoBehaviour
     static private AsteraX _S;
 
     static List<Asteroid> ASTEROIDS;
-
-    [SerializeField] private GUIController GUI;
 
     public GameObject Asteroids;
 
@@ -32,17 +28,25 @@ public class AsteraX : MonoBehaviour
 
     public GameObject Magnetic;
 
+    public MagneticFactory magneticFactory;
+
+    private SceneController sceneController;
+
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
-    [SerializeField]
+
+    public List<GameObject> listSpaceShips;
+
     private GameObject playerShip;
-    // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple 
+
+
+    // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
     // It's only valid for the game to ever be in one state, but I've added System.Flags
     //  here to demonstrate it and to make the ActiveOnlyDuringSomeGameStates script easier
     //  to view and modify in the Inspector.
-    // When you use System.Flags, you still need to set each enum value so that it aligns 
+    // When you use System.Flags, you still need to set each enum value so that it aligns
     //  with a power of 2. You can also define enums that combine two or more values,
     //  for example the all value below that combines all other possible values.
     //[System.Flags]
@@ -78,19 +82,9 @@ public class AsteraX : MonoBehaviour
         }
     }
 
-    private void Update()
+    public static List<Asteroid> GetAsteroids()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (gameState == BaseGameState.PLAY)
-            {
-                TransitionState(BaseGameState.PAUSE);
-            }
-            else if (gameState == BaseGameState.PAUSE)
-            {
-                TransitionState(BaseGameState.PLAY);
-            }
-        }
+        return ASTEROIDS;
     }
 
     private void PlayGame()
@@ -139,12 +133,29 @@ public class AsteraX : MonoBehaviour
 #endif
 
         S = this;
+        sceneController = FindObjectOfType<SceneController>();
+
+        if (sceneController != null)
+        {
+            playerShip = listSpaceShips[sceneController.SelectedIndex];
+        }
+
+        else
+        {
+            playerShip = listSpaceShips[1];
+        }
+
+        Instantiate(playerShip);
+
+        TransitionState(BaseGameState.PLAY);
     }
 
     void Start()
     {
-        levelManager = LevelManager.Instance;
         TransitionState(BaseGameState.PLAY);
+
+        levelManager = LevelManager.Instance;
+
         jumpRemaining = 3;
         score = 0;
 #if DEBUG_AsteraX_LogMethods
@@ -158,7 +169,7 @@ public class AsteraX : MonoBehaviour
         StartCoroutine(FadeGate());
 
         this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
-        this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHanler());
+        this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
     }
 
@@ -180,6 +191,7 @@ public class AsteraX : MonoBehaviour
 
     private void SpawnAsteroids()
     {
+        //Debug.Log(levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid);
         // Spawn the parent Asteroids, child Asteroids are taken care of by them
         for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid; i++)
         {
@@ -188,7 +200,7 @@ public class AsteraX : MonoBehaviour
     }
 
     #region Handler Event
-    private Vector3 SafePosition()
+    public Vector3 SafePosition()
     {
         int preventSpawnInEdges = 2;
         Vector3[,] listPosition = new Vector3[nRow, nCol];
@@ -255,17 +267,15 @@ public class AsteraX : MonoBehaviour
 
         GUIController.Instance.ShowGameOver();
         LevelManager.Instance.ResetLevel();
-        yield return new WaitForSeconds(4);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void OnPlayerDamagedHanler()
+    private void OnPlayerShipDestroyedHanler()
     {
         jumpRemaining--;
 
         if (jumpRemaining < 0)
         {
-            Instantiate(shipExplosion, playerShip.transform.position, Quaternion.identity);
+            Instantiate(shipExplosion, PlayerShip.POSITION, Quaternion.identity);
             jumpRemaining = 0;
             StartCoroutine(GameOver());
         }
@@ -281,10 +291,10 @@ public class AsteraX : MonoBehaviour
     {
         int scoreToIncrease = (scoreValue as Asteroid).Score;
         score += scoreToIncrease;
-        Debug.Log(ASTEROIDS.Count);
+
         GUIController.Instance.UpdateScore(score);
 
-        if (ASTEROIDS.Count - 1 == 0)
+        if (ASTEROIDS.Count - 1 == 0 && Asteroids.transform.childCount == 1)
         {
             StartCoroutine(LevelPassing());
         }
@@ -296,7 +306,6 @@ public class AsteraX : MonoBehaviour
 
         this.PostEvent(Event.OnNextLevel, LevelManager.level);
 
-        Debug.Log("Finish level");
         yield return new WaitForSeconds(3f);
 
         SpawnAsteroids();
@@ -321,7 +330,8 @@ public class AsteraX : MonoBehaviour
         ast.transform.position = pos;
         ast.size = levelManager.asteroidsSOByLevel[LevelManager.level].initialSize;
 
-        GameObject magnetic = Instantiate(Magnetic);
+        GameObject magnetic = magneticFactory.CreateMagnetic();
+
         magnetic.transform.parent = ast.transform;
         magnetic.transform.localPosition = Vector3.zero;
         magnetic.transform.localScale = Vector3.one;
@@ -331,13 +341,18 @@ public class AsteraX : MonoBehaviour
 
     public void QuitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBPLAYER
-         Application.OpenURL(webplayerQuitURL);
-#else
-         Application.Quit();
-#endif
+        if (sceneController != null)
+        {
+            sceneController.QuitGame();
+        }
+    }
+
+    public void Return()
+    {
+        if (sceneController != null)
+        {
+            sceneController.Return();
+        }
     }
 
     // ---------------- Static Section ---------------- //
@@ -347,7 +362,7 @@ public class AsteraX : MonoBehaviour
     /// <para>get {} does return null, but throws an error first.</para>
     /// <para>set {} allows overwrite of _S by a 2nd instance, but throws an error first.</para>
     /// <para>Another advantage of using a property here is that it allows you to place
-    /// a breakpoint in the set clause and then look at the call stack if you fear that 
+    /// a breakpoint in the set clause and then look at the call stack if you fear that
     /// something random is setting your _S value.</para>
     /// </summary>
     static public AsteraX S

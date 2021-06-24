@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AchiementManager : MonoBehaviour
@@ -75,7 +73,7 @@ public class AchiementManager : MonoBehaviour
 
             unlockAchievement.Enqueue(achievements[achiementType]);
 
-            Debug.Log("Unlock Achievement : " + achiementType.ToString());
+            //Debug.Log("Unlock Achievement : " + achiementType.ToString());
         }
 
         PostAchievement();

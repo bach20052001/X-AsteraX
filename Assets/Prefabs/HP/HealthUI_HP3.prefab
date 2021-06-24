@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2029789309050851498}
   - component: {fileID: 4205577414096750143}
   - component: {fileID: 2638402346383688221}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HealthUI_HP3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2638402346383688221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 4693940175630686857}
   - component: {fileID: 1633698940572558371}
   - component: {fileID: 2164850438413551818}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HP3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 8980757694010581840}
   - component: {fileID: 5430560554434883558}
   - component: {fileID: 442497093906760100}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 4345108708153492172}
   - component: {fileID: 5722529901837816134}
   - component: {fileID: 2640638201005199193}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 4783023734999970030}
   - component: {fileID: 3111037954134709879}
   - component: {fileID: 3253845695099024689}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

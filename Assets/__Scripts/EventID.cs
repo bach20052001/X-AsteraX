@@ -4,6 +4,8 @@
     OnPlayerFired,
     OnHitAsteroid,
     OnPlayerDamaged,
+    PlayerShipDestroyed,
     OnUnlockAchievement,
     OnNextLevel,
+    OnActiveSkill
 }

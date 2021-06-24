@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +13,8 @@ public class GUIController : MonoBehaviour
     private static GUIController instance;
     [SerializeField] private Text score;
 
+
+    public Skill skill;
     public static GUIController Instance
     {
         get
@@ -27,10 +27,16 @@ public class GUIController : MonoBehaviour
         }
     }
 
+
     [SerializeField] private Text scoreText;
     [SerializeField] private Text jumpRemainingText;
-    [SerializeField] private GameObject GameOverPanel;
 
+    [SerializeField] private GameObject GameOverPanel;
+    [SerializeField] private GameObject HealthPanel;
+    [SerializeField] private GameObject SkillPanel;
+
+    [SerializeField] private Text cdSkill;
+    [SerializeField] private Text remain;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +52,59 @@ public class GUIController : MonoBehaviour
 
         this.RegisterListener(Event.OnUnlockAchievement, (param) => UnlockAchievementHandler(param as AchievementInfomation));
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
+        this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHandler(param));
+        this.RegisterListener(Event.OnActiveSkill, (param) => OnActiveSkillHandler(param));
+
+        skill = FindObjectOfType<Skill>();
+
+        cdSkill.text = ((int)skill.countdown).ToString();
+        remain.text = (skill.incremental).ToString();
+
+
+
+        StartCoroutine(UpdateSkillUI());
+    }
+
+    IEnumerator UpdateSkillUI()
+    {
+        while (true)
+        {
+            cdSkill.text = ((int)skill.countdown).ToString();
+            remain.text = (skill.incremental).ToString();
+
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    private void OnActiveSkillHandler(object param)
+    {
+        float time = (float)param;
+        float maxTime = (float)param;
+
+        SkillPanel.SetActive(true);
+
+
+        StartCoroutine(countdownSkillDuration(time, maxTime));
+    }
+
+    IEnumerator countdownSkillDuration(float time, float maxTime)
+    {
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            SkillPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = time/maxTime;
+        }
+
+        SkillPanel.SetActive(false);
+    }
+
+    private void OnPlayerDamagedHandler(object param)
+    {
+        float currentHP = (float)param;
+
+        HealthPanel.GetComponent<Animator>().SetTrigger("Damaged");
+        HealthPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = currentHP;
     }
 
     private IEnumerator ShowNotiLevel()

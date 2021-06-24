@@ -1,7 +1,4 @@
-﻿//using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // NOTE: If Camera.main is going to move or rotate at all, then it will need to
 //  have a Rigidbody attached so that the physics engine properly updates the 
@@ -78,7 +75,7 @@ public class ScreenBounds : MonoBehaviour
         Vector3 scaleDesired, scaleColl;
 
         scaleDesired.z = zScale;
-        scaleDesired.y = cam.orthographicSize * 2;
+        scaleDesired.y = cam.orthographicSize * 2f;
         scaleDesired.x = scaleDesired.y * cam.aspect;
 
         // This line makes use of the Vector3 extension method defined in Vector3Extensions

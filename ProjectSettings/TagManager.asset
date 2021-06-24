@@ -10,6 +10,7 @@ TagManager:
   - Asteroid
   - FxTemporaire
   - Shield
+  - Magnetic
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - CloseUp
   - Shield
   - Effect
-  - 
+  - Health
   - 
   - 
   - 
