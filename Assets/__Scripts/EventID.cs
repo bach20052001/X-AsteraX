@@ -6,4 +6,5 @@
     OnPlayerDamaged,
     OnUnlockAchievement,
     OnNextLevel,
+    EarnCoin
 }

@@ -255,6 +255,11 @@ public class Asteroid : MonoBehaviour
                         children[i].InitAsteroidParent();
                     }
                 }
+                if (size == 1)
+                {
+                    this.PostEvent(Event.EarnCoin);
+                }
+
                 Destroy(gameObject);
             }
         }
