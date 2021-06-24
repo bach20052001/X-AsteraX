@@ -7,5 +7,6 @@
     PlayerShipDestroyed,
     OnUnlockAchievement,
     OnNextLevel,
-    OnActiveSkill
+    OnActiveSkill,
+    EarnCoin
 }

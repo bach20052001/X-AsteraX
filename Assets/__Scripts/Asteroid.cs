@@ -18,7 +18,7 @@ public class Asteroid : MonoBehaviour
     private int score = 0;
     public GameObject Health;
     private Health healthController;
-    [HideInInspector]public GameObject bulletCollision;
+    [HideInInspector] public GameObject bulletCollision;
 
     public int Score
     {
@@ -60,7 +60,7 @@ public class Asteroid : MonoBehaviour
                 score = 100;
                 break;
         }
-        
+
         rigid.mass = mass;
 
 
@@ -160,6 +160,11 @@ public class Asteroid : MonoBehaviour
 
                 if (healthController.GetHp() == 0)
                 {
+                    if (size == 1)
+                    {
+                        this.PostEvent(Event.EarnCoin);
+                    }
+
                     if (size > 1)
                     {
                         int childSize = --size;
