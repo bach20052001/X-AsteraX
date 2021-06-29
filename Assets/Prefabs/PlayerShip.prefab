@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40decbcba9acc490fb9455a2af977d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipSpeed: 10
+  shipParameter: {fileID: 11400000, guid: b5015a88d2bb441b6a48ebc18439bca7, type: 2}
   bulletPrefab: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
     type: 3}
 --- !u!114 &288174170244224252
@@ -317,6 +317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShipTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779365027958493270, guid: ce7f65cd657aabe4f9680a393dc3298b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2999793094879123550, guid: ce7f65cd657aabe4f9680a393dc3298b,
         type: 3}

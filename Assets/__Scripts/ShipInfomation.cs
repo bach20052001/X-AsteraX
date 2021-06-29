@@ -2,15 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using DanielLochner.Assets.SimpleScrollSnap;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using System;
 
 public class ShipInfomation : MonoBehaviour
 {
+    private PlayerData playerData;
+
     public Text shipName;
 
     public Text shipName_des;
 
     public Text description;
+
+    public Text price;
 
     public GameObject foregroundHealth;
 
@@ -26,48 +30,129 @@ public class ShipInfomation : MonoBehaviour
 
     public List<Ship_SO> ships;
 
+    public GameObject BuyButton;
+
     private SceneController sceneController;
 
+    public Sprite hasBoughtSprite;
 
+    public Sprite unBoughtYet;
 
+    private bool isShipSeleted = false;
+
+    private bool hasBought = false;
+
+    public List<int> boughtIndex = new List<int>();
+
+    private Coin coin;
+
+    private int currentIndex;
+
+    private int currentSelected = -1;
+
+    private Ship_SO currentShip;
+
+    private void Awake()
+    {
+        coin = FindObjectOfType<Coin>();
+        boughtIndex.Clear();
+        SaveDataManager.LoadDataPersistent();
+
+        playerData = SaveDataManager.playerData;
+
+        if (playerData != null)
+        {
+            currentSelected = playerData.selectedIndex;
+            boughtIndex = playerData.bought;
+        }
+    }
+
+    private void OnDisable()
+    {
+        playerData.bought = boughtIndex;
+        playerData.selectedIndex = currentSelected;
+
+        SaveDataManager.playerData = playerData;
+        SaveDataManager.ExportData();
+    }
 
     private void Start()
     {
+        scroll.GoToPanel(currentSelected);
         LoadInfomation();
+    }
+
+    private bool checkBought()
+    {
+        if (boughtIndex.Count == 0)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < boughtIndex.Count; i++)
+        {
+            if (currentIndex == boughtIndex[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void checkBoughtAndSelect()
+    {
+        hasBought = checkBought();
+
+        if (hasBought)
+        {
+            BuyButton.GetComponent<Image>().sprite = hasBoughtSprite;
+            price.text = "Select";
+
+            if (currentSelected == scroll.currentPanel && currentSelected != -1)
+            {
+                price.text = "Selected";
+            }
+        }
+        else
+        {
+            BuyButton.GetComponent<Image>().sprite = unBoughtYet;
+            price.text = "Buy (" + currentShip.price + " coins)";
+        }
     }
 
     public void LoadInfomation()
     {
 
-        int index = scroll.currentPanel;
+        currentIndex = scroll.currentPanel;
 
-        Ship_SO ship_ = ships[index];
+        currentShip = ships[currentIndex];
 
-        shipName.text = ship_.shipName;
-        shipName_des.text = ship_.shipName;
-        description.text = ship_.description;
+        shipName.text = currentShip.shipName;
+        shipName_des.text = currentShip.shipName;
+        description.text = currentShip.description;
 
         ResetInfomation();
+        checkBoughtAndSelect();
 
-        for (int i = 0; i < ship_.HP; i++)
+        for (int i = 0; i < currentShip.HP; i++)
         {
             foregroundHealth.transform.GetChild(i).gameObject.SetActive(true);
         }
 
-        for (int i = 0; i < ship_.speed; i++)
+        for (int i = 0; i < currentShip.speed; i++)
         {
             foregroundSpeed.transform.GetChild(i).gameObject.SetActive(true);
         }
 
-        for (int i = 0; i < ship_.attack; i++)
+        for (int i = 0; i < currentShip.attack; i++)
         {
             bullets.transform.GetChild(i).GetComponent<Image>().color = bulletColor;
         }
 
-        AbilityText.text = ship_.skill;
+        AbilityText.text = currentShip.skill;
 
 
-        sceneController = FindObjectOfType<SceneController>();
+        sceneController = SceneController.Instance;
 
         if (sceneController != null)
         {
@@ -103,14 +188,55 @@ public class ShipInfomation : MonoBehaviour
 
     public void NextScene()
     {
-        if (SceneManager.GetActiveScene().name == "Manage")
+        if (isShipSeleted)
         {
             if (sceneController != null)
             {
-                sceneController.SelectedIndex = scroll.currentPanel;
+                sceneController.NextScene();
             }
         }
+        else
+        {
+            Debug.Log("Please select your spaceship");
+        }
+    }
 
-        sceneController.NextScene();
+    public void BuyOrSelect()
+    {
+        if (!hasBought)
+        {
+            int coins = coin.GetCoins();
+
+            if (coins > currentShip.price)
+            {
+                coins -= currentShip.price;
+
+                boughtIndex.Add(currentIndex);
+
+                BuyButton.GetComponent<Image>().sprite = hasBoughtSprite;
+
+                coin.SetCoin(coins);
+
+                price.text = "Select";
+
+                hasBought = true;
+            }
+            else
+            {
+                Debug.Log("Not enough coin");
+            }
+        }
+        else
+        {
+            if (!isShipSeleted)
+            {
+                isShipSeleted = true;
+                price.text = "Selected";
+                sceneController.SelectedIndex = scroll.currentPanel;
+                currentSelected = scroll.currentPanel;
+            }
+        }
+        playerData.bought = boughtIndex;
+        playerData.selectedIndex = currentSelected;
     }
 }

@@ -21,3 +21,4 @@ MonoBehaviour:
   HP: 3
   speed: 5
   skill: Invisible
+  price: 2000

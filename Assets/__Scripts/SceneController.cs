@@ -7,44 +7,63 @@ public class SceneController : MonoBehaviour
 {
     public Animator[] animators;
 
-    const string ANIMATORIN_TRIGGER = "Transition_IN";
+    private static SceneController instance;
 
+    public static SceneController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<SceneController>();
+            }
+            return instance;
+        }
+    }
+    
     const string ANIMATOROUT_TRIGGER = "Transition_OUT";
 
     const float delay = 0.6f;
 
-    public int SelectedIndex = 1;
+    public int SelectedIndex = -1;
 
+    private void Awake()
+    {
+        SelectedIndex = -1;
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        if (this != instance)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        LoadAnimator();
     }
 
     public void NextScene()
     {
+
+
         StartCoroutine(PlayNext());
     }
 
     private IEnumerator PlayNext()
     {
-        for (int i = 0; i < animators.Length; i++)
-        {
-            animators[i].SetTrigger(ANIMATOROUT_TRIGGER);
-        }
-
+        ActiveAnimator();
         yield return new WaitForSeconds(delay);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private IEnumerator PlayPrev()
     {
-        for (int i = 0; i < animators.Length; i++)
-        {
-            animators[i].SetTrigger(ANIMATOROUT_TRIGGER);
-        }
-
+        ActiveAnimator();
         yield return new WaitForSeconds(delay);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
     }
@@ -59,6 +78,13 @@ public class SceneController : MonoBehaviour
         animators = FindObjectsOfType<Animator>();
     }
 
+    private void ActiveAnimator()
+    {
+        for (int i = 0; i < animators.Length; i++)
+        {
+            animators[i].SetTrigger(ANIMATOROUT_TRIGGER);
+        }
+    }
 
     public void QuitGame()
     {
@@ -71,14 +97,27 @@ public class SceneController : MonoBehaviour
 #endif
     }
 
+    public void QuitToWelcome()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
     public void Return()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
     }
 
     public void Play()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
+        if (SelectedIndex == -1)
+        {
+            Debug.Log("Please select your spaceship");
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
+        }
     }
 
     public List<Ship_SO> shipInfo = new List<Ship_SO>();

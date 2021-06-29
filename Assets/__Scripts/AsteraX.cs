@@ -24,13 +24,13 @@ public class AsteraX : MonoBehaviour
 
     public ParticleSystem shipExplosion;
 
+    private SceneController sceneController;
+
     public ParticleSystem warp;
 
     public GameObject Magnetic;
 
     public MagneticFactory magneticFactory;
-
-    private SceneController sceneController;
 
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
@@ -90,10 +90,12 @@ public class AsteraX : MonoBehaviour
     private void PlayGame()
     {
         Time.timeScale = 1;
+
     }
 
     private void PauseGame()
     {
+        this.PostEvent(Event.Pause);
         Time.timeScale = 0;
     }
     private void GameOverUI()
@@ -133,7 +135,8 @@ public class AsteraX : MonoBehaviour
 #endif
 
         S = this;
-        sceneController = FindObjectOfType<SceneController>();
+
+        sceneController = SceneController.Instance;
 
         if (sceneController != null)
         {
@@ -171,6 +174,7 @@ public class AsteraX : MonoBehaviour
         this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
         this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
+
     }
 
 
@@ -344,6 +348,17 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.QuitGame();
+
+        }
+    }
+
+    public void QuitToWc()
+    {
+        Time.timeScale = 1;
+        if (sceneController != null)
+        {
+            sceneController.QuitToWelcome();
+
         }
     }
 
@@ -352,7 +367,18 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.Return();
+
         }
+    }
+
+    public void Pause()
+    {
+        TransitionState(BaseGameState.PAUSE);
+    }
+
+    public void Resume()
+    {
+        TransitionState(BaseGameState.PLAY);
     }
 
     // ---------------- Static Section ---------------- //

@@ -23,4 +23,5 @@ public class Ship_SO : ScriptableObject
 
     public string skill;
 
+    public int price;
 }

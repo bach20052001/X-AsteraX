@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class GUIController : MonoBehaviour
     [SerializeField] private Text score;
 
 
-    public Skill skill;
+    [HideInInspector] public Skill skill;
     public static GUIController Instance
     {
         get
@@ -35,6 +36,9 @@ public class GUIController : MonoBehaviour
     [SerializeField] private GameObject HealthPanel;
     [SerializeField] private GameObject SkillPanel;
 
+    [SerializeField] private GameObject PausePanel;
+
+
     [SerializeField] private Text cdSkill;
     [SerializeField] private Text remain;
 
@@ -54,15 +58,27 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
         this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHandler(param));
         this.RegisterListener(Event.OnActiveSkill, (param) => OnActiveSkillHandler(param));
+        this.RegisterListener(Event.Pause, (param) => OnPause());
 
         skill = FindObjectOfType<Skill>();
 
         cdSkill.text = ((int)skill.countdown).ToString();
         remain.text = (skill.incremental).ToString();
 
-
-
         StartCoroutine(UpdateSkillUI());
+    }
+
+
+
+    private void OnPause()
+    {
+        PausePanel.GetComponent<Animator>().SetTrigger("Pause");
+
+    }
+
+    public void ResumeGame()
+    {
+        PausePanel.GetComponent<Animator>().SetTrigger("Resume");
     }
 
     IEnumerator UpdateSkillUI()

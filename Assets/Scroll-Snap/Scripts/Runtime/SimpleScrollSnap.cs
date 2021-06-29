@@ -624,6 +624,7 @@ namespace DanielLochner.Assets.SimpleScrollSnap
             {
                 scrollRect.inertia = false;
             }
+            currentPanel = panelNumber;
         }
         public void GoToPreviousPanel()
         {

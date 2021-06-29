@@ -20,3 +20,4 @@ MonoBehaviour:
   HP: 5
   speed: 3
   skill: Immortal
+  price: 4000

@@ -8,5 +8,6 @@
     OnUnlockAchievement,
     OnNextLevel,
     OnActiveSkill,
-    EarnCoin
+    EarnCoin,
+    Pause
 }

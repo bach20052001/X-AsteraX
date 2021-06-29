@@ -89,6 +89,10 @@
                         shipSkill = gameObject.AddComponent<Invisible>();
                         break;
                     }
+                default:
+                {
+                    break;
+                }
             }
         }
 

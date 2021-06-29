@@ -7,7 +7,23 @@ public class Coin : MonoBehaviour
 {
     public Text amountOfCoin;
 
-    private int coins = 0;
+    [SerializeField] private int coins = 0;
+
+    public int GetCoins()
+    {
+        return coins;
+    }
+
+    public void SetCoin(int coins)
+    {
+        this.coins = coins;
+        amountOfCoin.text = coins.ToString();
+    }
+
+    private void OnValidate()
+    {
+        amountOfCoin.text = coins.ToString();
+    }
 
     private void OnDisable()
     {
