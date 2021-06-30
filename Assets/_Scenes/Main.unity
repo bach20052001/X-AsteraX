@@ -1386,8 +1386,8 @@ MonoBehaviour:
     type: 3}
   magneticFactory: {fileID: 1842951576}
   listSpaceShips:
-  - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
   - {fileID: 7640424413477587657, guid: 63c93b8624b3a49f4839b2246bb34b66, type: 3}
+  - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
   - {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab, type: 3}
   - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
 --- !u!1 &636235016

@@ -182,9 +182,15 @@ public class Asteroid : MonoBehaviour
 
                 distance = new Vector3(distance.x, distance.y, 0);
 
-                rigid.velocity = -distance * 5f / size;
+                if (size != 3)
+                {
+                    rigid.velocity = - distance * 3f / size;
+                }
 
-                otherGO.GetComponent<Rigidbody>().AddForce(distance * 20f, ForceMode.Impulse);
+                if (size != 1)
+                {
+                    otherGO.GetComponent<Rigidbody>().AddForce(size * distance, ForceMode.VelocityChange);
+                }
             }
         }
 

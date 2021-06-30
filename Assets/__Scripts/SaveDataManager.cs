@@ -39,7 +39,15 @@ public class SaveDataManager : MonoBehaviour
         if (!Directory.Exists(dataPath))
         {
             Directory.CreateDirectory(dataPath);
-            File.WriteAllText(dataPath + "/PlayerData.json", "");
+            //Default Load
+            PlayerData playerData = new PlayerData
+            {
+                selectedIndex = 0
+            };
+
+            playerData.bought.Add(0);
+
+            File.WriteAllText(dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
         }
 
         dataPath = Path.Combine(dataPath, "PlayerData.json");

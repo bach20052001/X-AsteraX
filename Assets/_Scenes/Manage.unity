@@ -3641,8 +3641,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1107662500}
   - {fileID: 1310560325}
+  - {fileID: 1107662500}
   - {fileID: 1823996734}
   - {fileID: 1969368060}
   m_Father: {fileID: 668374426}
@@ -4072,7 +4072,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 954470359}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4759,8 +4759,8 @@ MonoBehaviour:
     rgba: 3360911871
   scroll: {fileID: 396852768}
   ships:
-  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   - {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
+  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   - {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
   - {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
   BuyButton: {fileID: 1684517668}
@@ -5047,7 +5047,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 954470359}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

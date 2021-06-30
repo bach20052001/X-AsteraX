@@ -16,7 +16,7 @@ public class Magnetic : MonoBehaviour
 
     private MeshRenderer shipBody;
 
-    private float force = 7.5f;
+    private float force = 10f;
 
     public void Promote(PlayerShip player, Rigidbody rb, float originalSpeed, float speedInMagneticField, Color32 originalColor, Color32 colorInMagneticField, MeshRenderer shipBody,float force)
     {
@@ -48,7 +48,7 @@ public class Magnetic : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Vector3 directionToMagneticField = this.transform.position - player.gameObject.transform.position;
-            rb.AddForce(directionToMagneticField * force * Time.deltaTime, ForceMode.Impulse);
+            rb.AddForce(directionToMagneticField * force * Time.deltaTime, ForceMode.VelocityChange);
         }
     }
 

@@ -244,8 +244,8 @@ MonoBehaviour:
   animators: []
   SelectedIndex: 1
   shipInfo:
-  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   - {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
+  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   - {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
   - {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
 --- !u!1 &293477825
