@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Rocket : Skill
+public class MachineGun : Skill
 {
     private float time;
     private float fireRate = 0.05f;

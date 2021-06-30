@@ -20,5 +20,5 @@ MonoBehaviour:
   attack: 2
   HP: 2
   speed: 3
-  skill: Rocket
+  skill: Machine Gun
   price: 8000

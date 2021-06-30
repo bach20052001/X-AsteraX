@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DanielLochner.Assets.SimpleScrollSnap;
 using UnityEngine.UI;
-using System;
+using System.Collections;
 
 public class ShipInfomation : MonoBehaviour
 {
@@ -38,6 +38,8 @@ public class ShipInfomation : MonoBehaviour
 
     public Sprite unBoughtYet;
 
+    public Text noti;
+
     private bool isShipSeleted = false;
 
     private bool hasBought = false;
@@ -56,15 +58,6 @@ public class ShipInfomation : MonoBehaviour
     {
         coin = FindObjectOfType<Coin>();
         boughtIndex.Clear();
-        SaveDataManager.LoadDataPersistent();
-
-        playerData = SaveDataManager.playerData;
-
-        if (playerData != null)
-        {
-            currentSelected = playerData.selectedIndex;
-            boughtIndex = playerData.bought;
-        }
     }
 
     private void OnDisable()
@@ -72,17 +65,42 @@ public class ShipInfomation : MonoBehaviour
         playerData.bought = boughtIndex;
         playerData.selectedIndex = currentSelected;
 
-        SaveDataManager.playerData = playerData;
-        SaveDataManager.ExportData();
+        if (SaveDataManager.Instance != null)
+        {
+            SaveDataManager.Instance.playerData = playerData;
+            SaveDataManager.Instance.ExportData();
+        }
+
     }
 
     private void Start()
     {
-        scroll.GoToPanel(currentSelected);
+        sceneController = SceneController.Instance;
+        SaveDataManager.Instance.LoadDataPersistent();
+
+        if (SaveDataManager.Instance.playerData == null)
+        {
+            SaveDataManager.Instance.playerData = new PlayerData();
+        }
+        
+        playerData = SaveDataManager.Instance.playerData;
+       
+        if (playerData != null)
+        {
+            currentSelected = playerData.selectedIndex;
+            boughtIndex = playerData.bought;
+        }
+
+        if (currentSelected != -1)
+        {
+            scroll.GoToPanel(currentSelected);
+            sceneController.SelectedIndex = currentSelected;
+        }
+
         LoadInfomation();
     }
 
-    private bool checkBought()
+    private bool CheckBought()
     {
         if (boughtIndex.Count == 0)
         {
@@ -99,9 +117,9 @@ public class ShipInfomation : MonoBehaviour
         return false;
     }
 
-    private void checkBoughtAndSelect()
+    private void CheckBoughtAndSelect()
     {
-        hasBought = checkBought();
+        hasBought = CheckBought();
 
         if (hasBought)
         {
@@ -110,6 +128,7 @@ public class ShipInfomation : MonoBehaviour
 
             if (currentSelected == scroll.currentPanel && currentSelected != -1)
             {
+                isShipSeleted = true;
                 price.text = "Selected";
             }
         }
@@ -132,7 +151,7 @@ public class ShipInfomation : MonoBehaviour
         description.text = currentShip.description;
 
         ResetInfomation();
-        checkBoughtAndSelect();
+        CheckBoughtAndSelect();
 
         for (int i = 0; i < currentShip.HP; i++)
         {
@@ -151,8 +170,6 @@ public class ShipInfomation : MonoBehaviour
 
         AbilityText.text = currentShip.skill;
 
-
-        sceneController = SceneController.Instance;
 
         if (sceneController != null)
         {
@@ -197,9 +214,18 @@ public class ShipInfomation : MonoBehaviour
         }
         else
         {
-            Debug.Log("Please select your spaceship");
+            StartCoroutine(PushNoti("Please select your spaceship"));
         }
     }
+
+    private IEnumerator PushNoti(string content)
+    {
+        noti.text = content;
+        noti.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        noti.gameObject.SetActive(false);
+    }
+
 
     public void BuyOrSelect()
     {
@@ -207,7 +233,7 @@ public class ShipInfomation : MonoBehaviour
         {
             int coins = coin.GetCoins();
 
-            if (coins > currentShip.price)
+            if (coins >= currentShip.price)
             {
                 coins -= currentShip.price;
 
@@ -223,12 +249,12 @@ public class ShipInfomation : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not enough coin");
+                StartCoroutine(PushNoti("Not enough coin"));
             }
         }
         else
         {
-            if (!isShipSeleted)
+            if (!isShipSeleted || currentIndex != currentSelected)
             {
                 isShipSeleted = true;
                 price.text = "Selected";
@@ -236,6 +262,7 @@ public class ShipInfomation : MonoBehaviour
                 currentSelected = scroll.currentPanel;
             }
         }
+
         playerData.bought = boughtIndex;
         playerData.selectedIndex = currentSelected;
     }

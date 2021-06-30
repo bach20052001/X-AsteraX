@@ -7,6 +7,9 @@ public class SceneController : MonoBehaviour
 {
     public Animator[] animators;
 
+    private PlayerData playerData;
+
+
     private static SceneController instance;
 
     public static SceneController Instance
@@ -44,6 +47,17 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
+        SaveDataManager.Instance.LoadDataPersistent();
+
+        if (SaveDataManager.Instance.playerData == null)
+        {
+            SaveDataManager.Instance.playerData = new PlayerData();
+        }
+
+        playerData = SaveDataManager.Instance.playerData;
+
+        SelectedIndex = playerData.selectedIndex;
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -112,7 +126,8 @@ public class SceneController : MonoBehaviour
     {
         if (SelectedIndex == -1)
         {
-            Debug.Log("Please select your spaceship");
+            GameObject noti = GameObject.Find("Noti_Select");
+            noti.GetComponent<CanvasGroup>().alpha = 1;
         }
         else
         {

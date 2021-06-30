@@ -69,9 +69,9 @@
 
             switch (skill)
             {
-                case "Rocket":
+                case "Machine Gun":
                     {
-                        shipSkill = gameObject.AddComponent<Rocket>();
+                        shipSkill = gameObject.AddComponent<MachineGun>();
                         break;
                     }
                 case "Immortal":
