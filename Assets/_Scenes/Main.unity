@@ -1376,6 +1376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac05fa88f37f84120b45a830d68341b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: 1029653053436338, guid: 1293b0763d7d344e0b908c097078ac09, type: 3}
+  - {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2, type: 3}
+  - {fileID: 1317570492134680, guid: a6d3ccfc58a1f41368479aabb6050561, type: 3}
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosion: {fileID: 198231724666311192, guid: e8335af2e6e050a4c9342af2fda58d35,

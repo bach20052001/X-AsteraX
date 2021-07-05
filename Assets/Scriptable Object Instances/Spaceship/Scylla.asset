@@ -19,5 +19,5 @@ MonoBehaviour:
   attack: 1
   HP: 5
   speed: 3
-  skill: Immortal
+  skill: 1
   price: 4000

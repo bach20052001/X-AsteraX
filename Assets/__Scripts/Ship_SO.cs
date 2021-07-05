@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class Ship_SO : ScriptableObject
 {
-    static public Ship_SO S; // This Scriptable Object is an unprotected Singleton
-
-    public Ship_SO()
-    {
-        S = this; // Assign the Singleton as part of the constructor.
-    }
-
     public string shipName;
+
+    [Range(1,2)]
+    public int attack;
+
+    [Range(1,5)]
+    public int HP;
+
+    [Range(1,5)]
+    public int speed;
+
+    public int price;
 
     public string description;
 
-    public int attack;
-
-    public int HP;
-
-    public int speed;
-
-    public string skill;
-
-    public int price;
+    public Skills skill;
 }

@@ -7,7 +7,6 @@ public class Flash : Skill
     private void Start()
     {
         countdownSkill = 30f;
-        isIncremental = true;
         maxIncremental = 2;
 
         gameManager = FindObjectOfType<AsteraX>();

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75459cb0ced0a467fa245b508988c536, type: 3}
-  m_Name: _AsteroidsSO 10
+  m_Name: _LevelSO 2
   m_EditorClassIdentifier: 
-  numberOfAsteroid: 12
-  minVel: 8
-  maxVel: 16
+  numberOfAsteroid: 5
+  minVel: 5
+  maxVel: 10
   maxAngularVel: 10
   initialSize: 3
   asteroidScale: 0.75

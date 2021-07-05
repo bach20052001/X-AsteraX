@@ -4,8 +4,6 @@ public class Skill : MonoBehaviour
 {
     public float countdownSkill;
 
-    public bool isIncremental;
-
     public int maxIncremental;
 
     public void Execute()
@@ -39,18 +37,11 @@ public class Skill : MonoBehaviour
         {
             if (incremental < maxIncremental)
             {
-                if (!isIncremental)
+                countdown = countdownSkill;
+                incremental++;
+                if (incremental == maxIncremental)
                 {
-                    incremental = 1;
-                }
-                else
-                {
-                    countdown = countdownSkill;
-                    incremental++;
-                    if (incremental == maxIncremental)
-                    {
-                        countdown = 0;
-                    }
+                    countdown = 0;
                 }
             }
         }

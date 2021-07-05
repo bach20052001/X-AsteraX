@@ -168,7 +168,7 @@ public class ShipInfomation : MonoBehaviour
             bullets.transform.GetChild(i).GetComponent<Image>().color = bulletColor;
         }
 
-        AbilityText.text = currentShip.skill;
+        AbilityText.text = currentShip.skill.ToString();
 
 
         if (sceneController != null)

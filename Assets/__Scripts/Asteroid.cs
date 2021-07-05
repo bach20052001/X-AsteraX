@@ -222,7 +222,7 @@ public class Asteroid : MonoBehaviour
 
     static public Asteroid SpawnAsteroid()
     {
-        GameObject aGO = Instantiate<GameObject>(AsteraX.AsteroidsSO.GetAsteroidPrefab(), AsteraX.S.Asteroids.transform);
+        GameObject aGO = Instantiate<GameObject>(AsteraX.S.GetAsteroidPrefab(), AsteraX.S.Asteroids.transform);
         Asteroid ast = aGO.GetComponent<Asteroid>();
         return ast;
     }

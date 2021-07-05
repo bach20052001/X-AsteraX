@@ -17,7 +17,6 @@ public class Immortal : Skill
         isImmortal = false;
 
         countdownSkill = 60f;
-        isIncremental = false;
         maxIncremental = 1;
 
         player = GetComponent<PlayerShip>();

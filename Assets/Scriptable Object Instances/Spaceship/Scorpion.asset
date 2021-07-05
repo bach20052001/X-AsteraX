@@ -20,5 +20,5 @@ MonoBehaviour:
   attack: 1
   HP: 3
   speed: 5
-  skill: Invisible
+  skill: 2
   price: 0

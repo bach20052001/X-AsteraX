@@ -9,7 +9,6 @@ public class Invisible : Skill
     private void Start()
     {
         countdownSkill = 60f;
-        isIncremental = false;
         maxIncremental = 1;
 
         player = GetComponent<BoxCollider>();

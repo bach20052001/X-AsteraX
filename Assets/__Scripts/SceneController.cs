@@ -9,7 +9,6 @@ public class SceneController : MonoBehaviour
 
     private PlayerData playerData;
 
-
     private static SceneController instance;
 
     public static SceneController Instance

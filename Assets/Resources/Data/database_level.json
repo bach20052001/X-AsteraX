@@ -1,0 +1,84 @@
+{
+    "Level": [
+        {
+            "numberOfAsteroid": 3,
+            "minVel": 5.0,
+            "maxVel": 10.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 4,
+            "minVel": 5.0,
+            "maxVel": 10.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 5,
+            "minVel": 5.0,
+            "maxVel": 10.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 6,
+            "minVel": 6.0,
+            "maxVel": 12.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 7,
+            "minVel": 6.0,
+            "maxVel": 12.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 8,
+            "minVel": 7.0,
+            "maxVel": 14.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 9,
+            "minVel": 6.0,
+            "maxVel": 12.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 9,
+            "minVel": 7.0,
+            "maxVel": 14.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 10,
+            "minVel": 7.0,
+            "maxVel": 14.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        },
+        {
+            "numberOfAsteroid": 11,
+            "minVel": 7.0,
+            "maxVel": 14.0,
+            "maxAngularVel": 10.0,
+            "initialSize": 3,
+            "numSmallerAsteroidsToSpawn": 2
+        }
+    ]
+}

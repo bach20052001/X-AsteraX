@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AsteraX : MonoBehaviour
 {
+    public GameObject[] asteroidPrefabs;
     // Private Singleton-style instance. Accessed by static property S later in script
     static private AsteraX _S;
 
@@ -177,7 +178,11 @@ public class AsteraX : MonoBehaviour
 
     }
 
-
+    public GameObject GetAsteroidPrefab()
+    {
+        int ndx = Random.Range(0, asteroidPrefabs.Length);
+        return asteroidPrefabs[ndx];
+    }
 
     private void OnNextLevelHandler()
     {
@@ -413,7 +418,7 @@ public class AsteraX : MonoBehaviour
     }
 
 
-    static public AsteroidsScriptableObject AsteroidsSO
+    static public LevelScriptableObject AsteroidsSO
     {
         get
         {
