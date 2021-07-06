@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Scylla
   m_EditorClassIdentifier: 
   shipName: Scylla
-  description: Scylla is first attested in Homer's Odyssey, where Odysseus and his
-    crew encounter her and Charybdis on their travels. Later myth provides an origin
-    story as a beautiful nymph who gets turned into a monster.
   attack: 1
-  HP: 5
-  speed: 3
-  skill: 1
-  price: 4000
+  HP: 1
+  speed: 1
+  price: 0
+  description: 0
+  skill: 2

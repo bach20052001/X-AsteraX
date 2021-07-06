@@ -36,6 +36,8 @@ public class PlayerShip : MonoBehaviour
 
     [Header("Set in Inspector")]
 
+    public Skill_SO skilldata;
+
     private Skill shipSkill;
 
     private float shipSpeed = 10f;

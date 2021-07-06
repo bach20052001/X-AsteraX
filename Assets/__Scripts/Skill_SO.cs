@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Skill_SO : ScriptableObject
 {
-    public Skills skillIndex;
+    public string SkillName;
+
+    public Skills SkillIndex;
 
     public float countdownSkill;
 

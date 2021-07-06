@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipParameter: {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
+  skilldata: {fileID: 11400000, guid: 9eed74139145346ed8f755a29e672bf6, type: 2}
   bulletPrefab: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
     type: 3}
   canControl: 1

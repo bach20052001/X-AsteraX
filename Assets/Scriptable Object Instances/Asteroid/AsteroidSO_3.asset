@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa30a43a88dc4067b7bbf610ad66edd, type: 3}
   m_Name: AsteroidSO_3
   m_EditorClassIdentifier: 
-  size: 3
-  hp: 3
-  hasMagnetic: 1
-  point: 100
+  size: 1
+  HP: 0
+  Point: 0
+  HasMagnetic: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26647e8674a04c53b18fb7604177526, type: 3}
   m_Name: Flash
   m_EditorClassIdentifier: 
-  skillIndex: 0
-  countdownSkill: 30
-  isIncremental: 1
-  maxIncremental: 2
+  SkillName: Flash
+  SkillIndex: 1
+  countdownSkill: 0
+  maxIncremental: 0

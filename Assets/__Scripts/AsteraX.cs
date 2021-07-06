@@ -202,7 +202,7 @@ public class AsteraX : MonoBehaviour
     {
         //Debug.Log(levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid);
         // Spawn the parent Asteroids, child Asteroids are taken care of by them
-        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid; i++)
+        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroid; i++)
         {
             SpawnParentAsteroid(i);
         }
