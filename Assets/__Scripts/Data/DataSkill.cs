@@ -1,6 +1,9 @@
+using UnityEngine;
+
 [System.Serializable]
 public class SkillDataObject
 {
+    [Range(1, 4)]
     public int SkillIndex;
 
     public string SkillName;

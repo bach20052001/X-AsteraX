@@ -8,9 +8,6 @@ public class MachineGun : Skill
     private PlayerShip player;
     private void Start()
     {
-        countdownSkill = 60f;
-        maxIncremental = 1;
-
         player = GetComponent<PlayerShip>();
 
         time = 2f;

@@ -127,6 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458074f5a8c344c2ebcb9e1e9686c70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asteroidsData:
+  - {fileID: 11400000, guid: 254c03dd2a9754dd293ee031f3f8350e, type: 2}
+  - {fileID: 11400000, guid: a1462bca4a38746a6b8822de13222ea2, type: 2}
+  - {fileID: 11400000, guid: 7497216060c0e4bedabfef1ae911ebfc, type: 2}
   size: 3
   Health: {fileID: 1991297926857518203, guid: ae1afa111881146c6a4541345036080f, type: 3}
   bulletCollision: {fileID: 0}

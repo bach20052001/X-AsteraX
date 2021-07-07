@@ -29,10 +29,6 @@ public class AsteraX : MonoBehaviour
 
     public ParticleSystem warp;
 
-    public GameObject Magnetic;
-
-    public MagneticFactory magneticFactory;
-
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
@@ -271,7 +267,6 @@ public class AsteraX : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        Debug.Log("Game OVer!!!");
         yield return new WaitForSeconds(0.75f);
 
         GUIController.Instance.ShowGameOver();
@@ -338,12 +333,6 @@ public class AsteraX : MonoBehaviour
 
         ast.transform.position = pos;
         ast.size = levelManager.asteroidsSOByLevel[LevelManager.level].initialSize;
-
-        GameObject magnetic = magneticFactory.CreateMagnetic();
-
-        magnetic.transform.parent = ast.transform;
-        magnetic.transform.localPosition = Vector3.zero;
-        magnetic.transform.localScale = Vector3.one;
     }
 
     #endregion

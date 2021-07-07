@@ -98,6 +98,7 @@ public class PlayerShip : MonoBehaviour
                     break;
                 }
         }
+        shipSkill.InitData(skilldata.countdownSkill, skilldata.maxIncremental);
     }
 
     public void ImmortalSetting(bool canDestroy)

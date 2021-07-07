@@ -16,9 +16,6 @@ public class Immortal : Skill
     {
         isImmortal = false;
 
-        countdownSkill = 60f;
-        maxIncremental = 1;
-
         player = GetComponent<PlayerShip>();
 
         shipBody = player.transform.GetChild(0).GetComponent<MeshRenderer>();

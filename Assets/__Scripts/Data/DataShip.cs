@@ -18,6 +18,7 @@ public class ShipDataObject
 
     public string Description;
 
+    [Range(1, 4)]
     public int Skill;
 }
 

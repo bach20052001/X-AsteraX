@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -82,21 +81,29 @@ public class LoadDatabase : MonoBehaviour
         //Load Asteroid Data
         for (int i = 0; i < cachedAsteroidData.Length; i++)
         {
-            data_asteroid[i].HP = cachedAsteroidData[i].HP;
-            data_asteroid[i].size = cachedAsteroidData[i].size;
-            data_asteroid[i].Point = cachedAsteroidData[i].Point;
-            data_asteroid[i].HasMagnetic = cachedAsteroidData[i].HasMagnetic;
 
+            data_asteroid[i].HP = Mathf.Clamp(cachedAsteroidData[i].HP, 1, 3);
+
+            data_asteroid[i].size = Mathf.Clamp(cachedAsteroidData[i].size, 1, 3);
+
+            data_asteroid[i].Point = cachedAsteroidData[i].Point;
+
+            data_asteroid[i].HasMagnetic = Mathf.Clamp(cachedAsteroidData[i].HasMagnetic, 0, 1);
         }
 
         //Load Level Data
         for (int i = 0; i < data_level.Count; i++)
         {
             data_level[i].NumOfAsteroid = cachedLevelData[i].NumOfAsteroid;
+
             data_level[i].minVel = cachedLevelData[i].MinVelocity;
+
             data_level[i].maxVel = cachedLevelData[i].MaxVelocity;
+
             data_level[i].maxAngularVel = cachedLevelData[i].MaxAngularVelocity;
+
             data_level[i].initialSize = cachedLevelData[i].InitialSize;
+
             data_level[i].numSmallerAsteroidsToSpawn = cachedLevelData[i].numSmallerAsteroidsToSpawn;
         }
 
@@ -104,21 +111,29 @@ public class LoadDatabase : MonoBehaviour
         for (int i = 0; i < data_ship.Count; i++)
         {
             data_ship[i].shipName = cachedShipData[i].ShipName;
-            data_ship[i].attack = cachedShipData[i].Attack;
-            data_ship[i].HP = cachedShipData[i].HP;
-            data_ship[i].speed = cachedShipData[i].Speed;
-            data_ship[i].description = cachedShipData[i].Description;
-            data_ship[i].price = cachedShipData[i].Price;
-            data_ship[i].skill = (Skills)cachedShipData[i].Skill;
 
+            data_ship[i].attack = Mathf.Clamp(cachedShipData[i].Attack, 1, 2);
+
+            data_ship[i].HP = Mathf.Clamp(cachedShipData[i].HP, 1, 5);
+
+            data_ship[i].speed = Mathf.Clamp(cachedShipData[i].Speed, 1, 5);
+
+            data_ship[i].description = cachedShipData[i].Description;
+
+            data_ship[i].price = cachedShipData[i].Price;
+
+            data_ship[i].skill = (Skills)Mathf.Clamp(cachedShipData[i].Skill, 1 ,4);
         }
 
         //Load Skill Data
         for (int i = 0; i < data_skill.Count; i++)
         {
-            data_skill[i].SkillIndex = (Skills)cachedSkillData[i].SkillIndex;
+            data_skill[i].SkillIndex = (Skills)Mathf.Clamp(cachedSkillData[i].SkillIndex, 1, 4);
+
             data_skill[i].SkillName = cachedSkillData[i].SkillName;
+
             data_skill[i].countdownSkill = cachedSkillData[i].CountdownSkill;
+
             data_skill[i].maxIncremental = cachedSkillData[i].MaxIncremental;
         }
     }

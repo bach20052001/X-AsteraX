@@ -2,6 +2,7 @@
 //#define DEBUG_Asteroid_TestOOBVel 
 //#define DEBUG_Asteroid_ShotOffscreenDebugLines
 
+using System.Collections.Generic;
 using UnityEngine;
 
 #if DEBUG_Asteroid_TestOOBVel
@@ -12,12 +13,19 @@ using UnityEditor;
 [RequireComponent(typeof(OffScreenWrapper))]
 public class Asteroid : MonoBehaviour
 {
+
+    [SerializeField] private List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
+    private Asteroid_SO Asteroid_Data;
+
     [Header("Set Dynamically")]
     public int size = 3;
+
+    private bool hasMagnetic;
     private int mass;
     private int score = 0;
     public GameObject Health;
     private Health healthController;
+
     [HideInInspector] public GameObject bulletCollision;
 
     public int Score
@@ -45,28 +53,27 @@ public class Asteroid : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        InitData();
+
         AsteraX.AddAsteroid(this);
 
+        InitAsteroid();
+    }
+
+    private void InitData()
+    {
+        Asteroid_Data = asteroidsData[size - 1];
+
         mass = size * 5;
-        switch (size)
-        {
-            case 1:
-                score = 400;
-                break;
-            case 2:
-                score = 200;
-                break;
-            case 3:
-                score = 100;
-                break;
-        }
-
         rigid.mass = mass;
-
-
+        score = Asteroid_Data.Point;
         transform.localScale = Vector3.one * size;
 
-        InitAsteroid();
+        if (Asteroid_Data.HasMagnetic == 0) hasMagnetic = false;
+        else
+        {
+            hasMagnetic = true;
+        }
     }
 
     private void InitAsteroid()
@@ -76,6 +83,16 @@ public class Asteroid : MonoBehaviour
         Vector3 pos = transform.position;
         pos.z = 0;
         transform.position = pos;
+
+        if (hasMagnetic)
+        {
+            GameObject magnetic = MagneticFactory.Instance.CreateMagnetic();
+
+            magnetic.transform.parent = this.transform;
+            magnetic.transform.localPosition = Vector3.zero;
+            magnetic.transform.localScale = Vector3.one;
+        }
+
         InitVelocity();
         InitHealth();
     }
@@ -91,6 +108,8 @@ public class Asteroid : MonoBehaviour
         health.transform.position = this.transform.position;
         health.transform.parent = this.transform;
         healthController = health.GetComponent<Health>();
+        healthController.hp = Asteroid_Data.HP;
+        healthController.InitialBar(Asteroid_Data.HP);
     }
 
     public void InitVelocity()

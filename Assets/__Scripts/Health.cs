@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    private int hp;
-    private int size;
+    public int hp;
     //private Asteroid asteroid;
     public Image background;
     public List<Image> hps;
@@ -26,18 +25,10 @@ public class Health : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        size = GetComponentInParent<Asteroid>().size;
-        hp = size;
-
-        InitialBar(hp);
-    }
-
-    private void InitialBar(int hp)
+    public void InitialBar(int hp)
     {
         GameObject bar = Instantiate(healthBar[hp - 1]);
-        bar.transform.localScale = bar.transform.localScale * size / 3;
+        bar.transform.localScale = bar.transform.localScale * hp / 3;
         bar.GetComponent<Canvas>().worldCamera = GameObject.Find("Camera").GetComponent<Camera>();
         bar.transform.SetParent(gameObject.transform);
         bar.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;

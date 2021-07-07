@@ -8,6 +8,12 @@ public class Skill : MonoBehaviour
 
     public int maxIncremental;
 
+    public void InitData(float countdownSkill, int maxIncremental)
+    {
+        this.countdownSkill = countdownSkill;
+        this.maxIncremental = maxIncremental;
+    }
+
     public void Execute()
     {
         if (countdown == 0 || incremental > 0)
