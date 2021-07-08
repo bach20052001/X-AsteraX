@@ -198,9 +198,19 @@ public class AsteraX : MonoBehaviour
     {
         //Debug.Log(levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid);
         // Spawn the parent Asteroids, child Asteroids are taken care of by them
-        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroid; i++)
+        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroidA; i++)
         {
-            SpawnParentAsteroid(i);
+            SpawnParentAsteroid(1);
+        }
+
+        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroidB; i++)
+        {
+            SpawnParentAsteroid(2);
+        }
+
+        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroidC; i++)
+        {
+            SpawnParentAsteroid(3);
         }
     }
 
@@ -315,7 +325,7 @@ public class AsteraX : MonoBehaviour
         SpawnAsteroids();
     }
 
-    void SpawnParentAsteroid(int i)
+    void SpawnParentAsteroid(int size)
     {
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:SpawnParentAsteroid("+i+")");
@@ -323,7 +333,6 @@ public class AsteraX : MonoBehaviour
 
         Asteroid ast = Asteroid.SpawnAsteroid();
         ast.transform.parent = Asteroids.transform;
-        ast.gameObject.name = "Asteroid_" + i.ToString("00");
         // Find a good location for the Asteroid to spawn
         Vector3 pos;
         do
@@ -332,7 +341,7 @@ public class AsteraX : MonoBehaviour
         } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
 
         ast.transform.position = pos;
-        ast.size = levelManager.asteroidsSOByLevel[LevelManager.level].initialSize;
+        ast.size = size;
     }
 
     #endregion

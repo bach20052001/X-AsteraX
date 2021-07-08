@@ -3,6 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class ShipDataObject
 {
+    //public int ShipID; 
+
     public string ShipName;
 
     [Range(1, 3)]

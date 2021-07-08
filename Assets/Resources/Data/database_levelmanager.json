@@ -1,0 +1,167 @@
+[
+  {
+    "Level_Index": 1,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 0
+  },
+  {
+    "Level_Index": 1,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 1
+  },
+  {
+    "Level_Index": 1,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 2
+  },
+  {
+    "Level_Index": 2,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 1
+  },
+  {
+    "Level_Index": 2,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 2
+  },
+  {
+    "Level_Index": 2,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 3
+  },
+  {
+    "Level_Index": 3,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 1
+  },
+  {
+    "Level_Index": 3,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 2
+  },
+  {
+    "Level_Index": 3,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 4
+  },
+  {
+    "Level_Index": 4,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 1
+  },
+  {
+    "Level_Index": 4,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 3
+  },
+  {
+    "Level_Index": 4,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 5
+  },
+  {
+    "Level_Index": 5,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 1
+  },
+  {
+    "Level_Index": 5,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 3
+  },
+  {
+    "Level_Index": 5,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 6
+  },
+  {
+    "Level_Index": 6,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 1
+  },
+  {
+    "Level_Index": 6,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 2
+  },
+  {
+    "Level_Index": 6,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 7
+  },
+  {
+    "Level_Index": 7,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 1
+  },
+  {
+    "Level_Index": 7,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 2
+  },
+  {
+    "Level_Index": 7,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 7
+  },
+  {
+    "Level_Index": 8,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 0
+  },
+  {
+    "Level_Index": 8,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 2
+  },
+  {
+    "Level_Index": 8,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 8
+  },
+  {
+    "Level_Index": 9,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 4
+  },
+  {
+    "Level_Index": 9,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 0
+  },
+  {
+    "Level_Index": 9,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 9
+  },
+  {
+    "Level_Index": 10,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 0
+  },
+  {
+    "Level_Index": 10,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 4
+  },
+  {
+    "Level_Index": 10,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 10
+  },
+  {
+    "Level_Index": 11,
+    "TypeOfAsteroid": "A",
+    "NumberOfAsteroid": 2
+  },
+  {
+    "Level_Index": 11,
+    "TypeOfAsteroid": "B",
+    "NumberOfAsteroid": 4
+  },
+  {
+    "Level_Index": 11,
+    "TypeOfAsteroid": "C",
+    "NumberOfAsteroid": 11
+  }
+]

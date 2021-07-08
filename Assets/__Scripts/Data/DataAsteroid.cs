@@ -3,9 +3,12 @@ using UnityEngine;
 [System.Serializable]
 public class AsteroidDataObject
 {
+    public char Type;
+
     [Range(1, 3)]
     public int size;
 
+    [Range(1, 3)]
     public int HP;
 
     public int Point;

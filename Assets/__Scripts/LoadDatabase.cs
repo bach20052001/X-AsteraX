@@ -13,11 +13,14 @@ public class LoadDatabase : MonoBehaviour
     private string database_level;
     private string database_skill;
     private string database_asteroid;
+    private string database_levelmanager;
 
     [HideInInspector] public DataAsteroid dataAsteroid;
     [HideInInspector] public DataLevel dataLevel;
     [HideInInspector] public DataShip dataShip;
     [HideInInspector] public DataSkill dataSkill;
+    [HideInInspector] public DataLevelManager dataLevelManager;
+
 
     private static LoadDatabase instance;
 
@@ -58,12 +61,13 @@ public class LoadDatabase : MonoBehaviour
         database_level = Resources.Load<TextAsset>("Data/database_level").ToString();
         database_skill = Resources.Load<TextAsset>("Data/database_skill").ToString();
         database_spaceship = Resources.Load<TextAsset>("Data/database_spaceship").ToString();
-
+        database_levelmanager = Resources.Load<TextAsset>("Data/database_levelmanager").ToString();
 
         database_asteroid = "{" + "\"data_asteroid\":" + database_asteroid + "}";
         database_level = "{" + "\"data_level\":" + database_level + "}";
         database_skill = "{" + "\"data_skill\":" + database_skill + "}";
         database_spaceship = "{" + "\"data_ship\":" + database_spaceship + "}";
+        database_levelmanager = "{" + "\"data_levelmanager\":" + database_levelmanager + "}";
     }
 
     private void LoadJsonToSO()
@@ -72,19 +76,22 @@ public class LoadDatabase : MonoBehaviour
         dataLevel = JsonUtility.FromJson<DataLevel>(database_level);
         dataShip = JsonUtility.FromJson<DataShip>(database_spaceship);
         dataSkill = JsonUtility.FromJson<DataSkill>(database_skill);
+        dataLevelManager = JsonUtility.FromJson<DataLevelManager>(database_levelmanager);
 
         ShipDataObject[] cachedShipData = dataShip.data_ship;
         AsteroidDataObject[] cachedAsteroidData = dataAsteroid.data_asteroid;
         LevelDataObject[] cachedLevelData = dataLevel.data_level;
         SkillDataObject[] cachedSkillData = dataSkill.data_skill;
+        LevelManageDataObject[] cachedLevelManagerData = dataLevelManager.data_levelmanager;
+
+
 
         //Load Asteroid Data
         for (int i = 0; i < cachedAsteroidData.Length; i++)
         {
-
-            data_asteroid[i].HP = Mathf.Clamp(cachedAsteroidData[i].HP, 1, 3);
-
             data_asteroid[i].size = Mathf.Clamp(cachedAsteroidData[i].size, 1, 3);
+
+            data_asteroid[i].HP = cachedAsteroidData[i].HP;
 
             data_asteroid[i].Point = cachedAsteroidData[i].Point;
 
@@ -94,17 +101,13 @@ public class LoadDatabase : MonoBehaviour
         //Load Level Data
         for (int i = 0; i < data_level.Count; i++)
         {
-            data_level[i].NumOfAsteroid = cachedLevelData[i].NumOfAsteroid;
-
             data_level[i].minVel = cachedLevelData[i].MinVelocity;
 
             data_level[i].maxVel = cachedLevelData[i].MaxVelocity;
 
             data_level[i].maxAngularVel = cachedLevelData[i].MaxAngularVelocity;
 
-            data_level[i].initialSize = cachedLevelData[i].InitialSize;
-
-            data_level[i].numSmallerAsteroidsToSpawn = cachedLevelData[i].numSmallerAsteroidsToSpawn;
+            data_level[i].numSmallerAsteroidsToSpawn = 2;
         }
 
         //Load Spaceship Data
@@ -122,7 +125,7 @@ public class LoadDatabase : MonoBehaviour
 
             data_ship[i].price = cachedShipData[i].Price;
 
-            data_ship[i].skill = (Skills)Mathf.Clamp(cachedShipData[i].Skill, 1 ,4);
+            data_ship[i].skill = (Skills)Mathf.Clamp(cachedShipData[i].Skill, 1, 4);
         }
 
         //Load Skill Data
@@ -135,6 +138,33 @@ public class LoadDatabase : MonoBehaviour
             data_skill[i].countdownSkill = cachedSkillData[i].CountdownSkill;
 
             data_skill[i].maxIncremental = cachedSkillData[i].MaxIncremental;
+        }
+
+        for (int i = 0; i < cachedLevelManagerData.Length; i++)
+        {
+            Debug.Log(cachedLevelManagerData[i].TypeOfAsteroid);
+            switch (cachedLevelManagerData[i].TypeOfAsteroid)
+            {
+               
+                case "A":
+                    {
+                        data_level[cachedLevelManagerData[i].Level_Index - 1].NumOfAsteroidA = cachedLevelManagerData[i].NumberOfAsteroid;
+                        break;
+                    }
+
+                case "B":
+                    {
+                        data_level[cachedLevelManagerData[i].Level_Index - 1].NumOfAsteroidB = cachedLevelManagerData[i].NumberOfAsteroid;
+                        break;
+                    }
+
+                case "C":
+                    {
+                        data_level[cachedLevelManagerData[i].Level_Index - 1].NumOfAsteroidC = cachedLevelManagerData[i].NumberOfAsteroid;
+
+                        break;
+                    }
+            }
         }
     }
 }
