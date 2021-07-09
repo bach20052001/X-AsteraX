@@ -104,16 +104,20 @@ public class LoadDatabase : MonoBehaviour
 
             data_level[i].numSmallerAsteroidsToSpawn = 2;
 
-            Dictionary<string, int> Asteroid = new Dictionary<string, int>();
+            //Dictionary<string, int> Asteroid = new Dictionary<string, int>();
+
+            //for (int j = 0; j < cachedLevelData[i].Asteroid.Count; j++)
+            //{
+            //    Asteroid.Add(cachedLevelData[i].Asteroid[j].Type, cachedLevelData[i].Asteroid[j].Number);
+            //}
 
             for (int j = 0; j < cachedLevelData[i].Asteroid.Count; j++)
             {
-                Asteroid.Add(cachedLevelData[i].Asteroid[j].Type, cachedLevelData[i].Asteroid[j].Number);
+                data_level[i].Asteroids[cachedLevelData[i].Asteroid[j].Type] = cachedLevelData[i].Asteroid[j].Number;
             }
-
-            data_level[i].NumOfAsteroidA = Asteroid["A"];
-            data_level[i].NumOfAsteroidB = Asteroid["B"];
-            data_level[i].NumOfAsteroidC = Asteroid["C"];
+            //data_level[i].NumOfAsteroidA = Asteroid["A"];
+            //data_level[i].NumOfAsteroidB = Asteroid["B"];
+            //data_level[i].NumOfAsteroidC = Asteroid["C"];
         }
 
         //Load Spaceship Data

@@ -196,22 +196,11 @@ public class AsteraX : MonoBehaviour
 
     private void SpawnAsteroids()
     {
-        //Debug.Log(levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid);
-        // Spawn the parent Asteroids, child Asteroids are taken care of by them
-        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroidA; i++)
+        foreach (var Asteroid in levelManager.asteroidsSOByLevel[LevelManager.level].Asteroids)
         {
-            SpawnParentAsteroid(1);
+            SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value);
         }
 
-        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroidB; i++)
-        {
-            SpawnParentAsteroid(2);
-        }
-
-        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].NumOfAsteroidC; i++)
-        {
-            SpawnParentAsteroid(3);
-        }
     }
 
     #region Handler Event
@@ -308,7 +297,7 @@ public class AsteraX : MonoBehaviour
 
         GUIController.Instance.UpdateScore(score);
 
-        if (ASTEROIDS.Count - 1 == 0 && Asteroids.transform.childCount == 1)
+        if (Asteroids.transform.childCount == 1)
         {
             StartCoroutine(LevelPassing());
         }
@@ -323,6 +312,28 @@ public class AsteraX : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         SpawnAsteroids();
+    }
+
+    void SpawnNumberAsteroid(string type, int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+#if DEBUG_AsteraX_LogMethods
+        Debug.Log("AsteraX:SpawnParentAsteroid("+i+")");
+#endif
+
+            Asteroid ast = Asteroid.SpawnAsteroid();
+            ast.transform.parent = Asteroids.transform;
+            // Find a good location for the Asteroid to spawn
+            Vector3 pos;
+            do
+            {
+                pos = ScreenBounds.RANDOM_ON_SCREEN_LOC;
+            } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
+
+            ast.transform.position = pos;
+            ast.type = type;
+        }
     }
 
     void SpawnParentAsteroid(int size)

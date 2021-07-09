@@ -18,7 +18,8 @@ public class Asteroid : MonoBehaviour
     private Asteroid_SO Asteroid_Data;
 
     [Header("Set Dynamically")]
-    public int size = 3;
+    public string type;
+    public int size;
 
     private bool hasMagnetic;
     private int mass;
@@ -62,6 +63,25 @@ public class Asteroid : MonoBehaviour
 
     private void InitData()
     {
+        switch (type)
+        {
+            case "A":
+                {
+                    size = 1;
+                    break;
+                }
+            case "B":
+                {
+                    size = 2;
+                    break;
+                }
+            case "C":
+                {
+                    size = 3;
+                    break;
+                }
+        }
+
         Asteroid_Data = asteroidsData[size - 1];
 
         mass = size * 5;

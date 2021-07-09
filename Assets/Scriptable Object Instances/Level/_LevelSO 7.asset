@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75459cb0ced0a467fa245b508988c536, type: 3}
   m_Name: _LevelSO 7
   m_EditorClassIdentifier: 
-  NumOfAsteroid: 0
-  minVel: 0
-  maxVel: 0
-  maxAngularVel: 0
-  initialSize: 0
-  numSmallerAsteroidsToSpawn: 0
+  minVel: 7
+  maxVel: 14
+  maxAngularVel: 10
+  numSmallerAsteroidsToSpawn: 2
+  NumOfAsteroidA: 0
+  NumOfAsteroidB: 0
+  NumOfAsteroidC: 0
