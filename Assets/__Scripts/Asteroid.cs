@@ -60,30 +60,34 @@ public class Asteroid : MonoBehaviour
 
         InitAsteroid();
     }
+    private int index;
 
     private void InitData()
     {
+        //Get Data
         switch (type)
         {
             case "A":
                 {
-                    size = 1;
+                    index = 0;
                     break;
                 }
             case "B":
                 {
-                    size = 2;
+                    index = 1;
                     break;
                 }
             case "C":
                 {
-                    size = 3;
+                    index = 2;
                     break;
                 }
         }
 
-        Asteroid_Data = asteroidsData[size - 1];
+        Asteroid_Data = asteroidsData[index];
 
+        // Assign Data
+        size = Asteroid_Data.size;
         mass = size * 5;
         rigid.mass = mass;
         score = Asteroid_Data.Point;

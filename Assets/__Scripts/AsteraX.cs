@@ -352,7 +352,7 @@ public class AsteraX : MonoBehaviour
         } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
 
         ast.transform.position = pos;
-        ast.size = size;
+        ast.index = size;
     }
 
     #endregion

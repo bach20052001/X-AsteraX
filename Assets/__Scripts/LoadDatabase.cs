@@ -46,7 +46,6 @@ public class LoadDatabase : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         ReadJson();
@@ -83,7 +82,7 @@ public class LoadDatabase : MonoBehaviour
         //Load Asteroid Data
         for (int i = 0; i < cachedAsteroidData.Length; i++)
         {
-            data_asteroid[i].size = Mathf.Clamp(cachedAsteroidData[i].size, 1, 3);
+            data_asteroid[i].size = Mathf.Clamp(cachedAsteroidData[i].Size, 1, 3);
 
             data_asteroid[i].HP = cachedAsteroidData[i].HP;
 
@@ -104,20 +103,10 @@ public class LoadDatabase : MonoBehaviour
 
             data_level[i].numSmallerAsteroidsToSpawn = 2;
 
-            //Dictionary<string, int> Asteroid = new Dictionary<string, int>();
-
-            //for (int j = 0; j < cachedLevelData[i].Asteroid.Count; j++)
-            //{
-            //    Asteroid.Add(cachedLevelData[i].Asteroid[j].Type, cachedLevelData[i].Asteroid[j].Number);
-            //}
-
-            for (int j = 0; j < cachedLevelData[i].Asteroid.Count; j++)
+            for (int j = 0; j < cachedLevelData[i].ListAsteroid.Count; j++)
             {
-                data_level[i].Asteroids[cachedLevelData[i].Asteroid[j].Type] = cachedLevelData[i].Asteroid[j].Number;
+                data_level[i].Asteroids[cachedLevelData[i].ListAsteroid[j].Type] = cachedLevelData[i].ListAsteroid[j].Number;
             }
-            //data_level[i].NumOfAsteroidA = Asteroid["A"];
-            //data_level[i].NumOfAsteroidB = Asteroid["B"];
-            //data_level[i].NumOfAsteroidC = Asteroid["C"];
         }
 
         //Load Spaceship Data

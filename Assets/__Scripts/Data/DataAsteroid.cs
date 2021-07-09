@@ -6,7 +6,7 @@ public class AsteroidDataObject
     public char Type;
 
     [Range(1, 3)]
-    public int size;
+    public int Size;
 
     [Range(1, 3)]
     public int HP;
