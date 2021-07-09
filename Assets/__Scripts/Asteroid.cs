@@ -13,8 +13,6 @@ using UnityEditor;
 [RequireComponent(typeof(OffScreenWrapper))]
 public class Asteroid : MonoBehaviour
 {
-
-    [SerializeField] private List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
     private Asteroid_SO Asteroid_Data;
 
     [Header("Set Dynamically")]
@@ -84,7 +82,7 @@ public class Asteroid : MonoBehaviour
                 }
         }
 
-        Asteroid_Data = asteroidsData[index];
+        Asteroid_Data = AsteraX.S.asteroidsData[index];
 
         // Assign Data
         size = Asteroid_Data.size;

@@ -7,6 +7,7 @@ using UnityEngine;
 public class AsteraX : MonoBehaviour
 {
     public GameObject[] asteroidPrefabs;
+    public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
     // Private Singleton-style instance. Accessed by static property S later in script
     static private AsteraX _S;
 
@@ -300,6 +301,13 @@ public class AsteraX : MonoBehaviour
         if (Asteroids.transform.childCount == 1)
         {
             StartCoroutine(LevelPassing());
+            return;
+        }
+
+        //Double check
+        if (Asteroids.transform.childCount == 1)
+        {
+            StartCoroutine(LevelPassing());
         }
     }
 
@@ -334,25 +342,6 @@ public class AsteraX : MonoBehaviour
             ast.transform.position = pos;
             ast.type = type;
         }
-    }
-
-    void SpawnParentAsteroid(int size)
-    {
-#if DEBUG_AsteraX_LogMethods
-        Debug.Log("AsteraX:SpawnParentAsteroid("+i+")");
-#endif
-
-        Asteroid ast = Asteroid.SpawnAsteroid();
-        ast.transform.parent = Asteroids.transform;
-        // Find a good location for the Asteroid to spawn
-        Vector3 pos;
-        do
-        {
-            pos = ScreenBounds.RANDOM_ON_SCREEN_LOC;
-        } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
-
-        ast.transform.position = pos;
-        ast.index = size;
     }
 
     #endregion
