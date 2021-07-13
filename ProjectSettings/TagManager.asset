@@ -11,6 +11,8 @@ TagManager:
   - FxTemporaire
   - Shield
   - Magnetic
+  - EnemyBullet
+  - EnemyShip
   layers:
   - Default
   - TransparentFX
@@ -28,8 +30,8 @@ TagManager:
   - Shield
   - Effect
   - Health
-  - 
-  - 
+  - EnemyShip
+  - EnemyBullet
   - 
   - 
   - 

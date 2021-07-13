@@ -1,5 +1,6 @@
 ﻿//#define DEBUG_AsteraX_LogMethods
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,7 @@ public class AsteraX : MonoBehaviour
 
     private GameObject playerShip;
 
+    public GameObject Boss;
 
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
@@ -197,7 +199,7 @@ public class AsteraX : MonoBehaviour
     {
         //Debug.Log(levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid);
         // Spawn the parent Asteroids, child Asteroids are taken care of by them
-        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid; i++)
+        for (int i = 0; i < levelManager.asteroidsSOByLevel[levelManager.level].numberOfAsteroid; i++)
         {
             SpawnParentAsteroid(i);
         }
@@ -300,15 +302,32 @@ public class AsteraX : MonoBehaviour
 
         if (ASTEROIDS.Count - 1 == 0 && Asteroids.transform.childCount == 1)
         {
+            NextLevelOrFightBoss();
+        }
+    }
+
+    public void NextLevelOrFightBoss()
+    {
+        if (!levelManager.breakPoint)
+        {
             StartCoroutine(LevelPassing());
         }
+        else
+        {
+            SpawnBoss();
+        }
+    }
+
+    private void SpawnBoss()
+    {
+        Instantiate(Boss);
     }
 
     public IEnumerator LevelPassing()
     {
         LevelManager.Instance.IncreaseLevel();
 
-        this.PostEvent(Event.OnNextLevel, LevelManager.level);
+        this.PostEvent(Event.OnNextLevel, levelManager.level);
 
         yield return new WaitForSeconds(3f);
 
@@ -332,7 +351,7 @@ public class AsteraX : MonoBehaviour
         } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
 
         ast.transform.position = pos;
-        ast.size = levelManager.asteroidsSOByLevel[LevelManager.level].initialSize;
+        ast.size = levelManager.asteroidsSOByLevel[levelManager.level].initialSize;
 
         GameObject magnetic = magneticFactory.CreateMagnetic();
 
@@ -369,6 +388,12 @@ public class AsteraX : MonoBehaviour
             sceneController.Return();
 
         }
+    }
+
+    private void RemoveAllAsteroid()
+    {
+        Asteroids.SetActive(false);
+        NextLevelOrFightBoss();
     }
 
     public void Pause()
@@ -419,7 +444,7 @@ public class AsteraX : MonoBehaviour
         {
             if (S != null)
             {
-                return levelManager.asteroidsSOByLevel[LevelManager.level];
+                return levelManager.asteroidsSOByLevel[levelManager.level];
             }
             return null;
         }
@@ -444,4 +469,13 @@ public class AsteraX : MonoBehaviour
 
     // ---------------- End Section ---------------- //
 
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            RemoveAllAsteroid();
+        }
+    }
+#endif
 }

@@ -59,7 +59,7 @@ public class AchiementManager : MonoBehaviour
 
     private void OnNextLevelHandler()
     {
-        if (LevelManager.level + 1 == 5)
+        if (LevelManager.Instance.level + 1 == 5)
         {
             UnlockAchievement(AchiementType.SkillfulDodger);
         }

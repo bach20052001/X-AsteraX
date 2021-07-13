@@ -9,5 +9,7 @@
     OnNextLevel,
     OnActiveSkill,
     EarnCoin,
-    Pause
+    Pause,
+    OnEnemyDamaged,
+    FightBoss
 }

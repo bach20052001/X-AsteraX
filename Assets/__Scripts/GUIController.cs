@@ -42,6 +42,9 @@ public class GUIController : MonoBehaviour
     [SerializeField] private Text cdSkill;
     [SerializeField] private Text remain;
 
+    [SerializeField] private GameObject EnemyPanel;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,7 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(Event.OnUnlockAchievement, (param) => UnlockAchievementHandler(param as AchievementInfomation));
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
         this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHandler(param));
+        this.RegisterListener(Event.OnEnemyDamaged, (param) => OnEnemyDamagedHandler(param));
         this.RegisterListener(Event.OnActiveSkill, (param) => OnActiveSkillHandler(param));
         this.RegisterListener(Event.Pause, (param) => OnPause());
 
@@ -117,10 +121,16 @@ public class GUIController : MonoBehaviour
 
     private void OnPlayerDamagedHandler(object param)
     {
-        float currentHP = (float)param;
+        float rate = (float)param;
 
         HealthPanel.GetComponent<Animator>().SetTrigger("Damaged");
-        HealthPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = currentHP;
+        HealthPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = rate;
+    }
+
+    private void OnEnemyDamagedHandler(object param)
+    {
+        float rate = (float)param;
+        EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = rate;
     }
 
     private IEnumerator ShowNotiLevel()
@@ -129,7 +139,7 @@ public class GUIController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         congratulationPopup.GetComponent<Animator>().SetBool("isOn", false);
         yield return new WaitForSeconds(1f);
-        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.level + 1).ToString();
+        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.level + 1).ToString();
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", true);
         yield return new WaitForSeconds(1f);
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", false);

@@ -5,6 +5,9 @@ public class LevelManager : MonoBehaviour
 {
     private static LevelManager instance;
 
+    public bool breakPoint = false;
+    public List<int> levelToFightBoss = new List<int>();
+
     public static LevelManager Instance
     {
         get
@@ -19,16 +22,25 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public static int level;
+    public int level;
+    public int currentLevel;
+
 
     public void IncreaseLevel()
     {
         level++;
+        currentLevel = level + 1;
+
+        if (levelToFightBoss.Contains(currentLevel))
+        {
+            breakPoint = true;
+        }
 
         if (level > asteroidsSOByLevel.Count - 1)
         {
             level = asteroidsSOByLevel.Count - 1;
         }
+        
     }
 
     public void ResetLevel()
@@ -58,5 +70,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         level = 0;
+        levelToFightBoss.Clear();
+        levelToFightBoss.Add(5);
+        levelToFightBoss.Add(10);
     }
 }

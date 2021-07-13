@@ -4,6 +4,12 @@ using System.Collections;
 using UnityEngine;
 //using UnityStandardAssets.CrossPlatformInput;
 
+public enum Mode
+{
+    Normal,
+    FightingBoss
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerShip : MonoBehaviour
 {
@@ -58,6 +64,8 @@ public class PlayerShip : MonoBehaviour
 
     Rigidbody rigid;
 
+    private Mode modeControl;
+
     private void Start()
     {
         shipSpeed = maxSpeed * shipParameter.speed / 5;
@@ -96,6 +104,7 @@ public class PlayerShip : MonoBehaviour
                     break;
                 }
         }
+        modeControl = Mode.Normal;
     }
 
     public void ImmortalSetting(bool canDestroy)
@@ -135,48 +144,55 @@ public class PlayerShip : MonoBehaviour
     {
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
         {
-            if (canControl)
+            if (modeControl == Mode.Normal)
             {
-                float aX = Input.GetAxis("Horizontal");
-                float aY = Input.GetAxis("Vertical");
-
-                Vector3 vel = new Vector3(aX, aY, 0);
-
-                if (vel != Vector3.zero)
+                if (canControl)
                 {
-                    currentVel = vel;
+                    float aX = Input.GetAxis("Horizontal");
+                    float aY = Input.GetAxis("Vertical");
+
+                    Vector3 vel = new Vector3(aX, aY, 0);
+
+                    if (vel != Vector3.zero)
+                    {
+                        currentVel = vel;
+                    }
+
+                    if (vel.magnitude > 1)
+                    {
+                        // Avoid speed multiplying by 1.414 when moving at a diagonal
+                        vel.Normalize();
+                    }
+                    // Using Horizontal and Vertical axes to set velocity
+                    rigid.velocity = vel * shipSpeed;
                 }
 
-                if (vel.magnitude > 1)
+                // Mouse input for firing
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    // Avoid speed multiplying by 1.414 when moving at a diagonal
-                    vel.Normalize();
-                }
-                // Using Horizontal and Vertical axes to set velocity
-                rigid.velocity = vel * shipSpeed;
-            }
+                    {
+                        Fire();
+                        this.PostEvent(Event.OnPlayerFired);
+                    }
 
-            // Mouse input for firing
-            if (Input.GetButtonDown("Fire1"))
-            {
-                {
-                    Fire();
-                    this.PostEvent(Event.OnPlayerFired);
                 }
 
-            }
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    shipSkill.Execute();
+                }
 
-            if (Input.GetButtonDown("Fire2"))
+                this.transform.up = currentVel;
+            }
+            else
             {
-                shipSkill.Execute();
+                rigid.velocity = Vector3.zero;
             }
-
-            this.transform.up = currentVel;
         }
-        else
+        else if (modeControl == Mode.FightingBoss)
         {
-            rigid.velocity = Vector3.zero;
-        }
+
+        }   
     }
 
     public float GetShipSpeed()
@@ -191,11 +207,17 @@ public class PlayerShip : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Asteroid")
+        if (collision.gameObject.tag.Equals("Asteroid") || collision.gameObject.tag.Equals("EnemyBullet") || collision.gameObject.tag.Equals("EnemyShip"))
         {
+            if (collision.gameObject.tag.Equals("EnemyBullet"))
+            {
+                Destroy(collision.gameObject);
+            }
+
             if (canDestroy)
             {
                 --Ship_HP;
+                Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
 
                 this.PostEvent(Event.OnPlayerDamaged, (float)((float)Ship_HP / (float)MaxHP));
 
@@ -212,7 +234,6 @@ public class PlayerShip : MonoBehaviour
                     {
                         ActiveEffect(transform.position);
                     }
-                    //this.PostEvent(Event.OnPlayerDamaged, Ship_HP);
                 }
             }
         }
