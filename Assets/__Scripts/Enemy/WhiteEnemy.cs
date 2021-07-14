@@ -9,6 +9,7 @@ public abstract class WhiteEnemy : Enemy
         canFollowPlayer = true;
         canShot = false;
         target = FindObjectOfType<PlayerShip>();
+        miniBoss = FindObjectOfType<MiniBoss>();
     }
 
     private void Update()
@@ -17,6 +18,7 @@ public abstract class WhiteEnemy : Enemy
         {
             directionToTarget = (target.transform.position - this.gameObject.transform.position).normalized;
 
+            //GetComponent<Rigidbody>().velocity = (speed * Time.deltaTime * directionToTarget);
             transform.Translate(speed * Time.deltaTime * directionToTarget);
         }
     }

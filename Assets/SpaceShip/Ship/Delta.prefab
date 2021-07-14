@@ -105,7 +105,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867887526348919974}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
   m_LocalPosition: {x: -0.01, y: -1.25, z: -3.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -484,6 +484,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
     type: 3}
   canControl: 1
+  modeControl: 0
 --- !u!1 &3579517005255351837
 GameObject:
   m_ObjectHideFlags: 0

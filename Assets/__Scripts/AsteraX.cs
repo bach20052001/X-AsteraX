@@ -41,7 +41,9 @@ public class AsteraX : MonoBehaviour
 
     private GameObject playerShip;
 
-    public GameObject Boss;
+    public GameObject MiniBoss;
+
+    public GameObject SuperBoss;
 
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
@@ -300,7 +302,13 @@ public class AsteraX : MonoBehaviour
 
         GUIController.Instance.UpdateScore(score);
 
-        if (ASTEROIDS.Count - 1 == 0 && Asteroids.transform.childCount == 1)
+        if (Asteroids.transform.childCount == 1)
+        {
+            NextLevelOrFightBoss();
+            return;
+        }
+
+        if (Asteroids.transform.childCount == 1)
         {
             NextLevelOrFightBoss();
         }
@@ -314,13 +322,27 @@ public class AsteraX : MonoBehaviour
         }
         else
         {
-            SpawnBoss();
+            SpawnBoss(levelManager.currentLevel);
         }
     }
 
-    private void SpawnBoss()
+    private void SpawnBoss(int level)
     {
-        Instantiate(Boss);
+        switch (level)
+        {
+            case 5:
+                {
+                    this.PostEvent(Event.FightBoss);
+                    Instantiate(MiniBoss);
+                    break;
+                }
+            case 10:
+                {
+                    this.PostEvent(Event.FightBoss);
+                    Instantiate(SuperBoss);
+                    break;
+                }
+        }
     }
 
     public IEnumerator LevelPassing()
@@ -330,6 +352,11 @@ public class AsteraX : MonoBehaviour
         this.PostEvent(Event.OnNextLevel, levelManager.level);
 
         yield return new WaitForSeconds(3f);
+
+        if (!Asteroids.activeSelf)
+        {
+            Asteroids.SetActive(true);
+        }
 
         SpawnAsteroids();
     }
@@ -392,6 +419,11 @@ public class AsteraX : MonoBehaviour
 
     private void RemoveAllAsteroid()
     {
+        for (int i = 0; i < Asteroids.transform.childCount; i++)
+        {
+            Destroy(Asteroids.transform.GetChild(i).gameObject);
+        }
+
         Asteroids.SetActive(false);
         NextLevelOrFightBoss();
     }
@@ -469,6 +501,7 @@ public class AsteraX : MonoBehaviour
 
     // ---------------- End Section ---------------- //
 
+    // ----------------Only in EDITOR--------------- //
 #if UNITY_EDITOR
     private void Update()
     {

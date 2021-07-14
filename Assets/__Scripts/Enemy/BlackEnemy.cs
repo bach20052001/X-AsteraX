@@ -12,6 +12,9 @@ public abstract class BlackEnemy : Enemy
         canFollowPlayer = false;
         canShot = true;
         target = FindObjectOfType<PlayerShip>();
+        miniBoss = FindObjectOfType<MiniBoss>();
+
+        bullet = miniBoss.EnemyBullet;
 
         if (canShot)
         {

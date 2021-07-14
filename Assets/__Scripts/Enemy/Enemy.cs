@@ -4,6 +4,8 @@ public abstract class Enemy : MonoBehaviour
 {
     public PlayerShip target;
 
+    public MiniBoss miniBoss;
+
     public int HP;
 
     public int currentHP;
@@ -25,6 +27,7 @@ public abstract class Enemy : MonoBehaviour
         if (collision.gameObject.tag.Equals("Bullet"))
         {
             currentHP--;
+
             this.PostEvent(Event.OnEnemyDamaged, (float) currentHP/ HP);
 
             if (currentHP <= 0)

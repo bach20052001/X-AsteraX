@@ -1,11 +1,13 @@
 ﻿#define DEBUG_PlayerShip_RespawnNotifications
 
+using System;
 using System.Collections;
 using UnityEngine;
 //using UnityStandardAssets.CrossPlatformInput;
 
 public enum Mode
 {
+    Animation,
     Normal,
     FightingBoss
 }
@@ -64,7 +66,7 @@ public class PlayerShip : MonoBehaviour
 
     Rigidbody rigid;
 
-    private Mode modeControl;
+    public Mode modeControl;
 
     private void Start()
     {
@@ -144,7 +146,7 @@ public class PlayerShip : MonoBehaviour
     {
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
         {
-            if (modeControl == Mode.Normal)
+            if (modeControl == Mode.Normal || modeControl == Mode.FightingBoss)
             {
                 if (canControl)
                 {
@@ -160,18 +162,15 @@ public class PlayerShip : MonoBehaviour
 
                     if (vel.magnitude > 1)
                     {
-                        // Avoid speed multiplying by 1.414 when moving at a diagonal
                         vel.Normalize();
                     }
-                    // Using Horizontal and Vertical axes to set velocity
                     rigid.velocity = vel * shipSpeed;
                 }
 
-                // Mouse input for firing
                 if (Input.GetButtonDown("Fire1"))
                 {
                     {
-                        Fire();
+                        Fire(modeControl);
                         this.PostEvent(Event.OnPlayerFired);
                     }
 
@@ -182,17 +181,45 @@ public class PlayerShip : MonoBehaviour
                     shipSkill.Execute();
                 }
 
-                this.transform.up = currentVel;
-            }
-            else
-            {
-                rigid.velocity = Vector3.zero;
+                if (modeControl == Mode.Normal)
+                {
+                    this.transform.up = currentVel;
+                }
             }
         }
-        else if (modeControl == Mode.FightingBoss)
+        else
         {
+            rigid.velocity = Vector3.zero;
+        }
+    }
 
-        }   
+    public void TransitionModeControl(Mode mode)
+    {
+        switch (mode)
+        {
+            case Mode.Animation:
+                {
+                    MoveToFightPosition();
+                    break;
+                }
+            case Mode.FightingBoss:
+                {
+                    GetComponentInChildren<TurretPointAtMouse>().gameObject.transform.rotation = Quaternion.Euler(new Vector3(-90 ,0 ,0));
+                    GetComponentInChildren<TurretPointAtMouse>().enabled = false;
+                    break;
+                }
+            case Mode.Normal:
+            {
+                    GetComponentInChildren<TurretPointAtMouse>().enabled = true;
+                    break;
+            }
+        }
+        modeControl = mode;
+    }
+
+    private void MoveToFightPosition()
+    {
+
     }
 
     public float GetShipSpeed()
@@ -256,7 +283,7 @@ public class PlayerShip : MonoBehaviour
         canControl = true;
     }
 
-    public void Fire()
+    public void Fire(Mode mode)
     {
         // Get direction to the mouse
         Vector3 mPos = Input.mousePosition;
@@ -268,7 +295,15 @@ public class PlayerShip : MonoBehaviour
             // Instantiate the Bullet and set its direction
             GameObject go = Instantiate<GameObject>(bulletPrefab);
             go.transform.position = transform.position;
-            go.transform.LookAt(mPos3D);
+
+            if (mode == Mode.Normal)
+            {
+                go.transform.LookAt(mPos3D);
+            }
+            else if (mode == Mode.FightingBoss)
+            {
+                go.transform.forward = Vector3.up;
+            }
         }
 
         else if (shipAttack == 2)
@@ -280,8 +315,16 @@ public class PlayerShip : MonoBehaviour
             b1.transform.position = transform.position + offset;
             b2.transform.position = transform.position - offset;
 
-            b1.transform.LookAt(mPos3D + offset);
-            b2.transform.LookAt(mPos3D - offset);
+            if (mode == Mode.Normal)
+            {
+                b1.transform.LookAt(mPos3D + offset);
+                b2.transform.LookAt(mPos3D - offset);
+            }
+            else if (mode == Mode.FightingBoss)
+            {
+                b1.transform.forward = Vector3.up;
+                b2.transform.forward = Vector3.up;
+            }
 
         }
 

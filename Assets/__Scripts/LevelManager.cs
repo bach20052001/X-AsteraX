@@ -35,6 +35,10 @@ public class LevelManager : MonoBehaviour
         {
             breakPoint = true;
         }
+        else
+        {
+            breakPoint = false;
+        }
 
         if (level > asteroidsSOByLevel.Count - 1)
         {

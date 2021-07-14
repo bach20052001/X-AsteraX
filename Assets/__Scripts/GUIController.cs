@@ -63,6 +63,8 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(Event.OnEnemyDamaged, (param) => OnEnemyDamagedHandler(param));
         this.RegisterListener(Event.OnActiveSkill, (param) => OnActiveSkillHandler(param));
         this.RegisterListener(Event.Pause, (param) => OnPause());
+        this.RegisterListener(Event.FightBoss, (param) => OnFightBossHandler());
+        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyedBossHandler());
 
         skill = FindObjectOfType<Skill>();
 
@@ -72,7 +74,17 @@ public class GUIController : MonoBehaviour
         StartCoroutine(UpdateSkillUI());
     }
 
+    private void OnDestroyedBossHandler()
+    {
+        EnemyPanel.SetActive(false);
+        EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
+    }
 
+    private void OnFightBossHandler()
+    {
+        EnemyPanel.SetActive(true);
+        EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
+    }
 
     private void OnPause()
     {

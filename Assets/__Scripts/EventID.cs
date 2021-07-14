@@ -11,5 +11,6 @@
     EarnCoin,
     Pause,
     OnEnemyDamaged,
-    FightBoss
+    FightBoss,
+    OnDestroyedBoss
 }

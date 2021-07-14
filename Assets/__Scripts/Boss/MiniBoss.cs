@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyType
@@ -12,18 +11,56 @@ public enum EnemyType
 
 public class MiniBoss : MonoBehaviour
 {
+    private Vector3 upDestination;
+
+    private Vector3 downDestination;
+
     public GameObject Enemy;
 
+    private float speed = 10f;
+
     public GameObject EnemyBullet;
+
+    public bool isUp = true;
 
     private void Start()
     {
         StartCoroutine(SpawnEnemy(EnemyType.Blue));
+        downDestination = this.transform.position - Vector3.down;
+        upDestination = this.transform.position + Vector3.up * 5f;
     }
 
     public void MoveUpAndDown()
     {
+        if (isUp)
+        {
+            StartCoroutine(MoveUp());
+        }
+        else
+        {
+            StartCoroutine(MoveDown());
+        }
 
+        isUp = !isUp;
+    }
+
+    private IEnumerator MoveUp()
+    {   while (Vector3.Distance(this.transform.position, upDestination) > 0.5f)
+        {
+            transform.Translate(speed * Time.deltaTime * Vector3.up);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+
+    private IEnumerator MoveDown()
+    {
+        while (Vector3.Distance(this.transform.position, downDestination) > 0.5f)
+        {
+            transform.Translate(speed * Time.deltaTime * Vector3.down);
+            yield return new WaitForEndOfFrame();
+        }
+        yield break;
     }
 
     public void Spawn(EnemyType enemyType)
@@ -33,37 +70,38 @@ public class MiniBoss : MonoBehaviour
 
     private IEnumerator SpawnEnemy(EnemyType enemyType)
     {
-        yield return new WaitForSeconds(0.5f);
-        Instantiate(Enemy, this.transform.position, Quaternion.identity);
+        MoveUpAndDown();
+        yield return new WaitForSeconds(1f);
+        GameObject enemy = Instantiate(Enemy, this.transform.position, Quaternion.identity);
 
         switch (enemyType)
         {
             case EnemyType.Blue:
                 {
-                    Enemy.AddComponent<BlueEnemy>();
+                    enemy.AddComponent<BlueEnemy>();
                     break;
                 }
             case EnemyType.Green:
                 {
-                    Enemy.AddComponent<GreenEnemy>();
+                    enemy.AddComponent<GreenEnemy>();
                     break;
                 }
             case EnemyType.Yellow:
                 {
-                    Enemy.AddComponent<YellowEnemy>();
+                    enemy.AddComponent<YellowEnemy>();
                     break;
                 }
             case EnemyType.Red:
                 {
-                    Enemy.AddComponent<RedEnemy>();
+                    enemy.AddComponent<RedEnemy>();
                     break;
                 }
         }
-
+        yield break;
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        
+        this.PostEvent(Event.OnDestroyedBoss);
     }
 }

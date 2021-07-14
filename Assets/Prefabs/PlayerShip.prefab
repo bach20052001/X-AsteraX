@@ -12,9 +12,6 @@ GameObject:
   - component: {fileID: 288174170244224255}
   - component: {fileID: 2831735652891484705}
   - component: {fileID: -7617237735531839826}
-  - component: {fileID: 9211862289170264633}
-  - component: {fileID: 2928400871830812598}
-  - component: {fileID: -2954010366842992856}
   m_Layer: 16
   m_Name: PlayerShip
   m_TagString: EnemyShip
@@ -50,8 +47,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.51033175
+  m_Center: {x: 0.0011507273, y: 0, z: 0}
 --- !u!54 &2831735652891484705
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66,7 +63,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &-7617237735531839826
 MonoBehaviour:
@@ -81,60 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBulletWrapped: 0
---- !u!114 &9211862289170264633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288174170244224242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5de8a2ae044a4975a003213fa04ba3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  HP: 0
-  currentHP: 0
-  speed: 0
-  canShot: 0
-  canFollowPlayer: 0
---- !u!114 &2928400871830812598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288174170244224242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5de8a2ae044a4975a003213fa04ba3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  HP: 0
-  currentHP: 0
-  speed: 0
-  canShot: 0
-  canFollowPlayer: 0
---- !u!114 &-2954010366842992856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288174170244224242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5de8a2ae044a4975a003213fa04ba3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  HP: 0
-  currentHP: 0
-  speed: 0
-  canShot: 0
-  canFollowPlayer: 0
 --- !u!1 &288174171816474206
 GameObject:
   m_ObjectHideFlags: 0

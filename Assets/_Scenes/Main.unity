@@ -1471,9 +1471,10 @@ MonoBehaviour:
   - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
   - {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab, type: 3}
   - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
-  EnemyBullet: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
+  MiniBoss: {fileID: 3854107484062449326, guid: 36908327b22f1470b8504cd0d39a9e7c,
     type: 3}
-  Boss: {fileID: 3854107484062449326, guid: 36908327b22f1470b8504cd0d39a9e7c, type: 3}
+  SuperBoss: {fileID: 8021892438809918701, guid: 6b601bff2408c42e8a8bb7d5e89aed69,
+    type: 3}
 --- !u!1 &636235016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1753,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 225047
+    m_Bits: 487191
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
