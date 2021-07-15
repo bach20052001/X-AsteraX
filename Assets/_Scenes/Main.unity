@@ -1473,7 +1473,7 @@ MonoBehaviour:
   - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
   MiniBoss: {fileID: 3854107484062449326, guid: 36908327b22f1470b8504cd0d39a9e7c,
     type: 3}
-  SuperBoss: {fileID: 8021892438809918701, guid: 6b601bff2408c42e8a8bb7d5e89aed69,
+  SuperBoss: {fileID: 8570772132499355697, guid: ec550988987384c0c973105c21894b5a,
     type: 3}
 --- !u!1 &636235016
 GameObject:

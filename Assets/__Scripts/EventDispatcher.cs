@@ -14,8 +14,7 @@ public class EventDispatcher : MonoBehaviour
         {
             if (instance == null)
             {
-                GameObject eventDispatch = new GameObject();
-                Instantiate(eventDispatch);
+                GameObject eventDispatch = new GameObject("EventDispatcher");
                 EventDispatcher _instance = eventDispatch.AddComponent<EventDispatcher>();
                 instance = _instance;
             }
@@ -24,9 +23,14 @@ public class EventDispatcher : MonoBehaviour
     }
     private void Awake()
     {
-        if (instance != null && EventDispatcher.Instance != instance)
+        if (instance == null)
         {
-            Destroy(gameObject);
+            instance = this;
+        }
+
+        if (this != instance)
+        {
+            Destroy(this.gameObject);
         }
     }
 

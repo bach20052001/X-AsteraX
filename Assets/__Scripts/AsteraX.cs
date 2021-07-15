@@ -178,10 +178,13 @@ public class AsteraX : MonoBehaviour
         this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
         this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
-
+        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyBossHandler());
     }
 
-
+    private void OnDestroyBossHandler()
+    {
+        StartCoroutine(LevelPassing());
+    }
 
     private void OnNextLevelHandler()
     {
@@ -270,7 +273,6 @@ public class AsteraX : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        Debug.Log("Game OVer!!!");
         yield return new WaitForSeconds(0.75f);
 
         GUIController.Instance.ShowGameOver();

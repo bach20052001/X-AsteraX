@@ -11,7 +11,6 @@
 
     private void OnDestroy()
     {
-        Destroy(miniBoss.gameObject);
-        AsteraX.S.StartCoroutine(AsteraX.S.LevelPassing());
+        miniBoss.MoveOut();
     }
 }

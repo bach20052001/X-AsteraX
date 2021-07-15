@@ -14,9 +14,7 @@ public class LevelManager : MonoBehaviour
         {
             if (instance == null)
             {
-                GameObject LevelManagerObject = Instantiate(new GameObject("Level Manager"));
-                LevelManager LM = LevelManagerObject.AddComponent<LevelManager>();
-                instance = LM;
+                instance = FindObjectOfType<LevelManager>();
             }
             return instance;
         }
@@ -29,7 +27,7 @@ public class LevelManager : MonoBehaviour
     public void IncreaseLevel()
     {
         level++;
-        currentLevel = level + 1;
+        currentLevel++;
 
         if (levelToFightBoss.Contains(currentLevel))
         {
@@ -44,7 +42,7 @@ public class LevelManager : MonoBehaviour
         {
             level = asteroidsSOByLevel.Count - 1;
         }
-        
+
     }
 
     public void ResetLevel()
@@ -63,10 +61,12 @@ public class LevelManager : MonoBehaviour
         {
             instance = this;
         }
-        else if (instance != this)
+
+        if (this != instance)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+
         DontDestroyOnLoad(instance);
     }
 
@@ -74,6 +74,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         level = 0;
+        currentLevel = level + 1;
+
         levelToFightBoss.Clear();
         levelToFightBoss.Add(5);
         levelToFightBoss.Add(10);

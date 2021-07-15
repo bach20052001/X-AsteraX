@@ -2,8 +2,8 @@ public class BlueEnemy : WhiteEnemy
 {
     private new void Start()
     {
-        HP = 10;
-        currentHP = 10;
+        HP = 20;
+        currentHP = 20;
         speed = 3f;
         base.Start();
     }

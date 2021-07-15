@@ -62,6 +62,8 @@ public class PlayerShip : MonoBehaviour
 
     public GameObject bulletPrefab;
 
+    private Vector3 fightPostion;
+
     [HideInInspector] public bool canControl = true;
 
     Rigidbody rigid;
@@ -107,6 +109,8 @@ public class PlayerShip : MonoBehaviour
                 }
         }
         modeControl = Mode.Normal;
+        fightPostion = new Vector3(-12, -6, 0);
+        bulletPrefab.GetComponent<OffScreenWrapper>().enabled = true;
     }
 
     public void ImmortalSetting(bool canDestroy)
@@ -200,16 +204,22 @@ public class PlayerShip : MonoBehaviour
             case Mode.Animation:
                 {
                     MoveToFightPosition();
+                    canControl = false;
                     break;
+
                 }
             case Mode.FightingBoss:
                 {
+                    canControl = true;
+                    bulletPrefab.GetComponent<OffScreenWrapper>().enabled = false;
                     GetComponentInChildren<TurretPointAtMouse>().gameObject.transform.rotation = Quaternion.Euler(new Vector3(-90 ,0 ,0));
                     GetComponentInChildren<TurretPointAtMouse>().enabled = false;
                     break;
                 }
             case Mode.Normal:
             {
+                    canControl = true;
+                    bulletPrefab.GetComponent<OffScreenWrapper>().enabled = true;
                     GetComponentInChildren<TurretPointAtMouse>().enabled = true;
                     break;
             }
@@ -219,7 +229,23 @@ public class PlayerShip : MonoBehaviour
 
     private void MoveToFightPosition()
     {
+        StartCoroutine(MoveTo(fightPostion));
+    }
 
+    IEnumerator MoveTo(Vector3 position)
+    {
+        while (true)
+        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, position, Time.deltaTime * shipSpeed * 1.5f);
+            yield return new WaitForEndOfFrame();
+
+            if (Vector3.Distance(this.transform.position, position) < 0.1f)
+            {
+                StopCoroutine(MoveTo(position));
+                break;
+            }
+
+        }
     }
 
     public float GetShipSpeed()
@@ -234,6 +260,10 @@ public class PlayerShip : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag.Equals("Laser"))
+        {
+            Debug.Log("A");
+        }
         if (collision.gameObject.tag.Equals("Asteroid") || collision.gameObject.tag.Equals("EnemyBullet") || collision.gameObject.tag.Equals("EnemyShip"))
         {
             if (collision.gameObject.tag.Equals("EnemyBullet"))
@@ -261,6 +291,23 @@ public class PlayerShip : MonoBehaviour
                     {
                         ActiveEffect(transform.position);
                     }
+                }
+            }
+        }
+    }
+
+    public void Damaged()
+    {
+        if (canDestroy)
+        {
+            --Ship_HP;
+            if (Ship_HP <= 0)
+            {
+                this.PostEvent(Event.PlayerShipDestroyed);
+                gameObject.SetActive(false);
+                if (AsteraX.jumpRemaining > 0)
+                {
+                    ActiveEffect(transform.position);
                 }
             }
         }

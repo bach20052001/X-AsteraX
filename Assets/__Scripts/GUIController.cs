@@ -151,7 +151,7 @@ public class GUIController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         congratulationPopup.GetComponent<Animator>().SetBool("isOn", false);
         yield return new WaitForSeconds(1f);
-        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.level + 1).ToString();
+        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.currentLevel).ToString();
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", true);
         yield return new WaitForSeconds(1f);
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", false);

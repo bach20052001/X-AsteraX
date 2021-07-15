@@ -1,45 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
     public GameObject FirePoint;
-    public float MaxLength;
+    [SerializeField] private float MaxLength;
     public GameObject PrefabLaser;
 
     private GameObject Instance;
     private EGA_Laser LaserScript;
 
-    //Double-click protection
-    private float buttonSaver = 0f;
+    private RaycastHit hit;
+    private int layer;
 
-    void Start ()
+    void OnEnable()
     {
-
+        Destroy(Instance);
+        Instance = Instantiate(PrefabLaser, FirePoint.transform.position, Quaternion.identity);
+        Instance.transform.parent = transform;
+        Instance.transform.forward = Vector3.down;
+        LaserScript = Instance.GetComponent<EGA_Laser>();
     }
 
-    void Update()
+    private void Start()
     {
-        //Enable lazer
-        if (Input.GetMouseButtonDown(0))
-        {
-            Destroy(Instance);
-            Instance = Instantiate(PrefabLaser, FirePoint.transform.position, Quaternion.identity);
-            Instance.transform.parent = transform;
-            Instance.transform.forward = Vector3.down;
-            LaserScript = Instance.GetComponent<EGA_Laser>();
-        }
+        layer = LayerMask.GetMask("PlayerShip");
+    }
 
-        //Disable lazer prefab
-        if (Input.GetMouseButtonUp(0))
-        {
-            LaserScript.DisablePrepare();
-            Destroy(Instance,1);
-        }
+    void OnDisable()
+    {
+        LaserScript.DisablePrepare();
+        Destroy(Instance, 1);
+    }
 
-        buttonSaver += Time.deltaTime;
+    private void Update()
+    {
+        if (Physics.Raycast(transform.position, transform.up,out hit, 20f, layer))
+        {
+            PlayerShip player = hit.collider.gameObject.GetComponent<PlayerShip>();
+            player.Damaged();
+        }
     }
 }

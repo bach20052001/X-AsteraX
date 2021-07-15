@@ -15,6 +15,8 @@ public class MiniBoss : MonoBehaviour
 
     private Vector3 downDestination;
 
+    private Vector3 outScreenPos;
+
     public GameObject Enemy;
 
     private float speed = 10f;
@@ -25,43 +27,55 @@ public class MiniBoss : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemy(EnemyType.Blue));
         downDestination = this.transform.position - Vector3.down;
         upDestination = this.transform.position + Vector3.up * 5f;
+        outScreenPos = this.transform.position + Vector3.right * 5f;
+
+        StartCoroutine(SpawnEnemy(EnemyType.Blue));
     }
 
     public void MoveUpAndDown()
     {
         if (isUp)
         {
-            StartCoroutine(MoveUp());
+            MoveToPos(upDestination);
         }
         else
         {
-            StartCoroutine(MoveDown());
+            MoveToPos(downDestination);
         }
 
         isUp = !isUp;
     }
 
-    private IEnumerator MoveUp()
-    {   while (Vector3.Distance(this.transform.position, upDestination) > 0.5f)
-        {
-            transform.Translate(speed * Time.deltaTime * Vector3.up);
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
+    public void MoveOut()
+    {
+        StartCoroutine(MoveTo(outScreenPos));
     }
 
-    private IEnumerator MoveDown()
+    public void MoveToPos(Vector3 position)
     {
-        while (Vector3.Distance(this.transform.position, downDestination) > 0.5f)
+        StartCoroutine(MoveTo(position));
+    }
+
+    private IEnumerator MoveTo(Vector3 pos)
+    {   while (Vector3.Distance(this.transform.position, pos) > 0.1f)
         {
-            transform.Translate(speed * Time.deltaTime * Vector3.down);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, pos, Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
         }
+
+        yield return new WaitForSeconds(1f);
+
+        if (pos == outScreenPos)
+        {
+            this.PostEvent(Event.OnDestroyedBoss);
+            Destroy(gameObject);
+        }
+
         yield break;
     }
+
 
     public void Spawn(EnemyType enemyType)
     {
@@ -98,10 +112,5 @@ public class MiniBoss : MonoBehaviour
                 }
         }
         yield break;
-    }
-
-    private void OnDestroy()
-    {
-        this.PostEvent(Event.OnDestroyedBoss);
     }
 }
