@@ -101,7 +101,7 @@ public class AchiementManager : MonoBehaviour
     {
         numberOfHitAsteroid++;
 
-        if (AsteraX.score > 10000)
+        if (GUIController.Instance.GetScores() > 10000)
         {
             UnlockAchievement(AchiementType.RookiePilot);
         }

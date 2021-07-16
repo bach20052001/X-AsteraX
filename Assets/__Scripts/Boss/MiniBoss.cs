@@ -19,6 +19,8 @@ public class MiniBoss : MonoBehaviour
 
     public GameObject Enemy;
 
+    private int point;
+
     private float speed = 10f;
 
     public GameObject EnemyBullet;
@@ -30,6 +32,7 @@ public class MiniBoss : MonoBehaviour
         downDestination = this.transform.position - Vector3.down;
         upDestination = this.transform.position + Vector3.up * 5f;
         outScreenPos = this.transform.position + Vector3.right * 5f;
+        point = 2000;
 
         StartCoroutine(SpawnEnemy(EnemyType.Blue));
     }
@@ -69,7 +72,7 @@ public class MiniBoss : MonoBehaviour
 
         if (pos == outScreenPos)
         {
-            this.PostEvent(Event.OnDestroyedBoss);
+            this.PostEvent(Event.OnDestroyedBoss, point);
             Destroy(gameObject);
         }
 

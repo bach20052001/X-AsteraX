@@ -12,5 +12,6 @@
     Pause,
     OnEnemyDamaged,
     FightBoss,
-    OnDestroyedBoss
+    OnDestroyedBoss,
+    OnDestroyedEnemy
 }

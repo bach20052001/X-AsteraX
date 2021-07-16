@@ -8,6 +8,8 @@ public abstract class Enemy : MonoBehaviour
 
     public int HP;
 
+    public int point;
+
     public int currentHP;
 
     public float speed;

@@ -18,7 +18,6 @@ public class AsteraX : MonoBehaviour
     private int nCol = 9;
 
     public static int jumpRemaining = 3;
-    public static int score = 0;
     public GameObject Gate;
 
     public ParticleSystem explosion;
@@ -164,7 +163,6 @@ public class AsteraX : MonoBehaviour
         levelManager = LevelManager.Instance;
 
         jumpRemaining = 3;
-        score = 0;
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:Start()");
 #endif
@@ -175,7 +173,7 @@ public class AsteraX : MonoBehaviour
 
         StartCoroutine(FadeGate());
 
-        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler());
         this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
         this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyBossHandler());
@@ -297,13 +295,8 @@ public class AsteraX : MonoBehaviour
     }
 
 
-    public void OnHitAsteroidHandler(object scoreValue)
+    public void OnHitAsteroidHandler()
     {
-        int scoreToIncrease = (scoreValue as Asteroid).Score;
-        score += scoreToIncrease;
-
-        GUIController.Instance.UpdateScore(score);
-
         if (Asteroids.transform.childCount == 1)
         {
             NextLevelOrFightBoss();

@@ -35,6 +35,7 @@ public class SuperBoss : MonoBehaviour
     private PlayerShip player;
     private float speed;
     public State state;
+    private int point;
 
     private Renderer energyMat;
 
@@ -62,6 +63,7 @@ public class SuperBoss : MonoBehaviour
         HP = 200;
         currentHP = 200;
         speed = 6f;
+        point = 5000;
         mode = AttackMode.Shoot;
         xRange = 8;
         fireRate = 2f;
@@ -152,7 +154,7 @@ public class SuperBoss : MonoBehaviour
 
         if (position == outPosition)
         {
-            this.PostEvent(Event.OnDestroyedBoss);
+            this.PostEvent(Event.OnDestroyedBoss, point);
             Destroy(this.gameObject);
         }
 

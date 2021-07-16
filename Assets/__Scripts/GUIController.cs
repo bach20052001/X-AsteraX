@@ -13,6 +13,7 @@ public class GUIController : MonoBehaviour
 
     private static GUIController instance;
     [SerializeField] private Text score;
+    [SerializeField] private int scores;
 
 
     [HideInInspector] public Skill skill;
@@ -48,7 +49,8 @@ public class GUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateScore(AsteraX.score);
+        scores = 0;
+        UpdateScore(scores);
 
         UpdateJumpRemaining(AsteraX.jumpRemaining);
 
@@ -64,7 +66,11 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(Event.OnActiveSkill, (param) => OnActiveSkillHandler(param));
         this.RegisterListener(Event.Pause, (param) => OnPause());
         this.RegisterListener(Event.FightBoss, (param) => OnFightBossHandler());
-        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyedBossHandler());
+        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyedBossHandler(param));
+        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(Event.OnDestroyedEnemy, (param) => OnDestroyedEnemyHandler(param));
+
+
 
         skill = FindObjectOfType<Skill>();
 
@@ -74,8 +80,31 @@ public class GUIController : MonoBehaviour
         StartCoroutine(UpdateSkillUI());
     }
 
-    private void OnDestroyedBossHandler()
+    private void OnDestroyedEnemyHandler(object scoreFromEnemy)
     {
+        int scoreToIncrease = (int)scoreFromEnemy;
+        scores += scoreToIncrease;
+        UpdateScore(scores);
+    }
+
+    public int GetScores()
+    {
+        return scores;
+    }
+
+    private void OnHitAsteroidHandler(object scoreFromAsteroid)
+    {
+        int scoreToIncrease = (scoreFromAsteroid as Asteroid).Score;
+        scores += scoreToIncrease;
+        UpdateScore(scores);
+    }
+
+    private void OnDestroyedBossHandler(object scoreFromBoss)
+    {
+        int scoreToIncrease = (int)scoreFromBoss;
+        scores += scoreToIncrease;
+        UpdateScore(scores);
+
         EnemyPanel.SetActive(false);
         EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
     }
