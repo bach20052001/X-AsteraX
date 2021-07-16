@@ -66,7 +66,7 @@ public class SuperBoss : MonoBehaviour
         point = 5000;
         mode = AttackMode.Shoot;
         xRange = 8;
-        fireRate = 2f;
+        fireRate = 1.5f;
 
         player = FindObjectOfType<PlayerShip>();
         energyMat = coreEnergy.GetComponent<Renderer>();
@@ -210,7 +210,7 @@ public class SuperBoss : MonoBehaviour
                     if (currentHP > 0)
                     {
                         Attack();
-                        fireRate = 2f;
+                        fireRate = 1.5f;
                     }
                 }
             }
@@ -221,7 +221,7 @@ public class SuperBoss : MonoBehaviour
     {
         while (AsteraX.GameState == AsteraX.BaseGameState.PLAY && state == State.Fight)
         {
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(4);
 
             AttackMode newMode = (AttackMode)Random.Range(0, 3);
 
@@ -232,6 +232,8 @@ public class SuperBoss : MonoBehaviour
 
     private void BeforeDestroy()
     {
+        StopAllCoroutines();
+
         GetComponent<MeshCollider>().isTrigger = true;
 
         isReadyToAttack = false;

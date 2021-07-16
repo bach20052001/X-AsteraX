@@ -110,7 +110,6 @@ public class PlayerShip : MonoBehaviour
         }
         modeControl = Mode.Normal;
         fightPostion = new Vector3(-12, -6, 0);
-        bulletPrefab.GetComponent<OffScreenWrapper>().enabled = true;
     }
 
     public void ImmortalSetting(bool canDestroy)
@@ -195,6 +194,11 @@ public class PlayerShip : MonoBehaviour
         {
             rigid.velocity = Vector3.zero;
         }
+    }
+
+    private void OnDisable()
+    {
+        bulletPrefab.GetComponent<OffScreenWrapper>().enabled = true;
     }
 
     public void TransitionModeControl(Mode mode)

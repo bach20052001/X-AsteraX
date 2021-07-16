@@ -20,8 +20,8 @@ public abstract class Enemy : MonoBehaviour
 
     public void Shoot(GameObject bullet, PlayerShip targetToShoot)
     {
-        Instantiate(bullet, this.transform.position, bullet.transform.rotation);
-        bullet.transform.LookAt(targetToShoot.transform.position);
+        GameObject Bullet = Instantiate(bullet, this.transform.position, bullet.transform.rotation);
+        Bullet.transform.LookAt(targetToShoot.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -155,7 +155,7 @@ RectTransform:
   - {fileID: 1379063612}
   - {fileID: 693280861}
   m_Father: {fileID: 1487718065}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -844,12 +844,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 656443498}
-  m_RootOrder: 2
+  m_Father: {fileID: 1487718065}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 26.916}
+  m_AnchoredPosition: {x: -0.000030517578, y: -401.95}
   m_SizeDelta: {x: 600, y: 43.832}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389340967
@@ -1313,7 +1313,7 @@ RectTransform:
   m_Children:
   - {fileID: 1683236103}
   m_Father: {fileID: 1487718065}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1584,9 +1584,8 @@ RectTransform:
   m_Children:
   - {fileID: 761420163}
   - {fileID: 1746245777}
-  - {fileID: 389340966}
   m_Father: {fileID: 1487718065}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1893,7 +1892,7 @@ RectTransform:
   - {fileID: 1498370528}
   - {fileID: 1308848932}
   m_Father: {fileID: 1487718065}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2277,7 +2276,7 @@ RectTransform:
   - {fileID: 1712465749}
   - {fileID: 1647224761}
   m_Father: {fileID: 1487718065}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3852,6 +3851,7 @@ RectTransform:
   - {fileID: 1453759388}
   - {fileID: 1510666753}
   - {fileID: 241423276}
+  - {fileID: 389340966}
   - {fileID: 656443498}
   - {fileID: 2090378564}
   - {fileID: 23511167}
@@ -3882,6 +3882,7 @@ MonoBehaviour:
   nextLevelPopup: {fileID: 90448578}
   congratulationPopup: {fileID: 241423275}
   score: {fileID: 1701244760}
+  scores: 0
   skill: {fileID: 0}
   scoreText: {fileID: 2072207570}
   jumpRemainingText: {fileID: 968699378}
@@ -5584,7 +5585,7 @@ RectTransform:
   - {fileID: 1695759698}
   - {fileID: 1985163566}
   m_Father: {fileID: 1487718065}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
