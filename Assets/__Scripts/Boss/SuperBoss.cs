@@ -184,21 +184,25 @@ public class SuperBoss : MonoBehaviour
                 FXBeforeDestroy[1].gameObject.SetActive(true);
             }
 
-            if (currentHP <= 0)
-            {
-                state = State.Destroyed;
-                BeforeDestroy();
-            }
-
             Instantiate(AsteraX.S.explosion, collision.contacts[0].point, Quaternion.identity);
 
             Destroy(collision.gameObject);
+
+            if (currentHP == 0)
+            {
+                BeforeDestroy();
+            }
         }
     }
 
     private void Update()
     {
-
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            BeforeDestroy();
+        }
+#endif
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY && state == State.Fight)
         {
             if (isReadyToAttack)
@@ -232,6 +236,8 @@ public class SuperBoss : MonoBehaviour
 
     private void BeforeDestroy()
     {
+        state = State.Destroyed;
+
         StopAllCoroutines();
 
         GetComponent<MeshCollider>().isTrigger = true;

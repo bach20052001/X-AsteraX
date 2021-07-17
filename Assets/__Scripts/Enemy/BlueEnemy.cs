@@ -1,17 +1,15 @@
 public class BlueEnemy : WhiteEnemy
 {
-    private new void Start()
+    private void Awake()
     {
         point = 200;
         HP = 20;
         currentHP = 20;
         speed = 3f;
-        base.Start();
     }
 
-    private void OnDestroy()
+    private new void Start()
     {
-        this.PostEvent(Event.OnDestroyedEnemy, point);
-        miniBoss.Spawn(EnemyType.Green);
+        base.Start();
     }
 }

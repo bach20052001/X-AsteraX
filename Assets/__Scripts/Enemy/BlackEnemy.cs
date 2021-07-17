@@ -12,13 +12,14 @@ public abstract class BlackEnemy : Enemy
         canFollowPlayer = false;
         canShot = true;
         target = FindObjectOfType<PlayerShip>();
+        rigid = GetComponent<Rigidbody>();
         miniBoss = FindObjectOfType<MiniBoss>();
 
-        bullet = miniBoss.EnemyBullet;
+        bullet = miniBoss.InitBullet();
 
         if (canShot)
         {
-            InvokeRepeating(nameof(AutoShoot), 0f, fireRate);
+            InvokeRepeating(nameof(Shoot), 0f, fireRate);
         }
 
         InvokeRepeating(nameof(ChangeDirection), 0f, 1f);
@@ -41,8 +42,10 @@ public abstract class BlackEnemy : Enemy
         direction.Normalize();
     }
 
-    public void AutoShoot()
+    public void Shoot()
     {
-        Shoot(bullet, target);
+
+        GameObject Bullet = Instantiate(bullet, this.transform.position, bullet.transform.rotation);
+        Bullet.transform.LookAt(target.transform.position);
     }
 }

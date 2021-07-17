@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteraX : MonoBehaviour
 {
@@ -313,10 +314,12 @@ public class AsteraX : MonoBehaviour
     {
         if (!levelManager.breakPoint)
         {
+            isBossAppear = false;
             StartCoroutine(LevelPassing());
         }
         else
         {
+            isBossAppear = true;
             SpawnBoss(levelManager.currentLevel);
         }
     }
@@ -389,7 +392,16 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.QuitGame();
-
+        }
+        else
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+#else
+         Application.Quit();
+#endif
         }
     }
 
@@ -399,7 +411,13 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.QuitToWelcome();
-
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().buildIndex - 2 >= 0)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 2);
+            }
         }
     }
 
@@ -408,7 +426,13 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.Return();
-
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+            }
         }
     }
 
@@ -420,7 +444,11 @@ public class AsteraX : MonoBehaviour
         }
 
         Asteroids.SetActive(false);
-        NextLevelOrFightBoss();
+
+        if (!isBossAppear)
+        {
+            NextLevelOrFightBoss();
+        }
     }
 
     public void Pause()
@@ -498,11 +526,19 @@ public class AsteraX : MonoBehaviour
 
     // ----------------Only in EDITOR--------------- //
 #if UNITY_EDITOR
+
+    public bool isBossAppear = false;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            RemoveAllAsteroid();
+                RemoveAllAsteroid();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            isBossAppear = false;
         }
     }
 #endif

@@ -11,7 +11,6 @@ public class Laser : MonoBehaviour
     private GameObject Instance;
     private EGA_Laser LaserScript;
 
-    private RaycastHit hit;
     private int layer;
 
     Vector3 rightDirection;
@@ -19,7 +18,9 @@ public class Laser : MonoBehaviour
     Vector3 targetDirection;
     Vector3 midDirection;
 
-    List<Vector3> listDirect = new List<Vector3>();
+    private PlayerShip player;
+
+    private readonly List<Vector3> listDirect = new List<Vector3>();
 
     void OnEnable()
     {
@@ -39,6 +40,7 @@ public class Laser : MonoBehaviour
         leftDirection = -Vector3.right + Vector3.down;
         midDirection = Vector3.down;
 
+        player = FindObjectOfType<PlayerShip>();
 
         listDirect.Add(rightDirection);
         listDirect.Add(leftDirection);
@@ -51,7 +53,7 @@ public class Laser : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             targetDirection = listDirect[Random.Range(0, listDirect.Count)];
         }
     }
@@ -65,10 +67,12 @@ public class Laser : MonoBehaviour
 
     private void Update()
     {
-        if (Physics.Raycast(Instance.transform.position, Instance.transform.forward, out hit, 20f, layer))
+        if (Physics.Raycast(Instance.transform.position, Instance.transform.forward, 20f, layer))
         {
-            PlayerShip player = hit.collider.gameObject.GetComponent<PlayerShip>();
-            player.Damaged();
+            if (player != null)
+            {
+                player.Damaged();
+            }
         }
 
         Vector3 newDirection = Vector3.RotateTowards(Instance.transform.forward, targetDirection, Time.deltaTime, 0.0f);

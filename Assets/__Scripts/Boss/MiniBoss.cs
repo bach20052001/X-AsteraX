@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public enum EnemyType
 {
+    None,
     Blue,
     Green,
     Yellow,
@@ -17,24 +19,61 @@ public class MiniBoss : MonoBehaviour
 
     private Vector3 outScreenPos;
 
-    public GameObject Enemy;
+    [SerializeField] private GameObject EnemyPrefab;
+    private GameObject enemy;
 
     private int point;
 
     private float speed = 10f;
 
-    public GameObject EnemyBullet;
+    [SerializeField] private GameObject EnemyBullet;
 
     public bool isUp = true;
 
-    private void Start()
+    private int startEnemy;
+
+    private void Awake()
     {
+        startEnemy = 1;
         downDestination = this.transform.position - Vector3.down;
         upDestination = this.transform.position + Vector3.up * 5f;
         outScreenPos = this.transform.position + Vector3.right * 5f;
         point = 2000;
 
-        StartCoroutine(SpawnEnemy(EnemyType.Blue));
+        this.RegisterListener(Event.OnDestroyedEnemy, (param) => OnDestroyedEnemy());
+
+        StartCoroutine(SpawnEnemy((EnemyType)startEnemy));
+    }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Destroy(enemy);
+            MoveOut();
+        }
+#endif
+    }
+
+    public GameObject InitBullet()
+    {
+        return EnemyBullet;
+    }
+
+    private void OnDestroyedEnemy()
+    {
+        startEnemy++;
+
+        if (startEnemy > (int)EnemyType.Red)
+        {
+            MoveOut();
+        }
+        else
+        {
+            StartCoroutine(SpawnEnemy((EnemyType)startEnemy));
+
+        }
     }
 
     public void MoveUpAndDown()
@@ -62,7 +101,8 @@ public class MiniBoss : MonoBehaviour
     }
 
     private IEnumerator MoveTo(Vector3 pos)
-    {   while (Vector3.Distance(this.transform.position, pos) > 0.1f)
+    {
+        while (Vector3.Distance(this.transform.position, pos) > 0.1f)
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, pos, Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
@@ -88,9 +128,12 @@ public class MiniBoss : MonoBehaviour
     private IEnumerator SpawnEnemy(EnemyType enemyType)
     {
         MoveUpAndDown();
-        yield return new WaitForSeconds(1f);
-        GameObject enemy = Instantiate(Enemy, this.transform.position, Quaternion.identity);
 
+        yield return new WaitForSeconds(1f);
+
+        enemy = Instantiate(EnemyPrefab, this.transform.position, Quaternion.identity);
+
+        yield return new WaitForEndOfFrame();
         switch (enemyType)
         {
             case EnemyType.Blue:

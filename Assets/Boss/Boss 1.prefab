@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003b3b91ad5424268bca09e89349213a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 288174170244224242, guid: 01077faf6e7a5214c9c25c191c5b4c06, type: 3}
+  EnemyPrefab: {fileID: 288174170244224242, guid: 01077faf6e7a5214c9c25c191c5b4c06,
+    type: 3}
   EnemyBullet: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
     type: 3}
   isUp: 1

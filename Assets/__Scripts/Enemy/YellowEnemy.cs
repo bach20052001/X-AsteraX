@@ -1,21 +1,16 @@
 public class YellowEnemy : BlackEnemy
 {
-    private new void Start()
+    private void Awake()
     {
         point = 1000;
         HP = 50;
         currentHP = 50;
         speed = 3f;
         fireRate = 2f;
-        base.Start();
     }
 
-    private void OnDestroy()
+    private new void Start()
     {
-        this.PostEvent(Event.OnDestroyedEnemy, point);
-        if (miniBoss != null)
-        {
-            miniBoss.Spawn(EnemyType.Red);
-        }
+        base.Start();
     }
 }

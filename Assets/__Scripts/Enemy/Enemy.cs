@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -18,28 +19,43 @@ public abstract class Enemy : MonoBehaviour
 
     public bool canFollowPlayer;
 
-    public void Shoot(GameObject bullet, PlayerShip targetToShoot)
-    {
-        GameObject Bullet = Instantiate(bullet, this.transform.position, bullet.transform.rotation);
-        Bullet.transform.LookAt(targetToShoot.transform.position);
-    }
+    public Rigidbody rigid;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             currentHP--;
 
             this.PostEvent(Event.OnEnemyDamaged, (float) currentHP/ HP);
 
-            if (currentHP <= 0)
-            {
-                Destroy(gameObject);
-            }
-
             Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
 
             Destroy(collision.gameObject);
+
+
+            if (currentHP == 0)
+            {
+                this.PostEvent(Event.OnDestroyedEnemy, point);
+                Destroy(gameObject);
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(AffectToPlayer());
         }
     }
+
+
+
+    private IEnumerator AffectToPlayer()
+    {
+        Vector3 direction = target.transform.position - this.transform.position;
+        canFollowPlayer = false;
+        rigid.velocity = -direction * speed;
+        yield return new WaitForSeconds(1);
+        canFollowPlayer = true;
+    }
+
 }

@@ -60,7 +60,12 @@ public class PlayerShip : MonoBehaviour
 
     private Vector3 offset = new Vector3(0.5f, 0, 0);
 
-    public GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefabForAsteroid;
+    [SerializeField] private GameObject bulletPrefabForBoss;
+
+    private GameObject bulletPrefab;
+
+    [SerializeField] private GameObject Shield;
 
     private Vector3 fightPostion;
 
@@ -78,6 +83,7 @@ public class PlayerShip : MonoBehaviour
         MaxHP = shipParameter.HP;
         shipAttack = shipParameter.attack;
         skill = shipParameter.skill;
+        bulletPrefab = bulletPrefabForAsteroid;
 
         AppearEffect = AsteraX.S.warp;
 
@@ -130,9 +136,10 @@ public class PlayerShip : MonoBehaviour
 
     IEnumerator shieldWhenActive()
     {
-
+        Shield.SetActive(true);
         canDestroy = false;
         yield return new WaitForSeconds(2);
+        Shield.SetActive(false);
         canDestroy = true;
     }
 
@@ -196,11 +203,6 @@ public class PlayerShip : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        bulletPrefab.GetComponent<OffScreenWrapper>().enabled = true;
-    }
-
     public void TransitionModeControl(Mode mode)
     {
         switch (mode)
@@ -214,16 +216,16 @@ public class PlayerShip : MonoBehaviour
                 }
             case Mode.FightingBoss:
                 {
+                    bulletPrefab = bulletPrefabForBoss;
                     canControl = true;
-                    bulletPrefab.GetComponent<OffScreenWrapper>().enabled = false;
                     GetComponentInChildren<TurretPointAtMouse>().gameObject.transform.rotation = Quaternion.Euler(new Vector3(-90 ,0 ,0));
                     GetComponentInChildren<TurretPointAtMouse>().enabled = false;
                     break;
                 }
             case Mode.Normal:
             {
+                    bulletPrefab = bulletPrefabForAsteroid;
                     canControl = true;
-                    bulletPrefab.GetComponent<OffScreenWrapper>().enabled = true;
                     GetComponentInChildren<TurretPointAtMouse>().enabled = true;
                     break;
             }
@@ -264,13 +266,10 @@ public class PlayerShip : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Laser"))
+
+        if (collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("EnemyShip"))
         {
-            Debug.Log("A");
-        }
-        if (collision.gameObject.tag.Equals("Asteroid") || collision.gameObject.tag.Equals("EnemyBullet") || collision.gameObject.tag.Equals("EnemyShip"))
-        {
-            if (collision.gameObject.tag.Equals("EnemyBullet"))
+            if (collision.gameObject.CompareTag("EnemyBullet"))
             {
                 Destroy(collision.gameObject);
             }
@@ -284,7 +283,10 @@ public class PlayerShip : MonoBehaviour
 
                 if (Ship_HP > 0)
                 {
-                    PlayerLostControl();
+                    if (collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("EnemyShip"))
+                    {
+                        PlayerLostControl();
+                    }
                 }
                 else
                 {
