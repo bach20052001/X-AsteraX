@@ -53,8 +53,8 @@ public abstract class Enemy : MonoBehaviour
     {
         Vector3 direction = target.transform.position - this.transform.position;
         canFollowPlayer = false;
-        rigid.velocity = -direction * speed;
-        yield return new WaitForSeconds(1);
+        rigid.velocity = -direction * 8f;
+        yield return new WaitForSeconds(0.25f);
         canFollowPlayer = true;
     }
 

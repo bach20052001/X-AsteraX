@@ -236,6 +236,9 @@ public class SuperBoss : MonoBehaviour
 
     private void BeforeDestroy()
     {
+#if UNITY_EDITOR
+        AsteraX.S.isBossAppear = false;
+#endif
         state = State.Destroyed;
 
         StopAllCoroutines();

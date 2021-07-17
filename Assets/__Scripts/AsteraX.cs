@@ -542,4 +542,5 @@ public class AsteraX : MonoBehaviour
         }
     }
 #endif
+    // ----------------------------------------------- //
 }
