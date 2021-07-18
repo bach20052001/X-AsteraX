@@ -189,10 +189,10 @@ public class Asteroid : MonoBehaviour
     {
         GameObject otherGO = coll.gameObject;
 
-        if (otherGO.tag == "Bullet" || otherGO.transform.root.gameObject.tag == "Player")
+        if (otherGO.CompareTag("Bullet") || otherGO.transform.root.gameObject.CompareTag("Player"))
         {
 
-            if (otherGO.tag == "Bullet")
+            if (otherGO.CompareTag("Bullet"))
             {
                 healthController.damaged();
                 bulletCollision = otherGO;

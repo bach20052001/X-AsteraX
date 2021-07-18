@@ -12,6 +12,7 @@ public class GUIController : MonoBehaviour
 
     private static GUIController instance;
     [SerializeField] private Text score;
+    [SerializeField] private int scores;
 
 
     [HideInInspector] public Skill skill;
@@ -41,10 +42,14 @@ public class GUIController : MonoBehaviour
     [SerializeField] private Text cdSkill;
     [SerializeField] private Text remain;
 
+    [SerializeField] private GameObject EnemyPanel;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        UpdateScore(AsteraX.score);
+        scores = 0;
+        UpdateScore(scores);
 
         UpdateJumpRemaining(AsteraX.jumpRemaining);
 
@@ -56,8 +61,15 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(Event.OnUnlockAchievement, (param) => UnlockAchievementHandler(param as AchievementInfomation));
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
         this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHandler(param));
+        this.RegisterListener(Event.OnEnemyDamaged, (param) => OnEnemyDamagedHandler(param));
         this.RegisterListener(Event.OnActiveSkill, (param) => OnActiveSkillHandler(param));
         this.RegisterListener(Event.Pause, (param) => OnPause());
+        this.RegisterListener(Event.FightBoss, (param) => OnFightBossHandler());
+        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyedBossHandler(param));
+        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(Event.OnDestroyedEnemy, (param) => OnDestroyedEnemyHandler(param));
+
+
 
         skill = FindObjectOfType<Skill>();
 
@@ -67,7 +79,40 @@ public class GUIController : MonoBehaviour
         StartCoroutine(UpdateSkillUI());
     }
 
+    private void OnDestroyedEnemyHandler(object scoreFromEnemy)
+    {
+        int scoreToIncrease = (int)scoreFromEnemy;
+        scores += scoreToIncrease;
+        UpdateScore(scores);
+    }
 
+    public int GetScores()
+    {
+        return scores;
+    }
+
+    private void OnHitAsteroidHandler(object scoreFromAsteroid)
+    {
+        int scoreToIncrease = (scoreFromAsteroid as Asteroid).Score;
+        scores += scoreToIncrease;
+        UpdateScore(scores);
+    }
+
+    private void OnDestroyedBossHandler(object scoreFromBoss)
+    {
+        int scoreToIncrease = (int)scoreFromBoss;
+        scores += scoreToIncrease;
+        UpdateScore(scores);
+
+        EnemyPanel.SetActive(false);
+        EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
+    }
+
+    private void OnFightBossHandler()
+    {
+        EnemyPanel.SetActive(true);
+        EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
+    }
 
     private void OnPause()
     {
@@ -116,10 +161,16 @@ public class GUIController : MonoBehaviour
 
     private void OnPlayerDamagedHandler(object param)
     {
-        float currentHP = (float)param;
+        float rate = (float)param;
 
         HealthPanel.GetComponent<Animator>().SetTrigger("Damaged");
-        HealthPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = currentHP;
+        HealthPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = rate;
+    }
+
+    private void OnEnemyDamagedHandler(object param)
+    {
+        float rate = (float)param;
+        EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = rate;
     }
 
     private IEnumerator ShowNotiLevel()
@@ -128,7 +179,7 @@ public class GUIController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         congratulationPopup.GetComponent<Animator>().SetBool("isOn", false);
         yield return new WaitForSeconds(1f);
-        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.currentLevel + 1).ToString();
+        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.currentLevel).ToString();
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", true);
         yield return new WaitForSeconds(1f);
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", false);

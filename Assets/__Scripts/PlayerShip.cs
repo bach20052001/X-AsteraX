@@ -1,8 +1,16 @@
 ﻿#define DEBUG_PlayerShip_RespawnNotifications
 
+using System;
 using System.Collections;
 using UnityEngine;
 //using UnityStandardAssets.CrossPlatformInput;
+
+public enum Mode
+{
+    Animation,
+    Normal,
+    FightingBoss
+}
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerShip : MonoBehaviour
@@ -54,11 +62,20 @@ public class PlayerShip : MonoBehaviour
 
     private Vector3 offset = new Vector3(0.5f, 0, 0);
 
-    public GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefabForAsteroid;
+    [SerializeField] private GameObject bulletPrefabForBoss;
+
+    private GameObject bulletPrefab;
+
+    [SerializeField] private GameObject Shield;
+
+    private Vector3 fightPostion;
 
     [HideInInspector] public bool canControl = true;
 
     Rigidbody rigid;
+
+    public Mode modeControl;
 
     private void Start()
     {
@@ -68,6 +85,7 @@ public class PlayerShip : MonoBehaviour
         MaxHP = shipParameter.HP;
         shipAttack = shipParameter.attack;
         skill = shipParameter.skill;
+        bulletPrefab = bulletPrefabForAsteroid;
 
         AppearEffect = AsteraX.S.warp;
 
@@ -98,7 +116,11 @@ public class PlayerShip : MonoBehaviour
                     break;
                 }
         }
+
         shipSkill.InitData(skilldata.countdownSkill, skilldata.maxIncremental);
+
+        modeControl = Mode.Normal;
+        fightPostion = new Vector3(-12, -6, 0);
     }
 
     public void ImmortalSetting(bool canDestroy)
@@ -119,9 +141,10 @@ public class PlayerShip : MonoBehaviour
 
     IEnumerator shieldWhenActive()
     {
-
+        Shield.SetActive(true);
         canDestroy = false;
         yield return new WaitForSeconds(2);
+        Shield.SetActive(false);
         canDestroy = true;
     }
 
@@ -138,47 +161,101 @@ public class PlayerShip : MonoBehaviour
     {
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
         {
-            if (canControl)
+            if (modeControl == Mode.Normal || modeControl == Mode.FightingBoss)
             {
-                float aX = Input.GetAxis("Horizontal");
-                float aY = Input.GetAxis("Vertical");
-
-                Vector3 vel = new Vector3(aX, aY, 0);
-
-                if (vel != Vector3.zero)
+                if (canControl)
                 {
-                    currentVel = vel;
+                    float aX = Input.GetAxis("Horizontal");
+                    float aY = Input.GetAxis("Vertical");
+
+                    Vector3 vel = new Vector3(aX, aY, 0);
+
+                    if (vel != Vector3.zero)
+                    {
+                        currentVel = vel;
+                    }
+
+                    if (vel.magnitude > 1)
+                    {
+                        vel.Normalize();
+                    }
+                    rigid.velocity = vel * shipSpeed;
                 }
 
-                if (vel.magnitude > 1)
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    // Avoid speed multiplying by 1.414 when moving at a diagonal
-                    vel.Normalize();
-                }
-                // Using Horizontal and Vertical axes to set velocity
-                rigid.velocity = vel * shipSpeed;
-            }
+                    {
+                        Fire(modeControl);
+                        this.PostEvent(Event.OnPlayerFired);
+                    }
 
-            // Mouse input for firing
-            if (Input.GetButtonDown("Fire1"))
-            {
-                {
-                    Fire();
-                    this.PostEvent(Event.OnPlayerFired);
                 }
 
-            }
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    shipSkill.Execute();
+                }
 
-            if (Input.GetButtonDown("Fire2"))
-            {
-                shipSkill.Execute();
+                if (modeControl == Mode.Normal)
+                {
+                    this.transform.up = currentVel;
+                }
             }
-
-            this.transform.up = currentVel;
         }
         else
         {
             rigid.velocity = Vector3.zero;
+        }
+    }
+
+    public void TransitionModeControl(Mode mode)
+    {
+        switch (mode)
+        {
+            case Mode.Animation:
+                {
+                    MoveToFightPosition();
+                    canControl = false;
+                    break;
+
+                }
+            case Mode.FightingBoss:
+                {
+                    bulletPrefab = bulletPrefabForBoss;
+                    canControl = true;
+                    GetComponentInChildren<TurretPointAtMouse>().gameObject.transform.rotation = Quaternion.Euler(new Vector3(-90 ,0 ,0));
+                    GetComponentInChildren<TurretPointAtMouse>().enabled = false;
+                    break;
+                }
+            case Mode.Normal:
+            {
+                    bulletPrefab = bulletPrefabForAsteroid;
+                    canControl = true;
+                    GetComponentInChildren<TurretPointAtMouse>().enabled = true;
+                    break;
+            }
+        }
+        modeControl = mode;
+    }
+
+    private void MoveToFightPosition()
+    {
+        StartCoroutine(MoveTo(fightPostion));
+    }
+
+    IEnumerator MoveTo(Vector3 position)
+    {
+        while (true)
+        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, position, Time.deltaTime * shipSpeed * 1.5f);
+            yield return new WaitForEndOfFrame();
+
+            if (Vector3.Distance(this.transform.position, position) < 0.1f)
+            {
+                StopCoroutine(MoveTo(position));
+                break;
+            }
+
         }
     }
 
@@ -194,17 +271,27 @@ public class PlayerShip : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Asteroid")
+
+        if (collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("EnemyShip"))
         {
+            if (collision.gameObject.CompareTag("EnemyBullet"))
+            {
+                Destroy(collision.gameObject);
+            }
+
             if (canDestroy)
             {
                 --Ship_HP;
+                Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
 
                 this.PostEvent(Event.OnPlayerDamaged, (float)((float)Ship_HP / (float)MaxHP));
 
                 if (Ship_HP > 0)
                 {
-                    PlayerLostControl();
+                    if (collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("EnemyShip"))
+                    {
+                        PlayerLostControl();
+                    }
                 }
                 else
                 {
@@ -215,7 +302,23 @@ public class PlayerShip : MonoBehaviour
                     {
                         ActiveEffect(transform.position);
                     }
-                    //this.PostEvent(Event.OnPlayerDamaged, Ship_HP);
+                }
+            }
+        }
+    }
+
+    public void Damaged()
+    {
+        if (canDestroy)
+        {
+            --Ship_HP;
+            if (Ship_HP <= 0)
+            {
+                this.PostEvent(Event.PlayerShipDestroyed);
+                gameObject.SetActive(false);
+                if (AsteraX.jumpRemaining > 0)
+                {
+                    ActiveEffect(transform.position);
                 }
             }
         }
@@ -238,7 +341,7 @@ public class PlayerShip : MonoBehaviour
         canControl = true;
     }
 
-    public void Fire()
+    public void Fire(Mode mode)
     {
         // Get direction to the mouse
         Vector3 mPos = Input.mousePosition;
@@ -250,7 +353,15 @@ public class PlayerShip : MonoBehaviour
             // Instantiate the Bullet and set its direction
             GameObject go = Instantiate<GameObject>(bulletPrefab);
             go.transform.position = transform.position;
-            go.transform.LookAt(mPos3D);
+
+            if (mode == Mode.Normal)
+            {
+                go.transform.LookAt(mPos3D);
+            }
+            else if (mode == Mode.FightingBoss)
+            {
+                go.transform.forward = Vector3.up;
+            }
         }
 
         else if (shipAttack == 2)
@@ -262,8 +373,16 @@ public class PlayerShip : MonoBehaviour
             b1.transform.position = transform.position + offset;
             b2.transform.position = transform.position - offset;
 
-            b1.transform.LookAt(mPos3D + offset);
-            b2.transform.LookAt(mPos3D - offset);
+            if (mode == Mode.Normal)
+            {
+                b1.transform.LookAt(mPos3D + offset);
+                b2.transform.LookAt(mPos3D - offset);
+            }
+            else if (mode == Mode.FightingBoss)
+            {
+                b1.transform.forward = Vector3.up;
+                b2.transform.forward = Vector3.up;
+            }
 
         }
 

@@ -1179,6 +1179,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
   - {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
   - {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
+  dataAsteroid:
+    data_asteroid: []
+  dataLevel:
+    data_level: []
+  dataShip:
+    data_ship: []
+  dataSkill:
+    data_skill: []
 --- !u!1 &1221103625
 GameObject:
   m_ObjectHideFlags: 0

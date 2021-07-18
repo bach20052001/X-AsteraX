@@ -62,8 +62,6 @@ public class SceneController : MonoBehaviour
 
     public void NextScene()
     {
-
-
         StartCoroutine(PlayNext());
     }
 
@@ -71,14 +69,20 @@ public class SceneController : MonoBehaviour
     {
         ActiveAnimator();
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private IEnumerator PlayPrev()
     {
         ActiveAnimator();
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+        }
     }
 
     public void PrevScene()
@@ -112,13 +116,18 @@ public class SceneController : MonoBehaviour
 
     public void QuitToWelcome()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        if (SceneManager.GetActiveScene().buildIndex - 2 >= 0)
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 2);
+        }
     }
 
     public void Return()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-
+        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+        }
     }
 
     public void Play()
@@ -130,7 +139,10 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
+            if (SceneManager.GetActiveScene().buildIndex + 2 < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
+            }
         }
     }
 

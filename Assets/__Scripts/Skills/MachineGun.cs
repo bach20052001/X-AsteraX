@@ -33,7 +33,7 @@ public class MachineGun : Skill
         {
             timeInterval -= fireRate;
             yield return new WaitForSeconds(fireRate);
-            player.Fire();
+            player.Fire(player.modeControl);
         }
     }
 }

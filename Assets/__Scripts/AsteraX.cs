@@ -1,17 +1,18 @@
 ﻿//#define DEBUG_AsteraX_LogMethods
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteraX : MonoBehaviour
 {
-    public GameObject[] asteroidPrefabs;
-    public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
     // Private Singleton-style instance. Accessed by static property S later in script
     static private AsteraX _S;
 
     static List<Asteroid> ASTEROIDS;
+    public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
 
     public GameObject Asteroids;
 
@@ -19,7 +20,6 @@ public class AsteraX : MonoBehaviour
     private int nCol = 9;
 
     public static int jumpRemaining = 3;
-    public static int score = 0;
     public GameObject Gate;
 
     public ParticleSystem explosion;
@@ -30,14 +30,22 @@ public class AsteraX : MonoBehaviour
 
     public ParticleSystem warp;
 
+    public GameObject Magnetic;
+
+    public MagneticFactory magneticFactory;
+
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
+    public GameObject[] asteroidPrefabs;
 
 
     public List<GameObject> listSpaceShips;
 
     private GameObject playerShip;
 
+    public GameObject MiniBoss;
+
+    public GameObject SuperBoss;
 
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
@@ -158,7 +166,6 @@ public class AsteraX : MonoBehaviour
         levelManager = LevelManager.Instance;
 
         jumpRemaining = 3;
-        score = 0;
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:Start()");
 #endif
@@ -169,16 +176,15 @@ public class AsteraX : MonoBehaviour
 
         StartCoroutine(FadeGate());
 
-        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler());
         this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
-
+        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyBossHandler());
     }
 
-    public GameObject GetAsteroidPrefab()
+    private void OnDestroyBossHandler()
     {
-        int ndx = Random.Range(0, asteroidPrefabs.Length);
-        return asteroidPrefabs[ndx];
+        StartCoroutine(LevelPassing());
     }
 
     private void OnNextLevelHandler()
@@ -197,11 +203,10 @@ public class AsteraX : MonoBehaviour
 
     private void SpawnAsteroids()
     {
-        foreach (var Asteroid in levelManager.asteroidsSOByLevel[LevelManager.level].Asteroids)
+        foreach (var Asteroid in levelManager.LevelScriptableObject[levelManager.level].Asteroids)
         {
             SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value);
         }
-
     }
 
     #region Handler Event
@@ -273,6 +278,12 @@ public class AsteraX : MonoBehaviour
         LevelManager.Instance.ResetLevel();
     }
 
+    public GameObject GetAsteroidPrefab()
+    {
+        int ndx = UnityEngine.Random.Range(0, asteroidPrefabs.Length);
+        return asteroidPrefabs[ndx];
+    }
+
     private void OnPlayerShipDestroyedHanler()
     {
         jumpRemaining--;
@@ -291,23 +302,50 @@ public class AsteraX : MonoBehaviour
     }
 
 
-    public void OnHitAsteroidHandler(object scoreValue)
+    public void OnHitAsteroidHandler()
     {
-        int scoreToIncrease = (scoreValue as Asteroid).Score;
-        score += scoreToIncrease;
-
-        GUIController.Instance.UpdateScore(score);
-
         if (Asteroids.transform.childCount == 1)
         {
-            StartCoroutine(LevelPassing());
+            NextLevelOrFightBoss();
             return;
         }
 
-        //Double check
         if (Asteroids.transform.childCount == 1)
         {
+            NextLevelOrFightBoss();
+        }
+    }
+
+    public void NextLevelOrFightBoss()
+    {
+        if (!levelManager.breakPoint)
+        {
+            isBossAppear = false;
             StartCoroutine(LevelPassing());
+        }
+        else
+        {
+            isBossAppear = true;
+            SpawnBoss(levelManager.currentLevel);
+        }
+    }
+
+    private void SpawnBoss(int level)
+    {
+        switch (level)
+        {
+            case 5:
+                {
+                    this.PostEvent(Event.FightBoss);
+                    Instantiate(MiniBoss);
+                    break;
+                }
+            case 10:
+                {
+                    this.PostEvent(Event.FightBoss);
+                    Instantiate(SuperBoss);
+                    break;
+                }
         }
     }
 
@@ -315,9 +353,14 @@ public class AsteraX : MonoBehaviour
     {
         LevelManager.Instance.IncreaseLevel();
 
-        this.PostEvent(Event.OnNextLevel, LevelManager.level);
+        this.PostEvent(Event.OnNextLevel, levelManager.level);
 
         yield return new WaitForSeconds(3f);
+
+        if (!Asteroids.activeSelf)
+        {
+            Asteroids.SetActive(true);
+        }
 
         SpawnAsteroids();
     }
@@ -351,7 +394,16 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.QuitGame();
-
+        }
+        else
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+#else
+         Application.Quit();
+#endif
         }
     }
 
@@ -361,7 +413,13 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.QuitToWelcome();
-
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().buildIndex - 2 >= 0)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 2);
+            }
         }
     }
 
@@ -370,7 +428,28 @@ public class AsteraX : MonoBehaviour
         if (sceneController != null)
         {
             sceneController.Return();
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+            }
+        }
+    }
 
+    private void RemoveAllAsteroid()
+    {
+        for (int i = 0; i < Asteroids.transform.childCount; i++)
+        {
+            Destroy(Asteroids.transform.GetChild(i).gameObject);
+        }
+
+        Asteroids.SetActive(false);
+
+        if (!isBossAppear)
+        {
+            NextLevelOrFightBoss();
         }
     }
 
@@ -422,7 +501,7 @@ public class AsteraX : MonoBehaviour
         {
             if (S != null)
             {
-                return levelManager.asteroidsSOByLevel[LevelManager.level];
+                return levelManager.LevelScriptableObject[levelManager.level];
             }
             return null;
         }
@@ -447,4 +526,23 @@ public class AsteraX : MonoBehaviour
 
     // ---------------- End Section ---------------- //
 
+    // ----------------Only in EDITOR--------------- //
+#if UNITY_EDITOR
+
+    public bool isBossAppear = false;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+                RemoveAllAsteroid();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            isBossAppear = false;
+        }
+    }
+#endif
+    // ----------------------------------------------- //
 }

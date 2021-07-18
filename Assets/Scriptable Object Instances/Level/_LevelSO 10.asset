@@ -16,6 +16,3 @@ MonoBehaviour:
   maxVel: 16
   maxAngularVel: 10
   numSmallerAsteroidsToSpawn: 2
-  NumOfAsteroidA: 0
-  NumOfAsteroidB: 0
-  NumOfAsteroidC: 0

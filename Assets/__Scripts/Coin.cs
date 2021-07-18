@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [Serializable]
 public class Coin : MonoBehaviour
 {
-    public Text amountOfCoin;
+    [SerializeField] private Text amountOfCoin;
 
     [SerializeField] private int coins = 0;
 
@@ -45,6 +45,10 @@ public class Coin : MonoBehaviour
     private void OnEarnCoin()
     {
         coins++;
-        amountOfCoin.text = coins.ToString();
+
+        if (amountOfCoin != null)
+        {
+            amountOfCoin.text = coins.ToString();
+        }
     }
 }

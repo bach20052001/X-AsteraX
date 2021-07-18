@@ -5,6 +5,8 @@ public class LevelManager : MonoBehaviour
 {
     private static LevelManager instance;
 
+    public bool breakPoint = false;
+    public List<int> levelToFightBoss = new List<int>();
 
     public static LevelManager Instance
     {
@@ -12,37 +14,46 @@ public class LevelManager : MonoBehaviour
         {
             if (instance == null)
             {
-                GameObject LevelManagerObject = Instantiate(new GameObject("Level Manager"));
-                LevelManager LM = LevelManagerObject.AddComponent<LevelManager>();
-                instance = LM;
+                instance = FindObjectOfType<LevelManager>();
             }
             return instance;
         }
     }
 
-    public static int level;
-    public static int currentLevel;
+    public int level;
+    public int currentLevel;
+
 
     public void IncreaseLevel()
     {
         level++;
         currentLevel++;
-        if (level > asteroidsSOByLevel.Count - 1)
+
+        if (levelToFightBoss.Contains(currentLevel))
         {
-            level = asteroidsSOByLevel.Count - 1;
+            breakPoint = true;
         }
+        else
+        {
+            breakPoint = false;
+        }
+
+        if (level > LevelScriptableObject.Count - 1)
+        {
+            level = LevelScriptableObject.Count - 1;
+        }
+
     }
 
     public void ResetLevel()
     {
         level = 0;
-        currentLevel = 0;
     }
 
 
     [Header("Set in Inspector")]
     [Tooltip("This sets the AsteroidsScriptableObject to be used throughout the game.")]
-    public List<LevelScriptableObject> asteroidsSOByLevel;
+    public List<LevelScriptableObject> LevelScriptableObject;
 
     private void Awake()
     {
@@ -50,16 +61,23 @@ public class LevelManager : MonoBehaviour
         {
             instance = this;
         }
-        else if (instance != this)
+
+        if (this != instance)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+
         DontDestroyOnLoad(instance);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        ResetLevel();
+        level = 0;
+        currentLevel = level + 1;
+
+        levelToFightBoss.Clear();
+        levelToFightBoss.Add(5);
+        levelToFightBoss.Add(10);
     }
 }
