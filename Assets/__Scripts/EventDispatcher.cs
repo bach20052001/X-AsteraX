@@ -32,8 +32,6 @@ public class EventDispatcher : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     #endregion

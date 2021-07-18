@@ -51,6 +51,7 @@ public abstract class Enemy : MonoBehaviour
 
     private IEnumerator AffectToPlayer()
     {
+        Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
         Vector3 direction = target.transform.position - this.transform.position;
         canFollowPlayer = false;
         rigid.velocity = -direction * 8f;
