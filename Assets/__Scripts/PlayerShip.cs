@@ -36,6 +36,8 @@ public class PlayerShip : MonoBehaviour
 
     [Header("Set in Inspector")]
 
+    public Skill_SO skilldata;
+
     private Skill shipSkill;
 
     private float shipSpeed = 10f;
@@ -46,7 +48,7 @@ public class PlayerShip : MonoBehaviour
 
     private int MaxHP = 1;
 
-    private string skill;
+    private Skills skill;
 
     private int shipAttack = 1;
 
@@ -71,22 +73,22 @@ public class PlayerShip : MonoBehaviour
 
         switch (skill)
         {
-            case "Machine Gun":
+            case Skills.MachineGun:
                 {
                     shipSkill = gameObject.AddComponent<MachineGun>();
                     break;
                 }
-            case "Immortal":
+            case Skills.Immortal:
                 {
                     shipSkill = gameObject.AddComponent<Immortal>();
                     break;
                 }
-            case "Flash":
+            case Skills.Flash:
                 {
                     shipSkill = gameObject.AddComponent<Flash>();
                     break;
                 }
-            case "Invisible":
+            case Skills.Invisible:
                 {
                     shipSkill = gameObject.AddComponent<Invisible>();
                     break;
@@ -96,6 +98,7 @@ public class PlayerShip : MonoBehaviour
                     break;
                 }
         }
+        shipSkill.InitData(skilldata.countdownSkill, skilldata.maxIncremental);
     }
 
     public void ImmortalSetting(bool canDestroy)

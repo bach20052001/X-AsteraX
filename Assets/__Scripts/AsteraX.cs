@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class AsteraX : MonoBehaviour
 {
+    public GameObject[] asteroidPrefabs;
+    public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
     // Private Singleton-style instance. Accessed by static property S later in script
     static private AsteraX _S;
 
@@ -27,10 +29,6 @@ public class AsteraX : MonoBehaviour
     private SceneController sceneController;
 
     public ParticleSystem warp;
-
-    public GameObject Magnetic;
-
-    public MagneticFactory magneticFactory;
 
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
@@ -177,7 +175,11 @@ public class AsteraX : MonoBehaviour
 
     }
 
-
+    public GameObject GetAsteroidPrefab()
+    {
+        int ndx = Random.Range(0, asteroidPrefabs.Length);
+        return asteroidPrefabs[ndx];
+    }
 
     private void OnNextLevelHandler()
     {
@@ -195,12 +197,11 @@ public class AsteraX : MonoBehaviour
 
     private void SpawnAsteroids()
     {
-        //Debug.Log(levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid);
-        // Spawn the parent Asteroids, child Asteroids are taken care of by them
-        for (int i = 0; i < levelManager.asteroidsSOByLevel[LevelManager.level].numberOfAsteroid; i++)
+        foreach (var Asteroid in levelManager.asteroidsSOByLevel[LevelManager.level].Asteroids)
         {
-            SpawnParentAsteroid(i);
+            SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value);
         }
+
     }
 
     #region Handler Event
@@ -266,7 +267,6 @@ public class AsteraX : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        Debug.Log("Game OVer!!!");
         yield return new WaitForSeconds(0.75f);
 
         GUIController.Instance.ShowGameOver();
@@ -298,7 +298,14 @@ public class AsteraX : MonoBehaviour
 
         GUIController.Instance.UpdateScore(score);
 
-        if (ASTEROIDS.Count - 1 == 0 && Asteroids.transform.childCount == 1)
+        if (Asteroids.transform.childCount == 1)
+        {
+            StartCoroutine(LevelPassing());
+            return;
+        }
+
+        //Double check
+        if (Asteroids.transform.childCount == 1)
         {
             StartCoroutine(LevelPassing());
         }
@@ -315,30 +322,26 @@ public class AsteraX : MonoBehaviour
         SpawnAsteroids();
     }
 
-    void SpawnParentAsteroid(int i)
+    void SpawnNumberAsteroid(string type, int n)
     {
+        for (int i = 0; i < n; i++)
+        {
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:SpawnParentAsteroid("+i+")");
 #endif
 
-        Asteroid ast = Asteroid.SpawnAsteroid();
-        ast.transform.parent = Asteroids.transform;
-        ast.gameObject.name = "Asteroid_" + i.ToString("00");
-        // Find a good location for the Asteroid to spawn
-        Vector3 pos;
-        do
-        {
-            pos = ScreenBounds.RANDOM_ON_SCREEN_LOC;
-        } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
+            Asteroid ast = Asteroid.SpawnAsteroid();
+            ast.transform.parent = Asteroids.transform;
+            // Find a good location for the Asteroid to spawn
+            Vector3 pos;
+            do
+            {
+                pos = ScreenBounds.RANDOM_ON_SCREEN_LOC;
+            } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
 
-        ast.transform.position = pos;
-        ast.size = levelManager.asteroidsSOByLevel[LevelManager.level].initialSize;
-
-        GameObject magnetic = magneticFactory.CreateMagnetic();
-
-        magnetic.transform.parent = ast.transform;
-        magnetic.transform.localPosition = Vector3.zero;
-        magnetic.transform.localScale = Vector3.one;
+            ast.transform.position = pos;
+            ast.type = type;
+        }
     }
 
     #endregion
@@ -413,7 +416,7 @@ public class AsteraX : MonoBehaviour
     }
 
 
-    static public AsteroidsScriptableObject AsteroidsSO
+    static public LevelScriptableObject AsteroidsSO
     {
         get
         {

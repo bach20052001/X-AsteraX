@@ -1,0 +1,23 @@
+[
+    {
+        "Type": "A",
+        "Size": 1,
+        "HP": 1,
+        "Point": 400,
+        "HasMagnetic": 0
+    },
+    {
+        "Type": "B",
+        "Size": 2,
+        "HP": 2,
+        "Point": 200,
+        "HasMagnetic": 0
+    },
+    {
+        "Type": "C",
+        "Size": 3,
+        "HP": 3,
+        "Point": 100,
+        "HasMagnetic": 1
+    }
+]

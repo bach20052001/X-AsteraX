@@ -2,6 +2,20 @@ using UnityEngine;
 
 public class MagneticFactory : MonoBehaviour
 {
+    private static MagneticFactory instance;
+
+    public static MagneticFactory Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<MagneticFactory>();
+            }
+            return instance;
+        }
+    }
+
     public PlayerShip player;
 
     public Rigidbody rb;
@@ -24,6 +38,15 @@ public class MagneticFactory : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         player = FindObjectOfType<PlayerShip>();
 
         rb = player.GetComponent<Rigidbody>();

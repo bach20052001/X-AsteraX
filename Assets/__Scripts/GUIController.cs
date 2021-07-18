@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,7 @@ public class GUIController : MonoBehaviour
 
     [SerializeField] private Animator popupAchievement;
     [SerializeField] private GameObject nextLevelPopup;
-
+    public int levelShowToUI;
     [SerializeField] private GameObject congratulationPopup;
 
     private static GUIController instance;
@@ -129,7 +128,7 @@ public class GUIController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         congratulationPopup.GetComponent<Animator>().SetBool("isOn", false);
         yield return new WaitForSeconds(1f);
-        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.level + 1).ToString();
+        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.currentLevel + 1).ToString();
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", true);
         yield return new WaitForSeconds(1f);
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", false);

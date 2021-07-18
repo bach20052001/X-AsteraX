@@ -1376,15 +1376,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac05fa88f37f84120b45a830d68341b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: 1029653053436338, guid: 1293b0763d7d344e0b908c097078ac09, type: 3}
+  - {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2, type: 3}
+  - {fileID: 1317570492134680, guid: a6d3ccfc58a1f41368479aabb6050561, type: 3}
+  asteroidsData:
+  - {fileID: 11400000, guid: 254c03dd2a9754dd293ee031f3f8350e, type: 2}
+  - {fileID: 11400000, guid: a1462bca4a38746a6b8822de13222ea2, type: 2}
+  - {fileID: 11400000, guid: 7497216060c0e4bedabfef1ae911ebfc, type: 2}
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosion: {fileID: 198231724666311192, guid: e8335af2e6e050a4c9342af2fda58d35,
     type: 3}
   shipExplosion: {fileID: 19800006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
   warp: {fileID: 1231110749491679353, guid: 1a9a2c60f6548c846837acb381b1f03d, type: 3}
-  Magnetic: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
-    type: 3}
-  magneticFactory: {fileID: 1842951576}
   listSpaceShips:
   - {fileID: 7640424413477587657, guid: 63c93b8624b3a49f4839b2246bb34b66, type: 3}
   - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
@@ -3725,6 +3730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupAchievement: {fileID: 1543746980}
   nextLevelPopup: {fileID: 90448578}
+  levelShowToUI: 0
   congratulationPopup: {fileID: 241423275}
   score: {fileID: 1701244760}
   skill: {fileID: 0}

@@ -1,0 +1,42 @@
+[
+  {
+    "ShipID": 1,
+    "ShipName": "Delta",
+    "Attack": 2,
+    "HP": 2,
+    "Speed": 3,
+    "Price": 8000,
+    "Description": "The 1st Special Forces Operational Detachment–Delta (1st SFOD-D), commonly referred to as Delta Force, Combat Applications Group (CAG), \"The Unit\", or within JSOC as Task Force Green, is a special operations force of the United States Army, under operational control of the Joint Special Operations Command.",
+    "Skill": 4
+  },
+  {
+    "ShipID": 2,
+    "ShipName": "Scorpion",
+    "Attack": 1,
+    "HP": 3,
+    "Speed": 5,
+    "Price": 0,
+    "Description": "Scorpions are predatory arachnids of the order Scorpiones. They have eight legs, and are easily recognized by a pair of grasping pincers and a narrow, segmented tail, often carried in a characteristic forward curve over the back and always ending with a stinger.",
+    "Skill": 3
+  },
+  {
+    "ShipID": 3,
+    "ShipName": "Scylla",
+    "Attack": 1,
+    "HP": 5,
+    "Speed": 3,
+    "Price": 3000,
+    "Description": "Scylla is first attested in Homer's Odyssey, where Odysseus and his crew encounter her and Charybdis on their travels. Later myth provides an origin story as a beautiful nymph who gets turned into a monster.",
+    "Skill": 2
+  },
+  {
+    "ShipID": 4,
+    "ShipName": "T-Bag",
+    "Attack": 1,
+    "HP": 4,
+    "Speed": 4,
+    "Price": 4000,
+    "Description": "Theodore \"T-Bag\" Bagwell is a fictional character from the American television series Prison Break. Played by Robert Knepper, he is part of the main group of characters in the series and is part of the Fox River Eight. After guest-starring in the series' second episode, \"Allen\", the actor became one of the regular cast members.",
+    "Skill": 1
+  }
+]

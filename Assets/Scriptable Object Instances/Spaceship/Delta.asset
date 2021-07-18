@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: Delta
   m_EditorClassIdentifier: 
   shipName: Delta
-  description: "The 1st Special Forces Operational Detachment\u2013Delta (1st SFOD-D),
-    commonly referred to as Delta Force, Combat Applications Group (CAG), \"The Unit\",
-    or within JSOC as Task Force Green, is a special operations force of the United
-    States Army, under operational control of the Joint Special Operations Command."
-  attack: 2
-  HP: 2
-  speed: 3
-  skill: Machine Gun
-  price: 8000
+  attack: 1
+  HP: 1
+  speed: 1
+  price: 0
+  description: 0
+  skill: 4

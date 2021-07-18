@@ -13,18 +13,9 @@ MonoBehaviour:
   m_Name: T-Bag
   m_EditorClassIdentifier: 
   shipName: T-Bag
-  description: Theodore "T-Bag" Bagwell is a fictional character from the American
-    television series Prison Break. Played by Robert Knepper, he is part of the main
-    group of characters in the series and is part of the Fox River Eight. After guest-starring
-    in the series' second episode, "Allen", the actor became one of the regular cast
-    members.  The character was introduced into the series as a fellow prisoner of
-    the protagonist, Michael Scofield (played by Wentworth Miller), at Fox River
-    State Penitentiary. As the leader of a white supremacist group, T-Bag is the
-    most villainous member of the Fox River Eight. In the second season, the character's
-    storyline veers from the main plot as a separate subplot. As the series progresses,
-    more of the background story of the character is revealed.
   attack: 1
-  HP: 4
-  speed: 4
-  skill: Flash
-  price: 3000
+  HP: 1
+  speed: 1
+  price: 0
+  description: 0
+  skill: 1

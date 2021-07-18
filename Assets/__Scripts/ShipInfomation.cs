@@ -28,7 +28,7 @@ public class ShipInfomation : MonoBehaviour
 
     public SimpleScrollSnap scroll;
 
-    public List<Ship_SO> ships;
+    private List<Ship_SO> ships;
 
     public GameObject BuyButton;
 
@@ -77,7 +77,7 @@ public class ShipInfomation : MonoBehaviour
     {
         sceneController = SceneController.Instance;
         SaveDataManager.Instance.LoadDataPersistent();
-
+        ships = SceneController.Instance.shipInfo;
         if (SaveDataManager.Instance.playerData == null)
         {
             SaveDataManager.Instance.playerData = new PlayerData();
@@ -168,7 +168,7 @@ public class ShipInfomation : MonoBehaviour
             bullets.transform.GetChild(i).GetComponent<Image>().color = bulletColor;
         }
 
-        AbilityText.text = currentShip.skill;
+        AbilityText.text = currentShip.skill.ToString();
 
 
         if (sceneController != null)

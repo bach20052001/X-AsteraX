@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: Scorpion
   m_EditorClassIdentifier: 
   shipName: Scorpion
-  description: Scorpions are predatory arachnids of the order Scorpiones. They have
-    eight legs, and are easily recognized by a pair of grasping pincers and a narrow,
-    segmented tail, often carried in a characteristic forward curve over the back
-    and always ending with a stinger.
   attack: 1
-  HP: 3
-  speed: 5
-  skill: Invisible
+  HP: 1
+  speed: 1
   price: 0
+  description: 0
+  skill: 3

@@ -5,6 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     private static LevelManager instance;
 
+
     public static LevelManager Instance
     {
         get
@@ -20,11 +21,12 @@ public class LevelManager : MonoBehaviour
     }
 
     public static int level;
+    public static int currentLevel;
 
     public void IncreaseLevel()
     {
         level++;
-
+        currentLevel++;
         if (level > asteroidsSOByLevel.Count - 1)
         {
             level = asteroidsSOByLevel.Count - 1;
@@ -34,12 +36,13 @@ public class LevelManager : MonoBehaviour
     public void ResetLevel()
     {
         level = 0;
+        currentLevel = 0;
     }
 
 
     [Header("Set in Inspector")]
     [Tooltip("This sets the AsteroidsScriptableObject to be used throughout the game.")]
-    public List<AsteroidsScriptableObject> asteroidsSOByLevel;
+    public List<LevelScriptableObject> asteroidsSOByLevel;
 
     private void Awake()
     {
@@ -57,6 +60,6 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = 0;
+        ResetLevel();
     }
 }
