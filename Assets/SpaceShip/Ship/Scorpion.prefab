@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7640424411810015143}
   - component: {fileID: 7640424411810015142}
   - component: {fileID: 7640424411810015136}
+  - component: {fileID: 1002718066130446353}
   m_Layer: 8
   m_Name: Scorpion
   m_TagString: Player
@@ -180,10 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipParameter: {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
   skilldata: {fileID: 11400000, guid: e8c38e40272754338b738c249318541c, type: 2}
-  bulletPrefabForAsteroid: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
-    type: 3}
-  bulletPrefabForBoss: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
-    type: 3}
   Shield: {fileID: 1511808525706579873}
   canControl: 1
   modeControl: 0
@@ -201,6 +198,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   degrees: 30
   tiltTowards: 1
+--- !u!1818360608 &1002718066130446353
+PositionConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640424413477587657}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 0
+  m_AffectTranslationY: 0
+  m_AffectTranslationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources: []
 --- !u!1 &7640424413477587659
 GameObject:
   m_ObjectHideFlags: 0

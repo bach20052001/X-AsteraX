@@ -1483,6 +1483,10 @@ MonoBehaviour:
     type: 3}
   SuperBoss: {fileID: 8570772132499355697, guid: ec550988987384c0c973105c21894b5a,
     type: 3}
+  ListBullet:
+  - {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c, type: 3}
+  - {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4, type: 3}
+  - {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1, type: 3}
   isBossAppear: 0
 --- !u!1 &636235016
 GameObject:
@@ -4305,7 +4309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakPoint: 0
-  levelToFightBoss: 
+  bossType: 0
   level: 0
   currentLevel: 0
   LevelScriptableObject:

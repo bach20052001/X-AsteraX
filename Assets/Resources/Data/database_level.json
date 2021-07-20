@@ -15,12 +15,34 @@
             },
             {
                 "Type": "C",
-                "Number": 3
+                "Number": 2
             }
-        ]
+        ],
+        "HasBoss": false 
     },
     {
         "Level_Index": 2,
+        "MinVelocity": 5,
+        "MaxVelocity": 10,
+        "MaxAngularVelocity": 10,
+        "ListAsteroid": [
+            {
+                "Type": "A",
+                "Number": 1
+            },
+            {
+                "Type": "B",
+                "Number": 1
+            },
+            {
+                "Type": "C",
+                "Number": 2
+            }
+        ],
+        "HasBoss": false
+    },
+    {
+        "Level_Index": 3,
         "MinVelocity": 5,
         "MaxVelocity": 10,
         "MaxAngularVelocity": 10,
@@ -35,29 +57,10 @@
             },
             {
                 "Type": "C",
-                "Number": 3
+                "Number": 2
             }
-        ]
-    },
-    {
-        "Level_Index": 3,
-        "MinVelocity": 5,
-        "MaxVelocity": 10,
-        "MaxAngularVelocity": 10,
-        "ListAsteroid": [
-            {
-                "Type": "A",
-                "Number": 1
-            },
-            {
-                "Type": "B",
-                "Number": 0
-            },
-            {
-                "Type": "C",
-                "Number": 4
-            }
-        ]
+        ],
+        "HasBoss": false
     },
     {
         "Level_Index": 4,
@@ -75,9 +78,10 @@
             },
             {
                 "Type": "C",
-                "Number": 4
+                "Number": 3
             }
-        ]
+        ],
+        "HasBoss": false
     },
     {
         "Level_Index": 5,
@@ -95,9 +99,11 @@
             },
             {
                 "Type": "C",
-                "Number": 5
+                "Number": 4
             }
-        ]
+        ],
+        "HasBoss": true,
+        "BossType": 1
     },
     {
         "Level_Index": 6,
@@ -115,12 +121,34 @@
             },
             {
                 "Type": "C",
-                "Number": 5
+                "Number": 4
             }
-        ]
+        ],
+        "HasBoss": false
     },
     {
         "Level_Index": 7,
+        "MinVelocity": 7,
+        "MaxVelocity": 14,
+        "MaxAngularVelocity": 10,
+        "ListAsteroid": [
+            {
+                "Type": "A",
+                "Number": 1
+            },
+            {
+                "Type": "B",
+                "Number": 0
+            },
+            {
+                "Type": "C",
+                "Number": 5
+            }
+        ],
+        "HasBoss": false
+    },
+    {
+        "Level_Index": 8,
         "MinVelocity": 7,
         "MaxVelocity": 14,
         "MaxAngularVelocity": 10,
@@ -135,29 +163,10 @@
             },
             {
                 "Type": "C",
-                "Number": 6
+                "Number": 5
             }
-        ]
-    },
-    {
-        "Level_Index": 8,
-        "MinVelocity": 7,
-        "MaxVelocity": 14,
-        "MaxAngularVelocity": 10,
-        "ListAsteroid": [
-            {
-                "Type": "A",
-                "Number": 2
-            },
-            {
-                "Type": "B",
-                "Number": 3
-            },
-            {
-                "Type": "C",
-                "Number": 6
-            }
-        ]
+        ],
+        "HasBoss": false
     },
     {
         "Level_Index": 9,
@@ -167,17 +176,18 @@
         "ListAsteroid": [
             {
                 "Type": "A",
-                "Number": 0
+                "Number": 2
             },
             {
                 "Type": "B",
-                "Number": 4
+                "Number": 2
             },
             {
                 "Type": "C",
-                "Number": 7
+                "Number": 5
             }
-        ]
+        ],
+        "HasBoss": false
     },
     {
         "Level_Index": 10,
@@ -187,17 +197,19 @@
         "ListAsteroid": [
             {
                 "Type": "A",
-                "Number": 2
+                "Number": 1
             },
             {
                 "Type": "B",
-                "Number": 4
+                "Number": 3
             },
             {
                 "Type": "C",
-                "Number": 7
+                "Number": 6
             }
-        ]
+        ],
+        "HasBoss": true,
+        "BossType": 2
     },
     {
         "Level_Index": 11,
@@ -211,12 +223,13 @@
             },
             {
                 "Type": "B",
-                "Number": 5
+                "Number": 3
             },
             {
                 "Type": "C",
-                "Number": 8
+                "Number": 6
             }
-        ]
+        ],
+        "HasBoss": false
     }
 ]

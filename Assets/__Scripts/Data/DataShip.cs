@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -22,6 +23,9 @@ public class ShipDataObject
 
     [Range(1, 4)]
     public int Skill;
+
+    [Range(1,3)]
+    public int BulletType;
 }
 
 [System.Serializable]

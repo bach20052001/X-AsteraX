@@ -15,6 +15,8 @@ public class LevelDataObject
     public float MaxVelocity;
     public float MaxAngularVelocity;
     public List<NumberAsteroidData> ListAsteroid = new List<NumberAsteroidData>();
+    public bool HasBoss;
+    public int BossType; 
 }
 
 [System.Serializable]

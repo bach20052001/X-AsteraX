@@ -1,0 +1,24 @@
+{
+    "BossID": 1,
+    "BossName": "MiniBoss",
+    "Point": 8000,
+    "Description": "Spawn UFO to attack player",
+    "EnemyList": [
+        {
+            "EnemyType": 1,
+            "Numbers": 1
+        },
+        {
+            "EnemyType": 2,
+            "Numbers": 1
+        },
+        {
+            "EnemyType": 3,
+            "Numbers": 1
+        },
+        {
+            "EnemyType": 4,
+            "Numbers": 1
+        }
+    ]
+}

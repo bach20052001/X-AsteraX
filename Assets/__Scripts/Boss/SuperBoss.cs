@@ -19,7 +19,7 @@ public class SuperBoss : MonoBehaviour
 {
     public GameObject bulletPrefab;
 
-    private GameObject bullet;
+    public SuperBoss_SO bossData;
 
     private float fireRate;
 
@@ -44,10 +44,13 @@ public class SuperBoss : MonoBehaviour
     private Vector3 leftPosition;
     private Vector3 rightPosition;
 
+    private Vector3 playerStartPos;
+
     private byte dfRed;
     private byte dfBlue;
     private byte dfGreen;
 
+    private bool isLaserActive;
 
     private bool isReadyToAttack = false;
     public List<ParticleSystem> FXBeforeDestroy = new List<ParticleSystem>();
@@ -60,13 +63,14 @@ public class SuperBoss : MonoBehaviour
     [System.Obsolete]
     void Start()
     {
-        HP = 200;
-        currentHP = 200;
-        speed = 6f;
-        point = 5000;
+        HP = bossData.HP;
+        currentHP = bossData.HP;
+        speed = bossData.Speed;
+        point = bossData.point;
         mode = AttackMode.Shoot;
-        xRange = 8;
-        fireRate = 1.5f;
+        xRange = bossData.xRange;
+        fireRate = bossData.FireRate;
+        isLaserActive = bossData.Laser;
 
         player = FindObjectOfType<PlayerShip>();
         energyMat = coreEnergy.GetComponent<Renderer>();
@@ -76,6 +80,7 @@ public class SuperBoss : MonoBehaviour
         rightPosition = new Vector3(xRange, 5, 0);
         outPosition = new Vector3(0, 14, 0);
         startPosition = new Vector3(0, 5, 0);
+        playerStartPos = player.PlayerShipStartPos();
 
         positionCanMove.Add(leftPosition);
         positionCanMove.Add(rightPosition);
@@ -88,20 +93,13 @@ public class SuperBoss : MonoBehaviour
         dfGreen = (byte)(energy.startColor.g * 255);
         dfBlue = (byte)(energy.startColor.b * 255);
 
-        InitBulletProperties();
         StartCoroutine(ChangeWeaponToFight());
         StartCoroutine(ChangePosition());
     }
+
     private void MoveToFightPosition()
     {
         StartCoroutine(MoveToStartFight());
-    }
-
-    private void InitBulletProperties()
-    {
-        bullet = bulletPrefab;
-        bullet.GetComponent<OffScreenWrapper>().enabled = false;
-        bullet.GetComponent<Bullet>().lifeTime = 1f;
     }
 
     IEnumerator MoveToStartFight()
@@ -134,7 +132,14 @@ public class SuperBoss : MonoBehaviour
     {
         if (isLockPlayer)
         {
-            player.TransitionModeControl(Mode.Animation);
+            if (player != null)
+            {
+                player.TransitionModeControl(Mode.Animation);
+            }
+            else
+            {
+                player.transform.position = playerStartPos;
+            }
         }
 
         while (state == State.Fight || position == outPosition)
@@ -286,17 +291,23 @@ public class SuperBoss : MonoBehaviour
             case AttackMode.Shoot:
                 {
                     laser.enabled = false;
-
                     break;
                 }
             case AttackMode.Laser:
                 {
-                    laser.enabled = true;
+                    if (isLaserActive)
+                    {
+                        laser.enabled = true;
+                    }
                     break;
+
                 }
             case AttackMode.Combine:
                 {
-                    laser.enabled = true;
+                    if (isLaserActive)
+                    {
+                        laser.enabled = true;
+                    }
                     break;
                 }
         }
@@ -325,7 +336,7 @@ public class SuperBoss : MonoBehaviour
     {
         for (int i = 0; i < ListGun.Count; i++)
         {
-            GameObject Bullet = Instantiate(bullet, ListGun[i].transform.position, Quaternion.identity);
+            GameObject Bullet = Instantiate(bulletPrefab, ListGun[i].transform.position, Quaternion.identity);
             Bullet.transform.forward = Vector3.down;
         }
     }

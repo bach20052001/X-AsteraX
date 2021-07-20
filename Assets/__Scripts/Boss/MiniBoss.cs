@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyType
@@ -11,9 +11,20 @@ public enum EnemyType
     Red
 }
 
+
 public class MiniBoss : MonoBehaviour
 {
+    public List<Enemy_SO> ListEnemyData = new List<Enemy_SO>();
+
+    public Dictionary<EnemyType, Enemy_SO> EnemiesData = new Dictionary<EnemyType, Enemy_SO>();
+
+    public Enemy_SO currentData;
+
+    private int numberOfCurrentEnemy;
+
     private Vector3 upDestination;
+
+    public MiniBoss_SO bossData;
 
     private Vector3 downDestination;
 
@@ -30,19 +41,28 @@ public class MiniBoss : MonoBehaviour
 
     public bool isUp = true;
 
-    private int startEnemy;
+    private int currenEnemy;
 
     private void Awake()
     {
-        startEnemy = 1;
+        currenEnemy = 1;
+        numberOfCurrentEnemy = bossData.EnemyList[currenEnemy];
+
         downDestination = this.transform.position - Vector3.down;
         upDestination = this.transform.position + Vector3.up * 5f;
         outScreenPos = this.transform.position + Vector3.right * 5f;
         point = 2000;
 
+        for (int i = 0; i < ListEnemyData.Count; i++)
+        {
+            EnemiesData[(EnemyType)(i + 1)] = ListEnemyData[i];
+        }
+
+        currentData = EnemiesData[(EnemyType)currenEnemy];
+
         this.RegisterListener(Event.OnDestroyedEnemy, (param) => OnDestroyedEnemy());
 
-        StartCoroutine(SpawnEnemy((EnemyType)startEnemy));
+        StartCoroutine(SpawnEnemy((EnemyType)currenEnemy));
     }
 
     private void Update()
@@ -63,16 +83,25 @@ public class MiniBoss : MonoBehaviour
 
     private void OnDestroyedEnemy()
     {
-        startEnemy++;
+        numberOfCurrentEnemy--;
 
-        if (startEnemy > (int)EnemyType.Red)
+        if (numberOfCurrentEnemy == 0)
         {
-            MoveOut();
+            currenEnemy++;
+
+            if (currenEnemy > (int)EnemyType.Red)
+            {
+                MoveOut();
+            }
+            else
+            {
+                StartCoroutine(SpawnEnemy((EnemyType)currenEnemy));
+                numberOfCurrentEnemy = bossData.EnemyList[currenEnemy];
+            }
         }
-        else
+        else if (numberOfCurrentEnemy > 0)
         {
-            StartCoroutine(SpawnEnemy((EnemyType)startEnemy));
-
+            StartCoroutine(SpawnEnemy((EnemyType)currenEnemy));
         }
     }
 
@@ -137,29 +166,11 @@ public class MiniBoss : MonoBehaviour
         enemy = Instantiate(EnemyPrefab, this.transform.position, Quaternion.identity);
 
         yield return new WaitForEndOfFrame();
-        switch (enemyType)
-        {
-            case EnemyType.Blue:
-                {
-                    enemy.AddComponent<BlueEnemy>();
-                    break;
-                }
-            case EnemyType.Green:
-                {
-                    enemy.AddComponent<GreenEnemy>();
-                    break;
-                }
-            case EnemyType.Yellow:
-                {
-                    enemy.AddComponent<YellowEnemy>();
-                    break;
-                }
-            case EnemyType.Red:
-                {
-                    enemy.AddComponent<RedEnemy>();
-                    break;
-                }
-        }
+
+        currentData = EnemiesData[enemyType];
+
+        enemy.AddComponent<Enemy>();
+
         yield break;
     }
 }

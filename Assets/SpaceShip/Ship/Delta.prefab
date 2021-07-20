@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 3579517005255317674}
   - component: {fileID: 3579517005255317675}
   - component: {fileID: 3579517005255317672}
+  - component: {fileID: 586460106149130369}
   m_Layer: 8
   m_Name: Delta
   m_TagString: Player
@@ -483,13 +484,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipParameter: {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   skilldata: {fileID: 11400000, guid: 9eed74139145346ed8f755a29e672bf6, type: 2}
-  bulletPrefabForAsteroid: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
-    type: 3}
-  bulletPrefabForBoss: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
-    type: 3}
   Shield: {fileID: 3818679593863352295}
   canControl: 1
   modeControl: 0
+--- !u!1818360608 &586460106149130369
+PositionConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579517005255351835}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 0
+  m_AffectTranslationY: 0
+  m_AffectTranslationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources: []
 --- !u!1 &3579517005255351837
 GameObject:
   m_ObjectHideFlags: 0

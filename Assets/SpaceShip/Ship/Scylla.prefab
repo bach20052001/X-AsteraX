@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 7148226280545609689}
   - component: {fileID: 7148226280545609691}
   - component: {fileID: 7148226280545609692}
+  - component: {fileID: -4527250749384048039}
   m_Layer: 8
   m_Name: Scylla
   m_TagString: Player
@@ -209,10 +210,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipParameter: {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
   skilldata: {fileID: 11400000, guid: 44bb0eadc48c9437bafb5e249002510c, type: 2}
-  bulletPrefabForAsteroid: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
-    type: 3}
-  bulletPrefabForBoss: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
-    type: 3}
   Shield: {fileID: 2213578902467484780}
   canControl: 1
   modeControl: 0
@@ -243,6 +240,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   degrees: 30
   tiltTowards: 1
+--- !u!1818360608 &-4527250749384048039
+PositionConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148226280545706359}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 0
+  m_AffectTranslationY: 0
+  m_AffectTranslationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources: []
 --- !u!1 &7148226280545706361
 GameObject:
   m_ObjectHideFlags: 0

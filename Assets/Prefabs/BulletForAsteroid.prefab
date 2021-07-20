@@ -127,9 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31a3ad21da634acea2f2093822c4fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
-  lifeTime: 2
   bDidWrap: 0
+  bulletData: {fileID: 11400000, guid: 604f6bdcfc259437eaf4c1eee3a431e7, type: 2}
 --- !u!114 &114189256797684982
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1179,6 +1179,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
   - {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
   - {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
+  data_bullet:
+  - {fileID: 11400000, guid: 604f6bdcfc259437eaf4c1eee3a431e7, type: 2}
+  - {fileID: 11400000, guid: abd4ee05a870a4b87800187f97de1a88, type: 2}
+  - {fileID: 11400000, guid: ace94611188c14f0dadbc011fa387d9f, type: 2}
+  data_enemy:
+  - {fileID: 11400000, guid: 7ff7f197069174d208bba8a4a3f09fba, type: 2}
+  - {fileID: 11400000, guid: 43d43907e6c9d40c88ef2a6b4c14b34b, type: 2}
+  - {fileID: 11400000, guid: 119c3be57052f4697b00ba01854eb29a, type: 2}
+  - {fileID: 11400000, guid: 7f57d9a6007e94c6d85f0ba584f72a62, type: 2}
+  data_superboss: {fileID: 11400000, guid: d293ee147edeb4927a63cb2e428637cc, type: 2}
+  data_miniboss: {fileID: 11400000, guid: 2f5228aee6aba4f848bf032ca9b866e7, type: 2}
   dataAsteroid:
     data_asteroid: []
   dataLevel:
@@ -1187,6 +1198,15 @@ MonoBehaviour:
     data_ship: []
   dataSkill:
     data_skill: []
+  dataBullet:
+    data_bullet: []
+  dataEnemy:
+    data_enemy: []
+  dataMiniboss:
+    BossID: 0
+    BossName: 
+    Point: 0
+    Description: 
 --- !u!1 &1221103625
 GameObject:
   m_ObjectHideFlags: 0

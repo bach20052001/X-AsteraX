@@ -53593,6 +53593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
     type: 3}
+  bossData: {fileID: 11400000, guid: d293ee147edeb4927a63cb2e428637cc, type: 2}
   ListGun:
   - {fileID: 7258910115303881693}
   - {fileID: 5289654026460845305}
