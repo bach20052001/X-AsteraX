@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody rigid;
 
-    private GameObject bullet;
+    private ObjectPooling bulletPooling;
 
     private Vector3 direction;
     private Vector3 dest;
@@ -85,9 +85,11 @@ public class Enemy : MonoBehaviour
         target = FindObjectOfType<PlayerShip>();
         rigid = GetComponent<Rigidbody>();
         miniBoss = FindObjectOfType<MiniBoss>();
-        bullet = miniBoss.InitBullet();
 
         EnemyData = miniBoss.currentData;
+
+        bulletPooling = AsteraX.S.ListDataBullet[(BulletMode)EnemyData.BulletType];
+
 
         InitData();
 
@@ -146,9 +148,12 @@ public class Enemy : MonoBehaviour
 
     public void Shoot()
     {
+        Bullet bullet = bulletPooling.GetUnactiveBullet();
 
-        GameObject Bullet = Instantiate(bullet, this.transform.position, bullet.transform.rotation);
-        Bullet.transform.LookAt(target.transform.position);
+        bullet.transform.position = this.transform.position;
+
+        bullet.transform.LookAt(target.transform.position);
+
+        bullet.InitVel();
     }
-
 }

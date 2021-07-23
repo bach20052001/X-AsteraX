@@ -62,7 +62,6 @@ public class PlayerShip : MonoBehaviour
 
     private Vector3 offset = new Vector3(0.5f, 0, 0);
 
-    //private GameObject bulletPrefab;
 
     [SerializeField] private GameObject Shield;
 
@@ -281,7 +280,7 @@ public class PlayerShip : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("EnemyBullet"))
             {
-                Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
             }
 
             if (canDestroy)
@@ -289,6 +288,7 @@ public class PlayerShip : MonoBehaviour
                 --Ship_HP;
 
                 GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
+
                 explosion.transform.position = transform.position;
 
                 this.PostEvent(GameEvent.OnPlayerDamaged, (float)((float)Ship_HP / (float)MaxHP));
@@ -357,27 +357,27 @@ public class PlayerShip : MonoBehaviour
 
         if (shipAttack == 1)
         {
-            // Instantiate the Bullet and set its direction
-            GameObject go = ObjectPoolingBullet.GetUnactiveObject();
+            Bullet go = ObjectPoolingBullet.GetUnactiveBullet();
             go.transform.position = transform.position;
 
             if (mode == Mode.Normal)
             {
                 go.transform.LookAt(mPos3D);
 
-                go.GetComponent<Bullet>().InitVel();
+                go.InitVel();
             }
             else if (mode == Mode.FightingBoss)
             {
                 go.transform.forward = Vector3.up;
+
+                go.InitVel();
             }
         }
 
         else if (shipAttack == 2)
         {
-
-            GameObject b1 = ObjectPoolingBullet.GetUnactiveObject();
-            GameObject b2 = ObjectPoolingBullet.GetUnactiveObject();
+            Bullet b1 = ObjectPoolingBullet.GetUnactiveBullet();
+            Bullet b2 = ObjectPoolingBullet.GetUnactiveBullet();
 
             b1.transform.position = transform.position + offset;
             b2.transform.position = transform.position - offset;
@@ -387,13 +387,16 @@ public class PlayerShip : MonoBehaviour
                 b1.transform.LookAt(mPos3D + offset);
                 b2.transform.LookAt(mPos3D - offset);
 
-                b1.GetComponent<Bullet>().InitVel();
-                b2.GetComponent<Bullet>().InitVel();
+                b1.InitVel();
+                b2.InitVel();
             }
             else if (mode == Mode.FightingBoss)
             {
                 b1.transform.forward = Vector3.up;
                 b2.transform.forward = Vector3.up;
+
+                b1.InitVel();
+                b2.InitVel();
             }
         }
     }

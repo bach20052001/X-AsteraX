@@ -4,16 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(OffScreenWrapper))]
 public class Bullet : MonoBehaviour {
-    //static private Transform _BULLET_ANCHOR;
-    //static Transform BULLET_ANCHOR {
-    //    get {
-    //        if (_BULLET_ANCHOR == null) {
-    //            GameObject go = new GameObject("BulletAnchor");
-    //            _BULLET_ANCHOR = go.transform;
-    //        }
-    //        return _BULLET_ANCHOR;
-    //    }
-    //}
 
     private Rigidbody rigid;
 
@@ -29,11 +19,6 @@ public class Bullet : MonoBehaviour {
     }
 
     private void Awake()
-    {
-        rigid = GetComponent<Rigidbody>();
-    }
-
-    void Start()
     {
         InitData();
     }
@@ -53,6 +38,7 @@ public class Bullet : MonoBehaviour {
     {
         bulletSpeed = bulletData.Speed;
         lifeTime = bulletData.LifeTime;
+        rigid = GetComponent<Rigidbody>();
         GetComponent<OffScreenWrapper>().enabled = bulletData.isOffScreenWrapper;
         GetComponent<Renderer>().material.color = bulletData.color;
     }

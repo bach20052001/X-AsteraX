@@ -537,12 +537,18 @@ public class AsteraX : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            if (gameState == BaseGameState.PLAY)
+            {
                 RemoveAllAsteroid();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            isBossAppear = false;
+            if (gameState == BaseGameState.PLAY)
+            {
+                isBossAppear = false;
+            }
         }
     }
 #endif

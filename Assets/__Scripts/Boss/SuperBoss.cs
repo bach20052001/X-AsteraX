@@ -17,7 +17,7 @@ public enum State
 
 public class SuperBoss : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    private ObjectPooling bulletPooling;
 
     public SuperBoss_SO bossData;
 
@@ -72,6 +72,9 @@ public class SuperBoss : MonoBehaviour
         fireRate = bossData.FireRate;
         isLaserActive = bossData.Laser;
 
+        bulletPooling = AsteraX.S.ListDataBullet[(BulletMode)bossData.BulletType];
+
+
         player = FindObjectOfType<PlayerShip>();
         energyMat = coreEnergy.GetComponent<Renderer>();
         laser = GetComponent<Laser>();
@@ -80,7 +83,11 @@ public class SuperBoss : MonoBehaviour
         rightPosition = new Vector3(xRange, 5, 0);
         outPosition = new Vector3(0, 14, 0);
         startPosition = new Vector3(0, 5, 0);
-        playerStartPos = player.PlayerShipStartPos();
+
+        if (player != null)
+        {
+            playerStartPos = player.PlayerShipStartPos();
+        }
 
         positionCanMove.Add(leftPosition);
         positionCanMove.Add(rightPosition);
@@ -112,6 +119,11 @@ public class SuperBoss : MonoBehaviour
 
     IEnumerator MoveTo(Vector3 position)
     {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerShip>();
+        }
+
         player.TransitionModeControl(Mode.Animation);
 
         while (state == State.Fight)
@@ -138,6 +150,7 @@ public class SuperBoss : MonoBehaviour
             }
             else
             {
+                player = FindObjectOfType<PlayerShip>();
                 player.transform.position = playerStartPos;
             }
         }
@@ -190,7 +203,8 @@ public class SuperBoss : MonoBehaviour
             }
 
             GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
-            explosion.transform.position = transform.position;
+
+            explosion.transform.position = collision.contacts[0].point;
 
             collision.gameObject.SetActive(false);
 
@@ -337,8 +351,13 @@ public class SuperBoss : MonoBehaviour
     {
         for (int i = 0; i < ListGun.Count; i++)
         {
-            GameObject Bullet = Instantiate(bulletPrefab, ListGun[i].transform.position, Quaternion.identity);
-            Bullet.transform.forward = Vector3.down;
+            Bullet bullet = bulletPooling.GetUnactiveBullet();
+
+            bullet.transform.position = ListGun[i].transform.position;
+
+            bullet.transform.forward = Vector3.down;
+
+            bullet.InitVel();
         }
     }
 }

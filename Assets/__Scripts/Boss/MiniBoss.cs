@@ -37,8 +37,6 @@ public class MiniBoss : MonoBehaviour
 
     private float speed = 10f;
 
-    [SerializeField] private GameObject EnemyBullet;
-
     public bool isUp = true;
 
     private int currenEnemy;
@@ -74,11 +72,6 @@ public class MiniBoss : MonoBehaviour
             MoveOut();
         }
 #endif
-    }
-
-    public GameObject InitBullet()
-    {
-        return EnemyBullet;
     }
 
     private void OnDestroyedEnemy()
