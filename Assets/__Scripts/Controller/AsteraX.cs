@@ -22,7 +22,7 @@ public class AsteraX : MonoBehaviour
     public static int jumpRemaining = 3;
     public GameObject Gate;
 
-    public ParticleSystem explosion;
+    public ObjectPooling explosionOP;
 
     public ParticleSystem shipExplosion;
 
@@ -46,9 +46,9 @@ public class AsteraX : MonoBehaviour
 
     public GameObject SuperBoss;
 
-    public List<GameObject> ListBullet = new List<GameObject>();
+    public List<ObjectPooling> ListObjectPooling = new List<ObjectPooling>();
 
-    public Dictionary<BulletMode, GameObject> ListDataBullet = new Dictionary<BulletMode, GameObject>();
+    public Dictionary<BulletMode, ObjectPooling> ListDataBullet = new Dictionary<BulletMode, ObjectPooling>();
 
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
@@ -104,7 +104,7 @@ public class AsteraX : MonoBehaviour
 
     private void PauseGame()
     {
-        this.PostEvent(Event.Pause);
+        this.PostEvent(GameEvent.Pause);
         Time.timeScale = 0;
     }
 
@@ -155,9 +155,9 @@ public class AsteraX : MonoBehaviour
 
         TransitionState(BaseGameState.PLAY);
 
-        for (int i = 0; i < ListBullet.Count; i++)
+        for (int i = 0; i < ListObjectPooling.Count; i++)
         {
-            ListDataBullet.Add((BulletMode)(i+1), ListBullet[i]);
+            ListDataBullet.Add((BulletMode)(i+1), ListObjectPooling[i]);
         }
     }
 
@@ -178,10 +178,10 @@ public class AsteraX : MonoBehaviour
 
         StartCoroutine(FadeGate());
 
-        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler());
-        this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
-        this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
-        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyBossHandler());
+        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroidHandler());
+        this.RegisterListener(GameEvent.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
+        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
+        this.RegisterListener(GameEvent.OnDestroyedBoss, (param) => OnDestroyBossHandler());
     }
 
     private void OnDestroyBossHandler()
@@ -338,13 +338,13 @@ public class AsteraX : MonoBehaviour
         {
             case 1:
                 {
-                    this.PostEvent(Event.FightBoss);
+                    this.PostEvent(GameEvent.FightBoss);
                     Instantiate(MiniBoss);
                     break;
                 }
             case 2:
                 {
-                    this.PostEvent(Event.FightBoss);
+                    this.PostEvent(GameEvent.FightBoss);
                     Instantiate(SuperBoss);
                     break;
                 }
@@ -355,7 +355,7 @@ public class AsteraX : MonoBehaviour
     {
         LevelManager.Instance.IncreaseLevel();
 
-        this.PostEvent(Event.OnNextLevel, levelManager.level);
+        this.PostEvent(GameEvent.OnNextLevel, levelManager.level);
 
         yield return new WaitForSeconds(3f);
 

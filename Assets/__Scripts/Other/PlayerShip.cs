@@ -1,7 +1,6 @@
 ﻿#define DEBUG_PlayerShip_RespawnNotifications
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 //using UnityStandardAssets.CrossPlatformInput;
 
@@ -15,6 +14,7 @@ public enum Mode
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerShip : MonoBehaviour
 {
+    private ObjectPooling ObjectPoolingBullet;
 
     public Ship_SO shipParameter;
 
@@ -62,7 +62,7 @@ public class PlayerShip : MonoBehaviour
 
     private Vector3 offset = new Vector3(0.5f, 0, 0);
 
-    private GameObject bulletPrefab;
+    //private GameObject bulletPrefab;
 
     [SerializeField] private GameObject Shield;
 
@@ -83,7 +83,7 @@ public class PlayerShip : MonoBehaviour
         shipAttack = shipParameter.attack;
         skill = shipParameter.skill;
 
-        bulletPrefab = AsteraX.S.ListDataBullet[(BulletMode)shipParameter.BulletType];
+        //bulletPrefab = AsteraX.S.ListDataBullet[(BulletMode)shipParameter.BulletType];
 
         AppearEffect = AsteraX.S.warp;
 
@@ -114,6 +114,8 @@ public class PlayerShip : MonoBehaviour
                     break;
                 }
         }
+
+        ObjectPoolingBullet = AsteraX.S.ListDataBullet[(BulletMode)shipParameter.BulletType];
 
         shipSkill.InitData(skilldata.countdownSkill, skilldata.maxIncremental);
 
@@ -189,7 +191,7 @@ public class PlayerShip : MonoBehaviour
                 {
                     {
                         Fire(modeControl);
-                        this.PostEvent(Event.OnPlayerFired);
+                        this.PostEvent(GameEvent.OnPlayerFired);
                     }
 
                 }
@@ -224,7 +226,7 @@ public class PlayerShip : MonoBehaviour
                 }
             case Mode.FightingBoss:
                 {
-                    bulletPrefab = AsteraX.S.ListDataBullet[BulletMode.PlayerVsBoss];
+                    ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsBoss];
                     canControl = true;
                     GetComponentInChildren<TurretPointAtMouse>().gameObject.transform.rotation = Quaternion.Euler(new Vector3(-90 ,0 ,0));
                     GetComponentInChildren<TurretPointAtMouse>().enabled = false;
@@ -232,7 +234,7 @@ public class PlayerShip : MonoBehaviour
                 }
             case Mode.Normal:
             {
-                    bulletPrefab = AsteraX.S.ListDataBullet[BulletMode.PlayerVsAsteroid];
+                    ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsAsteroid];
                     canControl = true;
                     GetComponentInChildren<TurretPointAtMouse>().enabled = true;
                     break;
@@ -285,9 +287,11 @@ public class PlayerShip : MonoBehaviour
             if (canDestroy)
             {
                 --Ship_HP;
-                Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
 
-                this.PostEvent(Event.OnPlayerDamaged, (float)((float)Ship_HP / (float)MaxHP));
+                GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
+                explosion.transform.position = transform.position;
+
+                this.PostEvent(GameEvent.OnPlayerDamaged, (float)((float)Ship_HP / (float)MaxHP));
 
                 if (Ship_HP > 0)
                 {
@@ -298,8 +302,8 @@ public class PlayerShip : MonoBehaviour
                 }
                 else
                 {
-                    this.PostEvent(Event.PlayerShipDestroyed);
-                    this.PostEvent(Event.OnPlayerDamaged, 1f);
+                    this.PostEvent(GameEvent.PlayerShipDestroyed);
+                    this.PostEvent(GameEvent.OnPlayerDamaged, 1f);
                     gameObject.SetActive(false);
                     if (AsteraX.jumpRemaining > 0)
                     {
@@ -317,7 +321,7 @@ public class PlayerShip : MonoBehaviour
             --Ship_HP;
             if (Ship_HP <= 0)
             {
-                this.PostEvent(Event.PlayerShipDestroyed);
+                this.PostEvent(GameEvent.PlayerShipDestroyed);
                 gameObject.SetActive(false);
                 if (AsteraX.jumpRemaining > 0)
                 {
@@ -354,12 +358,14 @@ public class PlayerShip : MonoBehaviour
         if (shipAttack == 1)
         {
             // Instantiate the Bullet and set its direction
-            GameObject go = Instantiate<GameObject>(bulletPrefab);
+            GameObject go = ObjectPoolingBullet.GetUnactiveObject();
             go.transform.position = transform.position;
 
             if (mode == Mode.Normal)
             {
                 go.transform.LookAt(mPos3D);
+
+                go.GetComponent<Bullet>().InitVel();
             }
             else if (mode == Mode.FightingBoss)
             {
@@ -370,8 +376,8 @@ public class PlayerShip : MonoBehaviour
         else if (shipAttack == 2)
         {
 
-            GameObject b1 = Instantiate<GameObject>(bulletPrefab);
-            GameObject b2 = Instantiate<GameObject>(bulletPrefab);
+            GameObject b1 = ObjectPoolingBullet.GetUnactiveObject();
+            GameObject b2 = ObjectPoolingBullet.GetUnactiveObject();
 
             b1.transform.position = transform.position + offset;
             b2.transform.position = transform.position - offset;
@@ -380,15 +386,16 @@ public class PlayerShip : MonoBehaviour
             {
                 b1.transform.LookAt(mPos3D + offset);
                 b2.transform.LookAt(mPos3D - offset);
+
+                b1.GetComponent<Bullet>().InitVel();
+                b2.GetComponent<Bullet>().InitVel();
             }
             else if (mode == Mode.FightingBoss)
             {
                 b1.transform.forward = Vector3.up;
                 b2.transform.forward = Vector3.up;
             }
-
         }
-
     }
 
     static public float MAX_SPEED

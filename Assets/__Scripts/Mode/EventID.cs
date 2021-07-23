@@ -1,4 +1,4 @@
-﻿public enum Event
+﻿public enum GameEvent
 {
     None,
     OnPlayerFired,

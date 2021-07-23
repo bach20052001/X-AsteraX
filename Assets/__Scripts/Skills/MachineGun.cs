@@ -21,7 +21,7 @@ public class MachineGun : Skill
 
     private void Shoot()
     {
-        this.PostEvent(Event.OnActiveSkill, time);
+        this.PostEvent(GameEvent.OnActiveSkill, time);
 
         StartCoroutine(ShootAutomation(time));
     }

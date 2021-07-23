@@ -60,7 +60,7 @@ public class MiniBoss : MonoBehaviour
 
         currentData = EnemiesData[(EnemyType)currenEnemy];
 
-        this.RegisterListener(Event.OnDestroyedEnemy, (param) => OnDestroyedEnemy());
+        this.RegisterListener(GameEvent.OnDestroyedEnemy, (param) => OnDestroyedEnemy());
 
         StartCoroutine(SpawnEnemy((EnemyType)currenEnemy));
     }
@@ -144,7 +144,7 @@ public class MiniBoss : MonoBehaviour
 #if UNITY_EDITOR
             AsteraX.S.isBossAppear = false;
 #endif
-            this.PostEvent(Event.OnDestroyedBoss, point);
+            this.PostEvent(GameEvent.OnDestroyedBoss, point);
             Destroy(gameObject);
         }
 

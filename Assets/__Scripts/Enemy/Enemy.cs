@@ -36,31 +36,32 @@ public class Enemy : MonoBehaviour
         {
             currentHP--;
 
-            this.PostEvent(Event.OnEnemyDamaged, (float) currentHP/ HP);
+            this.PostEvent(GameEvent.OnEnemyDamaged, (float) currentHP/ HP);
 
-            Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
+            GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
+            explosion.transform.position = transform.position;
 
-            Destroy(collision.gameObject);
-
-
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                StartCoroutine(AffectToPlayer());
-            }
+            collision.gameObject.SetActive(false);
 
             if (currentHP == 0)
             {
-                this.PostEvent(Event.OnDestroyedEnemy, point);
+                this.PostEvent(GameEvent.OnDestroyedEnemy, point);
                 Destroy(gameObject);
             }
         }
 
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(AffectToPlayer());
+        }
     }
 
 
     private IEnumerator AffectToPlayer()
     {
-        Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
+        GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
+        explosion.transform.position = transform.position;
+
         Vector3 direction = target.transform.position - this.transform.position;
         canFollowPlayer = false;
         rigid.velocity = -direction * 8f;

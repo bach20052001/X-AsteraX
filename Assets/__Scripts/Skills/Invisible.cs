@@ -21,7 +21,7 @@ public class Invisible : Skill
 
     private void InvisibleActive()
     {
-        this.PostEvent(Event.OnActiveSkill, timeInterval);
+        this.PostEvent(GameEvent.OnActiveSkill, timeInterval);
 
         StartCoroutine(Trigger());
     }

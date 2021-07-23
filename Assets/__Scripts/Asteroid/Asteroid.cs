@@ -196,14 +196,17 @@ public class Asteroid : MonoBehaviour
             {
                 healthController.damaged();
                 bulletCollision = otherGO;
-                Instantiate(AsteraX.S.explosion, transform.position, Quaternion.identity);
-                Destroy(otherGO);
+
+                GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
+                explosion.transform.position = transform.position;
+
+                otherGO.SetActive(false);
 
                 if (healthController.GetHp() == 0)
                 {
                     if (size == 1)
                     {
-                        this.PostEvent(Event.EarnCoin);
+                        this.PostEvent(GameEvent.EarnCoin);
                     }
 
                     if (size > 1)
@@ -212,7 +215,7 @@ public class Asteroid : MonoBehaviour
                         SpawnChildAsteroid(childSize, this.transform.localPosition);
                     }
 
-                    this.PostEvent(Event.OnHitAsteroid, this);
+                    this.PostEvent(GameEvent.OnHitAsteroid, this);
 
                     Destroy(gameObject);
                 }

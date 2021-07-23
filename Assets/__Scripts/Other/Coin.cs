@@ -39,7 +39,7 @@ public class Coin : MonoBehaviour
 
     void Start()
     {
-        this.RegisterListener(Event.EarnCoin, (param) => OnEarnCoin());   
+        this.RegisterListener(GameEvent.EarnCoin, (param) => OnEarnCoin());   
     }
 
     private void OnEarnCoin()

@@ -159,7 +159,7 @@ public class SuperBoss : MonoBehaviour
 
         if (position == outPosition)
         {
-            this.PostEvent(Event.OnDestroyedBoss, point);
+            this.PostEvent(GameEvent.OnDestroyedBoss, point);
             Destroy(this.gameObject);
         }
 
@@ -180,7 +180,7 @@ public class SuperBoss : MonoBehaviour
         {
             currentHP--;
 
-            this.PostEvent(Event.OnEnemyDamaged, (float)currentHP / HP);
+            this.PostEvent(GameEvent.OnEnemyDamaged, (float)currentHP / HP);
 
             DecreaseEnergy((int)Mathf.Abs(255 * currentHP / HP));
 
@@ -189,9 +189,10 @@ public class SuperBoss : MonoBehaviour
                 FXBeforeDestroy[1].gameObject.SetActive(true);
             }
 
-            Instantiate(AsteraX.S.explosion, collision.contacts[0].point, Quaternion.identity);
+            GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
+            explosion.transform.position = transform.position;
 
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
             if (currentHP == 0)
             {

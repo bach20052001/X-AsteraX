@@ -37,9 +37,9 @@ public class EventDispatcher : MonoBehaviour
     #endregion
 
     #region Register, Post, Remove
-    Dictionary<Event, Action<object>> listener = new Dictionary<Event, Action<object>>();
+    Dictionary<GameEvent, Action<object>> listener = new Dictionary<GameEvent, Action<object>>();
 
-    public void RegisterListener(Event eventID, Action<object> callback)
+    public void RegisterListener(GameEvent eventID, Action<object> callback)
     {
         if (listener.ContainsKey(eventID))
         {
@@ -51,7 +51,7 @@ public class EventDispatcher : MonoBehaviour
             listener[eventID] += callback;
         }
     }
-    public void PostEvent(Event eventID)
+    public void PostEvent(GameEvent eventID)
     {
         var callback = listener[eventID];
 
@@ -64,7 +64,7 @@ public class EventDispatcher : MonoBehaviour
             Debug.LogError("Can't find callback function of" + eventID.ToString());
         }
     }
-    public void PostEvent(Event eventID, object obj)
+    public void PostEvent(GameEvent eventID, object obj)
     {
         var callback = listener[eventID];
 
@@ -78,7 +78,7 @@ public class EventDispatcher : MonoBehaviour
         }
     }
 
-    public void RemoveListener(Event eventID, Action<object> callback)
+    public void RemoveListener(GameEvent eventID, Action<object> callback)
     {
         if (listener.ContainsKey(eventID))
         {
@@ -93,22 +93,22 @@ public class EventDispatcher : MonoBehaviour
 
 public static class EventDispatcherExtension
 {
-    public static void RegisterListener(this MonoBehaviour listener, Event eventID, Action<object> callback)
+    public static void RegisterListener(this MonoBehaviour listener, GameEvent eventID, Action<object> callback)
     {
         EventDispatcher.Instance.RegisterListener(eventID, callback);
     }
 
-    public static void PostEvent(this MonoBehaviour listener, Event eventID, object param)
+    public static void PostEvent(this MonoBehaviour listener, GameEvent eventID, object param)
     {
         EventDispatcher.Instance.PostEvent(eventID, param);
     }
 
-    public static void PostEvent(this MonoBehaviour listener, Event eventID)
+    public static void PostEvent(this MonoBehaviour listener, GameEvent eventID)
     {
         EventDispatcher.Instance.PostEvent(eventID);
     }
 
-    public static void RemoveListener(this MonoBehaviour listener, Event eventID, Action<object> callback)
+    public static void RemoveListener(this MonoBehaviour listener, GameEvent eventID, Action<object> callback)
     {
         EventDispatcher.Instance.RemoveListener(eventID, callback);
     }

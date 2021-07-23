@@ -49,9 +49,9 @@ public class AchiementManager : MonoBehaviour
         achievements[AchiementType.SkillfulDodger] = new AchievementInfomation("Skillful Dodger", "Reach Level 5", 5);
 
 
-        this.RegisterListener(Event.OnPlayerFired, (param) => OnPlayerFiredHandler());
-        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
-        this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
+        this.RegisterListener(GameEvent.OnPlayerFired, (param) => OnPlayerFiredHandler());
+        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
 
         //InvokeRepeating(nameof(PostAchievement), 0f, 0.5f);
 
@@ -83,7 +83,7 @@ public class AchiementManager : MonoBehaviour
     {
         if (unlockAchievement.Count > 0)
         {
-            this.PostEvent(Event.OnUnlockAchievement, unlockAchievement.Dequeue());
+            this.PostEvent(GameEvent.OnUnlockAchievement, unlockAchievement.Dequeue());
         }
     }
 

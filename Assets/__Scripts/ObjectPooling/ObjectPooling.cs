@@ -1,0 +1,55 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum ObjectType
+{
+    BulletPlayerVsAsteroid,
+    BulletPlayerVsBoss,
+    BulletEnemy,
+    Explosion
+}
+
+public class ObjectPooling : MonoBehaviour
+{
+    public ObjectType type;
+
+    public GameObject gameObjectPrefab;
+
+    private List<GameObject> listGameObject = new List<GameObject>();
+
+    public int initialSize;
+
+    void Start()
+    {
+        for (int i = 0; i < initialSize; i++)
+        {
+            InitialObject();
+        }
+    }
+
+    public GameObject GetUnactiveObject()
+    {
+        for (int i = 0; i < listGameObject.Count; i++)
+        {
+            if (!listGameObject[i].activeSelf)
+            {
+                listGameObject[i].SetActive(true);
+                return listGameObject[i];
+            }
+        }
+
+        //If all object actived
+        GameObject newObject = InitialObject();
+        newObject.SetActive(true);
+        return newObject;
+    }
+
+    private GameObject InitialObject()
+    {
+        GameObject tmp = Instantiate(gameObjectPrefab);
+        tmp.SetActive(false);
+        tmp.transform.SetParent(this.gameObject.transform);
+        listGameObject.Add(tmp);
+        return tmp;
+    }
+}

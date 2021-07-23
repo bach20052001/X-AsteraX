@@ -1,18 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(OffScreenWrapper))]
 public class Bullet : MonoBehaviour {
-    static private Transform _BULLET_ANCHOR;
-    static Transform BULLET_ANCHOR {
-        get {
-            if (_BULLET_ANCHOR == null) {
-                GameObject go = new GameObject("BulletAnchor");
-                _BULLET_ANCHOR = go.transform;
-            }
-            return _BULLET_ANCHOR;
-        }
-    }
+    //static private Transform _BULLET_ANCHOR;
+    //static Transform BULLET_ANCHOR {
+    //    get {
+    //        if (_BULLET_ANCHOR == null) {
+    //            GameObject go = new GameObject("BulletAnchor");
+    //            _BULLET_ANCHOR = go.transform;
+    //        }
+    //        return _BULLET_ANCHOR;
+    //    }
+    //}
+
+    private Rigidbody rigid;
 
     private float    bulletSpeed;
     private float    lifeTime;
@@ -20,17 +23,30 @@ public class Bullet : MonoBehaviour {
 
     public Bullet_SO bulletData;
 
+    private void OnEnable()
+    {
+        StartCoroutine(nameof(Unactive));
+    }
+
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody>();
+    }
+
     void Start()
     {
         InitData();
+    }
 
-        transform.SetParent(BULLET_ANCHOR, true);
+    IEnumerator Unactive()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        DestroyMe();
+    }
 
-        // Set Bullet to self-destruct in lifeTime seconds
-        Invoke("DestroyMe", lifeTime);
-
-        // Set the velocity of the Bullet
-        GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+    public void InitVel()
+    {
+        rigid.velocity = transform.forward * bulletSpeed;
     }
 
     void InitData()
@@ -43,7 +59,6 @@ public class Bullet : MonoBehaviour {
 
     void DestroyMe()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
-    
 }

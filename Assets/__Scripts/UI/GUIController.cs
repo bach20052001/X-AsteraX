@@ -58,16 +58,16 @@ public class GUIController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        this.RegisterListener(Event.OnUnlockAchievement, (param) => UnlockAchievementHandler(param as AchievementInfomation));
-        this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevelHandler());
-        this.RegisterListener(Event.OnPlayerDamaged, (param) => OnPlayerDamagedHandler(param));
-        this.RegisterListener(Event.OnEnemyDamaged, (param) => OnEnemyDamagedHandler(param));
-        this.RegisterListener(Event.OnActiveSkill, (param) => OnActiveSkillHandler(param));
-        this.RegisterListener(Event.Pause, (param) => OnPause());
-        this.RegisterListener(Event.FightBoss, (param) => OnFightBossHandler());
-        this.RegisterListener(Event.OnDestroyedBoss, (param) => OnDestroyedBossHandler(param));
-        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
-        this.RegisterListener(Event.OnDestroyedEnemy, (param) => OnDestroyedEnemyHandler(param));
+        this.RegisterListener(GameEvent.OnUnlockAchievement, (param) => UnlockAchievementHandler(param as AchievementInfomation));
+        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
+        this.RegisterListener(GameEvent.OnPlayerDamaged, (param) => OnPlayerDamagedHandler(param));
+        this.RegisterListener(GameEvent.OnEnemyDamaged, (param) => OnEnemyDamagedHandler(param));
+        this.RegisterListener(GameEvent.OnActiveSkill, (param) => OnActiveSkillHandler(param));
+        this.RegisterListener(GameEvent.Pause, (param) => OnPause());
+        this.RegisterListener(GameEvent.FightBoss, (param) => OnFightBossHandler());
+        this.RegisterListener(GameEvent.OnDestroyedBoss, (param) => OnDestroyedBossHandler(param));
+        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(GameEvent.OnDestroyedEnemy, (param) => OnDestroyedEnemyHandler(param));
 
 
 

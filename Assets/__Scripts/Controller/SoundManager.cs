@@ -17,10 +17,10 @@ public class SoundManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
 
-        this.RegisterListener(Event.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHandler());
-        this.RegisterListener(Event.OnPlayerFired, (param) => OnPlayerFiredHandler());
-        this.RegisterListener(Event.OnHitAsteroid, (param) => OnHitAsteroid());
-        this.RegisterListener(Event.OnNextLevel, (param) => OnNextLevel());
+        this.RegisterListener(GameEvent.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHandler());
+        this.RegisterListener(GameEvent.OnPlayerFired, (param) => OnPlayerFiredHandler());
+        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroid());
+        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevel());
     }
 
     private void OnNextLevel()
