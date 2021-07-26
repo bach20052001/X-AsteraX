@@ -157,7 +157,7 @@ public class AsteraX : MonoBehaviour
 
         for (int i = 0; i < ListObjectPooling.Count; i++)
         {
-            ListDataBullet.Add((BulletMode)(i+1), ListObjectPooling[i]);
+            ListDataBullet.Add((BulletMode)(i + 1), ListObjectPooling[i]);
         }
     }
 
@@ -535,17 +535,15 @@ public class AsteraX : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (gameState == BaseGameState.PLAY)
         {
-            if (gameState == BaseGameState.PLAY)
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 RemoveAllAsteroid();
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            if (gameState == BaseGameState.PLAY)
+            }
+
+            if (Input.GetKeyDown(KeyCode.O))
             {
                 isBossAppear = false;
             }
