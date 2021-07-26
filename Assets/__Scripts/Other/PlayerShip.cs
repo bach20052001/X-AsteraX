@@ -2,6 +2,7 @@
 
 using System.Collections;
 using UnityEngine;
+using FXV;
 //using UnityStandardAssets.CrossPlatformInput;
 
 public enum Mode
@@ -73,8 +74,15 @@ public class PlayerShip : MonoBehaviour
 
     public Mode modeControl;
 
+    private Camera mainCamera;
+    FXVShieldPostprocess shieldPost;
+
     private void Start()
     {
+        mainCamera = Camera.main;
+
+        shieldPost = mainCamera.GetComponent<FXVShieldPostprocess>();
+
         shipSpeed = maxSpeed * shipParameter.speed / 5;
 
         Ship_HP = shipParameter.HP;
@@ -140,14 +148,25 @@ public class PlayerShip : MonoBehaviour
 
         shipSpeed = maxSpeed * shipParameter.speed / 5;
 
-        StartCoroutine(shieldWhenActive());
+        StartCoroutine(ShieldWhenActive());
     }
 
-    IEnumerator shieldWhenActive()
+    IEnumerator ShieldWhenActive()
     {
+        if (shieldPost != null)
+        {
+            shieldPost.enabled = true;
+        }
+
         Shield.SetActive(true);
         canDestroy = false;
         yield return new WaitForSeconds(2);
+
+        if (shieldPost != null)
+        {
+            shieldPost.enabled = false;
+        }
+
         Shield.SetActive(false);
         canDestroy = true;
     }
@@ -227,15 +246,12 @@ public class PlayerShip : MonoBehaviour
                 {
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsBoss];
                     canControl = true;
-                    GetComponentInChildren<TurretPointAtMouse>().gameObject.transform.rotation = Quaternion.Euler(new Vector3(-90 ,0 ,0));
-                    GetComponentInChildren<TurretPointAtMouse>().enabled = false;
                     break;
                 }
             case Mode.Normal:
             {
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsAsteroid];
                     canControl = true;
-                    GetComponentInChildren<TurretPointAtMouse>().enabled = true;
                     break;
             }
         }
