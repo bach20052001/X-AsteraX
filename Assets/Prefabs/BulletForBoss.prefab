@@ -20,7 +20,7 @@ GameObject:
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &4431153553686698
 Transform:
@@ -208,6 +208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BulletTrailEffect_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779365027958493270, guid: ce7f65cd657aabe4f9680a393dc3298b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2999793094879123550, guid: ce7f65cd657aabe4f9680a393dc3298b,
         type: 3}

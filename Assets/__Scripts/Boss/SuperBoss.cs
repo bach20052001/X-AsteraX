@@ -29,7 +29,6 @@ public class SuperBoss : MonoBehaviour
     private int HP;
     private int currentHP;
 
-    public GameObject coreEnergy;
     public ParticleSystem energy;
 
     private PlayerShip player;
@@ -76,7 +75,6 @@ public class SuperBoss : MonoBehaviour
 
 
         player = FindObjectOfType<PlayerShip>();
-        energyMat = coreEnergy.GetComponent<Renderer>();
         laser = GetComponent<Laser>();
 
         leftPosition = new Vector3(-xRange, 5, 0);
