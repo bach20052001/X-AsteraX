@@ -2,7 +2,6 @@
 
 using System.Collections;
 using UnityEngine;
-using FXV;
 //using UnityStandardAssets.CrossPlatformInput;
 
 public enum Mode
@@ -63,9 +62,6 @@ public class PlayerShip : MonoBehaviour
 
     private Vector3 offset = new Vector3(0.5f, 0, 0);
 
-
-    [SerializeField] private GameObject Shield;
-
     private Vector3 fightPostion;
 
     [HideInInspector] public bool canControl = true;
@@ -74,15 +70,10 @@ public class PlayerShip : MonoBehaviour
 
     public Mode modeControl;
 
-    private Camera mainCamera;
-    FXVShieldPostprocess shieldPost;
+    [SerializeField] private GameObject Shield;
 
     private void Start()
     {
-        mainCamera = Camera.main;
-
-        shieldPost = mainCamera.GetComponent<FXVShieldPostprocess>();
-
         shipSpeed = maxSpeed * shipParameter.speed / 5;
 
         Ship_HP = shipParameter.HP;
@@ -153,20 +144,9 @@ public class PlayerShip : MonoBehaviour
 
     IEnumerator ShieldWhenActive()
     {
-        if (shieldPost != null)
-        {
-            shieldPost.enabled = true;
-        }
-
         Shield.SetActive(true);
         canDestroy = false;
         yield return new WaitForSeconds(2);
-
-        if (shieldPost != null)
-        {
-            shieldPost.enabled = false;
-        }
-
         Shield.SetActive(false);
         canDestroy = true;
     }

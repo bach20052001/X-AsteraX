@@ -45,7 +45,6 @@ public class GUIController : MonoBehaviour
     [SerializeField] private GameObject EnemyPanel;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         scores = 0;
@@ -116,13 +115,31 @@ public class GUIController : MonoBehaviour
 
     private void OnPause()
     {
-        PausePanel.GetComponent<Animator>().SetTrigger("Pause");
+        StartCoroutine(ShowPausePanel());
 
+    }
+
+    private IEnumerator ShowPausePanel()
+    {
+        PausePanel.SetActive(true);
+
+        yield return new WaitForEndOfFrame();
+
+        PausePanel.GetComponent<Animator>().SetTrigger("Pause");
     }
 
     public void ResumeGame()
     {
+        StartCoroutine(ClosePausePanel());
+    }
+
+    private IEnumerator ClosePausePanel()
+    {
         PausePanel.GetComponent<Animator>().SetTrigger("Resume");
+
+        yield return new WaitForSeconds(0.3f);
+
+        PausePanel.SetActive(false);
     }
 
     IEnumerator UpdateSkillUI()
@@ -175,14 +192,20 @@ public class GUIController : MonoBehaviour
 
     private IEnumerator ShowNotiLevel()
     {
+        congratulationPopup.SetActive(true);
         congratulationPopup.GetComponent<Animator>().SetBool("isOn", true);
         yield return new WaitForSeconds(1f);
         congratulationPopup.GetComponent<Animator>().SetBool("isOn", false);
         yield return new WaitForSeconds(1f);
-        nextLevelPopup.gameObject.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.currentLevel).ToString();
+        congratulationPopup.SetActive(false);
+
+        nextLevelPopup.SetActive(true);
+        nextLevelPopup.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.currentLevel).ToString();
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", true);
         yield return new WaitForSeconds(1f);
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", false);
+        yield return new WaitForSeconds(1f);
+        nextLevelPopup.SetActive(false);
     }
 
     private void OnNextLevelHandler()
@@ -198,16 +221,26 @@ public class GUIController : MonoBehaviour
 
     IEnumerator ClosePopup(AchievementInfomation achievement)
     {
+        popupAchievement.gameObject.SetActive(true);
         popupAchievement.SetBool("isUnlock", false);
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForEndOfFrame();
+
         popupAchievement.gameObject.GetComponentInChildren<Text>().text = achievement.displayName + "\n" + achievement.descriptionAchievement;
         popupAchievement.SetBool("isUnlock", true);
+
         yield return new WaitForSeconds(1.5f);
+
         popupAchievement.SetBool("isUnlock", false);
+
+        yield return new WaitForSeconds(0.75f);
+
+        popupAchievement.gameObject.SetActive(false);
+
     }
 
     public void UpdateScore(int score)
-    {
+    {   
         scoreText.text = score.ToString();
     }
 

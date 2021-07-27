@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &1991297926857518202
 Transform:
@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea78e6e515af426e90030ca039fbd59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   background: {fileID: 0}
   hps: []
   healthBar:

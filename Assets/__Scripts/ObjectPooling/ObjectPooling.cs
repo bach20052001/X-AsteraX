@@ -21,7 +21,7 @@ public class ObjectPooling : MonoBehaviour
 
     public int initialSize;
 
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < initialSize; i++)
         {

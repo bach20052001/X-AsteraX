@@ -36,8 +36,6 @@ public class SuperBoss : MonoBehaviour
     public State state;
     private int point;
 
-    private Renderer energyMat;
-
     private Vector3 startPosition;
     private Vector3 outPosition;
     private Vector3 leftPosition;
@@ -180,7 +178,6 @@ public class SuperBoss : MonoBehaviour
     [System.Obsolete]
     private void DecreaseEnergy(int rate)
     {
-        energyMat.material.color = new Color32((byte)rate, (byte)rate, (byte)rate, 1);
         energy.startColor = new Color32(dfRed, dfGreen, dfBlue, (byte)rate);
     }
 
