@@ -1,20 +1,20 @@
 [
     {
-        "Type": "A",
+        "Type": 1,
         "Size": 1,
         "HP": 1,
         "Point": 400,
         "HasMagnetic": 0
     },
     {
-        "Type": "B",
+        "Type": 2,
         "Size": 2,
         "HP": 2,
         "Point": 200,
         "HasMagnetic": 0
     },
     {
-        "Type": "C",
+        "Type": 3,
         "Size": 3,
         "HP": 3,
         "Point": 100,

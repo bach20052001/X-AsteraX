@@ -10,11 +10,11 @@ public class LevelScriptableObject : ScriptableObject
     public float        maxAngularVel = 10;
     public int          numSmallerAsteroidsToSpawn = 2;
 
-    public Dictionary<string, int> Asteroids = new Dictionary<string, int>()
+    public Dictionary<int, int> Asteroids = new Dictionary<int, int>()
     {
-            {"A", 0},
-            {"B", 0},
-            {"C", 0}
+            {1, 0},
+            {2, 0},
+            {3, 0}
     };
 
     public bool HasBoss;

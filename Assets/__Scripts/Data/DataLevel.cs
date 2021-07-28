@@ -3,7 +3,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class NumberAsteroidData
 {
-    public string Type;
+    public int Type;
     public int Number;
 }
 

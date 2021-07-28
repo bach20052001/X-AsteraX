@@ -2,6 +2,8 @@
 //#define DEBUG_Asteroid_TestOOBVel 
 //#define DEBUG_Asteroid_ShotOffscreenDebugLines
 
+
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +18,7 @@ public class Asteroid : MonoBehaviour
     private Asteroid_SO Asteroid_Data;
 
     [Header("Set Dynamically")]
-    public string type;
+    public int type;
     public int size;
 
     private bool hasMagnetic;
@@ -62,25 +64,7 @@ public class Asteroid : MonoBehaviour
 
     private void InitData()
     {
-        //Get Data
-        switch (type)
-        {
-            case "A":
-                {
-                    index = 0;
-                    break;
-                }
-            case "B":
-                {
-                    index = 1;
-                    break;
-                }
-            case "C":
-                {
-                    index = 2;
-                    break;
-                }
-        }
+        index = (int)type;
 
         Asteroid_Data = AsteraX.S.asteroidsData[index];
 
@@ -211,8 +195,7 @@ public class Asteroid : MonoBehaviour
 
                     if (size > 1)
                     {
-                        int childSize = --size;
-                        SpawnChildAsteroid(childSize, this.transform.localPosition);
+                        SpawnChildAsteroid(type - 1, this.transform.localPosition);
                     }
 
                     this.PostEvent(GameEvent.OnHitAsteroid, this);
@@ -245,7 +228,7 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    private void SpawnChildAsteroid(int size, Vector3 position)
+    private void SpawnChildAsteroid(int type, Vector3 position)
     {
         for (int i = 0; i < AsteraX.AsteroidsSO.numSmallerAsteroidsToSpawn; i++)
         {
@@ -253,7 +236,7 @@ public class Asteroid : MonoBehaviour
 
             ast = SpawnAsteroid();
 
-            ast.size = size;
+            ast.type = type;
 
             ast.transform.rotation = Random.rotation;
 

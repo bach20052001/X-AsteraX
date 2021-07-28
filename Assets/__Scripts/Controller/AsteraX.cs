@@ -367,7 +367,7 @@ public class AsteraX : MonoBehaviour
         SpawnAsteroids();
     }
 
-    void SpawnNumberAsteroid(string type, int n)
+    void SpawnNumberAsteroid(int type, int n)
     {
         for (int i = 0; i < n; i++)
         {

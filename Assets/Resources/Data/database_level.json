@@ -6,15 +6,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 1
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 0
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 2
             }
         ],
@@ -27,15 +27,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 1
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 1
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 2
             }
         ],
@@ -48,15 +48,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 1
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 2
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 2
             }
         ],
@@ -69,15 +69,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 1
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 2
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 3
             }
         ],
@@ -90,15 +90,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 0
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 2
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 4
             }
         ],
@@ -112,15 +112,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 2
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 2
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 4
             }
         ],
@@ -133,15 +133,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 1
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 0
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 5
             }
         ],
@@ -154,15 +154,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 1
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 2
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 5
             }
         ],
@@ -175,15 +175,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 2
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 2
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 5
             }
         ],
@@ -196,15 +196,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 1
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 3
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 6
             }
         ],
@@ -218,15 +218,15 @@
         "MaxAngularVelocity": 10,
         "ListAsteroid": [
             {
-                "Type": "A",
+                "Type": 1,
                 "Number": 3
             },
             {
-                "Type": "B",
+                "Type": 2,
                 "Number": 3
             },
             {
-                "Type": "C",
+                "Type": 2,
                 "Number": 6
             }
         ],

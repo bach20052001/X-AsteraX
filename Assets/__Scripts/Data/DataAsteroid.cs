@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class AsteroidDataObject
 {
-    public char Type;
+    public int Type;
 
     [Range(1, 3)]
     public int Size;
