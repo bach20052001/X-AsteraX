@@ -14,6 +14,7 @@ TagManager:
   - EnemyBullet
   - EnemyShip
   - Laser
+  - HealthUI
   layers:
   - Default
   - TransparentFX

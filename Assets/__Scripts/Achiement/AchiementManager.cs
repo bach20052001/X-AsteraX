@@ -50,7 +50,7 @@ public class AchiementManager : MonoBehaviour
 
 
         this.RegisterListener(GameEvent.OnPlayerFired, (param) => OnPlayerFiredHandler());
-        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler(param));
         this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
 
         //InvokeRepeating(nameof(PostAchievement), 0f, 0.5f);
@@ -72,8 +72,6 @@ public class AchiementManager : MonoBehaviour
             achievements[achiementType].isUnlocked = true;
 
             unlockAchievement.Enqueue(achievements[achiementType]);
-
-            //Debug.Log("Unlock Achievement : " + achiementType.ToString());
         }
 
         PostAchievement();

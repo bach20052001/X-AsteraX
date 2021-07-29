@@ -178,7 +178,7 @@ public class AsteraX : MonoBehaviour
 
         StartCoroutine(FadeGate());
 
-        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroidHandler());
+        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler());
         this.RegisterListener(GameEvent.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
         this.RegisterListener(GameEvent.OnDestroyedBoss, (param) => OnDestroyBossHandler());

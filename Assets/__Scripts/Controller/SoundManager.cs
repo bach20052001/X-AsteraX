@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
 
         this.RegisterListener(GameEvent.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHandler());
         this.RegisterListener(GameEvent.OnPlayerFired, (param) => OnPlayerFiredHandler());
-        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroid());
+        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroid());
         this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevel());
     }
 

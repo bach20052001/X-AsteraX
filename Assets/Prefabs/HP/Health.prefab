@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7663194079620357023}
   m_Layer: 15
   m_Name: Health
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1991297926857518202
 Transform:

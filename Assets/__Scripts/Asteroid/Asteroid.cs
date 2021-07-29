@@ -2,9 +2,6 @@
 //#define DEBUG_Asteroid_TestOOBVel 
 //#define DEBUG_Asteroid_ShotOffscreenDebugLines
 
-
-
-using System.Collections.Generic;
 using UnityEngine;
 
 #if DEBUG_Asteroid_TestOOBVel
@@ -186,7 +183,7 @@ public class Asteroid : MonoBehaviour
 
                 otherGO.SetActive(false);
 
-                if (healthController.GetHp() == 0)
+                if (healthController.GetHp() <= 0)
                 {
                     if (size == 1)
                     {
@@ -198,7 +195,7 @@ public class Asteroid : MonoBehaviour
                         SpawnChildAsteroid(type - 1, this.transform.localPosition);
                     }
 
-                    this.PostEvent(GameEvent.OnHitAsteroid, this);
+                    this.PostEvent(GameEvent.OnAsteroidDestroyed, this);
 
                     Destroy(gameObject);
                 }

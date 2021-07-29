@@ -2,7 +2,7 @@
 {
     None,
     OnPlayerFired,
-    OnHitAsteroid,
+    OnAsteroidDestroyed,
     OnPlayerDamaged,
     PlayerShipDestroyed,
     OnUnlockAchievement,

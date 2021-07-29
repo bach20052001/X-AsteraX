@@ -77,6 +77,5 @@ public class Laser : MonoBehaviour
                 player.Damaged();
             }
         }
-        //Debug.DrawRay(Instance.transform.position, Instance.transform.forward, Color.red);
     }
 }

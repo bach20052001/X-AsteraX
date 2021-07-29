@@ -65,7 +65,7 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(GameEvent.Pause, (param) => OnPause());
         this.RegisterListener(GameEvent.FightBoss, (param) => OnFightBossHandler());
         this.RegisterListener(GameEvent.OnDestroyedBoss, (param) => OnDestroyedBossHandler(param));
-        this.RegisterListener(GameEvent.OnHitAsteroid, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler(param));
         this.RegisterListener(GameEvent.OnDestroyedEnemy, (param) => OnDestroyedEnemyHandler(param));
 
 
