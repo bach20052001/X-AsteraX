@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 
@@ -32,6 +33,7 @@ public class LoadDatabase : MonoBehaviour
     [HideInInspector] public DataMiniboss dataMiniboss;
     [HideInInspector] public DataSuperboss dataSuperboss;
 
+    private string dataPath;
 
     private static LoadDatabase instance;
 
@@ -61,20 +63,21 @@ public class LoadDatabase : MonoBehaviour
 
     void Start()
     {
+        dataPath = Path.Combine(Application.persistentDataPath, "Data");
         ReadJson();
         LoadJsonToSO();
     }
 
     private void ReadJson()
     {
-        database_asteroid = Resources.Load<TextAsset>("Data/database_asteroid").ToString();
-        database_level = Resources.Load<TextAsset>("Data/database_level").ToString();
-        database_skill = Resources.Load<TextAsset>("Data/database_skill").ToString();
-        database_spaceship = Resources.Load<TextAsset>("Data/database_spaceship").ToString();
-        database_bullet = Resources.Load<TextAsset>("Data/database_bullet").ToString();
-        database_enemy = Resources.Load<TextAsset>("Data/database_enemy").ToString();
-        database_miniboss = Resources.Load<TextAsset>("Data/database_miniboss").ToString();
-        database_superboss = Resources.Load<TextAsset>("Data/database_superboss").ToString();
+        database_asteroid = File.ReadAllText(Path.Combine(dataPath, "database_asteroid.json"));
+        database_level = File.ReadAllText(Path.Combine(dataPath, "database_level.json"));
+        database_skill = File.ReadAllText(Path.Combine(dataPath, "database_skill.json"));
+        database_spaceship = File.ReadAllText(Path.Combine(dataPath, "database_spaceship.json"));
+        database_bullet = File.ReadAllText(Path.Combine(dataPath, "database_bullet.json"));
+        database_enemy = File.ReadAllText(Path.Combine(dataPath, "database_enemy.json"));
+        database_miniboss = File.ReadAllText(Path.Combine(dataPath, "database_miniboss.json"));
+        database_superboss = File.ReadAllText(Path.Combine(dataPath, "database_superboss.json"));
 
 
         database_asteroid = "{" + "\"data_asteroid\":" + database_asteroid + "}";
