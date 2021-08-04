@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class SliderRunTo1 : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class SliderRunTo1 : MonoBehaviour
   
     void Update()
     {
-		if(b)
+		if (b)
 		{
 			time+=Time.deltaTime*speed;
 			slider.value = time;
