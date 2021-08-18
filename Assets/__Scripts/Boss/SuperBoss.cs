@@ -184,7 +184,7 @@ public class SuperBoss : MonoBehaviour
     [System.Obsolete]
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             currentHP--;
 
