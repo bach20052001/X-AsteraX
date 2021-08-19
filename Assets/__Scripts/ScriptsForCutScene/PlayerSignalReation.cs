@@ -32,6 +32,8 @@ public class PlayerSignalReation : MonoBehaviour
 
     public AudioClip audio_shoot;
 
+    public ReturnToLoadLevel manage;
+
     private void Start()
     {
         distance = Vector3.Distance(portal.transform.position ,this.transform.position) / 6f;
@@ -92,9 +94,10 @@ public class PlayerSignalReation : MonoBehaviour
 
     public void Stop()
     {
-        rigid.velocity = Vector3.zero;
-        camFocusShip.Follow = portal.transform;
-        camFocusShip.LookAt = portal.transform;
+        manage.ChangeSkyBox();
+        //rigid.velocity = Vector3.zero;
+        //camFocusShip.Follow = portal.transform;
+        //camFocusShip.LookAt = portal.transform;
     }
 
     private void OnTriggerEnter(Collider other)

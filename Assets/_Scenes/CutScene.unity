@@ -697,7 +697,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187141748}
-  m_LocalRotation: {x: 0.016756326, y: 0.18980898, z: -0.003239879, w: 0.9816727}
+  m_LocalRotation: {x: 0.016617315, y: 0.22792645, z: -0.0038905125, w: 0.9735288}
   m_LocalPosition: {x: 9.6, y: 2.5, z: -28.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16039,12 +16039,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 2a5ea2cba40e64f52a8853968b57c81c, type: 2}
+    - {fileID: 11400000, guid: 79da3cea665a743aab4c58a9ff3b5518, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1094257145}
           m_TargetAssemblyTypeName: ReturnToLoadLevel, Assembly-CSharp
           m_MethodName: LoadNewLevel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1094257145}
+          m_TargetAssemblyTypeName: ReturnToLoadLevel, Assembly-CSharp
+          m_MethodName: ChangeSkyBox
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -16066,6 +16081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef6892baef564d86a237996a7b3f2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSB: {fileID: 2100000, guid: 1f311c00013994f43969a09c4c5ffb04, type: 2}
 --- !u!1001 &1198757105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26763,7 +26779,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966343410}
-  m_LocalRotation: {x: -0.03385587, y: 0.28320733, z: 0.010004324, w: 0.9584088}
+  m_LocalRotation: {x: -0.03385802, y: 0.28299993, z: 0.009996991, w: 0.95847}
   m_LocalPosition: {x: 2.6804934, y: -0.20000005, z: -30.948792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -26865,8 +26881,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069470196}
-  m_LocalRotation: {x: 0.061534066, y: -0.26599416, z: -0.016979562, w: -0.9618588}
-  m_LocalPosition: {x: 9.2456, y: 3.712422, z: -18.574852}
+  m_LocalRotation: {x: -0.03385802, y: 0.28299993, z: 0.009996991, w: 0.95847}
+  m_LocalPosition: {x: 2.6804934, y: -0.20000005, z: -30.948792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -26957,7 +26973,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 35
+  field of view: 54
   orthographic: 0
   orthographic size: 5
   m_Depth: 10
@@ -27076,7 +27092,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097094433}
-  m_LocalRotation: {x: -0.042163093, y: 0.72744334, z: 0.04488045, w: 0.68339914}
+  m_LocalRotation: {x: -0.042163096, y: 0.72744334, z: 0.04488045, w: 0.6833991}
   m_LocalPosition: {x: 0.5999999, y: -0.6, z: 3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -42057,6 +42073,7 @@ MonoBehaviour:
   audioSource: {fileID: 274445984}
   audio_sonicboom: {fileID: 8300000, guid: c43a5cbeeae5c42bd8c1f219957f01b6, type: 3}
   audio_shoot: {fileID: 8300000, guid: f762b6ade2d65451fa13b211da3818f0, type: 3}
+  manage: {fileID: 1094257145}
 --- !u!54 &3579517005804316667
 Rigidbody:
   m_ObjectHideFlags: 0
