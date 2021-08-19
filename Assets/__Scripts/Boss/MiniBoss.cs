@@ -137,7 +137,7 @@ public class MiniBoss : MonoBehaviour
 #if UNITY_EDITOR
             AsteraX.S.isBossAppear = false;
 #endif
-            this.PostEvent(GameEvent.OnDestroyedBoss, point);
+            this.PostEvent(GameEvent.OnDestroyedMiniBoss, point);
             Destroy(gameObject);
         }
 

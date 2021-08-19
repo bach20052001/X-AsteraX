@@ -22,7 +22,7 @@ public class SceneController : MonoBehaviour
             return instance;
         }
     }
-    
+
     const string ANIMATOROUT_TRIGGER = "Transition_OUT";
 
     const float delay = 0.6f;
@@ -65,6 +65,20 @@ public class SceneController : MonoBehaviour
         StartCoroutine(PlayNext());
     }
 
+    public void NextSceneWithoutAnimate()
+    {
+        StartCoroutine(PlayNextWithoutAni());
+    }
+
+    private IEnumerator PlayNextWithoutAni()
+    {
+        yield return new WaitForSeconds(delay);
+        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
     private IEnumerator PlayNext()
     {
         ActiveAnimator();
@@ -74,6 +88,7 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+
 
     private IEnumerator PlayPrev()
     {
@@ -128,6 +143,11 @@ public class SceneController : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
         }
+    }
+
+    public void ReturnToExistScene()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void Play()

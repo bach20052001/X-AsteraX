@@ -50,6 +50,9 @@ public class AsteraX : MonoBehaviour
 
     public Dictionary<BulletMode, ObjectPooling> ListDataBullet = new Dictionary<BulletMode, ObjectPooling>();
 
+    public GameObject background;
+    public List<Sprite> backgroundSprites;
+
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
     // It's only valid for the game to ever be in one state, but I've added System.Flags
@@ -131,6 +134,23 @@ public class AsteraX : MonoBehaviour
 
     #region Initial
 
+    private void OnEnable()
+    {
+        if (LevelManager.Instance.currentLevel > 10)
+        {
+            background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[1];
+            if (LevelManager.Instance.currentLevel == 11)
+            {
+                GUIController.Instance.LoadScore(SaveDataManager.Instance.LoadScore());
+            }
+        }
+        else
+        {
+            background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[0];
+
+        }
+    }
+
     private void Awake()
     {
 #if DEBUG_AsteraX_LogMethods
@@ -181,7 +201,15 @@ public class AsteraX : MonoBehaviour
         this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler());
         this.RegisterListener(GameEvent.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
         this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
-        this.RegisterListener(GameEvent.OnDestroyedBoss, (param) => OnDestroyBossHandler());
+        this.RegisterListener(GameEvent.OnDestroyedMiniBoss, (param) => OnDestroyBossHandler());
+        this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroySuperBossHandler());
+
+    }
+
+    private void OnDestroySuperBossHandler()
+    {
+        sceneController.NextSceneWithoutAnimate();
+        LevelManager.Instance.IncreaseLevel();
     }
 
     private void OnDestroyBossHandler()

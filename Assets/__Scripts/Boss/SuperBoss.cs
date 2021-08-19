@@ -168,7 +168,7 @@ public class SuperBoss : MonoBehaviour
 
         if (position == outPosition)
         {
-            this.PostEvent(GameEvent.OnDestroyedBoss, point);
+            this.PostEvent(GameEvent.OnDestroyedSuperBoss, point);
             Destroy(this.gameObject);
         }
 

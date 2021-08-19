@@ -47,6 +47,8 @@ public class SaveDataManager : MonoBehaviour
 
             playerData.bought.Add(0);
 
+            playerData.point = 0;
+
             File.WriteAllText(dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
         }
 
@@ -68,5 +70,19 @@ public class SaveDataManager : MonoBehaviour
     {
         jsonData = JsonUtility.ToJson(playerData);
         File.WriteAllText(dataPath, jsonData);
+    }
+
+    public void ExportDataToExit()
+    {
+        playerData.point = 0;
+        jsonData = JsonUtility.ToJson(playerData);
+        File.WriteAllText(dataPath, jsonData);
+    }
+
+    public int LoadScore()
+    {
+        jsonData = File.ReadAllText(dataPath);
+        playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        return playerData.point;
     }
 }

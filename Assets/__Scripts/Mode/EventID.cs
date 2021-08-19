@@ -12,6 +12,8 @@
     Pause,
     OnEnemyDamaged,
     FightBoss,
-    OnDestroyedBoss,
-    OnDestroyedEnemy
+    OnDestroyedMiniBoss,
+    OnDestroyedSuperBoss,
+    OnDestroyedEnemy,
+    OnChangeBattleWorld
 }

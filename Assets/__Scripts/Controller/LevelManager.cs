@@ -28,9 +28,15 @@ public class LevelManager : MonoBehaviour
     public void IncreaseLevel()
     {
         level++;
+
+        if (level > LevelScriptableObject.Count - 1)
+        {
+            level = LevelScriptableObject.Count - 1;
+        }
+
         currentLevel++;
 
-        if (LevelScriptableObject[level].HasBoss)
+        if (LevelScriptableObject[level].HasBoss && currentLevel <= 10)
         {
             breakPoint = true;
             bossType = LevelScriptableObject[level].BossType;
@@ -39,12 +45,6 @@ public class LevelManager : MonoBehaviour
         {
             breakPoint = false;
         }
-
-        if (level > LevelScriptableObject.Count - 1)
-        {
-            level = LevelScriptableObject.Count - 1;
-        }
-
     }
 
     public void ResetLevel()

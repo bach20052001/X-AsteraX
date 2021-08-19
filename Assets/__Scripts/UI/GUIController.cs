@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,9 +48,6 @@ public class GUIController : MonoBehaviour
 
     void Start()
     {
-        scores = 0;
-        UpdateScore(scores);
-
         UpdateJumpRemaining(AsteraX.jumpRemaining);
 
         if (instance != null && instance != this)
@@ -64,7 +62,8 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(GameEvent.OnActiveSkill, (param) => OnActiveSkillHandler(param));
         this.RegisterListener(GameEvent.Pause, (param) => OnPause());
         this.RegisterListener(GameEvent.FightBoss, (param) => OnFightBossHandler());
-        this.RegisterListener(GameEvent.OnDestroyedBoss, (param) => OnDestroyedBossHandler(param));
+        this.RegisterListener(GameEvent.OnDestroyedMiniBoss, (param) => OnDestroyedBossHandler(param));
+        this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroyedSuperBossHandler(param));
         this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler(param));
         this.RegisterListener(GameEvent.OnDestroyedEnemy, (param) => OnDestroyedEnemyHandler(param));
 
@@ -76,6 +75,20 @@ public class GUIController : MonoBehaviour
         remain.text = (skill.incremental).ToString();
 
         StartCoroutine(UpdateSkillUI());
+    }
+
+    private void OnDestroyedSuperBossHandler(object scoreFromBoss)
+    {
+        int scoreToIncrease = (int)scoreFromBoss;
+        scores += scoreToIncrease;
+        UpdateScore(scores);
+
+        SaveDataManager.Instance.playerData.point = scores;
+
+        SaveDataManager.Instance.ExportData();
+
+        EnemyPanel.SetActive(false);
+        EnemyPanel.transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
     }
 
     private void OnDestroyedEnemyHandler(object scoreFromEnemy)
@@ -237,6 +250,12 @@ public class GUIController : MonoBehaviour
 
         popupAchievement.gameObject.SetActive(false);
 
+    }
+
+    public void LoadScore(int score)
+    {
+        scores = score;
+        UpdateScore(scores);
     }
 
     public void UpdateScore(int score)
