@@ -15,5 +15,6 @@
     OnDestroyedMiniBoss,
     OnDestroyedSuperBoss,
     OnDestroyedEnemy,
-    OnChangeBattleWorld
+    OnChangeBattleWorld,
+    OnLoadMainScene
 }

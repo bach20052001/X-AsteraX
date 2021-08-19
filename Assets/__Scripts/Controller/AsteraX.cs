@@ -179,6 +179,12 @@ public class AsteraX : MonoBehaviour
         {
             ListDataBullet.Add((BulletMode)(i + 1), ListObjectPooling[i]);
         }
+
+        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler());
+        this.RegisterListener(GameEvent.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
+        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
+        this.RegisterListener(GameEvent.OnDestroyedMiniBoss, (param) => OnDestroyBossHandler());
+        this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroySuperBossHandler());
     }
 
     void Start()
@@ -194,16 +200,9 @@ public class AsteraX : MonoBehaviour
 
         ASTEROIDS = new List<Asteroid>();
 
-        SpawnAsteroids();
+        StartCoroutine(InitSpawn());
 
         StartCoroutine(FadeGate());
-
-        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler());
-        this.RegisterListener(GameEvent.PlayerShipDestroyed, (param) => OnPlayerShipDestroyedHanler());
-        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
-        this.RegisterListener(GameEvent.OnDestroyedMiniBoss, (param) => OnDestroyBossHandler());
-        this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroySuperBossHandler());
-
     }
 
     private void OnDestroySuperBossHandler()
@@ -230,6 +229,20 @@ public class AsteraX : MonoBehaviour
     }
 
     #endregion
+
+    private IEnumerator InitSpawn()
+    {
+        this.PostEvent(GameEvent.OnLoadMainScene, levelManager.level);
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (!Asteroids.activeSelf)
+        {
+            Asteroids.SetActive(true);
+        }
+
+        SpawnAsteroids();
+    }
 
     private void SpawnAsteroids()
     {

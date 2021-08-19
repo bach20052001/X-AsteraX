@@ -72,11 +72,7 @@ public class LevelManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(instance);
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
         ResetLevel();
     }
 }

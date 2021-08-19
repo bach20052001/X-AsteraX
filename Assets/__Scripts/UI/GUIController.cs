@@ -46,17 +46,11 @@ public class GUIController : MonoBehaviour
     [SerializeField] private GameObject EnemyPanel;
 
 
-    void Start()
+    private void Awake()
     {
-        UpdateJumpRemaining(AsteraX.jumpRemaining);
-
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-
         this.RegisterListener(GameEvent.OnUnlockAchievement, (param) => UnlockAchievementHandler(param as AchievementInfomation));
         this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
+        this.RegisterListener(GameEvent.OnLoadMainScene, (param) => OnLoadMainSceneHandler());
         this.RegisterListener(GameEvent.OnPlayerDamaged, (param) => OnPlayerDamagedHandler(param));
         this.RegisterListener(GameEvent.OnEnemyDamaged, (param) => OnEnemyDamagedHandler(param));
         this.RegisterListener(GameEvent.OnActiveSkill, (param) => OnActiveSkillHandler(param));
@@ -66,8 +60,16 @@ public class GUIController : MonoBehaviour
         this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroyedSuperBossHandler(param));
         this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler(param));
         this.RegisterListener(GameEvent.OnDestroyedEnemy, (param) => OnDestroyedEnemyHandler(param));
+    }
 
+    void Start()
+    {
+        UpdateJumpRemaining(AsteraX.jumpRemaining);
 
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
 
         skill = FindObjectOfType<Skill>();
 
@@ -75,6 +77,11 @@ public class GUIController : MonoBehaviour
         remain.text = (skill.incremental).ToString();
 
         StartCoroutine(UpdateSkillUI());
+    }
+
+    private void OnLoadMainSceneHandler()
+    {
+        StartCoroutine(NotiLevelLoadMain());
     }
 
     private void OnDestroyedSuperBossHandler(object scoreFromBoss)
@@ -212,6 +219,17 @@ public class GUIController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         congratulationPopup.SetActive(false);
 
+        nextLevelPopup.SetActive(true);
+        nextLevelPopup.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.currentLevel).ToString();
+        nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", true);
+        yield return new WaitForSeconds(1f);
+        nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", false);
+        yield return new WaitForSeconds(1f);
+        nextLevelPopup.SetActive(false);
+    }
+
+    private IEnumerator NotiLevelLoadMain()
+    {
         nextLevelPopup.SetActive(true);
         nextLevelPopup.GetComponentInChildren<Text>().text = "Level " + (LevelManager.Instance.currentLevel).ToString();
         nextLevelPopup.GetComponent<Animator>().SetBool("transitionLevel", true);

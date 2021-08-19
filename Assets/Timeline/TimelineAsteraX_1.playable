@@ -25,7 +25,7 @@ MonoBehaviour:
     m_Start: 18.05
     m_ClipIn: 0
     m_Asset: {fileID: 9097642954608753059}
-    m_Duration: 5.050000000000001
+    m_Duration: 4.533333333333335
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7906561764213534780}
     m_EaseInDuration: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 23.933333333333334
+  m_Time: 22.583333333333336
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 2a5ea2cba40e64f52a8853968b57c81c, type: 2}
@@ -1097,7 +1097,7 @@ MonoBehaviour:
     m_Start: 18.05
     m_ClipIn: 0
     m_Asset: {fileID: 8997475178819534129}
-    m_Duration: 5.883333333333333
+    m_Duration: 4.533333333333335
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2465949282750466636}
     m_EaseInDuration: 0
@@ -1342,7 +1342,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 6383241607863756129}
-    m_Duration: 23.933333333333334
+    m_Duration: 22.583333333333336
     m_TimeScale: 1.5
     m_ParentTrack: {fileID: 4272542429881185284}
     m_EaseInDuration: 0

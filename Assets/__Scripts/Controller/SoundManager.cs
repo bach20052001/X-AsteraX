@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip nextLevel;
 
-    private void Start()
+    private void Awake()
     {
 
         audioSource = GetComponent<AudioSource>();

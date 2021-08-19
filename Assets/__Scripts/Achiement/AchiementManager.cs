@@ -29,6 +29,10 @@ public class AchiementManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        this.RegisterListener(GameEvent.OnPlayerFired, (param) => OnPlayerFiredHandler());
+        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler(param));
+        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
     }
 
     public Dictionary<AchiementType, AchievementInfomation> achievements = new Dictionary<AchiementType, AchievementInfomation>();
@@ -37,6 +41,7 @@ public class AchiementManager : MonoBehaviour
     private int numberOfPlayerFired = 0;
     private int numberOfHitAsteroid = 0;
     private int luckyShot = 0;
+
 
     private void Start()
     {
@@ -48,13 +53,7 @@ public class AchiementManager : MonoBehaviour
         achievements[AchiementType.LuckyShot] = new AchievementInfomation("Lucky Shot", "Bullet Wrapped Screen & Hit Asteroid", 1);
         achievements[AchiementType.SkillfulDodger] = new AchievementInfomation("Skillful Dodger", "Reach Level 5", 5);
 
-
-        this.RegisterListener(GameEvent.OnPlayerFired, (param) => OnPlayerFiredHandler());
-        this.RegisterListener(GameEvent.OnAsteroidDestroyed, (param) => OnHitAsteroidHandler(param));
-        this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
-
         //InvokeRepeating(nameof(PostAchievement), 0f, 0.5f);
-
     }
 
     private void OnNextLevelHandler()
