@@ -1,10 +1,14 @@
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.Rendering.PostProcessing;
-
+using System.Collections.Generic;
 
 public class PlayerSignalReation : MonoBehaviour
 {
+    public List<GameObject> listShips;
+
+    private GameObject playerShip;
+
     public GameObject bullet;
 
     public GameObject direction;
@@ -24,7 +28,6 @@ public class PlayerSignalReation : MonoBehaviour
 
     private float currentDistance;
     private AutoExposure m_AutoExposure;
-    // Start is called before the first frame update
 
     public AudioSource audioSource;
 
@@ -33,6 +36,21 @@ public class PlayerSignalReation : MonoBehaviour
     public AudioClip audio_shoot;
 
     public ReturnToLoadLevel manage;
+
+
+    private void Awake()
+    {
+        if (SceneController.Instance != null)
+        {
+            playerShip = listShips[SceneController.Instance.SelectedIndex];
+        }
+        else
+        {
+            playerShip = listShips[Random.Range(0, listShips.Count)];
+        }
+
+        Instantiate(playerShip, this.transform);
+    }
 
     private void Start()
     {
@@ -51,7 +69,6 @@ public class PlayerSignalReation : MonoBehaviour
         bulletGene.GetComponent<ShotBehavior>().InitVelo(25f);
 
         audioSource.PlayOneShot(audio_shoot);
-        //Debug.Log("Shoot");
     }
 
     public void LastShootSignal()
@@ -74,7 +91,7 @@ public class PlayerSignalReation : MonoBehaviour
     {
         if (currentDistance < distance && currentDistance != 0)
         {
-            m_AutoExposure.maxLuminance.value = Mathf.Clamp(-10f * (distance - currentDistance) / distance, -9, 0);
+            m_AutoExposure.maxLuminance.value = Mathf.Clamp(-12f * (distance - currentDistance) / distance, -9, 0);
         }
 
         currentDistance = Vector3.Distance(portal.transform.position, this.transform.position);

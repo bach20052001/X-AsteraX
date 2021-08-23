@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 11489952}
   - component: {fileID: 10825254}
   - component: {fileID: -7679557714582960193}
-  - component: {fileID: 7770166122850879701}
   - component: {fileID: -6171547956945320698}
   - component: {fileID: 7995950254486391184}
   m_Layer: 9
@@ -119,7 +118,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9716981, g: 0.41606304, b: 0.33459416, a: 1}
   m_Intensity: 1
-  m_Range: 50
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -184,19 +183,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7770166122850879701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 973da2538d15dc04a9fc7c4ea4033e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBulletWrapped: 0
 --- !u!114 &-6171547956945320698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb039d3a64491f4ebfc852d25b5ee70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spark: {fileID: 197494, guid: ce56f814fa0835a43aba1716e41c3173, type: 3}
 --- !u!65 &7995950254486391184
 BoxCollider:
   m_ObjectHideFlags: 0
