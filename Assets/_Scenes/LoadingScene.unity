@@ -357,7 +357,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You need to download 12KB of game data
+  m_Text: 
 --- !u!222 &440589510
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1050,6 +1050,7 @@ MonoBehaviour:
   - database_superboss.json
   fileNameDisplay: {fileID: 107160401}
   downloadProgessDisplay: {fileID: 37157403}
+  alertFileSize: {fileID: 440589509}
   downloadButton: {fileID: 2084335991}
   sliderProgess: {fileID: 1500684382}
   noInternetNoti: {fileID: 1568630404}
@@ -1445,19 +1446,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2084335992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1357955111}
-        m_TargetAssemblyTypeName: DownloadData, Assembly-CSharp
-        m_MethodName: TryToDownload
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2084335992
 MonoBehaviour:
   m_ObjectHideFlags: 0

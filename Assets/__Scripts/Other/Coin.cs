@@ -51,4 +51,14 @@ public class Coin : MonoBehaviour
             amountOfCoin.text = coins.ToString();
         }
     }
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            coins += 1000;
+            amountOfCoin.text = coins.ToString();
+        }
+    }
+#endif
 }
