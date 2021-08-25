@@ -152,7 +152,10 @@ public class Enemy : MonoBehaviour
 
         bullet.transform.position = this.transform.position;
 
-        bullet.transform.LookAt(target.transform.position);
+        if (target != null)
+        {
+            bullet.transform.LookAt(target.transform.position);
+        }
 
         bullet.InitVel();
     }

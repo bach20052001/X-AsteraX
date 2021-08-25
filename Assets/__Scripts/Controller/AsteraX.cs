@@ -363,12 +363,16 @@ public class AsteraX : MonoBehaviour
     {
         if (!levelManager.breakPoint)
         {
+#if UNITY_EDITOR
             isBossAppear = false;
+#endif
             StartCoroutine(LevelPassing());
         }
         else
         {
+#if UNITY_EDITOR
             isBossAppear = true;
+#endif
             SpawnBoss(levelManager.bossType);
         }
     }
@@ -489,11 +493,12 @@ public class AsteraX : MonoBehaviour
         }
 
         Asteroids.SetActive(false);
-
+#if UNITY_EDITOR
         if (!isBossAppear)
         {
             NextLevelOrFightBoss();
         }
+#endif
     }
 
     public void Pause()

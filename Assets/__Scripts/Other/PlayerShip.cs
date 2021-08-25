@@ -119,6 +119,10 @@ public class PlayerShip : MonoBehaviour
 
         modeControl = Mode.Normal;
         fightPostion = new Vector3(-12, -6, 0);
+#if UNITY_ANDROID || UNITY_IOS
+        InvokeRepeating(nameof(ShootMobile), 0, 0.25f);
+
+#endif
     }
 
     public Vector3 PlayerShipStartPos()
@@ -162,15 +166,30 @@ public class PlayerShip : MonoBehaviour
 
     void Update()
     {
+        Movement();
+#if UNITY_STANDALONE
+        ShootStandalone();
+        ActiveAbility();
+#elif UNITY_ANDROID || UNITY_IOS
+        ShootDirectionControl();
+#endif
+    }
+
+    private void Movement()
+    {
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
         {
             if (modeControl == Mode.Normal || modeControl == Mode.FightingBoss)
             {
                 if (canControl)
                 {
+#if UNITY_ANDROID || UNITY_IOS
+                    float aX = UltimateJoystick.GetHorizontalAxis("Movement");
+                    float aY = UltimateJoystick.GetVerticalAxis("Movement");
+#elif UNITY_STANDALONE
                     float aX = Input.GetAxis("Horizontal");
                     float aY = Input.GetAxis("Vertical");
-
+#endif
                     Vector3 vel = new Vector3(aX, aY, 0);
 
                     if (vel != Vector3.zero)
@@ -185,20 +204,6 @@ public class PlayerShip : MonoBehaviour
                     rigid.velocity = vel * shipSpeed;
                 }
 
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    {
-                        Fire(modeControl);
-                        this.PostEvent(GameEvent.OnPlayerFired);
-                    }
-
-                }
-
-                if (Input.GetButtonDown("Fire2"))
-                {
-                    shipSkill.Execute();
-                }
-
                 if (modeControl == Mode.Normal)
                 {
                     this.transform.up = currentVel;
@@ -208,6 +213,51 @@ public class PlayerShip : MonoBehaviour
         else
         {
             rigid.velocity = Vector3.zero;
+        }
+    }
+
+    public void ActiveAbility()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            shipSkill.Execute();
+        }
+    }
+
+    private void ShootDirectionControl()
+    {
+        float aX = UltimateJoystick.GetHorizontalAxis("FireDirection");
+        float aY = UltimateJoystick.GetVerticalAxis("FireDirection");
+    }
+
+    private void ShootMobile()
+    {
+        if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
+        {
+            if (modeControl == Mode.Normal || modeControl == Mode.FightingBoss)
+            {
+                if (gameObject.activeSelf)
+                {
+                    Fire(modeControl);
+                    this.PostEvent(GameEvent.OnPlayerFired);
+                }
+            }
+        }
+    }
+
+
+    private void ShootStandalone()
+    {
+        if (AsteraX.GameState == AsteraX.BaseGameState.PLAY)
+        {
+            if (modeControl == Mode.Normal || modeControl == Mode.FightingBoss)
+            {
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Fire(modeControl);
+                }
+            }
         }
     }
 
@@ -229,11 +279,11 @@ public class PlayerShip : MonoBehaviour
                     break;
                 }
             case Mode.Normal:
-            {
+                {
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsAsteroid];
                     canControl = true;
                     break;
-            }
+                }
         }
         modeControl = mode;
     }
