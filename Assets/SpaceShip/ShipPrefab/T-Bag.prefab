@@ -190,6 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipParameter: {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
+  fireDirectionUI: {fileID: 4616870700978264491, guid: 9fe3e907390cb40cc8f7dd3c74cc8e15,
+    type: 3}
   skilldata: {fileID: 11400000, guid: 33b6f61ea9e5a4b579f126d9a4721417, type: 2}
   canControl: 1
   modeControl: 0

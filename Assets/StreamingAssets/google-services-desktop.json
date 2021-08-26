@@ -1,47 +1,37 @@
 {
-  "project_info": {
-    "project_number": "708450592589",
-    "firebase_url": "https://x-asterax-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "x-asterax",
-    "storage_bucket": "x-asterax.appspot.com"
-  },
   "client": [
     {
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "708450592589-rvn5uq9koovrkmagmurcl5rcq4d82khk.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN8TP6m-BkD1_aZDAxbVFtyGhSb9yhu6M"
+        }
+      ], 
       "client_info": {
-        "mobilesdk_app_id": "1:708450592589:android:6a4716f3c2c8f311fcb904",
+        "mobilesdk_app_id": "1:708450592589:ios:1ded6c2e4f338707fcb904", 
         "android_client_info": {
           "package_name": "com.BachhhNguyen.AsteraX"
         }
-      },
-      "oauth_client": [
-        {
-          "client_id": "708450592589-2vbnk2uk4qmsroqssgbmjhmn18cta4ln.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCrYbya3No8D4lf2Niagnsv_vAfgKhTrBA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "708450592589-2vbnk2uk4qmsroqssgbmjhmn18cta4ln.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "708450592589-rvn5uq9koovrkmagmurcl5rcq4d82khk.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.BachhhNguyen.AsteraX"
-              }
-            }
-          ]
-        }
       }
     }
-  ],
-  "configuration_version": "1"
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "x-asterax.appspot.com", 
+    "project_id": "x-asterax", 
+    "firebase_url": "https://x-asterax-default-rtdb.asia-southeast1.firebasedatabase.app", 
+    "project_number": "708450592589"
+  }
 }

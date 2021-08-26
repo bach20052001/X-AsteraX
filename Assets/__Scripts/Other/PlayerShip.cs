@@ -2,6 +2,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 //using UnityStandardAssets.CrossPlatformInput;
 
 public enum Mode
@@ -19,6 +20,9 @@ public class PlayerShip : MonoBehaviour
     public Ship_SO shipParameter;
 
     private bool canDestroy;
+
+    public GameObject fireDirectionUI;
+    private GameObject direction;
 
     private ParticleSystem AppearEffect;
 
@@ -71,6 +75,8 @@ public class PlayerShip : MonoBehaviour
     public Mode modeControl;
 
     [SerializeField] private GameObject Shield;
+    private Vector3 currentDirection = new Vector3(0, 1, 0);
+    private TurretPointAtMouse turretPointAtMouse;
 
     private void Start()
     {
@@ -119,11 +125,40 @@ public class PlayerShip : MonoBehaviour
 
         modeControl = Mode.Normal;
         fightPostion = new Vector3(-12, -6, 0);
-#if UNITY_ANDROID || UNITY_IOS
-        InvokeRepeating(nameof(ShootMobile), 0, 0.25f);
 
+        InitDirection();
+#if UNITY_ANDROID || UNITY_IOS
+        InvokeRepeating(nameof(ShootMobile), 0, 0.2f);
+        InitAbility();
 #endif
     }
+
+    public void InitDirection()
+    {
+        direction = Instantiate(fireDirectionUI, Vector3.zero, Quaternion.identity, this.transform);
+#if UNITY_STANDALONE
+        turretPointAtMouse = direction.AddComponent<TurretPointAtMouse>();
+#endif
+    }
+
+    private void InitAbility()
+    {
+        Button abilityBtn = GameObject.Find("Ability").GetComponent<Button>();
+
+        abilityBtn.onClick.AddListener(delegate
+        {
+            shipSkill.Execute();
+        });
+    }
+
+    //public void DirectionPointToMousePos()
+    //{
+    //    Vector3 mousePoint3D = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.back * Camera.main.transform.position.z);
+    //    // NOTE: To prevent snapping on mobile, could possibly add a Slerp over a short time, but should 
+    //    //  still fire the shot immediately when the player taps (i.e., not wait for the turret to be 
+    //    //  pointing in the right direction.
+    //    direction.transform.LookAt(mousePoint3D, Vector3.right);
+    //}
 
     public Vector3 PlayerShipStartPos()
     {
@@ -166,13 +201,30 @@ public class PlayerShip : MonoBehaviour
 
     void Update()
     {
+        //DirectionPointToMousePos();
         Movement();
 #if UNITY_STANDALONE
         ShootStandalone();
         ActiveAbility();
 #elif UNITY_ANDROID || UNITY_IOS
-        ShootDirectionControl();
+        if (modeControl != Mode.FightingBoss)
+        {
+            FireDirection();
+        }
 #endif
+    }
+
+    private void FireDirection()
+    {
+        float aX = UltimateJoystick.GetHorizontalAxis("FireDirection");
+        float aY = UltimateJoystick.GetVerticalAxis("FireDirection");
+
+        if (aX != 0f && aY != 0f)
+        {
+            currentDirection = new Vector3(aX, aY, 0);
+        }
+
+        direction.transform.LookAt(this.transform.position + currentDirection * 5, Vector3.back);
     }
 
     private void Movement()
@@ -224,11 +276,6 @@ public class PlayerShip : MonoBehaviour
         }
     }
 
-    private void ShootDirectionControl()
-    {
-        float aX = UltimateJoystick.GetHorizontalAxis("FireDirection");
-        float aY = UltimateJoystick.GetVerticalAxis("FireDirection");
-    }
 
     private void ShootMobile()
     {
@@ -274,12 +321,24 @@ public class PlayerShip : MonoBehaviour
                 }
             case Mode.FightingBoss:
                 {
+#if UNITY_STANDALONE
+                    turretPointAtMouse.enabled = false;
+                    direction.transform.forward = Vector3.up;
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+                    currentDirection = Vector3.up;
+                    direction.transform.LookAt(this.transform.position + currentDirection * 5, Vector3.back);
+
+#endif
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsBoss];
                     canControl = true;
                     break;
                 }
             case Mode.Normal:
                 {
+#if UNITY_STANDALONE
+                    turretPointAtMouse.enabled = true;
+#endif
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsAsteroid];
                     canControl = true;
                     break;
@@ -396,10 +455,7 @@ public class PlayerShip : MonoBehaviour
 
     public void Fire(Mode mode)
     {
-        // Get direction to the mouse
-        Vector3 mPos = Input.mousePosition;
-        mPos.z = -Camera.main.transform.position.z;
-        Vector3 mPos3D = Camera.main.ScreenToWorldPoint(mPos);
+        Vector3 direc = direction.transform.forward;
 
         if (shipAttack == 1)
         {
@@ -408,7 +464,7 @@ public class PlayerShip : MonoBehaviour
 
             if (mode == Mode.Normal)
             {
-                go.transform.LookAt(mPos3D);
+                go.transform.forward = direc;
 
                 go.InitVel();
             }
@@ -430,8 +486,8 @@ public class PlayerShip : MonoBehaviour
 
             if (mode == Mode.Normal)
             {
-                b1.transform.LookAt(mPos3D + offset);
-                b2.transform.LookAt(mPos3D - offset);
+                b1.transform.forward = direc;
+                b2.transform.forward = direc;
 
                 b1.InitVel();
                 b2.InitVel();

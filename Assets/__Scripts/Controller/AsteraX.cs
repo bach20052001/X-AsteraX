@@ -53,6 +53,7 @@ public class AsteraX : MonoBehaviour
     public GameObject background;
     public List<Sprite> backgroundSprites;
 
+    public GameObject MobileUI_Controller;
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple
     //  values be selected simultaneously (similar to how Physics Layers are selected).
     // It's only valid for the game to ever be in one state, but I've added System.Flags
@@ -203,6 +204,12 @@ public class AsteraX : MonoBehaviour
         StartCoroutine(InitSpawn());
 
         StartCoroutine(FadeGate());
+
+#if UNITY_STANDALONE
+        MobileUI_Controller.SetActive(false);
+#elif UNITY_ANDROID || UNITY_IOS
+     MobileUI_Controller.SetActive(true);
+#endif
     }
 
     private void OnDestroySuperBossHandler()
@@ -228,7 +235,7 @@ public class AsteraX : MonoBehaviour
         TransitionState(BaseGameState.PLAY);
     }
 
-    #endregion
+#endregion
 
     private IEnumerator InitSpawn()
     {
@@ -252,7 +259,7 @@ public class AsteraX : MonoBehaviour
         }
     }
 
-    #region Handler Event
+#region Handler Event
     public Vector3 SafePosition()
     {
         int preventSpawnInEdges = 2;
@@ -434,7 +441,7 @@ public class AsteraX : MonoBehaviour
         }
     }
 
-    #endregion
+#endregion
 
     public void QuitGame()
     {
