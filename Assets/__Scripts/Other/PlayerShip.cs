@@ -1,6 +1,7 @@
 ﻿#define DEBUG_PlayerShip_RespawnNotifications
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 //using UnityStandardAssets.CrossPlatformInput;
@@ -20,9 +21,6 @@ public class PlayerShip : MonoBehaviour
     public Ship_SO shipParameter;
 
     private bool canDestroy;
-
-    public GameObject fireDirectionUI;
-    private GameObject direction;
 
     private ParticleSystem AppearEffect;
 
@@ -73,10 +71,18 @@ public class PlayerShip : MonoBehaviour
     Rigidbody rigid;
 
     public Mode modeControl;
+    public GameObject gun;
+    public List<GameObject> Muzzles = new List<GameObject>();
 
     [SerializeField] private GameObject Shield;
     private Vector3 currentDirection = new Vector3(0, 1, 0);
+
     private TurretPointAtMouse turretPointAtMouse;
+    private TurretRotateWithJoy turretRotateWithJoy;
+
+    private float fireRate = 0.25f;
+
+    public List<GameObject> shotPoints = new List<GameObject>();
 
     private void Start()
     {
@@ -125,25 +131,16 @@ public class PlayerShip : MonoBehaviour
 
         modeControl = Mode.Normal;
         fightPostion = new Vector3(-12, -6, 0);
-
-        InitDirection();
+        InitControlDevice();
 #if UNITY_ANDROID || UNITY_IOS
-        InvokeRepeating(nameof(ShootMobile), 0, 0.2f);
         InitAbility();
 #endif
-    }
 
-    public void InitDirection()
-    {
-        direction = Instantiate(fireDirectionUI, Vector3.zero, Quaternion.identity, this.transform);
-#if UNITY_STANDALONE
-        turretPointAtMouse = direction.AddComponent<TurretPointAtMouse>();
-#endif
     }
 
     private void InitAbility()
     {
-        Button abilityBtn = GameObject.Find("Ability").GetComponent<Button>();
+        Button abilityBtn = GameObject.Find("Button_Ability").GetComponent<Button>();
 
         abilityBtn.onClick.AddListener(delegate
         {
@@ -151,14 +148,19 @@ public class PlayerShip : MonoBehaviour
         });
     }
 
-    //public void DirectionPointToMousePos()
-    //{
-    //    Vector3 mousePoint3D = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.back * Camera.main.transform.position.z);
-    //    // NOTE: To prevent snapping on mobile, could possibly add a Slerp over a short time, but should 
-    //    //  still fire the shot immediately when the player taps (i.e., not wait for the turret to be 
-    //    //  pointing in the right direction.
-    //    direction.transform.LookAt(mousePoint3D, Vector3.right);
-    //}
+    private void InitControlDevice()
+    {
+        turretPointAtMouse = gun.GetComponent<TurretPointAtMouse>();
+        turretRotateWithJoy = gun.GetComponent<TurretRotateWithJoy>();
+
+#if UNITY_STANDALONE
+        turretRotateWithJoy.enabled = false;
+        turretPointAtMouse.enabled = true;
+#elif UNITY_ANDROID || UNITY_IOS
+        turretRotateWithJoy.enabled = true;
+        turretPointAtMouse.enabled = false;
+#endif
+    }
 
     public Vector3 PlayerShipStartPos()
     {
@@ -196,35 +198,27 @@ public class PlayerShip : MonoBehaviour
 
         // NOTE: We don't need to check whether or not rigid is null because of [RequireComponent()] above
         rigid = GetComponent<Rigidbody>();
-
     }
+
 
     void Update()
     {
-        //DirectionPointToMousePos();
         Movement();
+    }
+
+    private void LateUpdate()
+    {
 #if UNITY_STANDALONE
         ShootStandalone();
         ActiveAbility();
 #elif UNITY_ANDROID || UNITY_IOS
-        if (modeControl != Mode.FightingBoss)
+        fireRate -= Time.deltaTime;
+        if (fireRate <= 0)
         {
-            FireDirection();
+            ShootMobile();
+            fireRate = 0.25f;
         }
 #endif
-    }
-
-    private void FireDirection()
-    {
-        float aX = UltimateJoystick.GetHorizontalAxis("FireDirection");
-        float aY = UltimateJoystick.GetVerticalAxis("FireDirection");
-
-        if (aX != 0f && aY != 0f)
-        {
-            currentDirection = new Vector3(aX, aY, 0);
-        }
-
-        direction.transform.LookAt(this.transform.position + currentDirection * 5, Vector3.back);
     }
 
     private void Movement()
@@ -235,12 +229,21 @@ public class PlayerShip : MonoBehaviour
             {
                 if (canControl)
                 {
-#if UNITY_ANDROID || UNITY_IOS
-                    float aX = UltimateJoystick.GetHorizontalAxis("Movement");
-                    float aY = UltimateJoystick.GetVerticalAxis("Movement");
+#if UNITY_EDITOR
+                    float aX = Input.GetAxis("Horizontal");
+                    float aY = Input.GetAxis("Vertical");
+
+                    if (aX == 0 && aY == 0)
+                    {
+                        aX = UltimateJoystick.GetHorizontalAxis("Movement");
+                        aY = UltimateJoystick.GetVerticalAxis("Movement");
+                    }
 #elif UNITY_STANDALONE
                     float aX = Input.GetAxis("Horizontal");
                     float aY = Input.GetAxis("Vertical");
+#elif UNITY_ANDROID || UNITY_IOS
+                    float aX = UltimateJoystick.GetHorizontalAxis("Movement");
+                    float aY = UltimateJoystick.GetVerticalAxis("Movement");
 #endif
                     Vector3 vel = new Vector3(aX, aY, 0);
 
@@ -254,11 +257,11 @@ public class PlayerShip : MonoBehaviour
                         vel.Normalize();
                     }
                     rigid.velocity = vel * shipSpeed;
-                }
 
-                if (modeControl == Mode.Normal)
-                {
-                    this.transform.up = currentVel;
+                    if (modeControl == Mode.Normal)
+                    {
+                        this.transform.up = currentVel;
+                    }
                 }
             }
         }
@@ -276,6 +279,18 @@ public class PlayerShip : MonoBehaviour
         }
     }
 
+    private IEnumerator ActiveMuzzle()
+    {
+        foreach (GameObject muzzle in Muzzles)
+        {
+            muzzle.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.15f);
+        foreach (GameObject muzzle in Muzzles)
+        {
+            muzzle.SetActive(false);
+        }
+    }
 
     private void ShootMobile()
     {
@@ -323,11 +338,10 @@ public class PlayerShip : MonoBehaviour
                 {
 #if UNITY_STANDALONE
                     turretPointAtMouse.enabled = false;
-                    direction.transform.forward = Vector3.up;
-#endif
-#if UNITY_ANDROID || UNITY_IOS
+                    gun.transform.forward = Vector3.up;
+#elif UNITY_ANDROID || UNITY_IOS
                     currentDirection = Vector3.up;
-                    direction.transform.LookAt(this.transform.position + currentDirection * 5, Vector3.back);
+                    gun.transform.LookAt(this.transform.position + currentDirection * 5, Vector3.back);
 
 #endif
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsBoss];
@@ -455,16 +469,16 @@ public class PlayerShip : MonoBehaviour
 
     public void Fire(Mode mode)
     {
-        Vector3 direc = direction.transform.forward;
+        StartCoroutine(ActiveMuzzle());
 
-        if (shipAttack == 1)
+        foreach (GameObject shotPoint in shotPoints)
         {
             Bullet go = ObjectPoolingBullet.GetUnactiveBullet();
-            go.transform.position = transform.position;
-
+            go.transform.position = shotPoint.transform.position;
+            //gun.GetComponent<GunRecoil>().Recoil();
             if (mode == Mode.Normal)
             {
-                go.transform.forward = direc;
+                go.transform.forward = gun.transform.forward;
 
                 go.InitVel();
             }
@@ -473,32 +487,6 @@ public class PlayerShip : MonoBehaviour
                 go.transform.forward = Vector3.up;
 
                 go.InitVel();
-            }
-        }
-
-        else if (shipAttack == 2)
-        {
-            Bullet b1 = ObjectPoolingBullet.GetUnactiveBullet();
-            Bullet b2 = ObjectPoolingBullet.GetUnactiveBullet();
-
-            b1.transform.position = transform.position + offset;
-            b2.transform.position = transform.position - offset;
-
-            if (mode == Mode.Normal)
-            {
-                b1.transform.forward = direc;
-                b2.transform.forward = direc;
-
-                b1.InitVel();
-                b2.InitVel();
-            }
-            else if (mode == Mode.FightingBoss)
-            {
-                b1.transform.forward = Vector3.up;
-                b2.transform.forward = Vector3.up;
-
-                b1.InitVel();
-                b2.InitVel();
             }
         }
     }

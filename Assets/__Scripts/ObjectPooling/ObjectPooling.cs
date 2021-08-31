@@ -53,6 +53,8 @@ public class ObjectPooling : MonoBehaviour
             if (!listGameObject[i].activeSelf)
             {
                 listGameObject[i].SetActive(true);
+                listGameObject[i].transform.position = Vector3.zero;
+                listGameObject[i].transform.rotation = Quaternion.identity;
                 return listBulletData[i];
             }
         }
@@ -65,7 +67,7 @@ public class ObjectPooling : MonoBehaviour
 
     private GameObject InitialObject()
     {
-        GameObject tmp = Instantiate(gameObjectPrefab);
+        GameObject tmp = Instantiate(gameObjectPrefab, Vector3.zero, Quaternion.identity);
         tmp.SetActive(false);
         tmp.transform.SetParent(this.gameObject.transform);
         listGameObject.Add(tmp);
