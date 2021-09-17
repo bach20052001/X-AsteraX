@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: 7e939cec509394b3cae350353f198b36
+labels:
+- Shield
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: playership/shield
   assetBundleVariant: 

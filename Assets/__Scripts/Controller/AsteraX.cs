@@ -1,6 +1,5 @@
 ﻿//#define DEBUG_AsteraX_LogMethods
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class AsteraX : MonoBehaviour
     static private AsteraX _S;
 
     static List<Asteroid> ASTEROIDS;
-    public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
+    [HideInInspector] public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
 
     public GameObject Asteroids;
 
@@ -24,11 +23,11 @@ public class AsteraX : MonoBehaviour
 
     public ObjectPooling explosionOP;
 
-    public ParticleSystem shipExplosion;
+    public GameObject shipExplosion;
 
     private SceneController sceneController;
 
-    public ParticleSystem warp;
+    public GameObject warp;
 
     public GameObject Magnetic;
 
@@ -36,8 +35,8 @@ public class AsteraX : MonoBehaviour
 
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
-    public GameObject[] asteroidPrefabs;
 
+    private List<GameObject> asteroidPrefabs;
     public List<GameObject> listSpaceShips;
 
     private GameObject playerShip;
@@ -152,15 +151,31 @@ public class AsteraX : MonoBehaviour
         }
     }
 
+    private void LoadAB()
+    {
+        warp = LoadDatabase.Instance.shipAppearEffect;
+        shipExplosion = LoadDatabase.Instance.listExplosion[0];
+        Magnetic = LoadDatabase.Instance.asteroidEffect;
+        asteroidPrefabs = LoadDatabase.Instance.listAsteroids;
+        listSpaceShips = LoadDatabase.Instance.listPlayerships;
+        asteroidsData = LoadDatabase.Instance.data_asteroid;
+        MiniBoss = LoadDatabase.Instance.miniboss;
+        SuperBoss = LoadDatabase.Instance.superboss;
+        warp = LoadDatabase.Instance.shipAppearEffect;
+        Magnetic = LoadDatabase.Instance.asteroidEffect;
+        sceneController = SceneController.Instance;
+    }
+
     private void Awake()
     {
+        LoadAB();
+
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:Awake()");
 #endif
 
         S = this;
 
-        sceneController = SceneController.Instance;
 
         if (sceneController != null)
         {
@@ -186,6 +201,7 @@ public class AsteraX : MonoBehaviour
         this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
         this.RegisterListener(GameEvent.OnDestroyedMiniBoss, (param) => OnDestroyBossHandler());
         this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroySuperBossHandler());
+
     }
 
     void Start()
@@ -330,7 +346,7 @@ public class AsteraX : MonoBehaviour
 
     public GameObject GetAsteroidPrefab()
     {
-        int ndx = UnityEngine.Random.Range(0, asteroidPrefabs.Length);
+        int ndx = UnityEngine.Random.Range(0, asteroidPrefabs.Count);
         return asteroidPrefabs[ndx];
     }
 

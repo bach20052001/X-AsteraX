@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 42d7cdf17591d47538db6c50ad7bf691
+labels:
+- Gun
+- Muzzle flash
+- Shield
+- Ship
+- Trail
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: playership/delta
   assetBundleVariant: 

@@ -24,12 +24,23 @@ public class Laser : MonoBehaviour
     void OnEnable()
     {
         Destroy(Instance);
+
+        if (PrefabLaser == null)
+        {
+            PrefabLaser = LoadDatabase.Instance.Laser;
+        }
+
         Instance = Instantiate(PrefabLaser, FirePoint.transform.position, Quaternion.identity);
         Instance.transform.parent = transform;
         Instance.transform.forward = Vector3.down;
         LaserScript = Instance.GetComponent<EGA_Laser>();
 
         StartCoroutine(ChangeDirection());
+    }
+
+    private void Awake()
+    {
+        PrefabLaser = LoadDatabase.Instance.Laser;
     }
 
     private void Start()

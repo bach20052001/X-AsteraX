@@ -73,6 +73,8 @@ public class LevelManager : MonoBehaviour
 
         DontDestroyOnLoad(instance);
 
+        LevelScriptableObject = LoadDatabase.Instance.data_level;
+
         ResetLevel();
     }
 }

@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: 1c8e933d288f546d9b8c2e4a001ea310
+labels:
+- Effect
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: asteroid/effect
   assetBundleVariant: 

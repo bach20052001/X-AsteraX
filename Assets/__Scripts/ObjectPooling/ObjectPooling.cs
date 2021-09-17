@@ -23,6 +23,16 @@ public class ObjectPooling : MonoBehaviour
 
     void Awake()
     {
+        if (type != ObjectType.Explosion)
+        {
+            gameObjectPrefab = LoadDatabase.Instance.listBullet[((int)type)];
+        }
+
+        else
+        {
+            gameObjectPrefab = LoadDatabase.Instance.listExplosion[0];
+        }
+
         for (int i = 0; i < initialSize; i++)
         {
             InitialObject();

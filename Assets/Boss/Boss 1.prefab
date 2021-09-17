@@ -120,10 +120,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43d43907e6c9d40c88ef2a6b4c14b34b, type: 2}
   - {fileID: 11400000, guid: 119c3be57052f4697b00ba01854eb29a, type: 2}
   - {fileID: 11400000, guid: 7f57d9a6007e94c6d85f0ba584f72a62, type: 2}
+  currentData: {fileID: 0}
   bossData: {fileID: 11400000, guid: 2f5228aee6aba4f848bf032ca9b866e7, type: 2}
   EnemyPrefab: {fileID: 288174170244224242, guid: 01077faf6e7a5214c9c25c191c5b4c06,
-    type: 3}
-  EnemyBullet: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
     type: 3}
   isUp: 1
 --- !u!1 &7101847815311860961

@@ -30,7 +30,7 @@ public class MiniBoss : MonoBehaviour
 
     private Vector3 outScreenPos;
 
-    [SerializeField] private GameObject EnemyPrefab;
+    private GameObject EnemyPrefab;
     private GameObject enemy;
 
     private int point;
@@ -43,6 +43,7 @@ public class MiniBoss : MonoBehaviour
 
     private void Awake()
     {
+        EnemyPrefab = LoadDatabase.Instance.enemy;
         currenEnemy = 1;
         numberOfCurrentEnemy = bossData.EnemyList[currenEnemy];
 

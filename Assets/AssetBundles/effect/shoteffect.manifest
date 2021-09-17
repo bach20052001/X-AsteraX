@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 3070614057
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a49d32d9da1ed3e0cbb0c5a99d832309
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8d01010069c5301f501083ddecb715dd
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SpaceShip/ShipPrefab/WFX_MF Spr RIFLE1.prefab
+Dependencies: []

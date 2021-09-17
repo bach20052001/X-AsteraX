@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 428f6ac3841d64a82981603faeb644e1
+labels:
+- PostProcessing
+- Scene
 DefaultImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: cutscene
   assetBundleVariant: 

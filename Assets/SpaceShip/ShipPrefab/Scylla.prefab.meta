@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 5af5fadec93394529a1f27ffcfcb8bab
+labels:
+- Gun
+- Muzzle flash
+- Shield
+- Ship
+- Trail
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: playership/scylla
   assetBundleVariant: 

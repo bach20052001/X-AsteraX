@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+CRC: 914096248
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 14b99f68b72699fd8aaedbff262c7cf5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4fcbe54a2a308d6b8b8eeb51905bed96
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5cb039d3a64491f4ebfc852d25b5ee70, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0884dceb0d4308c4eb8bc763c8f8deae, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Particles/shot_prefab_enemy.prefab
+Dependencies: []

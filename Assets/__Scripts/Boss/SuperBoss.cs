@@ -50,7 +50,6 @@ public class SuperBoss : MonoBehaviour
     private bool isLaserActive;
 
     private bool isReadyToAttack = false;
-    public List<ParticleSystem> FXBeforeDestroy = new List<ParticleSystem>();
 
     private float xRange = 8;
 
@@ -192,11 +191,6 @@ public class SuperBoss : MonoBehaviour
 
             DecreaseEnergy((int)Mathf.Abs(255 * currentHP / HP));
 
-            if (currentHP <= 20)
-            {
-                FXBeforeDestroy[1].gameObject.SetActive(true);
-            }
-
             GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
 
             explosion.transform.position = collision.contacts[0].point;
@@ -263,11 +257,6 @@ public class SuperBoss : MonoBehaviour
         isReadyToAttack = false;
 
         laser.enabled = false;
-
-        for (int i = 0; i < FXBeforeDestroy.Count; i++)
-        {
-            FXBeforeDestroy[i].gameObject.SetActive(true);
-        }
 
         StartCoroutine(MoveTo(outPosition, true, Mode.Normal));
     }

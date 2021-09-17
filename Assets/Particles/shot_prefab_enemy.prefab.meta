@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 0b25b4910f6b345118376af0b501ef46
-timeCreated: 1499363445
-licenseType: Store
-NativeFormatImporter:
+PrefabImporter:
+  externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: bullet/shotprefab
   assetBundleVariant: 

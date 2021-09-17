@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: ce7f65cd657aabe4f9680a393dc3298b
+labels:
+- Trail
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: playership/traileffect
   assetBundleVariant: 

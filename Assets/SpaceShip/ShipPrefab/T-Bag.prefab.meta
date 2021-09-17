@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: f67b736c564054f7d8c94c510be2ea63
+labels:
+- Gun
+- Muzzle flash
+- Shield
+- Ship
+- Trail
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: playership/t-bag
   assetBundleVariant: 

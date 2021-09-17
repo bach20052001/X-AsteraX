@@ -1,7 +1,12 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
-
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class LoadDatabase : MonoBehaviour
 {
@@ -14,6 +19,67 @@ public class LoadDatabase : MonoBehaviour
     public SuperBoss_SO data_superboss;
     public MiniBoss_SO data_miniboss;
 
+    public List<GameObject> listPlayerships;
+    public List<GameObject> listAsteroids;
+    public List<GameObject> listExplosion;
+    public List<GameObject> listBullet;
+    public List<string> listScenes;
+
+    //Path
+    //--Scene--//
+    [Header("ScenePath")]
+    public List<string> sceneAssetPath;
+
+    //--Asteroid--//
+    [Header("AsteroidPath")]
+    public List<string> asteroidAssetPath;
+
+    //--PlayershipPath--//
+    [Header("PlayershipPath")]
+    public List<string> playershipAssetPath;
+
+    //--Bullet--//
+    [Header("BulletPath")]
+    public List<string> bulletAssetPath;
+
+    //--BossAndEnemy--//
+    [Header("BossAndEnemyPath")]
+    public string minibossPath;
+    public string enemyPath;
+    public string superbossPath;
+
+    [Header("ExplosionPath")]
+    public List<string> explosionPath;
+
+    [Header("LightingPath")]
+    public List<string> lightingPath;
+
+    //--Effect--//
+    public string sparkPath;
+    public string portalPath;
+    public string laserPath;
+    public string asteroideffectPath;
+    public string shipAppearEffectPath;
+    public string cinematicPlayerShotPath;
+    public string cinematicEnemyPath;
+
+    public List<string> shipNames;
+    public List<string> asteroidNames;
+    public List<string> explosionNames;
+    public List<string> bulletNames;
+    public List<string> sceneNames;
+
+    public GameObject spark;
+    public GameObject portal;
+    public GameObject Laser;
+
+    public GameObject asteroidEffect;
+    public GameObject shipAppearEffect;
+
+    public GameObject miniboss;
+    public GameObject enemy;
+    public GameObject superboss;
+
     private string database_spaceship;
     private string database_level;
     private string database_skill;
@@ -22,7 +88,6 @@ public class LoadDatabase : MonoBehaviour
     private string database_enemy;
     private string database_miniboss;
     private string database_superboss;
-
 
     [HideInInspector] public DataAsteroid dataAsteroid;
     [HideInInspector] public DataLevel dataLevel;
@@ -34,6 +99,7 @@ public class LoadDatabase : MonoBehaviour
     [HideInInspector] public DataSuperboss dataSuperboss;
 
     private string dataPath;
+    private string assetPath;
 
     private static LoadDatabase instance;
 
@@ -59,13 +125,151 @@ public class LoadDatabase : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(this.gameObject);
+
+        dataPath = Path.Combine(Application.persistentDataPath, "Data");
+        assetPath = Path.Combine(Application.persistentDataPath, "Asset");
     }
 
-    void Start()
+    public void StartRead(bool nothingToDownload)
     {
-        dataPath = Path.Combine(Application.persistentDataPath, "Data");
         ReadJson();
         LoadJsonToSO();
+        LoadEffect();
+        LoadAssets();
+        LoadEnemy();
+        StartCoroutine(LoadScene(nothingToDownload));
+    }
+
+
+    IEnumerator Download(string url, string assetName, string assetUrl, List<GameObject> listTarget)
+    {
+        AssetBundleLoader assetBundleLoader = new AssetBundleLoader();
+        yield return StartCoroutine(assetBundleLoader.LoadBundle<GameObject>(url, assetName, assetUrl));
+        if (assetBundleLoader.Obj != null)
+            Debug.Log("Success");
+
+        listTarget.Add(assetBundleLoader.Obj as GameObject);
+    }
+
+    IEnumerator Download(string url, string assetName, string assetUrl, Action<GameObject> callback)
+    {
+        AssetBundleLoader assetBundleLoader = new AssetBundleLoader();
+        yield return StartCoroutine(assetBundleLoader.LoadBundle<GameObject>(url, assetName, assetUrl));
+        if (assetBundleLoader.Obj != null)
+        {
+            Debug.Log("Success");
+        }
+        callback(assetBundleLoader.Obj as GameObject);
+    }
+
+   
+    IEnumerator DownloadScene(string url, string assetName, string assetUrl, List<string> listTarget)
+    {
+        AssetBundleLoader assetBundleLoader = new AssetBundleLoader();
+        yield return StartCoroutine(assetBundleLoader.LoadSceneBundle(url, assetName, assetUrl));
+        if (assetBundleLoader.Obj != null)
+            Debug.Log("Success");
+
+        listTarget.Add(assetBundleLoader.sceneName);
+        yield return null;
+    }
+
+    private void LoadEffect()
+    {
+        string localPath = Path.Combine(assetPath, "spark");
+        StartCoroutine(Download(localPath, "Sparks", sparkPath, (obj) => {
+            spark = obj;
+        }));
+        localPath = Path.Combine(assetPath, "portal");
+        StartCoroutine(Download(localPath, "pf_vfx-ult_demo_psys_loop_hyperspace", portalPath, (obj) => {
+            portal = obj;
+        }));
+
+        localPath = Path.Combine(assetPath, "laser");
+        StartCoroutine(Download(localPath, "Laser beam 2", laserPath, (obj) => {
+            Laser = obj;
+        }));
+
+        localPath = Path.Combine(assetPath, "asteroideffect");
+        StartCoroutine(Download(localPath, "Asteroid_Effect", asteroideffectPath, (obj) => {
+            asteroidEffect = obj;
+        }));
+
+        localPath = Path.Combine(assetPath, "shipappeareffect");
+        StartCoroutine(Download(localPath, "Warp2", shipAppearEffectPath, (obj) => {
+            shipAppearEffect = obj;
+        }));
+    }
+
+    public void LoadEnemy()
+    {
+        string localPath = Path.Combine(assetPath, "miniboss");
+        StartCoroutine(Download(localPath, "Boss 1", minibossPath, (obj) => {
+            miniboss = obj;
+        }));
+
+        localPath = Path.Combine(assetPath, "enemy");
+        StartCoroutine(Download(localPath, "Enemy", enemyPath, (obj) => {
+            enemy = obj;
+        }));
+
+        localPath = Path.Combine(assetPath, "superboss");
+        StartCoroutine(Download(localPath, "Boss 2", superbossPath, (obj) => {
+            superboss = obj;
+        }));
+    }
+
+    private IEnumerator LoadScene(bool nothingToDownload)
+    {
+        for (int i = 0; i < sceneAssetPath.Count; i++)
+        {
+            StartCoroutine(DownloadScene(Path.Combine(assetPath, sceneNames[i]), sceneNames[i], sceneAssetPath[i], listScenes));
+        }
+
+        yield return new WaitForEndOfFrame();
+        SceneController.Instance.scenePaths = listScenes;
+
+        if (!nothingToDownload)
+        {
+            yield return new WaitForEndOfFrame();
+            SceneController.Instance.NextSceneAB();
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+            SceneController.Instance.NextSceneAB();
+
+        }
+
+    }
+
+    private void LoadAssets()
+    {
+        string localPath = Path.Combine(assetPath, "playership");
+        for (int i = 0;i < playershipAssetPath.Count;i++)
+        {
+            StartCoroutine(Download(Path.Combine(localPath, shipNames[i]), shipNames[i], playershipAssetPath[i], listPlayerships));
+        }
+
+        localPath = Path.Combine(assetPath, "asteroid");
+        for (int i = 0; i < asteroidAssetPath.Count; i++)
+        {
+            StartCoroutine(Download(Path.Combine(localPath, asteroidNames[i]), "Asteroid_" + asteroidNames[i], asteroidAssetPath[i], listAsteroids));
+        }
+
+        localPath = Path.Combine(assetPath, "bullet");
+        for (int i = 0; i < bulletAssetPath.Count; i++)
+        {
+            StartCoroutine(Download(Path.Combine(localPath, bulletNames[i]), bulletNames[i], bulletAssetPath[i], listBullet));
+        }
+
+        localPath = Path.Combine(assetPath, "explosion");
+        for (int i = 0; i < explosionPath.Count; i++)
+        {
+            StartCoroutine(Download(Path.Combine(localPath, explosionNames[i]), explosionNames[i], explosionPath[i], listExplosion));
+        }
     }
 
     private void ReadJson()
@@ -232,7 +436,7 @@ public class LoadDatabase : MonoBehaviour
 
             data_ship[i].skill = (Skills)Mathf.Clamp(cachedShipData[i].Skill, 1, 4);
 
-            data_ship[i].BulletType = Mathf.Clamp(cachedShipData[i].BulletType, 1, 3); 
+            data_ship[i].BulletType = Mathf.Clamp(cachedShipData[i].BulletType, 1, 3);
         }
 
         //Load Skill Data
@@ -246,5 +450,15 @@ public class LoadDatabase : MonoBehaviour
 
             data_skill[i].maxIncremental = cachedSkillData[i].MaxIncremental;
         }
+    }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneController.Instance.NextSceneAB();
+        }
+#endif
     }
 }

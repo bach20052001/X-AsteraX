@@ -1,0 +1,47 @@
+ManifestFileVersion: 0
+CRC: 1747308764
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 22416b7ed6faefe2a26dfad8c6ddf916
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 324ad093b391655590967fff9da44dd8
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: e31a3ad21da634acea2f2093822c4fcb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 973da2538d15dc04a9fc7c4ea4033e29, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 38f89ba93c04c42d184f868bb053d6a6, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/BulletForAsteroid.prefab
+Dependencies: []

@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: bd00cce734003477a91d764b4930ba05
+labels:
+- Scene
 DefaultImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: manage
   assetBundleVariant: 

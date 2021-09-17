@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 63c93b8624b3a49f4839b2246bb34b66
+labels:
+- Gun
+- Muzzle flash
+- Shield
+- Ship
+- Trail
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: playership/scorpion
   assetBundleVariant: 

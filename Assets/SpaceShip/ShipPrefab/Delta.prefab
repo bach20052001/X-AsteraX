@@ -194,9 +194,7 @@ MonoBehaviour:
   canControl: 1
   modeControl: 0
   gun: {fileID: 4002326634235811655}
-  Muzzles:
-  - {fileID: 3313352813186958514}
-  - {fileID: 4554778515078406769}
+  Muzzles: []
   Shield: {fileID: 3207709063053664594}
   shotPoints:
   - {fileID: 830736457354552809}
@@ -583,18 +581,6 @@ GameObject:
 --- !u!1 &8503208001828172109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5089826851177226316, guid: 612cc25c54ea545539c7a01d642a22ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504860636478951681}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3313352813186958514 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2114617019799115187, guid: 612cc25c54ea545539c7a01d642a22ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504860636478951681}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4554778515078406769 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1123110174006424432, guid: 612cc25c54ea545539c7a01d642a22ed,
     type: 3}
   m_PrefabInstance: {fileID: 3504860636478951681}
   m_PrefabAsset: {fileID: 0}

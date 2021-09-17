@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: 612cc25c54ea545539c7a01d642a22ed
+labels:
+- Gun
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: playership/canon2
   assetBundleVariant: 

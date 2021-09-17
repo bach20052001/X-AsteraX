@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_Sun: {fileID: 1063172400}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: e5d3b1dcf1dce43a4a0d7b29c02d5627,
+  m_LightingDataAsset: {fileID: 112000000, guid: 341187b7f61ab4bdaa9bc900e20f5afc,
     type: 2}
   m_LightingSettings: {fileID: 896520517}
 --- !u!196 &4
@@ -587,8 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  gameObjectPrefab: {fileID: 1625365507237398, guid: e8335af2e6e050a4c9342af2fda58d35,
-    type: 3}
+  gameObjectPrefab: {fileID: 0}
   initialSize: 7
 --- !u!1 &241423275
 GameObject:
@@ -1688,8 +1687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  gameObjectPrefab: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
-    type: 3}
+  gameObjectPrefab: {fileID: 0}
   initialSize: 7
 --- !u!4 &601180200
 Transform:
@@ -1755,25 +1753,13 @@ MonoBehaviour:
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosionOP: {fileID: 237831443}
-  shipExplosion: {fileID: 198231724666311192, guid: e8335af2e6e050a4c9342af2fda58d35,
-    type: 3}
-  warp: {fileID: 1231110749491679353, guid: 1a9a2c60f6548c846837acb381b1f03d, type: 3}
-  Magnetic: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
-    type: 3}
+  shipExplosion: {fileID: 0}
+  warp: {fileID: 0}
+  Magnetic: {fileID: 0}
   magneticFactory: {fileID: 1842951576}
-  asteroidPrefabs:
-  - {fileID: 1029653053436338, guid: 1293b0763d7d344e0b908c097078ac09, type: 3}
-  - {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2, type: 3}
-  - {fileID: 1317570492134680, guid: a6d3ccfc58a1f41368479aabb6050561, type: 3}
-  listSpaceShips:
-  - {fileID: 7640424413477587657, guid: 63c93b8624b3a49f4839b2246bb34b66, type: 3}
-  - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
-  - {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab, type: 3}
-  - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
-  MiniBoss: {fileID: 3854107484062449326, guid: 36908327b22f1470b8504cd0d39a9e7c,
-    type: 3}
-  SuperBoss: {fileID: 8570772132499355697, guid: ec550988987384c0c973105c21894b5a,
-    type: 3}
+  listSpaceShips: []
+  MiniBoss: {fileID: 0}
+  SuperBoss: {fileID: 0}
   ListObjectPooling:
   - {fileID: 601180199}
   - {fileID: 1000392218}
@@ -2993,8 +2979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  gameObjectPrefab: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
-    type: 3}
+  gameObjectPrefab: {fileID: 0}
   initialSize: 7
 --- !u!1 &1038603698
 GameObject:
@@ -6053,7 +6038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22468432, guid: 7ffda55ee71685646aacbb22ab8fec4d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -309.15002
+      value: -304.34998
       objectReference: {fileID: 0}
     - target: {fileID: 22468432, guid: 7ffda55ee71685646aacbb22ab8fec4d, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6521,8 +6506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  gameObjectPrefab: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
-    type: 3}
+  gameObjectPrefab: {fileID: 0}
   initialSize: 7
 --- !u!1001 &2133938770
 PrefabInstance:
@@ -6802,7 +6786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 36.180054
+      value: 31.380005
       objectReference: {fileID: 0}
     - target: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
       propertyPath: m_AnchoredPosition.y

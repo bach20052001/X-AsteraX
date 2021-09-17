@@ -1,10 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public int currentScene;
+
+    public DownloadData data;
+
+    public List<string> scenePaths = new List<string>();
+
     public Animator[] animators;
 
     private PlayerData playerData;
@@ -31,6 +41,7 @@ public class SceneController : MonoBehaviour
 
     private void Awake()
     {
+        currentScene = -1;
         SelectedIndex = -1;
 
         if (instance == null)
@@ -65,6 +76,15 @@ public class SceneController : MonoBehaviour
         StartCoroutine(PlayNext());
     }
 
+    public void Load(int order)
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneAsyncInPlayMode(LoadDatabase.Instance.sceneAssetPath[order], new LoadSceneParameters() { loadSceneMode = LoadSceneMode.Single });
+#else
+        SceneManager.LoadSceneAsync(scenePaths[order]);
+#endif
+    }
+
     public void NextSceneWithoutAnimate()
     {
         StartCoroutine(PlayNextWithoutAni());
@@ -73,30 +93,33 @@ public class SceneController : MonoBehaviour
     private IEnumerator PlayNextWithoutAni()
     {
         yield return new WaitForSeconds(delay);
-        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        NextSceneAB();
     }
 
     private IEnumerator PlayNext()
     {
         ActiveAnimator();
         yield return new WaitForSeconds(delay);
-        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        NextSceneAB();
     }
 
+    public void NextSceneAB()
+    {
+        if (currentScene + 1 < scenePaths.Count)
+        {
+            currentScene++;
+            Load(currentScene);
+        }
+    }
 
     private IEnumerator PlayPrev()
     {
         ActiveAnimator();
         yield return new WaitForSeconds(delay);
-        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+        if (currentScene - 1 >= 0)
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+            currentScene--;
+            Load(currentScene);
         }
     }
 
@@ -131,23 +154,26 @@ public class SceneController : MonoBehaviour
 
     public void QuitToWelcome()
     {
-        if (SceneManager.GetActiveScene().buildIndex - 2 >= 0)
+        if (currentScene - 2 >= 0)
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 2);
+            currentScene -= 2;
+            Load(currentScene);
         }
     }
 
     public void Return()
     {
-        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+        if (currentScene - 1 >= 0)
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+            currentScene--;
+            Load(currentScene);
         }
     }
 
     public void ReturnToExistScene()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+        currentScene--;
+        Load(currentScene);
     }
 
     public void Play()
@@ -159,9 +185,10 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            if (SceneManager.GetActiveScene().buildIndex + 2 < SceneManager.sceneCountInBuildSettings)
+            if (currentScene + 2 < scenePaths.Count)
             {
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
+                currentScene += 2;
+                Load(currentScene);
             }
         }
     }

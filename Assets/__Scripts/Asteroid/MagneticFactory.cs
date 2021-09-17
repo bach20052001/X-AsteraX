@@ -51,6 +51,8 @@ public class MagneticFactory : MonoBehaviour
 
         rb = player.GetComponent<Rigidbody>();
 
+        Magnetic = LoadDatabase.Instance.asteroidEffect;
+
         shipBody = player.gameObject.GetComponentInChildren<MeshRenderer>();
 
         originalColor = shipBody.material.color;

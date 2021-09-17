@@ -236,8 +236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 471.9, y: -420}
-  m_SizeDelta: {x: 248.684, y: 40.031}
+  m_AnchoredPosition: {x: 4.0434, y: -420}
+  m_SizeDelta: {x: 1184.3975, y: 40.031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107160401
 MonoBehaviour:
@@ -366,6 +366,189 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440589507}
   m_CullTransparentMesh: 1
+--- !u!1 &457709695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457709697}
+  - component: {fileID: 457709696}
+  m_Layer: 0
+  m_Name: LoadDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &457709696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457709695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e126be30ce2491d92a080121fdb686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data_asteroid:
+  - {fileID: 11400000, guid: 254c03dd2a9754dd293ee031f3f8350e, type: 2}
+  - {fileID: 11400000, guid: a1462bca4a38746a6b8822de13222ea2, type: 2}
+  - {fileID: 11400000, guid: 7497216060c0e4bedabfef1ae911ebfc, type: 2}
+  data_level:
+  - {fileID: 11400000, guid: 2b6cec6ca77fe4d49968b9db06f6e657, type: 2}
+  - {fileID: 11400000, guid: 38d81ea2e44c7e246ab8f419130502bd, type: 2}
+  - {fileID: 11400000, guid: bd8c251876e73f546a96b64d412a37c5, type: 2}
+  - {fileID: 11400000, guid: ef05b309822419747a5eabc047f1facf, type: 2}
+  - {fileID: 11400000, guid: 4b721b9b8c38191408aada7fc69877e4, type: 2}
+  - {fileID: 11400000, guid: a9a12d229962aae4192fb51e9ced4f0a, type: 2}
+  - {fileID: 11400000, guid: 403ced9e93159c4448320b1000adecbf, type: 2}
+  - {fileID: 11400000, guid: 77fc84f44bdc0ac42baec2c22fbaefd6, type: 2}
+  - {fileID: 11400000, guid: fd0fd1a5b1ac64338ae4e2377ef6b892, type: 2}
+  - {fileID: 11400000, guid: 789606e2c93e64667bbb9ad21885319b, type: 2}
+  - {fileID: 11400000, guid: e2fa837e8847945029cea3c6761535a6, type: 2}
+  data_skill:
+  - {fileID: 11400000, guid: 33b6f61ea9e5a4b579f126d9a4721417, type: 2}
+  - {fileID: 11400000, guid: 44bb0eadc48c9437bafb5e249002510c, type: 2}
+  - {fileID: 11400000, guid: e8c38e40272754338b738c249318541c, type: 2}
+  - {fileID: 11400000, guid: 9eed74139145346ed8f755a29e672bf6, type: 2}
+  data_ship:
+  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
+  - {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
+  - {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
+  - {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
+  data_bullet:
+  - {fileID: 11400000, guid: 604f6bdcfc259437eaf4c1eee3a431e7, type: 2}
+  - {fileID: 11400000, guid: abd4ee05a870a4b87800187f97de1a88, type: 2}
+  - {fileID: 11400000, guid: ace94611188c14f0dadbc011fa387d9f, type: 2}
+  data_enemy:
+  - {fileID: 11400000, guid: 7ff7f197069174d208bba8a4a3f09fba, type: 2}
+  - {fileID: 11400000, guid: 43d43907e6c9d40c88ef2a6b4c14b34b, type: 2}
+  - {fileID: 11400000, guid: 119c3be57052f4697b00ba01854eb29a, type: 2}
+  - {fileID: 11400000, guid: 7f57d9a6007e94c6d85f0ba584f72a62, type: 2}
+  data_superboss: {fileID: 11400000, guid: d293ee147edeb4927a63cb2e428637cc, type: 2}
+  data_miniboss: {fileID: 11400000, guid: 2f5228aee6aba4f848bf032ca9b866e7, type: 2}
+  listPlayerships: []
+  listAsteroids: []
+  listExplosion: []
+  listBullet: []
+  listScenes: []
+  sceneAssetPath:
+  - Assets/_Scenes/Welcome.unity
+  - Assets/_Scenes/Manage.unity
+  - Assets/_Scenes/Main.unity
+  - Assets/_Scenes/CutScene.unity
+  asteroidAssetPath:
+  - Assets/Prefabs/Prefab Asteroids/Asteroid_A.prefab
+  - Assets/Prefabs/Prefab Asteroids/Asteroid_B.prefab
+  - Assets/Prefabs/Prefab Asteroids/Asteroid_C.prefab
+  playershipAssetPath:
+  - Assets/SpaceShip/ShipPrefab/Scorpion.prefab
+  - Assets/SpaceShip/ShipPrefab/Delta.prefab
+  - Assets/SpaceShip/ShipPrefab/Scylla.prefab
+  - Assets/SpaceShip/ShipPrefab/T-Bag.prefab
+  bulletAssetPath:
+  - Assets/Prefabs/BulletForAsteroid.prefab
+  - Assets/Prefabs/BulletForBoss.prefab
+  - Assets/Prefabs/EnemyBullet.prefab
+  minibossPath: Assets/Boss/Boss 1.prefab
+  enemyPath: Assets/Boss/Enemy.prefab
+  superbossPath: Assets/Boss/Boss 2.prefab
+  explosionPath:
+  - Assets/Prefabs/AsteroidExplosion1Prefab.prefab
+  - Assets/JMO Assets/WarFX/_Effects/Explosions/WFX_Explosion StarSmoke.prefab
+  - Assets/JMO Assets/WarFX/_Effects/Fire/No Smoke/WFX_Fire Natural Broad (No Smoke).prefab
+  - Assets/JMO Assets/WarFX/_Effects/Fire/No Smoke/WFX_Fire Natural Circle (No Smoke).prefab
+  lightingPath:
+  - Assets/_Scenes/_Scene_0/LightingData.asset
+  - Assets/_Scenes/CutScene/LightingData.asset
+  sparkPath: Assets/Particles/Sparks.prefab
+  portalPath: Assets/Particles/pf_vfx-ult_demo_psys_loop_hyperspace.prefab
+  laserPath: Assets/ErbGameArt/3D Lasers Pack/Prefabs/Laser beam 2.prefab
+  asteroideffectPath: Assets/Particles/Asteroid_Effect.prefab
+  shipAppearEffectPath: Assets/Prefabs/Warp2.prefab
+  cinematicPlayerShotPath: Assets/Particles/shot_prefab_ship.prefab
+  cinematicEnemyPath: Assets/Particles/shot_prefab_enemy.prefab
+  shipNames:
+  - scorpion
+  - delta
+  - scylla
+  - t-bag
+  asteroidNames:
+  - a
+  - b
+  - c
+  explosionNames:
+  - asteroidexplosion1prefab
+  - wfx_explosion starsmoke
+  - wfx_fire natural broad (no smoke)
+  - wfx_fire natural circle (no smoke)
+  bulletNames:
+  - bulletforasteroid
+  - bulletforboss
+  - enemybullet
+  sceneNames:
+  - welcome
+  - manage
+  - main
+  - cutscene
+  spark: {fileID: 0}
+  flame: {fileID: 0}
+  portal: {fileID: 0}
+  Laser: {fileID: 0}
+  asteroidEffect: {fileID: 0}
+  shipAppearEffect: {fileID: 0}
+  muzzle: {fileID: 0}
+  miniboss: {fileID: 0}
+  enemy: {fileID: 0}
+  superboss: {fileID: 0}
+  dataAsteroid:
+    data_asteroid: []
+  dataLevel:
+    data_level: []
+  dataShip:
+    data_ship: []
+  dataSkill:
+    data_skill: []
+  dataBullet:
+    data_bullet: []
+  dataEnemy:
+    data_enemy: []
+  dataMiniboss:
+    BossID: 0
+    BossName: 
+    Point: 0
+    Description: 
+    EnemyList: []
+  dataSuperboss:
+    BossID: 0
+    BossName: 
+    HP: 0
+    FireRate: 0
+    Laser: 0
+    xRangeLaser: 0
+    Point: 0
+    Speed: 0
+    Description: 
+    BulletType: 0
+--- !u!4 &457709697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457709695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 337.63394, y: 148.24515, z: -251.12383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &573992314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,6 +1231,47 @@ MonoBehaviour:
   - database_skill.json
   - database_spaceship.json
   - database_superboss.json
+  fileUrls:
+  - alphamove
+  - cutscene
+  - enemy
+  - flame
+  - laser
+  - main
+  - manage
+  - miniboss
+  - spark
+  - superboss
+  - ui_effect
+  - welcome
+  asteroidUrls:
+  - a
+  - b
+  - c
+  - effect
+  playershipUrls:
+  - canon1
+  - canon2
+  - delta
+  - scorpion
+  - scylla
+  - shield
+  - t-bag
+  - traileffect
+  bulletUrls:
+  - bulletforasteroid
+  - bulletforboss
+  - enemybullet
+  - shotprefab
+  explosionUrls:
+  - asteroidexplosion1prefab
+  - wfx_explosion starsmoke
+  - wfx_fire natural broad (no smoke)
+  - wfx_fire natural circle (no smoke)
+  effectUrls:
+  - portal
+  - shipappear
+  - shoteffect
   fileNameDisplay: {fileID: 107160401}
   downloadProgessDisplay: {fileID: 37157403}
   alertFileSize: {fileID: 440589509}
@@ -1230,6 +1454,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1766292594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766292596}
+  - component: {fileID: 1766292595}
+  m_Layer: 0
+  m_Name: SceneManage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1766292595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766292594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3462a9da4be4c3db8e5fd23d0be8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScene: 0
+  data: {fileID: 1357955111}
+  scenePaths: []
+  animators: []
+  SelectedIndex: 1
+  shipInfo:
+  - {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
+  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
+  - {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
+  - {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
+--- !u!4 &1766292596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766292594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 199.91922, y: 152.59497, z: -46.355125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2053419645
 GameObject:
@@ -1446,7 +1723,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2084335992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1357955111}
+        m_TargetAssemblyTypeName: DownloadData, Assembly-CSharp
+        m_MethodName: TryToDownload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2084335992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,3 +1971,50 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2144051435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144051437}
+  - component: {fileID: 2144051436}
+  m_Layer: 0
+  m_Name: SaveData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2144051436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144051435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a14d2dbb92046f7982f4dc90bf3191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    selectedIndex: -1
+    bought: 
+    point: 0
+--- !u!4 &2144051437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144051435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 839.9851, y: 643.32446, z: -176.05925}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
