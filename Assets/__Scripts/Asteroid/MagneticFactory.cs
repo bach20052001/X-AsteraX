@@ -32,7 +32,7 @@ public class MagneticFactory : MonoBehaviour
 
     private SceneController sceneController;
 
-    public GameObject Magnetic;
+    [SerializeField] private GameObject Magnetic;
 
     [HideInInspector] public float force = 7.5f;
 

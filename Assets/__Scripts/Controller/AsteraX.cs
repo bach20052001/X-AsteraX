@@ -23,13 +23,11 @@ public class AsteraX : MonoBehaviour
 
     public ObjectPooling explosionOP;
 
-    public GameObject shipExplosion;
+    [SerializeField] private GameObject shipExplosion;
 
     private SceneController sceneController;
 
     public GameObject warp;
-
-    public GameObject Magnetic;
 
     public MagneticFactory magneticFactory;
 
@@ -41,9 +39,9 @@ public class AsteraX : MonoBehaviour
 
     private GameObject playerShip;
 
-    public GameObject MiniBoss;
+    [SerializeField] private GameObject MiniBoss;
 
-    public GameObject SuperBoss;
+    [SerializeField] private GameObject SuperBoss;
 
     public List<ObjectPooling> ListObjectPooling = new List<ObjectPooling>();
 
@@ -155,21 +153,18 @@ public class AsteraX : MonoBehaviour
     {
         warp = LoadDatabase.Instance.shipAppearEffect;
         shipExplosion = LoadDatabase.Instance.listExplosion[0];
-        Magnetic = LoadDatabase.Instance.asteroidEffect;
         asteroidPrefabs = LoadDatabase.Instance.listAsteroids;
         listSpaceShips = LoadDatabase.Instance.listPlayerships;
         asteroidsData = LoadDatabase.Instance.data_asteroid;
         MiniBoss = LoadDatabase.Instance.miniboss;
         SuperBoss = LoadDatabase.Instance.superboss;
         warp = LoadDatabase.Instance.shipAppearEffect;
-        Magnetic = LoadDatabase.Instance.asteroidEffect;
         sceneController = SceneController.Instance;
     }
 
     private void Awake()
     {
         LoadAB();
-
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:Awake()");
 #endif
@@ -386,16 +381,16 @@ public class AsteraX : MonoBehaviour
     {
         if (!levelManager.breakPoint)
         {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
             isBossAppear = false;
-#endif
+//#endif
             StartCoroutine(LevelPassing());
         }
         else
         {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
             isBossAppear = true;
-#endif
+//#endif
             SpawnBoss(levelManager.bossType);
         }
     }
@@ -516,12 +511,12 @@ public class AsteraX : MonoBehaviour
         }
 
         Asteroids.SetActive(false);
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         if (!isBossAppear)
         {
             NextLevelOrFightBoss();
         }
-#endif
+//#endif
     }
 
     public void Pause()
@@ -598,7 +593,6 @@ public class AsteraX : MonoBehaviour
     // ---------------- End Section ---------------- //
 
     // ----------------Only in EDITOR--------------- //
-#if UNITY_EDITOR
 
     public bool isBossAppear = false;
 
@@ -618,6 +612,5 @@ public class AsteraX : MonoBehaviour
             }
         }
     }
-#endif
     // ----------------------------------------------- //
 }

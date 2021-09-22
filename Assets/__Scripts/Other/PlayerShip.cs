@@ -18,7 +18,7 @@ public class PlayerShip : MonoBehaviour
 {
     private ObjectPooling ObjectPoolingBullet;
 
-    public Ship_SO shipParameter;
+    [SerializeField] private Ship_SO shipParameter;
 
     private bool canDestroy;
 
@@ -46,7 +46,7 @@ public class PlayerShip : MonoBehaviour
 
     [Header("Set in Inspector")]
 
-    public Skill_SO skilldata;
+    [SerializeField] private Skill_SO skilldata;
 
     private Skill shipSkill;
 
@@ -83,6 +83,7 @@ public class PlayerShip : MonoBehaviour
     private float fireRate = 0.25f;
 
     public List<GameObject> shotPoints = new List<GameObject>();
+
 
     private void Start()
     {
@@ -244,6 +245,12 @@ public class PlayerShip : MonoBehaviour
 #elif UNITY_ANDROID || UNITY_IOS
                     float aX = UltimateJoystick.GetHorizontalAxis("Movement");
                     float aY = UltimateJoystick.GetVerticalAxis("Movement");
+
+                    if (aX == 0 && aY == 0)
+                    {
+                        aX = Input.GetAxis("Horizontal");
+                        aY = Input.GetAxis("Vertical");
+                    }
 #endif
                     Vector3 vel = new Vector3(aX, aY, 0);
 

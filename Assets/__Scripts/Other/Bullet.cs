@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour {
     private float    lifeTime;
     public bool     bDidWrap = false;
 
-    public Bullet_SO bulletData;
+    [SerializeField] private Bullet_SO bulletData;
 
     private void OnEnable()
     {

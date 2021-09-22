@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2399000036
+CRC: 1556375696
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ab338343c9500140949ad8b75bc3fbaa
+    Hash: 03218e91b73d3c9803ec95c4cae71315
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f017db23f7a1a8ab7a8ea5efda3157b7
+    Hash: a94e3534ad15a4c2510026932c506928
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -56,15 +56,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: e35270179eba95e47a97bec5a6842e74, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 207831fc071b14eeda04b6a8cca8c7a5, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 95dbe7b9137cfbd4aabc746123fc4e2f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3192cb7637b99417fa115b03342faee0, type: 3}
 - Class: 114
@@ -89,15 +83,9 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 128
   Script: {instanceID: 0}
-- Class: 135
-  Script: {instanceID: 0}
 - Class: 157
   Script: {instanceID: 0}
 - Class: 196
-  Script: {instanceID: 0}
-- Class: 198
-  Script: {instanceID: 0}
-- Class: 199
   Script: {instanceID: 0}
 - Class: 212
   Script: {instanceID: 0}
@@ -119,4 +107,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_Scenes/Main.unity
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/asteroid/effect
+- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/lightingdatamain

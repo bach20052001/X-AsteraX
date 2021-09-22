@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 2a65e6c1b9c8c4b9f82fcdc360789769
+labels:
+- PostProcessing
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -92,5 +94,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: lightingdatamain
   assetBundleVariant: 

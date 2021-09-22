@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 861995627
+CRC: 2070189293
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 28a891f677c735d283ac6a352045971b
+    Hash: 816f5a3a8d6a79edb6e5e441c2880e26
   TypeTreeHash:
     serializedVersion: 2
     Hash: 324ad093b391655590967fff9da44dd8
@@ -44,4 +44,5 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Prefabs/BulletForBoss.prefab
-Dependencies: []
+Dependencies:
+- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/bulletmaterial

@@ -159,14 +159,12 @@ public class DownloadData : MonoBehaviour
             downloadList = allList;
             GetDataFilesize(downloadList);
         }
-        else
-        if (dataHasDownloaded && !assetHasDownloaded)
+        else if (dataHasDownloaded && !assetHasDownloaded)
         {
             downloadList = listAssetBundleRef;
             StartCoroutine(CheckDataVersion(listDataRef));
         }
-        else
-        if (dataHasDownloaded && assetHasDownloaded)
+        else if (dataHasDownloaded && assetHasDownloaded)
         {
             StartCoroutine(CheckDataVersion(allList));
         }
@@ -174,7 +172,7 @@ public class DownloadData : MonoBehaviour
 
     private IEnumerator NothingToDownloadAndNextScene()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForEndOfFrame();
         SceneController.Instance.NextSceneAB();
     }
 
@@ -228,6 +226,7 @@ public class DownloadData : MonoBehaviour
 
     private void GetDataFilesize(List<StorageReference> storageRef)
     {
+        progess = 0;
         foreach (StorageReference reference in storageRef)
         {
             Task task = reference.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
@@ -242,7 +241,10 @@ public class DownloadData : MonoBehaviour
 
             task.ContinueWithOnMainThread(resultTask =>
             {
-                if (task.IsCompleted) progess++;
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progess++;
+                }
 
                 if (progess == storageRef.Count)
                 {
@@ -270,7 +272,10 @@ public class DownloadData : MonoBehaviour
 
             task.ContinueWithOnMainThread(resultTask =>
             {
-                if (task.IsCompleted) progess++;
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progess++;
+                }
 
                 if (progess == list.Count)
                 {
@@ -312,7 +317,10 @@ public class DownloadData : MonoBehaviour
 
             task.ContinueWithOnMainThread(resultTask =>
             {
-                if (task.IsCompleted) progessCheckversion++;
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progessCheckversion++;
+                }
 
                 if (progessCheckversion == list.Count)
                 {
@@ -362,7 +370,10 @@ public class DownloadData : MonoBehaviour
 
             task.ContinueWithOnMainThread(resultTask =>
             {
-                if (task.IsCompleted) progessCheckversion++;
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progessCheckversion++;
+                }
 
                 if (progessCheckversion == Names.Count)
                 {
@@ -373,6 +384,7 @@ public class DownloadData : MonoBehaviour
                     else
                     {
                         sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        LoadDatabase.Instance.StartRead(true);
                     }
                 }
             });
@@ -412,7 +424,7 @@ public class DownloadData : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Download failed");
+                    Debug.LogWarning("Download failed" + downloadContent.Value);
                 }
 
                 if (downloadProgess == downloadList.Count)
@@ -420,9 +432,8 @@ public class DownloadData : MonoBehaviour
                     LoadDatabase.Instance.StartRead(false);
                 }
             });
-
-            yield return new WaitForEndOfFrame();
         }
+        yield return new WaitForEndOfFrame();
     }
 
     private void CreateGameAssetFile()

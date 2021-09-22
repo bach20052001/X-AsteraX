@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    public Skill_SO skillData;
-
     public float countdownSkill;
 
     public int maxIncremental;

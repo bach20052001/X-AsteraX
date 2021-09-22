@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 477185408
+CRC: 2055496892
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6eeb12fe1f26b7d8ff5a16d8d50c6894
+    Hash: bf91fc92f9b071609d0f845956db2bd6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 324ad093b391655590967fff9da44dd8
@@ -44,4 +44,5 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Prefabs/EnemyBullet.prefab
-Dependencies: []
+Dependencies:
+- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/bulletmaterial

@@ -1,8 +1,10 @@
 fileFormatVersion: 2
 guid: 21def0c21858847b6841362c81ac9c65
+labels:
+- Bullet
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 
-  assetBundleName: 
+  assetBundleName: bulletmaterial
   assetBundleVariant: 

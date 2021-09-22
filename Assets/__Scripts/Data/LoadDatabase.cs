@@ -2,11 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
+
 
 public class LoadDatabase : MonoBehaviour
 {
@@ -136,6 +133,7 @@ public class LoadDatabase : MonoBehaviour
     {
         ReadJson();
         LoadJsonToSO();
+        LoadBulletMat();
         LoadEffect();
         LoadAssets();
         LoadEnemy();
@@ -159,9 +157,9 @@ public class LoadDatabase : MonoBehaviour
         yield return StartCoroutine(assetBundleLoader.LoadBundle<GameObject>(url, assetName, assetUrl));
         if (assetBundleLoader.Obj != null)
         {
+            callback(assetBundleLoader.Obj as GameObject);
             Debug.Log("Success");
         }
-        callback(assetBundleLoader.Obj as GameObject);
     }
 
    
@@ -178,29 +176,30 @@ public class LoadDatabase : MonoBehaviour
 
     private void LoadEffect()
     {
-        string localPath = Path.Combine(assetPath, "spark");
-        StartCoroutine(Download(localPath, "Sparks", sparkPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "spark"), "Sparks", sparkPath, (obj) => {
             spark = obj;
         }));
-        localPath = Path.Combine(assetPath, "portal");
-        StartCoroutine(Download(localPath, "pf_vfx-ult_demo_psys_loop_hyperspace", portalPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "effect", "portal"), "pf_vfx-ult_demo_psys_loop_hyperspace", portalPath, (obj) => {
             portal = obj;
         }));
 
-        localPath = Path.Combine(assetPath, "laser");
-        StartCoroutine(Download(localPath, "Laser beam 2", laserPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "laser"), "Laser beam 2", laserPath, (obj) => {
             Laser = obj;
         }));
 
-        localPath = Path.Combine(assetPath, "asteroideffect");
-        StartCoroutine(Download(localPath, "Asteroid_Effect", asteroideffectPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "asteroid", "effect"), "Asteroid_Effect", asteroideffectPath, (obj) => {
             asteroidEffect = obj;
         }));
 
-        localPath = Path.Combine(assetPath, "shipappeareffect");
-        StartCoroutine(Download(localPath, "Warp2", shipAppearEffectPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "effect", "shipappear"), "Warp2", shipAppearEffectPath, (obj) => {
             shipAppearEffect = obj;
         }));
+    }
+
+    public void LoadBulletMat()
+    {
+        var bulletMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "bulletmaterial"));
+        var shotMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmat"));
     }
 
     public void LoadEnemy()
@@ -454,11 +453,9 @@ public class LoadDatabase : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.B))
         {
             SceneController.Instance.NextSceneAB();
         }
-#endif
     }
 }

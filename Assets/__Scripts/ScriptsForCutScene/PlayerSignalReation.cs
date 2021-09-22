@@ -5,41 +5,46 @@ using System.Collections.Generic;
 
 public class PlayerSignalReation : MonoBehaviour
 {
-    public List<GameObject> listShips;
+    [SerializeField] private List<GameObject> listShips;
 
     private GameObject playerShip;
 
-    public GameObject bullet;
+    [SerializeField] private GameObject bullet;
 
-    public GameObject direction;
+    [SerializeField] private GameObject direction;
 
     private Rigidbody rigid;
 
     public Vector3 offset;
 
-    public GameObject portal;
+    [SerializeField] private GameObject portal;
 
     public CinemachineVirtualCamera camFocusBullet;
     public CinemachineVirtualCamera camFocusShip;
 
     private float distance;
 
-    public PostProcessVolume m_Volume;
+    [SerializeField] private PostProcessVolume m_Volume;
 
     private float currentDistance;
     private AutoExposure m_AutoExposure;
 
-    public AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
 
-    public AudioClip audio_sonicboom;
+    [SerializeField] private AudioClip audio_sonicboom;
 
-    public AudioClip audio_shoot;
+    [SerializeField] private AudioClip audio_shoot;
 
     public ReturnToLoadLevel manage;
 
 
     private void Awake()
     {
+        if (LoadDatabase.Instance != null)
+        {
+            bullet = LoadDatabase.Instance.listBullet[4];
+        }
+
         if (SceneController.Instance != null)
         {
             playerShip = listShips[SceneController.Instance.SelectedIndex];
@@ -89,7 +94,7 @@ public class PlayerSignalReation : MonoBehaviour
 
     private void Update()
     {
-        if (currentDistance < distance && currentDistance != 0)
+        if (currentDistance < distance && currentDistance != 0 && m_AutoExposure != null)
         {
             m_AutoExposure.maxLuminance.value = Mathf.Clamp(-12f * (distance - currentDistance) / distance, -9, 0);
         }
@@ -112,9 +117,6 @@ public class PlayerSignalReation : MonoBehaviour
     public void Stop()
     {
         manage.ChangeSkyBox();
-        //rigid.velocity = Vector3.zero;
-        //camFocusShip.Follow = portal.transform;
-        //camFocusShip.LookAt = portal.transform;
     }
 
     private void OnTriggerEnter(Collider other)

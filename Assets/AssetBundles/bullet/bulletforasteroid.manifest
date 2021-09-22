@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1747308764
+CRC: 450945926
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 22416b7ed6faefe2a26dfad8c6ddf916
+    Hash: 40344e24469fac75eabd109f7e85d7f9
   TypeTreeHash:
     serializedVersion: 2
     Hash: 324ad093b391655590967fff9da44dd8
@@ -44,4 +44,5 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Prefabs/BulletForAsteroid.prefab
-Dependencies: []
+Dependencies:
+- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/bulletmaterial

@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
-using UnityEngine.Networking;
 using System.IO;
 
 public class AssetBundleLoader
@@ -20,7 +19,7 @@ public class AssetBundleLoader
         yield break;
 
 #else
-        AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromFile(Path.Combine(url));
+        AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromFile(url);
         if (myLoadedAssetBundle == null)
         {
             Debug.Log("Failed to load AssetBundle!");

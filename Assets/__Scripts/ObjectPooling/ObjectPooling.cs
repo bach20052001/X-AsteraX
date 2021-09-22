@@ -13,7 +13,7 @@ public class ObjectPooling : MonoBehaviour
 {
     public ObjectType type;
 
-    public GameObject gameObjectPrefab;
+    [SerializeField] private GameObject gameObjectPrefab;
 
     private List<GameObject> listGameObject = new List<GameObject>();
 
@@ -32,7 +32,10 @@ public class ObjectPooling : MonoBehaviour
         {
             gameObjectPrefab = LoadDatabase.Instance.listExplosion[0];
         }
+    }
 
+    private void Start()
+    {
         for (int i = 0; i < initialSize; i++)
         {
             InitialObject();
@@ -78,6 +81,7 @@ public class ObjectPooling : MonoBehaviour
     private GameObject InitialObject()
     {
         GameObject tmp = Instantiate(gameObjectPrefab, Vector3.zero, Quaternion.identity);
+
         tmp.SetActive(false);
         tmp.transform.SetParent(this.gameObject.transform);
         listGameObject.Add(tmp);
