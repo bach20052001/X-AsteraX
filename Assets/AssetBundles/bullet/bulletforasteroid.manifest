@@ -45,4 +45,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Prefabs/BulletForAsteroid.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/bulletmaterial
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/bulletmaterial

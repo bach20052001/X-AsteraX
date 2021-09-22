@@ -3,7 +3,7 @@ CRC: 1421501997
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3d24858c18751861ffcb4fecc97994ed
+    Hash: 4e02768ca2545218a7f7755dd4883573
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3e6d716abff16c067ca3faec0e1da910
@@ -39,4 +39,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/SpaceShip/ShipPrefab/Canon 1.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/effect/shoteffect
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/effect/shoteffect

@@ -57,6 +57,6 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/SpaceShip/ShipPrefab/Scylla.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/playership/canon1
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/playership/shield
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/playership/traileffect
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/canon1
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/shield
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/traileffect

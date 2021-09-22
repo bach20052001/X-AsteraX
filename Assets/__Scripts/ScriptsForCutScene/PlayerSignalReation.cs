@@ -5,35 +5,35 @@ using System.Collections.Generic;
 
 public class PlayerSignalReation : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> listShips;
+    public List<GameObject> listShips;
 
     private GameObject playerShip;
 
-    [SerializeField] private GameObject bullet;
+    public GameObject bullet;
 
-    [SerializeField] private GameObject direction;
+    public GameObject direction;
 
     private Rigidbody rigid;
 
     public Vector3 offset;
 
-    [SerializeField] private GameObject portal;
+    public GameObject portal;
 
     public CinemachineVirtualCamera camFocusBullet;
     public CinemachineVirtualCamera camFocusShip;
 
     private float distance;
 
-    [SerializeField] private PostProcessVolume m_Volume;
+    public PostProcessVolume m_Volume;
 
     private float currentDistance;
     private AutoExposure m_AutoExposure;
 
-    [SerializeField] private AudioSource audioSource;
+    public AudioSource audioSource;
 
-    [SerializeField] private AudioClip audio_sonicboom;
+    public AudioClip audio_sonicboom;
 
-    [SerializeField] private AudioClip audio_shoot;
+    public AudioClip audio_shoot;
 
     public ReturnToLoadLevel manage;
 

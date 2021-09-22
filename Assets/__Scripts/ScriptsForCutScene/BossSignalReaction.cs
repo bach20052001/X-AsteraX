@@ -5,23 +5,23 @@ using Cinemachine;
 
 public class BossSignalReaction : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> ListGun = new List<GameObject>();
+    public List<GameObject> ListGun = new List<GameObject>();
 
-    [SerializeField] private CinemachineVirtualCamera bossVTCam;
+    public CinemachineVirtualCamera bossVTCam;
 
-    [SerializeField] private GameObject bullet;
+    public GameObject bullet;
 
-    [SerializeField] private GameObject spark;
+    public GameObject spark;
 
-    [SerializeField] private GameObject explosion;
+    public GameObject explosion;
 
-    [SerializeField] private GameObject fire;
+    public GameObject fire;
 
-    [SerializeField] private AudioSource audioSource;
+    public AudioSource audioSource;
 
-    [SerializeField] private AudioClip audio_explosion;
+    public AudioClip audio_explosion;
 
-    [SerializeField] private AudioClip audio_shoot;
+    public AudioClip audio_shoot;
 
     // Start is called before the first frame update
 

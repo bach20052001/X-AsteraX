@@ -198,6 +198,9 @@ public class LoadDatabase : MonoBehaviour
 
     public void LoadBulletMat()
     {
+        var lightingmain = AssetBundle.LoadFromFile(Path.Combine(assetPath, "lightingdatamain"));
+        var lightingcutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutscenelighting"));
+        var profilecutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutsceneprofiles"));
         var bulletMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "bulletmaterial"));
         var shotMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmat"));
     }

@@ -57,6 +57,6 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/SpaceShip/ShipPrefab/Delta.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/playership/canon2
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/playership/shield
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/playership/traileffect
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/canon2
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/shield
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/traileffect

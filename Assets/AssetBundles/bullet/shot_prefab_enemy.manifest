@@ -35,4 +35,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Particles/shot_prefab_enemy.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/shotmat
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/shotmat

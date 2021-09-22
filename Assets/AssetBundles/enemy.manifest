@@ -43,4 +43,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Boss/Enemy.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/playership/traileffect
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/traileffect

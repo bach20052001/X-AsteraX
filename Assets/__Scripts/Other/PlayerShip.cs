@@ -348,7 +348,8 @@ public class PlayerShip : MonoBehaviour
                     gun.transform.forward = Vector3.up;
 #elif UNITY_ANDROID || UNITY_IOS
                     currentDirection = Vector3.up;
-                    gun.transform.LookAt(this.transform.position + currentDirection * 5, Vector3.back);
+
+                    gun.transform.rotation =  Quaternion.Euler(new Vector3(-90, 0, 0));
 
 #endif
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsBoss];

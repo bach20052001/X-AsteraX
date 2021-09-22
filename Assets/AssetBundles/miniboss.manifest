@@ -3,7 +3,7 @@ CRC: 1299606615
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d777b87669287f8f262fc823a4c718e0
+    Hash: 850459764ea0b8a123ef40936ece514a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9c3640d562cb4a2a405800e0c96bdbba
@@ -45,4 +45,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Boss/Boss 1.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/enemy
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/enemy

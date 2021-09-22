@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1556375696
+CRC: 1018929708
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 03218e91b73d3c9803ec95c4cae71315
+    Hash: b2e54f3d051592ef8675f7e8046d54bf
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a94e3534ad15a4c2510026932c506928
+    Hash: d31d6ab92efe4b776c96ce2e221dc22f
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -44,13 +44,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 0aa30a43a88dc4067b7bbf610ad66edd, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 525cd1a664407ed43a6bd81bda4dad3c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0b2497b2d24984ff3ba3c5598787c28f, type: 3}
 - Class: 114
@@ -59,6 +57,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 95dbe7b9137cfbd4aabc746123fc4e2f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3192cb7637b99417fa115b03342faee0, type: 3}
 - Class: 114
@@ -107,4 +107,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_Scenes/Main.unity
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX/Assets/AssetBundles/lightingdatamain
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/lightingdatamain
