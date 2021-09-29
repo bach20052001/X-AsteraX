@@ -206,12 +206,12 @@ public class SuperBoss : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
         {
             BeforeDestroy();
         }
-#endif
+//#endif
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY && state == State.Fight)
         {
             if (isReadyToAttack)
@@ -245,9 +245,9 @@ public class SuperBoss : MonoBehaviour
 
     private void BeforeDestroy()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         AsteraX.S.isBossAppear = false;
-#endif
+//#endif
         state = State.Destroyed;
 
         StopAllCoroutines();

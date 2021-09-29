@@ -12,13 +12,13 @@ public class AssetBundleLoader
     {
         Obj = null;
 
-#if UNITY_EDITOR
-        Obj = AssetDatabase.LoadAssetAtPath(assetPath, typeof(T));
-        if (Obj == null)
-            Debug.LogError("Asset not found at path: " + assetPath);
-        yield break;
+//#if UNITY_EDITOR
+//        Obj = AssetDatabase.LoadAssetAtPath(assetPath, typeof(T));
+//        if (Obj == null)
+//            Debug.LogError("Asset not found at path: " + assetPath);
+//        yield break;
 
-#else
+//#else
         AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromFile(url);
         if (myLoadedAssetBundle == null)
         {
@@ -48,20 +48,20 @@ public class AssetBundleLoader
         //Obj = assetBundle.LoadAsset(assetName, typeof(T));
 
         //assetBundle.Unload(false);
-#endif
+//#endif
     }
 
     public IEnumerator LoadSceneBundle(string url, string assetName, string assetPath)
     {
         Obj = null;
-#if UNITY_EDITOR
-        Obj = AssetDatabase.LoadAssetAtPath(assetPath, typeof(SceneAsset));
-        if (Obj == null)
-            Debug.LogError("Asset not found at path: " + assetPath);
-        sceneName = Obj.name;
-        yield return null;
+//#if UNITY_EDITOR
+//        Obj = AssetDatabase.LoadAssetAtPath(assetPath, typeof(SceneAsset));
+//        if (Obj == null)
+//            Debug.LogError("Asset not found at path: " + assetPath);
+//        sceneName = Obj.name;
+//        yield return null;
 
-#else
+//#else
         AssetBundle bundle = AssetBundle.LoadFromFile(url);
 
         string[] scenes = bundle.GetAllScenePaths();
@@ -69,6 +69,6 @@ public class AssetBundleLoader
         sceneName = Path.GetFileNameWithoutExtension(scenes[0]);
 
         yield return null;
-#endif
+//#endif
     }
 }

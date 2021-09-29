@@ -18,7 +18,7 @@ public class PlayerShip : MonoBehaviour
 {
     private ObjectPooling ObjectPoolingBullet;
 
-    [SerializeField] private Ship_SO shipParameter;
+    private Ship_SO shipParameter;
 
     private bool canDestroy;
 
@@ -84,17 +84,20 @@ public class PlayerShip : MonoBehaviour
 
     public List<GameObject> shotPoints = new List<GameObject>();
 
+    void Awake()
+    {
+        S = this;
+        rigid = GetComponent<Rigidbody>();
+        shipParameter = LoadDatabase.Instance.data_ship[SceneController.Instance.SelectedIndex];
+    }
 
     private void Start()
     {
         shipSpeed = maxSpeed * shipParameter.speed / 5;
-
         Ship_HP = shipParameter.HP;
         MaxHP = shipParameter.HP;
         shipAttack = shipParameter.attack;
         skill = shipParameter.skill;
-
-        //bulletPrefab = AsteraX.S.ListDataBullet[(BulletMode)shipParameter.BulletType];
 
         AppearEffect = AsteraX.S.warp;
 
@@ -192,15 +195,6 @@ public class PlayerShip : MonoBehaviour
         Shield.SetActive(false);
         canDestroy = true;
     }
-
-    void Awake()
-    {
-        S = this;
-
-        // NOTE: We don't need to check whether or not rigid is null because of [RequireComponent()] above
-        rigid = GetComponent<Rigidbody>();
-    }
-
 
     void Update()
     {

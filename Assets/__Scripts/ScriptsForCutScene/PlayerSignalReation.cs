@@ -9,7 +9,7 @@ public class PlayerSignalReation : MonoBehaviour
 
     private GameObject playerShip;
 
-    public GameObject bullet;
+    [SerializeField] private GameObject bullet;
 
     public GameObject direction;
 
@@ -37,12 +37,11 @@ public class PlayerSignalReation : MonoBehaviour
 
     public ReturnToLoadLevel manage;
 
-
     private void Awake()
     {
-        if (LoadDatabase.Instance != null)
+        if (bullet == null)
         {
-            bullet = LoadDatabase.Instance.listBullet[4];
+            bullet = LoadDatabase.Instance.playershipShotCinematic;
         }
 
         if (SceneController.Instance != null)
@@ -74,11 +73,14 @@ public class PlayerSignalReation : MonoBehaviour
         bulletGene.GetComponent<ShotBehavior>().InitVelo(25f);
 
         audioSource.PlayOneShot(audio_shoot);
+
+        Debug.Log("ShootBoss");
     }
 
     public void LastShootSignal()
     {
         GameObject bulletGene = Instantiate(bullet);
+        bulletGene.SetActive(true);
         bulletGene.transform.position = direction.transform.position;
         bulletGene.transform.forward = direction.transform.up;
 
@@ -90,6 +92,8 @@ public class PlayerSignalReation : MonoBehaviour
         camFocusBullet.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = offset;
 
         audioSource.PlayOneShot(audio_shoot);
+
+        Debug.Log("LastShoot");
     }
 
     private void Update()

@@ -44,6 +44,8 @@ public class MiniBoss : MonoBehaviour
     private void Awake()
     {
         EnemyPrefab = LoadDatabase.Instance.enemy;
+        ListEnemyData = LoadDatabase.Instance.data_enemy;
+
         currenEnemy = 1;
         numberOfCurrentEnemy = bossData.EnemyList[currenEnemy];
 

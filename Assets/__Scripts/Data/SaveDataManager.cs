@@ -49,7 +49,15 @@ public class SaveDataManager : MonoBehaviour
 
             playerData.point = 0;
 
+            playerData.level = 1;
+
             File.WriteAllText(dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
+        }
+
+
+        if (playerData.level < 1)
+        {
+            playerData.level = 1;
         }
 
         dataPath = Path.Combine(dataPath, "PlayerData.json");
@@ -84,5 +92,10 @@ public class SaveDataManager : MonoBehaviour
         jsonData = File.ReadAllText(dataPath);
         playerData = JsonUtility.FromJson<PlayerData>(jsonData);
         return playerData.point;
+    }
+
+    private void OnDisable()
+    {
+        ExportData();
     }
 }

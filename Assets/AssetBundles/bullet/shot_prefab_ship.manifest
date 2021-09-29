@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2817510850
+CRC: 1147217060
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bd015af9ad26b485e6e2f591b6b0934c
+    Hash: 9e6310c4986d637dc6080e2980b0758c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 973b6b52d8237efe19e1040588b8a22c
@@ -33,6 +33,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Particles/shot_prefab_ship.prefab
+- Assets/Resources/shot_prefab_ship.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/shotmat
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/shotmatred

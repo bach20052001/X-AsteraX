@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1054505985
+CRC: 650322156
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fc478030006f09f7b5d6cdebeebbd83d
+    Hash: cf4e824f4d412a660831ce3234baaf38
   TypeTreeHash:
     serializedVersion: 2
     Hash: 973b6b52d8237efe19e1040588b8a22c
@@ -33,6 +33,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Particles/shot_prefab_enemy.prefab
+- Assets/Resources/shot_prefab_enemy.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/shotmat
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/shotmatblue

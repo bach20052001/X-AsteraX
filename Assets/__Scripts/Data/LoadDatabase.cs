@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-
 public class LoadDatabase : MonoBehaviour
 {
     public List<Asteroid_SO> data_asteroid = new List<Asteroid_SO>();
@@ -58,7 +57,10 @@ public class LoadDatabase : MonoBehaviour
     public string asteroideffectPath;
     public string shipAppearEffectPath;
     public string cinematicPlayerShotPath;
+    public string cinematicEnemyShotPath;
+    public string cinematicPlayerPath;
     public string cinematicEnemyPath;
+
 
     public List<string> shipNames;
     public List<string> asteroidNames;
@@ -76,6 +78,23 @@ public class LoadDatabase : MonoBehaviour
     public GameObject miniboss;
     public GameObject enemy;
     public GameObject superboss;
+
+    public AssetBundle lightingmain;
+    public AssetBundle lightingcutscene;
+    public AssetBundle profilecutscene;
+    public AssetBundle bulletMat;
+    public AssetBundle timeline;
+    public AssetBundle shotMatBlue;
+    public AssetBundle shotMatRed;
+
+    public AssetBundle signals;
+
+    [Header("Bullet")]
+    public GameObject enemyShotCinematic;
+    public GameObject playershipShotCinematic;
+
+    public GameObject enemyCinematic;
+    public GameObject playershipCinematic;
 
     private string database_spaceship;
     private string database_level;
@@ -129,7 +148,15 @@ public class LoadDatabase : MonoBehaviour
         assetPath = Path.Combine(Application.persistentDataPath, "Asset");
     }
 
-    public void StartRead(bool nothingToDownload)
+    private void Start()
+    {
+        enemyShotCinematic = Resources.Load<GameObject>("shot_prefab_enemy");
+        Debug.Log(enemyShotCinematic.name);
+        playershipShotCinematic = Resources.Load<GameObject>("shot_prefab_ship");
+        Debug.Log(playershipShotCinematic.name);
+    }
+
+    public void StartRead()
     {
         ReadJson();
         LoadJsonToSO();
@@ -137,9 +164,19 @@ public class LoadDatabase : MonoBehaviour
         LoadEffect();
         LoadAssets();
         LoadEnemy();
-        StartCoroutine(LoadScene(nothingToDownload));
+        LoadCinematic();
+        StartCoroutine(LoadScene());
     }
 
+    private void LoadCinematic()
+    {
+        StartCoroutine(Download(Path.Combine(assetPath, "bosscine"), "Boss 2", cinematicEnemyPath, (obj) => {
+            enemyCinematic = obj;
+        }));
+        StartCoroutine(Download(Path.Combine(assetPath, "playershipcine"), "Playership", cinematicPlayerPath, (obj) => {
+            playershipCinematic = obj;
+        }));
+    }
 
     IEnumerator Download(string url, string assetName, string assetUrl, List<GameObject> listTarget)
     {
@@ -198,11 +235,13 @@ public class LoadDatabase : MonoBehaviour
 
     public void LoadBulletMat()
     {
-        var lightingmain = AssetBundle.LoadFromFile(Path.Combine(assetPath, "lightingdatamain"));
-        var lightingcutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutscenelighting"));
-        var profilecutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutsceneprofiles"));
-        var bulletMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "bulletmaterial"));
-        var shotMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmat"));
+        lightingmain = AssetBundle.LoadFromFile(Path.Combine(assetPath, "lightingdatamain"));
+        lightingcutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutscenelighting"));
+        profilecutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutsceneprofiles"));
+        bulletMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "bulletmaterial"));
+        shotMatBlue = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmatblue"));
+        shotMatRed = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmatred"));
+
     }
 
     public void LoadEnemy()
@@ -223,28 +262,27 @@ public class LoadDatabase : MonoBehaviour
         }));
     }
 
-    private IEnumerator LoadScene(bool nothingToDownload)
+    private IEnumerator LoadScene()
     {
+        signals = AssetBundle.LoadFromFile(Path.Combine(assetPath, "signal"));
+
+        timeline = AssetBundle.LoadFromFile(Path.Combine(assetPath, "timeline"));
+
         for (int i = 0; i < sceneAssetPath.Count; i++)
         {
             StartCoroutine(DownloadScene(Path.Combine(assetPath, sceneNames[i]), sceneNames[i], sceneAssetPath[i], listScenes));
         }
 
+        while (listScenes.Count < sceneAssetPath.Count)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
         yield return new WaitForEndOfFrame();
         SceneController.Instance.scenePaths = listScenes;
 
-        if (!nothingToDownload)
-        {
-            yield return new WaitForEndOfFrame();
-            SceneController.Instance.NextSceneAB();
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.5f);
-            SceneController.Instance.NextSceneAB();
-
-        }
-
+        yield return new WaitForEndOfFrame();
+        SceneController.Instance.NextSceneAB();
     }
 
     private void LoadAssets()

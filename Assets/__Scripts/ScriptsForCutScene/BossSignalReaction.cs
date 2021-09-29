@@ -23,14 +23,17 @@ public class BossSignalReaction : MonoBehaviour
 
     public AudioClip audio_shoot;
 
-    // Start is called before the first frame update
-
     private void Awake()
     {
-        if (LoadDatabase.Instance != null)
+        if (bullet == null)
         {
-            bullet = LoadDatabase.Instance.listBullet[3];
+            bullet = LoadDatabase.Instance.enemyShotCinematic;
         }
+    }
+
+    public void Start()
+    {
+        Debug.Log(ListGun.Count);
     }
 
     public void ShootPlayer()
@@ -45,6 +48,8 @@ public class BossSignalReaction : MonoBehaviour
 
             StartCoroutine(DestroySelf(bulletGene));
         }
+
+        Debug.Log("ShootPlayer");
         audioSource.PlayOneShot(audio_shoot);
     }
 
@@ -62,6 +67,7 @@ public class BossSignalReaction : MonoBehaviour
     {
         bossVTCam.GetComponent<ShakeCamera>().StartShake();
         audioSource.PlayOneShot(audio_explosion);
+        Debug.Log("BossExplosion");
     }
 
     IEnumerator DestroySelf(GameObject target)

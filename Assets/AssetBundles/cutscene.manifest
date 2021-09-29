@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1044175900
+CRC: 652205192
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e4b63e3d100b644c586fb385ff9bdde9
+    Hash: b51ff3aa213e21f81a7c5974f0195b36
   TypeTreeHash:
     serializedVersion: 2
     Hash: eac466e8cc5041fcbfeab5b63d16c944
@@ -142,17 +142,12 @@ Assets:
 - Assets/_Scenes/CutScene.unity
 Dependencies:
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/alphamove
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/bosscine
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/bullet/shot_prefab_enemy
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/bullet/shot_prefab_ship
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/cutscenelighting
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/cutsceneprofiles
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/effect/portal
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/explosion/wfx_explosion
-  starsmoke
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/explosion/wfx_fire
-  natural broad (no smoke)
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/explosion/wfx_fire
-  natural circle (no smoke)
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/flame
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playership/shield
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/spark
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/playershipcine
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/signal
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundles/timeline

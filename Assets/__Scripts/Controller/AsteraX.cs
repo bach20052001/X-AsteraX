@@ -134,10 +134,10 @@ public class AsteraX : MonoBehaviour
 
     private void OnEnable()
     {
-        if (LevelManager.Instance.currentLevel > 10)
+        if (SaveDataManager.Instance.playerData.level > 10)
         {
             background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[1];
-            if (LevelManager.Instance.currentLevel == 11)
+            if (SaveDataManager.Instance.playerData.level == 11)
             {
                 GUIController.Instance.LoadScore(SaveDataManager.Instance.LoadScore());
             }

@@ -1,0 +1,3 @@
+<assembly fullname="UnityEngine.Timeline">
+	<type fullname="UnityEngine.Timeline.*" preserve="all"/>
+</assembly>

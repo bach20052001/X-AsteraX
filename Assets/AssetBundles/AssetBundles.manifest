@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2529254191
+CRC: 1352410255
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -26,7 +26,7 @@ AssetBundleManifest:
     Info_7:
       Name: bullet/shot_prefab_ship
       Dependencies:
-        Dependency_0: shotmat
+        Dependency_0: shotmatred
     Info_8:
       Name: main
       Dependencies:
@@ -36,127 +36,149 @@ AssetBundleManifest:
       Dependencies:
         Dependency_0: bulletmaterial
     Info_10:
-      Name: shotmat
-      Dependencies: {}
-    Info_11:
       Name: cutscene
       Dependencies:
         Dependency_0: cutsceneprofiles
-        Dependency_1: explosion/wfx_fire natural circle (no smoke)
-        Dependency_2: cutscenelighting
-        Dependency_3: bullet/shot_prefab_ship
-        Dependency_4: effect/portal
-        Dependency_5: flame
-        Dependency_6: explosion/wfx_fire natural broad (no smoke)
-        Dependency_7: spark
-        Dependency_8: alphamove
-        Dependency_9: bullet/shot_prefab_enemy
-        Dependency_10: explosion/wfx_explosion starsmoke
-        Dependency_11: playership/shield
-    Info_12:
+        Dependency_1: cutscenelighting
+        Dependency_2: bullet/shot_prefab_ship
+        Dependency_3: effect/portal
+        Dependency_4: alphamove
+        Dependency_5: bullet/shot_prefab_enemy
+        Dependency_6: timeline
+        Dependency_7: bosscine
+        Dependency_8: playershipcine
+        Dependency_9: signal
+    Info_11:
       Name: ui_effect
       Dependencies: {}
-    Info_13:
+    Info_12:
       Name: explosion/asteroidexplosion1prefab
       Dependencies: {}
-    Info_14:
+    Info_13:
       Name: welcome
       Dependencies: {}
-    Info_15:
+    Info_14:
       Name: bulletmaterial
       Dependencies: {}
-    Info_16:
+    Info_15:
       Name: effect/portal
       Dependencies: {}
-    Info_17:
+    Info_16:
       Name: asteroid/b
       Dependencies: {}
-    Info_18:
+    Info_17:
       Name: flame
       Dependencies: {}
-    Info_19:
+    Info_18:
       Name: bullet/enemybullet
       Dependencies:
         Dependency_0: bulletmaterial
-    Info_20:
+    Info_19:
       Name: playership/scylla
       Dependencies:
         Dependency_0: playership/traileffect
         Dependency_1: playership/canon1
         Dependency_2: playership/shield
-    Info_21:
+    Info_20:
       Name: playership/traileffect
       Dependencies: {}
-    Info_22:
+    Info_21:
       Name: laser
       Dependencies: {}
-    Info_23:
+    Info_22:
       Name: playership/canon1
       Dependencies:
         Dependency_0: effect/shoteffect
-    Info_24:
+    Info_23:
       Name: enemy
       Dependencies:
         Dependency_0: playership/traileffect
-    Info_25:
+    Info_24:
       Name: manage
       Dependencies:
         Dependency_0: ui_effect
-    Info_26:
+    Info_25:
       Name: playership/scorpion
       Dependencies:
         Dependency_0: playership/traileffect
         Dependency_1: playership/canon1
         Dependency_2: playership/shield
-    Info_27:
+    Info_26:
       Name: explosion/wfx_fire natural broad (no smoke)
       Dependencies: {}
-    Info_28:
+    Info_27:
       Name: spark
       Dependencies: {}
-    Info_29:
+    Info_28:
       Name: superboss
       Dependencies: {}
-    Info_30:
+    Info_29:
       Name: playership/t-bag
       Dependencies:
         Dependency_0: playership/traileffect
         Dependency_1: playership/canon1
         Dependency_2: playership/shield
-    Info_31:
+    Info_30:
       Name: alphamove
       Dependencies: {}
-    Info_32:
+    Info_31:
       Name: bullet/bulletforboss
       Dependencies:
         Dependency_0: bulletmaterial
-    Info_33:
+    Info_32:
       Name: playership/delta
       Dependencies:
         Dependency_0: playership/traileffect
         Dependency_1: playership/shield
         Dependency_2: playership/canon2
-    Info_34:
+    Info_33:
       Name: bullet/shot_prefab_enemy
       Dependencies:
-        Dependency_0: shotmat
-    Info_35:
+        Dependency_0: shotmatblue
+    Info_34:
       Name: asteroid/c
       Dependencies: {}
-    Info_36:
+    Info_35:
       Name: miniboss
       Dependencies:
         Dependency_0: enemy
-    Info_37:
+    Info_36:
       Name: explosion/wfx_explosion starsmoke
       Dependencies: {}
-    Info_38:
+    Info_37:
       Name: playership/shield
       Dependencies: {}
-    Info_39:
+    Info_38:
       Name: playership/canon2
       Dependencies:
         Dependency_0: effect/shoteffect
-    Info_40:
+    Info_39:
       Name: asteroid/a
+      Dependencies: {}
+    Info_40:
+      Name: timeline
+      Dependencies:
+        Dependency_0: signal
+    Info_41:
+      Name: shotmatred
+      Dependencies: {}
+    Info_42:
+      Name: shotmatblue
+      Dependencies: {}
+    Info_43:
+      Name: bosscine
+      Dependencies:
+        Dependency_0: explosion/wfx_fire natural circle (no smoke)
+        Dependency_1: explosion/wfx_fire natural broad (no smoke)
+        Dependency_2: spark
+        Dependency_3: explosion/wfx_explosion starsmoke
+        Dependency_4: signal
+    Info_44:
+      Name: playershipcine
+      Dependencies:
+        Dependency_0: flame
+        Dependency_1: playership/shield
+        Dependency_2: signal
+    Info_45:
+      Name: signal
       Dependencies: {}

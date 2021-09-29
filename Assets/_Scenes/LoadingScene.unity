@@ -417,8 +417,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8c38e40272754338b738c249318541c, type: 2}
   - {fileID: 11400000, guid: 9eed74139145346ed8f755a29e672bf6, type: 2}
   data_ship:
-  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   - {fileID: 11400000, guid: d582ad0e7458144d99bca6639471b8de, type: 2}
+  - {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   - {fileID: 11400000, guid: a3a60044d815f4911b270e4f36921547, type: 2}
   - {fileID: 11400000, guid: c9607b7569f014e82b76cd550eaf8e16, type: 2}
   data_bullet:
@@ -455,8 +455,8 @@ MonoBehaviour:
   - Assets/Prefabs/BulletForAsteroid.prefab
   - Assets/Prefabs/BulletForBoss.prefab
   - Assets/Prefabs/EnemyBullet.prefab
-  - Assets/Particles/shot_prefab_enemy.prefab
-  - Assets/Particles/shot_prefab_ship.prefab
+  - Assets/Resources/shot_prefab_enemy.prefab
+  - Assets/Resources/shot_prefab_ship.prefab
   minibossPath: Assets/Boss/Boss 1.prefab
   enemyPath: Assets/Boss/Enemy.prefab
   superbossPath: Assets/Boss/Boss 2.prefab
@@ -473,8 +473,10 @@ MonoBehaviour:
   laserPath: Assets/ErbGameArt/3D Lasers Pack/Prefabs/Laser beam 2.prefab
   asteroideffectPath: Assets/Particles/Asteroid_Effect.prefab
   shipAppearEffectPath: Assets/Prefabs/Warp2.prefab
-  cinematicPlayerShotPath: Assets/Particles/shot_prefab_ship.prefab
-  cinematicEnemyPath: Assets/Particles/shot_prefab_enemy.prefab
+  cinematicPlayerShotPath: Assets/Resources/shot_prefab_ship.prefab
+  cinematicEnemyShotPath: Assets/Resources/shot_prefab_enemy.prefab
+  cinematicPlayerPath: Assets/Cine/Playership.prefab
+  cinematicEnemyPath: Assets/Cine/Boss 2.prefab
   shipNames:
   - scorpion
   - delta
@@ -508,6 +510,18 @@ MonoBehaviour:
   miniboss: {fileID: 0}
   enemy: {fileID: 0}
   superboss: {fileID: 0}
+  lightingmain: {fileID: 0}
+  lightingcutscene: {fileID: 0}
+  profilecutscene: {fileID: 0}
+  bulletMat: {fileID: 0}
+  timeline: {fileID: 0}
+  shotMatBlue: {fileID: 0}
+  shotMatRed: {fileID: 0}
+  signals: {fileID: 0}
+  enemyShotCinematic: {fileID: 0}
+  playershipShotCinematic: {fileID: 0}
+  enemyCinematic: {fileID: 0}
+  playershipCinematic: {fileID: 0}
   dataAsteroid:
     data_asteroid: []
   dataLevel:
@@ -689,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 1183194118558620, guid: 62478a9de78029f4d8aa0081d905a95b, type: 3}
       propertyPath: m_Name
       value: 1Loadingage_V1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183194118558620, guid: 62478a9de78029f4d8aa0081d905a95b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1183194118558620, guid: 62478a9de78029f4d8aa0081d905a95b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1469,7 +1487,12 @@ MonoBehaviour:
   - cutscenelighting
   - cutsceneprofiles
   - lightingdatamain
-  - shotmat
+  - timeline
+  - shotmatblue
+  - shotmatred
+  - bosscine
+  - playershipcine
+  - signal
   asteroidUrls:
   - a
   - b
@@ -2231,6 +2254,7 @@ MonoBehaviour:
     selectedIndex: -1
     bought: 
     point: 0
+    level: 0
 --- !u!4 &2144051437
 Transform:
   m_ObjectHideFlags: 0
