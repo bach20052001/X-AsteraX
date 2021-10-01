@@ -68,7 +68,7 @@ public class ShipInfomation : MonoBehaviour
         if (SaveDataManager.Instance != null)
         {
             SaveDataManager.Instance.playerData = playerData;
-            SaveDataManager.Instance.ExportDataToExit();
+            SaveDataManager.Instance.ExportData();
         }
 
     }

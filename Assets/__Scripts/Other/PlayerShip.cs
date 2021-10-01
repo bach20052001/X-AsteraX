@@ -342,9 +342,8 @@ public class PlayerShip : MonoBehaviour
                     gun.transform.forward = Vector3.up;
 #elif UNITY_ANDROID || UNITY_IOS
                     currentDirection = Vector3.up;
-
-                    gun.transform.rotation =  Quaternion.Euler(new Vector3(-90, 0, 0));
-
+                    gun.transform.localRotation =  Quaternion.Euler(new Vector3(-90, 0, 0));
+                    gun.GetComponent<TurretRotateWithJoy>().enabled = false;
 #endif
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsBoss];
                     canControl = true;
@@ -355,6 +354,7 @@ public class PlayerShip : MonoBehaviour
 #if UNITY_STANDALONE
                     turretPointAtMouse.enabled = true;
 #endif
+                    gun.GetComponent<TurretRotateWithJoy>().enabled = true;
                     ObjectPoolingBullet = AsteraX.S.ListDataBullet[BulletMode.PlayerVsAsteroid];
                     canControl = true;
                     break;

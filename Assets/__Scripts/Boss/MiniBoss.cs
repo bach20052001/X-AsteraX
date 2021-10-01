@@ -43,8 +43,9 @@ public class MiniBoss : MonoBehaviour
 
     private void Awake()
     {
-        EnemyPrefab = LoadDatabase.Instance.enemy;
         ListEnemyData = LoadDatabase.Instance.data_enemy;
+        EnemyPrefab = LoadDatabase.Instance.enemy;
+        bossData = LoadDatabase.Instance.data_miniboss;
 
         currenEnemy = 1;
         numberOfCurrentEnemy = bossData.EnemyList[currenEnemy];
@@ -79,6 +80,7 @@ public class MiniBoss : MonoBehaviour
 
     private void OnDestroyedEnemy()
     {
+        Debug.Log("OnDestroyHandler");
         numberOfCurrentEnemy--;
 
         if (numberOfCurrentEnemy == 0)
@@ -160,6 +162,8 @@ public class MiniBoss : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         enemy = Instantiate(EnemyPrefab, this.transform.position, Quaternion.identity);
+
+        Debug.Log("Spawn");
 
         yield return new WaitForEndOfFrame();
 

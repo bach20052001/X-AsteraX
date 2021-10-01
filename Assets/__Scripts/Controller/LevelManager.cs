@@ -61,7 +61,7 @@ public class LevelManager : MonoBehaviour
         currentLevel = SaveDataManager.Instance.playerData.level;
         if (currentLevel < 1) currentLevel = 1;
 
-        level = Mathf.Clamp(0, 10, currentLevel - 1);
+        level = Mathf.Clamp(currentLevel - 1, 0, 10);
 
         if (LevelScriptableObject[level].HasBoss && currentLevel <= 10)
         {

@@ -137,10 +137,6 @@ public class AsteraX : MonoBehaviour
         if (SaveDataManager.Instance.playerData.level > 10)
         {
             background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[1];
-            if (SaveDataManager.Instance.playerData.level == 11)
-            {
-                GUIController.Instance.LoadScore(SaveDataManager.Instance.LoadScore());
-            }
         }
         else
         {
@@ -237,6 +233,15 @@ public class AsteraX : MonoBehaviour
     private void OnNextLevelHandler()
     {
         StartCoroutine(NextLevelWait());
+        if (SaveDataManager.Instance.playerData.level > 10)
+        {
+            background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[1];
+        }
+        else
+        {
+            background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[0];
+
+        }
     }
 
     private IEnumerator NextLevelWait()
@@ -334,7 +339,7 @@ public class AsteraX : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(0.75f);
-
+        SaveDataManager.Instance.ResetDataAndExport();
         GUIController.Instance.ShowGameOver();
         LevelManager.Instance.ResetLevel();
     }
@@ -447,7 +452,7 @@ public class AsteraX : MonoBehaviour
                 pos = ScreenBounds.RANDOM_ON_SCREEN_LOC;
             } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
 
-            ast.transform.position = pos;
+            ast.transform.position = new Vector3(pos.x, pos.y, 0);
             ast.type = type;
         }
     }
@@ -456,6 +461,8 @@ public class AsteraX : MonoBehaviour
 
     public void QuitGame()
     {
+        SaveDataManager.Instance.ExportData();
+
         if (sceneController != null)
         {
             sceneController.QuitGame();

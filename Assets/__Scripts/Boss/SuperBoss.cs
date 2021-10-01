@@ -56,6 +56,11 @@ public class SuperBoss : MonoBehaviour
     private AttackMode mode;
     private Laser laser;
 
+    private void Awake()
+    {
+        bossData = LoadDatabase.Instance.data_superboss;
+    }
+
     [System.Obsolete]
     void Start()
     {
@@ -119,7 +124,10 @@ public class SuperBoss : MonoBehaviour
             player = FindObjectOfType<PlayerShip>();
         }
 
-        player.TransitionModeControl(Mode.Animation);
+        if (player != null)
+        {
+            player.TransitionModeControl(Mode.Animation);
+        }
 
         while (state == State.Fight)
         {
@@ -171,7 +179,10 @@ public class SuperBoss : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        player.TransitionModeControl(modeWhenFinish);
+        if (player != null)
+        {
+            player.TransitionModeControl(modeWhenFinish);
+        }
     }
 
     [System.Obsolete]

@@ -237,7 +237,7 @@ public class Asteroid : MonoBehaviour
 
             ast.transform.rotation = Random.rotation;
 
-            ast.transform.localPosition = position;
+            ast.transform.localPosition = new Vector3(position.x, position.y, 0);
 
             ast.gameObject.name = gameObject.name + "_" + i.ToString("00");
 

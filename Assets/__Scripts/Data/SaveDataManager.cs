@@ -98,4 +98,12 @@ public class SaveDataManager : MonoBehaviour
     {
         ExportData();
     }
+
+    public void ResetDataAndExport()
+    {
+
+        playerData.point = 0;
+        playerData.level = 1;
+        ExportData();
+    }
 }

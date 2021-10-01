@@ -45,6 +45,11 @@ public class GUIController : MonoBehaviour
 
     [SerializeField] private GameObject EnemyPanel;
 
+    private void LoadScore()
+    {
+        scores = SaveDataManager.Instance.playerData.point;
+        scoreText.text = scores.ToString();
+    }
 
     private void Awake()
     {
@@ -64,6 +69,8 @@ public class GUIController : MonoBehaviour
 
     void Start()
     {
+        LoadScore();
+
         UpdateJumpRemaining(AsteraX.jumpRemaining);
 
         if (instance != null && instance != this)
@@ -181,10 +188,10 @@ public class GUIController : MonoBehaviour
         SkillPanel.SetActive(true);
 
 
-        StartCoroutine(countdownSkillDuration(time, maxTime));
+        StartCoroutine(CountdownSkillDuration(time, maxTime));
     }
 
-    IEnumerator countdownSkillDuration(float time, float maxTime)
+    IEnumerator CountdownSkillDuration(float time, float maxTime)
     {
         while (time > 0)
         {
@@ -277,7 +284,8 @@ public class GUIController : MonoBehaviour
     }
 
     public void UpdateScore(int score)
-    {   
+    {
+        SaveDataManager.Instance.playerData.point = score;
         scoreText.text = score.ToString();
     }
 

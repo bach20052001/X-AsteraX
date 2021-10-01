@@ -151,9 +151,9 @@ public class LoadDatabase : MonoBehaviour
     private void Start()
     {
         enemyShotCinematic = Resources.Load<GameObject>("shot_prefab_enemy");
-        Debug.Log(enemyShotCinematic.name);
+        //Debug.Log(enemyShotCinematic.name);
         playershipShotCinematic = Resources.Load<GameObject>("shot_prefab_ship");
-        Debug.Log(playershipShotCinematic.name);
+        //Debug.Log(playershipShotCinematic.name);
     }
 
     public void StartRead()
@@ -198,7 +198,6 @@ public class LoadDatabase : MonoBehaviour
             Debug.Log("Success");
         }
     }
-
    
     IEnumerator DownloadScene(string url, string assetName, string assetUrl, List<string> listTarget)
     {
@@ -241,7 +240,6 @@ public class LoadDatabase : MonoBehaviour
         bulletMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "bulletmaterial"));
         shotMatBlue = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmatblue"));
         shotMatRed = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmatred"));
-
     }
 
     public void LoadEnemy()

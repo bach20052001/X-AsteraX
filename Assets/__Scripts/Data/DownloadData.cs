@@ -154,20 +154,7 @@ public class DownloadData : MonoBehaviour
 
     void Start()
     {
-        if (!dataHasDownloaded && !assetHasDownloaded)
-        {
-            downloadList = allList;
-            GetDataFilesize(downloadList);
-        }
-        else if (dataHasDownloaded && !assetHasDownloaded)
-        {
-            downloadList = listAssetBundleRef;
-            StartCoroutine(CheckDataVersion(listDataRef));
-        }
-        else if (dataHasDownloaded && assetHasDownloaded)
-        {
-            StartCoroutine(CheckDataVersion(allList));
-        }
+        StartCoroutine(CheckDataVersion(allList));
     }
 
     private IEnumerator NothingToDownloadAndNextScene()
@@ -220,6 +207,7 @@ public class DownloadData : MonoBehaviour
 
     private void Download()
     {
+        Debug.Log("Start download");
         StartCoroutine(DownloadHandler());
     }
 
@@ -257,6 +245,8 @@ public class DownloadData : MonoBehaviour
 
     private void GetDataFilesize(Dictionary<StorageReference, string> list)
     {
+        Debug.Log("Calculate download size");
+        updateDateWarn.GetComponentInChildren<Text>().text = "Calculate download size";
         progess = 0;
         List<StorageReference> listRef = new List<StorageReference>(list.Keys);
         foreach (StorageReference reference in listRef)
@@ -288,6 +278,7 @@ public class DownloadData : MonoBehaviour
 
     private IEnumerator CheckDataVersion(Dictionary<StorageReference, string> list)
     {
+        Debug.Log("Checking data");
         progessCheckversion = 0;
         foreach (KeyValuePair<StorageReference, string> entry in list)
         {
