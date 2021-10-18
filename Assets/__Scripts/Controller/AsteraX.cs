@@ -24,11 +24,11 @@ public class AsteraX : MonoBehaviour
 
     public ObjectPooling explosionOP;
 
-    public ParticleSystem shipExplosion;
+    public GameObject shipExplosion;
 
     private SceneController sceneController;
 
-    public ParticleSystem warp;
+    public GameObject warp;
 
     public GameObject Magnetic;
 

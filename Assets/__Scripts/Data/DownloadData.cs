@@ -8,13 +8,15 @@ using Firebase.Extensions;
 using Firebase.Storage;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DownloadData : MonoBehaviour
 {
     public List<string> fileNames = new List<string>();
+
     private string localUrl;
+
+    //===============//
 
     public Text fileNameDisplay;
     public Text downloadProgessDisplay;
@@ -24,22 +26,41 @@ public class DownloadData : MonoBehaviour
     public Slider sliderProgess;
 
     private int progess = 0;
+    private int progessCheckversion = 0;
+    private int downloadProgess = 0;
 
-    private bool hasDownloaded = false;
+    private bool dataHasDownloaded = false;
+
+    private float downloadSize = 0f;
 
     public GameObject noInternetNoti;
     public Animator downloadPanel;
     public GameObject updateDateWarn;
 
+    //==Firebase URL==//
     private FirebaseStorage storage;
     private StorageReference gsReference;
     private StorageReference dataRef;
+
+    //================//
+
+    private Dictionary<StorageReference, string> listAssetBundleRef = new Dictionary<StorageReference, string>();
+    private Dictionary<StorageReference, string> listDataRef = new Dictionary<StorageReference, string>();
+    private Dictionary<StorageReference, string> downloadList = new Dictionary<StorageReference, string>();
+    private Dictionary<StorageReference, string> allList = new Dictionary<StorageReference, string>();
+
 
     public bool isInternetConnection = false;
 
     private void Awake()
     {
+        listAssetBundleRef.Clear();
+        listDataRef.Clear();
+        downloadList.Clear();
+        allList.Clear();
+
         localUrl = Path.Combine(Application.persistentDataPath, "Data");
+
 
         storage = FirebaseStorage.DefaultInstance;
 
@@ -47,75 +68,52 @@ public class DownloadData : MonoBehaviour
 
         dataRef = gsReference.Child("Data");
 
-        if (!Directory.Exists(localUrl))
+
+        dataHasDownloaded = Directory.Exists(localUrl);
+
+        LoadDataContent();
+        AllListLoad();
+
+        updateDateWarn.SetActive(true);
+    }
+
+    private void AllListLoad()
+    {
+        allList = listDataRef;
+
+        foreach (KeyValuePair<StorageReference, string> entry in listAssetBundleRef)
         {
-            hasDownloaded = false;
-        }
-        else
-        {
-            hasDownloaded = true;
+            allList.Add(entry.Key, entry.Value);
         }
     }
 
-    private 
+    private void LoadStorageReference(List<string> Names, StorageReference storageRef, string url, Dictionary<StorageReference, string> storages)
+    {
+        foreach (string fileName in Names)
+        {
+            StorageReference reference = storageRef.Child(fileName);
+            string localPath = Path.Combine(url, fileName);
+            if (!storages.ContainsKey(reference))
+            {
+                storages.Add(reference, localPath);
+            }
+        }
+    }
 
-    // Start is called before the first frame update
+
+    private void LoadDataContent()
+    {
+        LoadStorageReference(fileNames, dataRef, localUrl, listDataRef);
+    }
+
     void Start()
     {
-        if (!hasDownloaded)
-        {
-
-            Task checkSize = new Task(GetDataFilesize);
-            Task LoadPopup = new Task(PopupDownload);
-
-            checkSize.Start();
-            checkSize.Wait();
-            LoadPopup.RunSynchronously();
-            LoadPopup.Wait();
-
-            downloadButton.onClick.AddListener(delegate {
-                TryToDownload();    
-            });
-        }
-        else
-        {
-            updateDateWarn.SetActive(true);
-
-            StartCoroutine(CheckDataVersion((isOldVersion, UpdateFilepath) => {
-                if (isOldVersion)
-                {
-                    PopupDownload();
-
-                    downloadButton.onClick.AddListener(delegate {
-                        TryToDownload(UpdateFilepath);
-                    });
-
-                    updateDateWarn.GetComponent<Text>().text = "Update game data";
-                }
-                else
-                {
-                    downloadProgessDisplay.gameObject.SetActive(false);
-                    fileNameDisplay.gameObject.SetActive(false);
-                    sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
-                    StartCoroutine(NothingToDownloadAndNextScene());
-                }
-            }));
-        }
-    }
-
-    private IEnumerator NothingToDownloadAndNextScene()
-    {
-        yield return new WaitForSeconds(1f);
-        NextScene();
+        StartCoroutine(CheckDataVersion(allList));
     }
 
     public void TryToDownload()
     {
-        if (!Directory.Exists(localUrl))
-        {
-            Directory.CreateDirectory(localUrl);
-        }
-
+        updateDateWarn.GetComponentInChildren<Text>().text = "Downloading...";
         downloadProgessDisplay.gameObject.SetActive(true);
         fileNameDisplay.gameObject.SetActive(true);
 
@@ -123,41 +121,9 @@ public class DownloadData : MonoBehaviour
         {
             if (isConnected)
             {
-                Download(true, null);
-                hasDownloaded = true;
-                downloadPanel.SetBool("hasDownloaded", hasDownloaded);
-            }
-            else
-            {   if (downloadPanel.GetBool("hasDownloaded"))
-                {
-                    downloadPanel.gameObject.SetActive(true);
-                    downloadPanel.SetBool("hasDownloaded", false);
-                }
-
-                downloadButton.GetComponentInChildren<Text>().text = "Try Again";
-                noInternetNoti.SetActive(true);
-            }
-        }
-        ));
-    }
-
-    public void TryToDownload(List<StorageReference> listFileNeedToUpdate)
-    {
-        if (!Directory.Exists(localUrl))
-        {
-            Directory.CreateDirectory(localUrl);
-        }
-
-        downloadProgessDisplay.gameObject.SetActive(true);
-        fileNameDisplay.gameObject.SetActive(true);
-
-        StartCoroutine(CheckInternetConnection(isConnected =>
-        {
-            if (isConnected)
-            {
-                Download(false, listFileNeedToUpdate);
-                hasDownloaded = true;
-                downloadPanel.SetBool("hasDownloaded", hasDownloaded);
+                Download();
+                dataHasDownloaded = true;
+                downloadPanel.SetBool("hasDownloaded", dataHasDownloaded);
             }
             else
             {
@@ -186,69 +152,88 @@ public class DownloadData : MonoBehaviour
 #endif
     }
 
-    private void Download(bool isAll, List<StorageReference>? downloadFilepaths)
+    private void Download()
     {
-        if (isAll)
-        {
-            StartCoroutine(DownloadHandler());
-        }
-        else
-        {
-            StartCoroutine(DownloadHandler(downloadFilepaths));
-        }
+        Debug.Log("Start download");
+        StartCoroutine(DownloadHandler());
     }
 
-    private void GetDataFilesize()
+
+    private void GetDataFilesize(List<StorageReference> storageRef)
     {
-        long sizeToDownload = 0;
-
-        void action()
+        progess = 0;
+        foreach (StorageReference reference in storageRef)
         {
-            alertFileSize.text = "You need to download " + sizeToDownload + "B of game data";
-        }
-
-        foreach (string fileName in fileNames)
-        {
-            string localPath = Path.Combine(localUrl, fileName);
-
-            StorageReference jsonRef = dataRef.Child(fileName);
-
-            jsonRef.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
+            Task task = reference.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
             {
                 if (!taskk.IsFaulted && !taskk.IsCanceled)
                 {
 
                     StorageMetadata meta = taskk.Result;
-                    sizeToDownload += meta.SizeBytes;
-
+                    downloadSize += (float)meta.SizeBytes / 1024;
                 }
-                taskk.Wait();
-
-                Task LoadToText = new Task(action);
-
-                LoadToText.RunSynchronously();
             });
-        }        
+
+            task.ContinueWithOnMainThread(resultTask =>
+            {
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progess++;
+                }
+
+                if (progess == storageRef.Count)
+                {
+                    alertFileSize.text = "You need to download " + downloadSize + "KB gamedata";
+                    PopupDownload();
+                }
+            });
+        }
     }
 
-    private IEnumerator CheckDataVersion(Action<bool, List<StorageReference>> callback)
+    private void GetDataFilesize(Dictionary<StorageReference, string> list)
     {
-        List<StorageReference> pathfileForUpdate = new List<StorageReference>();
-        bool result = false;
-        long sizeToDownload = 0;
-
-        void action()
+        Debug.Log("Calculate download size");
+        updateDateWarn.GetComponentInChildren<Text>().text = "Calculate download size";
+        progess = 0;
+        List<StorageReference> listRef = new List<StorageReference>(list.Keys);
+        foreach (StorageReference reference in listRef)
         {
-            alertFileSize.text = "You need to download " + sizeToDownload + "B of game data";
+            Task task = reference.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
+            {
+                if (!taskk.IsFaulted && !taskk.IsCanceled)
+                {
+                    StorageMetadata meta = taskk.Result;
+                    downloadSize += (float)meta.SizeBytes / 1024;
+                }
+            });
+
+            task.ContinueWithOnMainThread(resultTask =>
+            {
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progess++;
+                }
+
+                if (progess == list.Count)
+                {
+                    alertFileSize.text = "You need to download " + downloadSize + "KB gamedata";
+                    PopupDownload();
+                }
+            });
         }
+    }
 
-        foreach (string fileName in fileNames)
+    private IEnumerator CheckDataVersion(Dictionary<StorageReference, string> list)
+    {
+        Debug.Log("Checking data");
+        progessCheckversion = 0;
+        foreach (KeyValuePair<StorageReference, string> entry in list)
         {
-            string localPath = Path.Combine(localUrl, fileName);
+            string localPath = entry.Value;
 
-            StorageReference jsonRef = dataRef.Child(fileName);
+            StorageReference fileRef = entry.Key;
 
-            jsonRef.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
+            Task task = fileRef.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
             {
                 if (!taskk.IsFaulted && !taskk.IsCanceled)
                 {
@@ -260,22 +245,89 @@ public class DownloadData : MonoBehaviour
 
                     if (DateTime.Compare(lastUpdateInFirebase, lastUpdateInSystem) > 0)
                     {
-                        result = true;
-                        pathfileForUpdate.Add(jsonRef);
-                        sizeToDownload += meta.SizeBytes;
+                        if (!downloadList.ContainsKey(fileRef))
+                        {
+                            downloadList.Add(fileRef, localPath);
+                        }
                     }
                 }
+            });
 
-                taskk.Wait();
+            task.ContinueWithOnMainThread(resultTask =>
+            {
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progessCheckversion++;
+                }
 
-                Task LoadToText = new Task(action);
-
-                LoadToText.RunSynchronously();
+                if (progessCheckversion == list.Count)
+                {
+                    if (downloadList.Count > 0)
+                    {
+                        GetDataFilesize(downloadList);
+                    }
+                    else
+                    {
+                        //sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        LoadDatabase.Instance.StartRead();
+                    }
+                }
             });
         }
+        yield return new WaitForEndOfFrame();
+    }
 
-        yield return new WaitForSeconds(1.25f);
-        callback(result, pathfileForUpdate);
+    private IEnumerator CheckDataVersion(List<string> Names, StorageReference reference, string url)
+    {
+
+        foreach (string fileName in Names)
+        {
+            string localPath = Path.Combine(url, fileName);
+
+            StorageReference fileRef = reference.Child(fileName);
+
+            Task task = fileRef.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
+            {
+                if (!taskk.IsFaulted && !taskk.IsCanceled)
+                {
+                    DateTime lastUpdateInSystem = File.GetLastWriteTime(localPath).ToUniversalTime();
+
+                    StorageMetadata meta = taskk.Result;
+
+                    DateTime lastUpdateInFirebase = meta.CreationTimeMillis.ToUniversalTime();
+
+                    if (DateTime.Compare(lastUpdateInFirebase, lastUpdateInSystem) > 0)
+                    {
+                        if (!downloadList.ContainsKey(fileRef))
+                        {
+                            downloadList.Add(fileRef, localPath);
+                        }
+                    }
+                }
+            });
+
+            task.ContinueWithOnMainThread(resultTask =>
+            {
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    progessCheckversion++;
+                }
+
+                if (progessCheckversion == Names.Count)
+                {
+                    if (downloadList.Count > 0)
+                    {
+                        GetDataFilesize(downloadList);
+                    }
+                    else
+                    {
+                        //sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        LoadDatabase.Instance.StartRead();
+                    }
+                }
+            });
+        }
+        yield return new WaitForEndOfFrame();
     }
 
     private void PopupDownload()
@@ -286,82 +338,40 @@ public class DownloadData : MonoBehaviour
 
     IEnumerator DownloadHandler()
     {
-        progess = 0;
+        downloadProgess = 0;
 
-        foreach (string fileName in fileNames)
+        foreach (KeyValuePair<StorageReference, string> downloadContent in downloadList)
         {
-            yield return new WaitForEndOfFrame();
-            string localPath = Path.Combine(localUrl, fileName);
-            StorageReference jsonRef = dataRef.Child(fileName);
+            string localPath = downloadContent.Value;
+            StorageReference reference = downloadContent.Key;
 
-
-            Task task = jsonRef.GetFileAsync(localPath,
+            Task task = reference.GetFileAsync(localPath,
             new StorageProgress<DownloadState>(state =>
             {
-                fileNameDisplay.text = fileName;
+                fileNameDisplay.text = downloadContent.Value;
                 sliderProgess.value = (float)state.BytesTransferred / state.TotalByteCount;
                 downloadProgessDisplay.text = String.Format("{0}/{1} B", state.BytesTransferred, state.TotalByteCount);
             }), CancellationToken.None);
-
-           
-            task.ContinueWithOnMainThread(resultTask =>
-            {
-                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
-                {
-                    progess += 1;
-                    Debug.Log("Download finished." + fileName);
-
-                    if (progess == fileNames.Count)
-                    {
-                        NextScene();
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("Download failed");
-                }
-            });
-            yield return new WaitForSeconds(0.125f);
-        }
-    }
-
-    IEnumerator DownloadHandler(List<StorageReference> downloadFilepaths)
-    {
-        progess = 0;
-        foreach (StorageReference filePath in downloadFilepaths)
-        {
-            yield return new WaitForEndOfFrame();
-
-            string localPath = Path.Combine(localUrl, filePath.Name);
-
-            Task task = filePath.GetFileAsync(localPath,
-            new StorageProgress<DownloadState>(state =>
-            {
-                fileNameDisplay.text = filePath.Name;
-                sliderProgess.value = (float)state.BytesTransferred / state.TotalByteCount;
-                downloadProgessDisplay.text = String.Format("{0}/{1} B", state.BytesTransferred, state.TotalByteCount);
-            }), CancellationToken.None);
-
 
             task.ContinueWithOnMainThread(resultTask =>
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
-                    progess += 1;
-                    Debug.Log("Download finished." + filePath.Name);
-
-                    if (progess == downloadFilepaths.Count)
-                    {
-                        NextScene();
-                    }
+                    downloadProgess += 1;
+                    Debug.Log("Download finished." + downloadContent.Value);
                 }
                 else
                 {
-                    Debug.LogWarning("Download failed");
+                    Debug.LogWarning("Download failed" + downloadContent.Value);
+                }
+
+                if (downloadProgess == downloadList.Count)
+                {
+                    LoadDatabase.Instance.StartRead();
                 }
             });
-            yield return new WaitForSeconds(0.125f);
         }
+        yield return new WaitForEndOfFrame();
     }
 
     IEnumerator CheckInternetConnection(Action<bool> callback)
@@ -391,10 +401,5 @@ public class DownloadData : MonoBehaviour
                 callback(true);
                 break;
         }
-    }
-
-    public void NextScene()
-    {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

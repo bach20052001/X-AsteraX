@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Bullet
+  m_EditorClassIdentifier: 
+  m_GroupName: Bullet
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a90dc1ba56f2744a2a9d2ccd82e53d90
+  m_SerializeEntries:
+  - m_GUID: aaa92dc15743449d6a6cef54e2b09e8c
+    m_Address: BulletForAsteroid
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bullet
+    - preload
+    m_MainAsset: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
+      type: 3}
+    m_TargetAsset: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
+      type: 3}
+  - m_GUID: 0e9c239fd33d94404b671bc44ab4f6b4
+    m_Address: BulletForBoss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bullet
+    - preload
+    m_MainAsset: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
+      type: 3}
+    m_TargetAsset: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
+      type: 3}
+  - m_GUID: b6594ed918e30452b95fe25bfc836ce1
+    m_Address: EnemyBullet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bullet
+    - preload
+    m_MainAsset: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
+      type: 3}
+    m_TargetAsset: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
+      type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 62ce9bdb096b44b4f92baa6004c081dd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 01ee3936fe13c46289fa9d116683f946, type: 2}
+    - {fileID: 11400000, guid: 69c7f0905695145d398b3cb03ebfb74f, type: 2}

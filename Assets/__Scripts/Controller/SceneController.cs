@@ -1,10 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public List<string> listSceneNames = new List<string>();
+
+    private int currentIndexScene = -1;
+
     public Animator[] animators;
 
     private PlayerData playerData;
@@ -46,16 +54,14 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        SaveDataManager.Instance.LoadDataPersistent();
+        //if (SaveDataManager.Instance.playerData == null)
+        //{
+        //    SaveDataManager.Instance.playerData = new PlayerData();
+        //}
 
-        if (SaveDataManager.Instance.playerData == null)
-        {
-            SaveDataManager.Instance.playerData = new PlayerData();
-        }
+        //playerData = SaveDataManager.Instance.playerData;
 
-        playerData = SaveDataManager.Instance.playerData;
-
-        SelectedIndex = playerData.selectedIndex;
+        //SelectedIndex = playerData.selectedIndex;
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -70,23 +76,33 @@ public class SceneController : MonoBehaviour
         StartCoroutine(PlayNextWithoutAni());
     }
 
+    private IEnumerator LoadScene(int index)
+    {
+        if (index < listSceneNames.Count && index >= 0)
+        {
+            AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(listSceneNames[index], LoadSceneMode.Single, false);
+
+            yield return handle;
+
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                yield return handle.Result.ActivateAsync();
+                currentIndexScene = index;
+            }
+        }
+    }
+
     private IEnumerator PlayNextWithoutAni()
     {
         yield return new WaitForSeconds(delay);
-        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        StartCoroutine(LoadScene(currentIndexScene + 1));
     }
 
     private IEnumerator PlayNext()
     {
         ActiveAnimator();
         yield return new WaitForSeconds(delay);
-        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        StartCoroutine(LoadScene(currentIndexScene + 1));
     }
 
 
@@ -94,10 +110,7 @@ public class SceneController : MonoBehaviour
     {
         ActiveAnimator();
         yield return new WaitForSeconds(delay);
-        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
-        }
+        StartCoroutine(LoadScene(currentIndexScene - 1));
     }
 
     public void PrevScene()
@@ -131,23 +144,17 @@ public class SceneController : MonoBehaviour
 
     public void QuitToWelcome()
     {
-        if (SceneManager.GetActiveScene().buildIndex - 2 >= 0)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 2);
-        }
+        StartCoroutine(LoadScene(currentIndexScene - 2));
     }
 
     public void Return()
     {
-        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
-        }
+        StartCoroutine(LoadScene(currentIndexScene - 1));
     }
 
     public void ReturnToExistScene()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
+        StartCoroutine(LoadScene(currentIndexScene - 1));
     }
 
     public void Play()
@@ -159,13 +166,19 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            if (SceneManager.GetActiveScene().buildIndex + 2 < SceneManager.sceneCountInBuildSettings)
-            {
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
-            }
+            StartCoroutine(LoadScene(currentIndexScene + 2));
         }
     }
 
     public List<Ship_SO> shipInfo = new List<Ship_SO>();
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            NextScene();
+        }
+    }
 }
 

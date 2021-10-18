@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
 
 public class LoadDatabase : MonoBehaviour
 {
@@ -23,7 +26,6 @@ public class LoadDatabase : MonoBehaviour
     private string database_miniboss;
     private string database_superboss;
 
-
     [HideInInspector] public DataAsteroid dataAsteroid;
     [HideInInspector] public DataLevel dataLevel;
     [HideInInspector] public DataShip dataShip;
@@ -36,6 +38,12 @@ public class LoadDatabase : MonoBehaviour
     private string dataPath;
 
     private static LoadDatabase instance;
+
+    public Slider slider;
+
+    public object test;
+    public object scene;
+
 
     public static LoadDatabase Instance
     {
@@ -59,13 +67,64 @@ public class LoadDatabase : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(this.gameObject);
+
+        dataPath = Path.Combine(Application.persistentDataPath, "Data");
     }
 
-    void Start()
+    public void StartRead()
     {
-        dataPath = Path.Combine(Application.persistentDataPath, "Data");
         ReadJson();
         LoadJsonToSO();
+        StartCoroutine(StartDownloadDependencies());
+    }
+
+    public IEnumerator StartDownloadDependencies()
+    {
+        string key = "preload";
+
+        Addressables.ClearDependencyCacheAsync(key);
+
+        Debug.Log("LoadDependencies");
+
+        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(key);
+        yield return getDownloadSize;
+
+        Debug.Log(getDownloadSize.Result);
+
+        //If the download size is greater than 0, download all the dependencies.
+        if (getDownloadSize.Result > 0)
+        {
+            AsyncOperationHandle downloadDependencies = Addressables.DownloadDependenciesAsync(key);
+            //yield return downloadDependencies;
+
+            while (!downloadDependencies.IsDone)
+            {
+                    Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
+                slider.value = downloadDependencies.GetDownloadStatus().Percent;
+                yield return null;
+            }
+            Debug.Log("Download Assets Finished");
+            //test = downloadDependencies.Result;
+        }
+
+        AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync("scene");
+        yield return downloadScene;
+
+        Debug.Log("Download Scene Finished");
+        scene = downloadScene.Result;
+
+
+        //AsyncOperationHandle test = Addressables.LoadAssetAsync<GameObject>("SFSceneElements");
+        //yield return test;
+        //if (test.Status == AsyncOperationStatus.Succeeded)
+        //{
+        //    Debug.Log("A");
+        //    object obj = test.Result;
+        //    Instantiate(obj as GameObject);
+        //    //etc...
+        //}
     }
 
     private void ReadJson()
@@ -232,7 +291,7 @@ public class LoadDatabase : MonoBehaviour
 
             data_ship[i].skill = (Skills)Mathf.Clamp(cachedShipData[i].Skill, 1, 4);
 
-            data_ship[i].BulletType = Mathf.Clamp(cachedShipData[i].BulletType, 1, 3); 
+            data_ship[i].BulletType = Mathf.Clamp(cachedShipData[i].BulletType, 1, 3);
         }
 
         //Load Skill Data

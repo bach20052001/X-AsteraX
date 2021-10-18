@@ -22,7 +22,7 @@ public class PlayerShip : MonoBehaviour
 
     private bool canDestroy;
 
-    private ParticleSystem AppearEffect;
+    private GameObject AppearEffect;
 
     Vector3 currentVel = new Vector3();
 

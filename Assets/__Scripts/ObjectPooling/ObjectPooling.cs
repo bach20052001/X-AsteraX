@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public enum ObjectType
 {
@@ -14,6 +15,8 @@ public class ObjectPooling : MonoBehaviour
     public ObjectType type;
 
     public GameObject gameObjectPrefab;
+
+    public AssetReference prefab;
 
     private List<GameObject> listGameObject = new List<GameObject>();
 

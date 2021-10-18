@@ -8,5 +8,7 @@ public class PlayerData
     public List<int> bought = new List<int>();
 
     public int point;
+
+    public int level;
 }
 

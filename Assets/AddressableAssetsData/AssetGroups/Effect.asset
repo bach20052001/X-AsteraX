@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Effect
+  m_EditorClassIdentifier: 
+  m_GroupName: Effect
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2822d58bb7884496aa58a17e7c6e2419
+  m_SerializeEntries:
+  - m_GUID: 1c8e933d288f546d9b8c2e4a001ea310
+    m_Address: AsteroidMagnetic
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - effect
+    - preload
+    m_MainAsset: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
+      type: 3}
+    m_TargetAsset: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
+      type: 3}
+  - m_GUID: 1a9a2c60f6548c846837acb381b1f03d
+    m_Address: ShipSummon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - effect
+    - preload
+    m_MainAsset: {fileID: 1231110749491679348, guid: 1a9a2c60f6548c846837acb381b1f03d,
+      type: 3}
+    m_TargetAsset: {fileID: 1231110749491679348, guid: 1a9a2c60f6548c846837acb381b1f03d,
+      type: 3}
+  - m_GUID: e8335af2e6e050a4c9342af2fda58d35
+    m_Address: AsteroidExplosion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - effect
+    - preload
+    m_MainAsset: {fileID: 1625365507237398, guid: e8335af2e6e050a4c9342af2fda58d35,
+      type: 3}
+    m_TargetAsset: {fileID: 1625365507237398, guid: e8335af2e6e050a4c9342af2fda58d35,
+      type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 62ce9bdb096b44b4f92baa6004c081dd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fabec667e108749b581224d642574f40, type: 2}
+    - {fileID: 11400000, guid: a4163f2974c264766abe0529369d9976, type: 2}
