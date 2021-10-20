@@ -589,10 +589,6 @@ MonoBehaviour:
   type: 3
   gameObjectPrefab: {fileID: 1625365507237398, guid: e8335af2e6e050a4c9342af2fda58d35,
     type: 3}
-  prefab:
-    m_AssetGUID: e8335af2e6e050a4c9342af2fda58d35
-    m_SubObjectName: 
-    m_SubObjectType: 
   initialSize: 7
 --- !u!1 &241423275
 GameObject:
@@ -981,8 +977,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0}
-  m_SizeDelta: {x: -1, y: -1}
+  m_AnchoredPosition: {x: -0.3305664, y: 0.3302002}
+  m_SizeDelta: {x: -126.66943, y: -130.38513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444726990
 MonoBehaviour:
@@ -1059,8 +1055,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -189.57056, y: 410.09857}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchoredPosition: {x: -252.07465, y: 345.0758}
+  m_SizeDelta: {x: 200.6695, y: 204.3851}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &479432535
 MonoBehaviour:
@@ -1694,10 +1690,6 @@ MonoBehaviour:
   type: 0
   gameObjectPrefab: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
     type: 3}
-  prefab:
-    m_AssetGUID: aaa92dc15743449d6a6cef54e2b09e8c
-    m_SubObjectName: 
-    m_SubObjectType: 
   initialSize: 7
 --- !u!4 &601180200
 Transform:
@@ -1763,50 +1755,12 @@ MonoBehaviour:
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosionOP: {fileID: 237831443}
-  shipExplosion:
-    m_AssetGUID: e8335af2e6e050a4c9342af2fda58d35
-    m_SubObjectName: 
-    m_SubObjectType: 
-  warp:
-    m_AssetGUID: 1a9a2c60f6548c846837acb381b1f03d
-    m_SubObjectName: 
-    m_SubObjectType: 
-  Magnetic:
-    m_AssetGUID: 1c8e933d288f546d9b8c2e4a001ea310
-    m_SubObjectName: 
-    m_SubObjectType: 
+  shipExplosion: {fileID: 0}
+  warp: {fileID: 0}
+  Magnetic: {fileID: 0}
   magneticFactory: {fileID: 1842951576}
-  asteroidPrefabs:
-  - m_AssetGUID: 1293b0763d7d344e0b908c097078ac09
-    m_SubObjectName: 
-    m_SubObjectType: 
-  - m_AssetGUID: 5513cde93bb3343768ced35921a9c3c2
-    m_SubObjectName: 
-    m_SubObjectType: 
-  - m_AssetGUID: a6d3ccfc58a1f41368479aabb6050561
-    m_SubObjectName: 
-    m_SubObjectType: 
-  listSpaceShips:
-  - m_AssetGUID: 63c93b8624b3a49f4839b2246bb34b66
-    m_SubObjectName: 
-    m_SubObjectType: 
-  - m_AssetGUID: 42d7cdf17591d47538db6c50ad7bf691
-    m_SubObjectName: 
-    m_SubObjectType: 
-  - m_AssetGUID: 5af5fadec93394529a1f27ffcfcb8bab
-    m_SubObjectName: 
-    m_SubObjectType: 
-  - m_AssetGUID: f67b736c564054f7d8c94c510be2ea63
-    m_SubObjectName: 
-    m_SubObjectType: 
-  MiniBoss:
-    m_AssetGUID: 36908327b22f1470b8504cd0d39a9e7c
-    m_SubObjectName: 
-    m_SubObjectType: 
-  SuperBoss:
-    m_AssetGUID: ec550988987384c0c973105c21894b5a
-    m_SubObjectName: 
-    m_SubObjectType: 
+  MiniBoss: {fileID: 0}
+  SuperBoss: {fileID: 0}
   ListObjectPooling:
   - {fileID: 601180199}
   - {fileID: 1000392218}
@@ -3028,10 +2982,6 @@ MonoBehaviour:
   type: 1
   gameObjectPrefab: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
     type: 3}
-  prefab:
-    m_AssetGUID: 0e9c239fd33d94404b671bc44ab4f6b4
-    m_SubObjectName: 
-    m_SubObjectType: 
   initialSize: 7
 --- !u!1 &1038603698
 GameObject:
@@ -5584,8 +5534,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
-  m_SizeDelta: {x: 99, y: 99}
+  m_AnchoredPosition: {x: -0.3305664, y: 0.3302002}
+  m_SizeDelta: {x: -26.669434, y: -30.385132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915117100
 MonoBehaviour:
@@ -5970,7 +5920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22468432, guid: 7ffda55ee71685646aacbb22ab8fec4d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22468432, guid: 7ffda55ee71685646aacbb22ab8fec4d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6496,10 +6446,6 @@ MonoBehaviour:
   type: 2
   gameObjectPrefab: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
     type: 3}
-  prefab:
-    m_AssetGUID: b6594ed918e30452b95fe25bfc836ce1
-    m_SubObjectName: 
-    m_SubObjectType: 
   initialSize: 7
 --- !u!1001 &2133938770
 PrefabInstance:
@@ -6723,7 +6669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
       propertyPath: m_AnchorMax.x

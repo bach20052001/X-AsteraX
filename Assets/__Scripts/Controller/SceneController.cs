@@ -54,14 +54,15 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        //if (SaveDataManager.Instance.playerData == null)
-        //{
-        //    SaveDataManager.Instance.playerData = new PlayerData();
-        //}
+        if (SaveDataManager.Instance.playerData == null)
+        {
+            SaveDataManager.Instance.playerData = new PlayerData();
+        }
 
-        //playerData = SaveDataManager.Instance.playerData;
+        playerData = SaveDataManager.Instance.playerData;
 
-        //SelectedIndex = playerData.selectedIndex;
+        SelectedIndex = playerData.selectedIndex;
+
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -76,6 +77,7 @@ public class SceneController : MonoBehaviour
         StartCoroutine(PlayNextWithoutAni());
     }
 
+    
     private IEnumerator LoadScene(int index)
     {
         if (index < listSceneNames.Count && index >= 0)

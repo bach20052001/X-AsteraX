@@ -46,8 +46,40 @@ public class LoadDatabase : MonoBehaviour
     public object test;
     public object scene;
 
-    public AssetLabelReference label;
+    public AssetLabelReference asteroidLabel;
     public List<IResourceLocation> AsteroidLocations;
+
+    [Header("Addressable Name")]
+    [SerializeField] private string minibossName;
+    [SerializeField] private string superbossName;
+    [SerializeField] private string enemyName;
+
+    [SerializeField] private string bulletPVAName;
+    [SerializeField] private string bulletPVBName;
+    [SerializeField] private string bulletBVPName;
+
+    [SerializeField] private string magneticName;
+    [SerializeField] private string shipSummonName;
+    [SerializeField] private string explosionName;
+
+    [Header("Assets")]
+    public GameObject Miniboss;
+    public GameObject Superboss;
+    public GameObject Enemy;
+
+    public GameObject bulletPVA;
+    public GameObject bulletPVB;
+    public GameObject bulletBVP;
+
+    public GameObject Magnetic;
+    public GameObject shipSummon;
+    public GameObject explosion;
+
+    public GameObject Scorpion;
+    public GameObject Delta;
+    public GameObject Scylla;
+    public GameObject TBag;
+
 
     public static LoadDatabase Instance
     {
@@ -105,24 +137,93 @@ public class LoadDatabase : MonoBehaviour
 
             while (!downloadDependencies.IsDone)
             {
-                    //Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
+                Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
                 slider.value = downloadDependencies.GetDownloadStatus().Percent;
                 yield return null;
             }
-            //Debug.Log("Download Assets Finished");
+            Debug.Log("Download Assets Finished");
+            //Addressables.Release(downloadDependencies);
+
         }
 
         AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync("scene");
         yield return downloadScene;
-        //Debug.Log("Download Scene Finished");
+        Debug.Log("Download Scene Finished");
+        //Addressables.Release(downloadScene);
 
         // Preloading Assets
 
-        Addressables.LoadResourceLocationsAsync(label.labelString).Completed += OnLoadFinished;
+        // Load Asteroid
+        Addressables.LoadResourceLocationsAsync(asteroidLabel.labelString).Completed += OnLoadAsteroidFinished;
+        // =============
 
+        Addressables.LoadAssetAsync<GameObject>(minibossName).Completed += obj => {
+            Miniboss = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(superbossName).Completed += obj => {
+            Superboss = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(enemyName).Completed += obj => {
+            Enemy = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(bulletPVAName).Completed += obj => {
+            bulletPVA = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(bulletPVBName).Completed += obj => {
+            bulletPVB = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(bulletBVPName).Completed += obj => {
+            bulletBVP = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(magneticName).Completed += obj => {
+            Magnetic = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(explosionName).Completed += obj => {
+            explosion = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>(shipSummonName).Completed += obj => {
+            shipSummon = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>("Scorpion").Completed += obj => {
+            Scorpion = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>("Delta").Completed += obj => {
+            Delta = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>("Scylla").Completed += obj => {
+            Scylla = obj.Result;
+            Addressables.Release(obj);
+        };
+
+        Addressables.LoadAssetAsync<GameObject>("T-Bag").Completed += obj => {
+            TBag = obj.Result;
+            Addressables.Release(obj);
+        };
     }
 
-    private void OnLoadFinished(AsyncOperationHandle<IList<IResourceLocation>> obj)
+    private void OnLoadAsteroidFinished(AsyncOperationHandle<IList<IResourceLocation>> obj)
     {
         AsteroidLocations = new List<IResourceLocation>(obj.Result);
     }

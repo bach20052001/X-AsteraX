@@ -57,10 +57,12 @@ public class LevelManager : MonoBehaviour
 
     [Header("Set in Inspector")]
     [Tooltip("This sets the AsteroidsScriptableObject to be used throughout the game.")]
-    public List<LevelScriptableObject> LevelScriptableObject;
+    [HideInInspector] public List<LevelScriptableObject> LevelScriptableObject;
 
     private void Awake()
     {
+        LevelScriptableObject = LoadDatabase.Instance.data_level;
+             
         if (instance == null)
         {
             instance = this;

@@ -28,28 +28,28 @@ public class AsteraX : MonoBehaviour
 
     public ObjectPooling explosionOP;
 
-    public AssetReference shipExplosion;
+    public GameObject shipExplosion;
 
     private SceneController sceneController;
 
-    public AssetReference warp;
+    public GameObject warp;
 
-    public AssetReference Magnetic;
+    public GameObject Magnetic;
 
     public MagneticFactory magneticFactory;
 
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
-    public List<IResourceLocation> asteroidPrefabs;
+    public List<IResourceLocation> asteroidPrefabs = new List<IResourceLocation>();
 
-    public List<AssetReference> listSpaceShips;
+    private List<GameObject> listSpaceShips = new List<GameObject>();
 
     private GameObject playerShip;
 
-    public AssetReference MiniBoss;
+    public GameObject MiniBoss;
 
-    public AssetReference SuperBoss;
+    public GameObject SuperBoss;
 
     public List<ObjectPooling> ListObjectPooling = new List<ObjectPooling>();
 
@@ -162,24 +162,32 @@ public class AsteraX : MonoBehaviour
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:Awake()");
 #endif
-
+        
         S = this;
 
         sceneController = SceneController.Instance;
 
-        if (sceneController != null)
-        {
-            //playerShip = listSpaceShips[sceneController.SelectedIndex];
-        }
+        InitAsset();
+        //InitListPlayership();
 
-        else
-        {
-            //playerShip = listSpaceShips[1];
-        }
+
+        playerShip = LoadDatabase.Instance.Delta;
+        //if (sceneController != null)
+        //{
+        //    playerShip = listSpaceShips[sceneController.SelectedIndex];
+        //}
+
+        //else
+        //{
+        //    playerShip = listSpaceShips[1];
+        //}
 
         Instantiate(playerShip);
 
         TransitionState(BaseGameState.PLAY);
+
+        asteroidPrefabs = LoadDatabase.Instance.AsteroidLocations;
+        Debug.Log(asteroidPrefabs.Count);
 
         for (int i = 0; i < ListObjectPooling.Count; i++)
         {
@@ -191,6 +199,24 @@ public class AsteraX : MonoBehaviour
         this.RegisterListener(GameEvent.OnNextLevel, (param) => OnNextLevelHandler());
         this.RegisterListener(GameEvent.OnDestroyedMiniBoss, (param) => OnDestroyBossHandler());
         this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroySuperBossHandler());
+    }
+
+    private void InitListPlayership()
+    {
+        listSpaceShips.Add(LoadDatabase.Instance.Scorpion);
+        listSpaceShips.Add(LoadDatabase.Instance.Delta);
+        listSpaceShips.Add(LoadDatabase.Instance.Scylla);
+        listSpaceShips.Add(LoadDatabase.Instance.TBag);
+    }
+
+    private void InitAsset()
+    {
+        shipExplosion = LoadDatabase.Instance.explosion;
+        warp = LoadDatabase.Instance.shipSummon;
+        Magnetic = LoadDatabase.Instance.Magnetic;
+
+        MiniBoss = LoadDatabase.Instance.Miniboss;
+        SuperBoss = LoadDatabase.Instance.Superboss;
     }
 
     void Start()
@@ -244,7 +270,7 @@ public class AsteraX : MonoBehaviour
 
     private IEnumerator InitSpawn()
     {
-        this.PostEvent(GameEvent.OnLoadMainScene, levelManager.level);
+       this.PostEvent(GameEvent.OnLoadMainScene, levelManager.level);
 
         yield return new WaitForSeconds(1.5f);
 
@@ -258,8 +284,11 @@ public class AsteraX : MonoBehaviour
 
     private void SpawnAsteroids()
     {
+        Debug.Log(levelManager.level);
         foreach (var Asteroid in levelManager.LevelScriptableObject[levelManager.level].Asteroids)
         {
+            Debug.Log(Asteroid.Key + "::"+ Asteroid.Value);
+
             StartCoroutine(SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value));
         }
     }
@@ -339,7 +368,7 @@ public class AsteraX : MonoBehaviour
 
         if (jumpRemaining < 0)
         {
-            //Instantiate(shipExplosion, PlayerShip.POSITION, Quaternion.identity);
+            Instantiate(shipExplosion, PlayerShip.POSITION, Quaternion.identity);
             jumpRemaining = 0;
             StartCoroutine(GameOver());
         }
@@ -390,13 +419,13 @@ public class AsteraX : MonoBehaviour
             case 1:
                 {
                     this.PostEvent(GameEvent.FightBoss);
-                    //Instantiate(MiniBoss);
+                    Instantiate(MiniBoss);
                     break;
                 }
             case 2:
                 {
                     this.PostEvent(GameEvent.FightBoss);
-                    //Instantiate(SuperBoss);
+                    Instantiate(SuperBoss);
                     break;
                 }
         }
@@ -420,6 +449,8 @@ public class AsteraX : MonoBehaviour
 
     IEnumerator SpawnNumberAsteroid(int type, int n)
     {
+        Debug.Log("Number Asteroid : " + n);
+        Debug.Log(asteroidPrefabs.Count);
         for (int i = 0; i < n; i++)
         {
 #if DEBUG_AsteraX_LogMethods

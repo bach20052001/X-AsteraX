@@ -219,12 +219,30 @@ MonoBehaviour:
     Description: 
     BulletType: 0
   slider: {fileID: 1500684382}
-  label:
+  asteroidLabel:
     m_LabelString: asteroid
-  asteroid:
-    m_AssetGUID: 1293b0763d7d344e0b908c097078ac09
-    m_SubObjectName: 
-    m_SubObjectType: 
+  minibossName: MiniBoss
+  superbossName: SuperBoss
+  enemyName: Enemy
+  bulletPVAName: BulletForAsteroid
+  bulletPVBName: BulletForBoss
+  bulletBVPName: EnemyBullet
+  magneticName: AsteroidMagnetic
+  shipSummonName: ShipSummon
+  explosionName: AsteroidExplosion
+  Miniboss: {fileID: 0}
+  Superboss: {fileID: 0}
+  Enemy: {fileID: 0}
+  bulletPVA: {fileID: 0}
+  bulletPVB: {fileID: 0}
+  bulletBVP: {fileID: 0}
+  Magnetic: {fileID: 0}
+  shipSummon: {fileID: 0}
+  explosion: {fileID: 0}
+  Scorpion: {fileID: 0}
+  Delta: {fileID: 0}
+  Scylla: {fileID: 0}
+  TBag: {fileID: 0}
 --- !u!4 &26249170
 Transform:
   m_ObjectHideFlags: 0
