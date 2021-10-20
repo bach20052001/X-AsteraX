@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.UI;
 
 public class LoadDatabase : MonoBehaviour
@@ -44,6 +46,8 @@ public class LoadDatabase : MonoBehaviour
     public object test;
     public object scene;
 
+    public AssetLabelReference label;
+    public List<IResourceLocation> AsteroidLocations;
 
     public static LoadDatabase Instance
     {
@@ -84,7 +88,7 @@ public class LoadDatabase : MonoBehaviour
     {
         string key = "preload";
 
-        Addressables.ClearDependencyCacheAsync(key);
+        Caching.ClearCache();
 
         Debug.Log("LoadDependencies");
 
@@ -101,30 +105,26 @@ public class LoadDatabase : MonoBehaviour
 
             while (!downloadDependencies.IsDone)
             {
-                    Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
+                    //Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
                 slider.value = downloadDependencies.GetDownloadStatus().Percent;
                 yield return null;
             }
-            Debug.Log("Download Assets Finished");
-            //test = downloadDependencies.Result;
+            //Debug.Log("Download Assets Finished");
         }
 
         AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync("scene");
         yield return downloadScene;
+        //Debug.Log("Download Scene Finished");
 
-        Debug.Log("Download Scene Finished");
-        scene = downloadScene.Result;
+        // Preloading Assets
 
+        Addressables.LoadResourceLocationsAsync(label.labelString).Completed += OnLoadFinished;
 
-        //AsyncOperationHandle test = Addressables.LoadAssetAsync<GameObject>("SFSceneElements");
-        //yield return test;
-        //if (test.Status == AsyncOperationStatus.Succeeded)
-        //{
-        //    Debug.Log("A");
-        //    object obj = test.Result;
-        //    Instantiate(obj as GameObject);
-        //    //etc...
-        //}
+    }
+
+    private void OnLoadFinished(AsyncOperationHandle<IList<IResourceLocation>> obj)
+    {
+        AsteroidLocations = new List<IResourceLocation>(obj.Result);
     }
 
     private void ReadJson()

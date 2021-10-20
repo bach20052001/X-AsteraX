@@ -321,7 +321,6 @@ public class DownloadData : MonoBehaviour
                     }
                     else
                     {
-                        //sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
                         LoadDatabase.Instance.StartRead();
                     }
                 }

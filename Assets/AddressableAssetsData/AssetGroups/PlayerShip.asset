@@ -23,8 +23,10 @@ MonoBehaviour:
     m_SerializedLabels:
     - ship
     - preload
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab,
+      type: 3}
+    m_TargetAsset: {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab,
+      type: 3}
   - m_GUID: 63c93b8624b3a49f4839b2246bb34b66
     m_Address: Scorpion
     m_ReadOnly: 0
@@ -41,20 +43,16 @@ MonoBehaviour:
     m_SerializedLabels:
     - ship
     - preload
-    m_MainAsset: {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691,
-      type: 3}
-    m_TargetAsset: {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: f67b736c564054f7d8c94c510be2ea63
     m_Address: T-Bag
     m_ReadOnly: 0
     m_SerializedLabels:
     - ship
     - preload
-    m_MainAsset: {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63,
-      type: 3}
-    m_TargetAsset: {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 62ce9bdb096b44b4f92baa6004c081dd, type: 2}
   m_SchemaSet:

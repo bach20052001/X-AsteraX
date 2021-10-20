@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class MagneticFactory : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class MagneticFactory : MonoBehaviour
 
     private SceneController sceneController;
 
-    public GameObject Magnetic;
+    public AssetReference Magnetic;
 
     [HideInInspector] public float force = 7.5f;
 
@@ -66,10 +67,10 @@ public class MagneticFactory : MonoBehaviour
 
     public GameObject CreateMagnetic()
     {
-        GameObject magnetic = Instantiate(Magnetic);
+        //GameObject magnetic = Instantiate(Magnetic);
 
-        magnetic.GetComponent<Magnetic>().Promote(player, rb, originalSpeed, speedInMagneticField, originalColor ,colorInMagneticField, shipBody, force);
+        //magnetic.GetComponent<Magnetic>().Promote(player, rb, originalSpeed, speedInMagneticField, originalColor ,colorInMagneticField, shipBody, force);
 
-        return magnetic;
+        return null;
     }
 }

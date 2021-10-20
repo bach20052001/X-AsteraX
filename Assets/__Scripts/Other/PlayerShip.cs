@@ -95,7 +95,7 @@ public class PlayerShip : MonoBehaviour
 
         //bulletPrefab = AsteraX.S.ListDataBullet[(BulletMode)shipParameter.BulletType];
 
-        AppearEffect = AsteraX.S.warp;
+        //AppearEffect = AsteraX.S.warp;
 
         switch (skill)
         {

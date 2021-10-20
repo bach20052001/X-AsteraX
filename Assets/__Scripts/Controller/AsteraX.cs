@@ -4,6 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.SceneManagement;
 
 public class AsteraX : MonoBehaviour
@@ -20,31 +23,33 @@ public class AsteraX : MonoBehaviour
     private int nCol = 9;
 
     public static int jumpRemaining = 3;
+
     public GameObject Gate;
 
     public ObjectPooling explosionOP;
 
-    public GameObject shipExplosion;
+    public AssetReference shipExplosion;
 
     private SceneController sceneController;
 
-    public GameObject warp;
+    public AssetReference warp;
 
-    public GameObject Magnetic;
+    public AssetReference Magnetic;
 
     public MagneticFactory magneticFactory;
 
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
-    public GameObject[] asteroidPrefabs;
 
-    public List<GameObject> listSpaceShips;
+    public List<IResourceLocation> asteroidPrefabs;
+
+    public List<AssetReference> listSpaceShips;
 
     private GameObject playerShip;
 
-    public GameObject MiniBoss;
+    public AssetReference MiniBoss;
 
-    public GameObject SuperBoss;
+    public AssetReference SuperBoss;
 
     public List<ObjectPooling> ListObjectPooling = new List<ObjectPooling>();
 
@@ -164,12 +169,12 @@ public class AsteraX : MonoBehaviour
 
         if (sceneController != null)
         {
-            playerShip = listSpaceShips[sceneController.SelectedIndex];
+            //playerShip = listSpaceShips[sceneController.SelectedIndex];
         }
 
         else
         {
-            playerShip = listSpaceShips[1];
+            //playerShip = listSpaceShips[1];
         }
 
         Instantiate(playerShip);
@@ -255,7 +260,7 @@ public class AsteraX : MonoBehaviour
     {
         foreach (var Asteroid in levelManager.LevelScriptableObject[levelManager.level].Asteroids)
         {
-            SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value);
+            StartCoroutine(SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value));
         }
     }
 
@@ -328,19 +333,13 @@ public class AsteraX : MonoBehaviour
         LevelManager.Instance.ResetLevel();
     }
 
-    public GameObject GetAsteroidPrefab()
-    {
-        int ndx = UnityEngine.Random.Range(0, asteroidPrefabs.Length);
-        return asteroidPrefabs[ndx];
-    }
-
     private void OnPlayerShipDestroyedHanler()
     {
         jumpRemaining--;
 
         if (jumpRemaining < 0)
         {
-            Instantiate(shipExplosion, PlayerShip.POSITION, Quaternion.identity);
+            //Instantiate(shipExplosion, PlayerShip.POSITION, Quaternion.identity);
             jumpRemaining = 0;
             StartCoroutine(GameOver());
         }
@@ -391,13 +390,13 @@ public class AsteraX : MonoBehaviour
             case 1:
                 {
                     this.PostEvent(GameEvent.FightBoss);
-                    Instantiate(MiniBoss);
+                    //Instantiate(MiniBoss);
                     break;
                 }
             case 2:
                 {
                     this.PostEvent(GameEvent.FightBoss);
-                    Instantiate(SuperBoss);
+                    //Instantiate(SuperBoss);
                     break;
                 }
         }
@@ -419,15 +418,20 @@ public class AsteraX : MonoBehaviour
         SpawnAsteroids();
     }
 
-    void SpawnNumberAsteroid(int type, int n)
+    IEnumerator SpawnNumberAsteroid(int type, int n)
     {
         for (int i = 0; i < n; i++)
         {
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:SpawnParentAsteroid("+i+")");
 #endif
+            var asteroidAddress = asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)];
 
-            Asteroid ast = Asteroid.SpawnAsteroid();
+            AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(asteroidAddress);
+            yield return handle;
+
+            Asteroid ast = handle.Result.GetComponent<Asteroid>();
+
             ast.transform.parent = Asteroids.transform;
             // Find a good location for the Asteroid to spawn
             Vector3 pos;

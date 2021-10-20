@@ -1763,25 +1763,50 @@ MonoBehaviour:
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosionOP: {fileID: 237831443}
-  shipExplosion: {fileID: 198231724666311192, guid: e8335af2e6e050a4c9342af2fda58d35,
-    type: 3}
-  warp: {fileID: 1231110749491679353, guid: 1a9a2c60f6548c846837acb381b1f03d, type: 3}
-  Magnetic: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
-    type: 3}
+  shipExplosion:
+    m_AssetGUID: e8335af2e6e050a4c9342af2fda58d35
+    m_SubObjectName: 
+    m_SubObjectType: 
+  warp:
+    m_AssetGUID: 1a9a2c60f6548c846837acb381b1f03d
+    m_SubObjectName: 
+    m_SubObjectType: 
+  Magnetic:
+    m_AssetGUID: 1c8e933d288f546d9b8c2e4a001ea310
+    m_SubObjectName: 
+    m_SubObjectType: 
   magneticFactory: {fileID: 1842951576}
   asteroidPrefabs:
-  - {fileID: 1029653053436338, guid: 1293b0763d7d344e0b908c097078ac09, type: 3}
-  - {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2, type: 3}
-  - {fileID: 1317570492134680, guid: a6d3ccfc58a1f41368479aabb6050561, type: 3}
+  - m_AssetGUID: 1293b0763d7d344e0b908c097078ac09
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: 5513cde93bb3343768ced35921a9c3c2
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: a6d3ccfc58a1f41368479aabb6050561
+    m_SubObjectName: 
+    m_SubObjectType: 
   listSpaceShips:
-  - {fileID: 7640424413477587657, guid: 63c93b8624b3a49f4839b2246bb34b66, type: 3}
-  - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
-  - {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab, type: 3}
-  - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
-  MiniBoss: {fileID: 3854107484062449326, guid: 36908327b22f1470b8504cd0d39a9e7c,
-    type: 3}
-  SuperBoss: {fileID: 8570772132499355697, guid: ec550988987384c0c973105c21894b5a,
-    type: 3}
+  - m_AssetGUID: 63c93b8624b3a49f4839b2246bb34b66
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: 42d7cdf17591d47538db6c50ad7bf691
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: 5af5fadec93394529a1f27ffcfcb8bab
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: f67b736c564054f7d8c94c510be2ea63
+    m_SubObjectName: 
+    m_SubObjectType: 
+  MiniBoss:
+    m_AssetGUID: 36908327b22f1470b8504cd0d39a9e7c
+    m_SubObjectName: 
+    m_SubObjectType: 
+  SuperBoss:
+    m_AssetGUID: ec550988987384c0c973105c21894b5a
+    m_SubObjectName: 
+    m_SubObjectType: 
   ListObjectPooling:
   - {fileID: 601180199}
   - {fileID: 1000392218}
@@ -1960,7 +1985,7 @@ Transform:
   - {fileID: 2125651519}
   - {fileID: 237831442}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &693280860
 GameObject:
@@ -3455,7 +3480,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153136717
 GameObject:
@@ -4905,7 +4930,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1676390729
 AudioSource:
@@ -5311,72 +5336,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712465748}
   m_CullTransparentMesh: 1
---- !u!1 &1719509689
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1719509692}
-  - component: {fileID: 1719509691}
-  - component: {fileID: 1719509690}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!114 &1719509690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719509689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1719509691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719509689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1719509692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719509689}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746245776
 GameObject:
   m_ObjectHideFlags: 0
@@ -5571,8 +5530,10 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 16772486
   shipBody: {fileID: 0}
-  Magnetic: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
-    type: 3}
+  Magnetic:
+    m_AssetGUID: 1c8e933d288f546d9b8c2e4a001ea310
+    m_SubObjectName: 
+    m_SubObjectType: 
   force: 7.5
 --- !u!4 &1842951577
 Transform:
@@ -5586,7 +5547,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915117098
 GameObject:

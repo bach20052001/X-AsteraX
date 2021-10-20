@@ -31,10 +31,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - asteroid
     - preload
-    m_MainAsset: {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2,
-      type: 3}
-    m_TargetAsset: {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1293b0763d7d344e0b908c097078ac09
     m_Address: Asteroid_A
     m_ReadOnly: 0

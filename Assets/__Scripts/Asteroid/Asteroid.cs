@@ -2,7 +2,10 @@
 //#define DEBUG_Asteroid_TestOOBVel 
 //#define DEBUG_Asteroid_ShotOffscreenDebugLines
 
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 #if DEBUG_Asteroid_TestOOBVel
 using UnityEditor;
@@ -229,25 +232,35 @@ public class Asteroid : MonoBehaviour
     {
         for (int i = 0; i < AsteraX.AsteroidsSO.numSmallerAsteroidsToSpawn; i++)
         {
-            Asteroid ast;
-
-            ast = SpawnAsteroid();
-
-            ast.type = type;
-
-            ast.transform.rotation = Random.rotation;
-
-            ast.transform.localPosition = position;
-
-            ast.gameObject.name = gameObject.name + "_" + i.ToString("00");
-
+            StartCoroutine(Spawn(type, position));
         }
     }
 
-    static public Asteroid SpawnAsteroid()
+    //static public void SpawnAsteroids(int type, Vector3 position,int n)
+    //{
+    //    for (int i = 0; i < n; i++)
+    //    {
+    //        StartCoroutine(Spawn(type, position));
+    //    }
+    //}
+
+
+    private IEnumerator Spawn(int type, Vector3 position)
     {
-        GameObject aGO = Instantiate<GameObject>(AsteraX.S.GetAsteroidPrefab(), AsteraX.S.Asteroids.transform);
-        Asteroid ast = aGO.GetComponent<Asteroid>();
-        return ast;
+        Asteroid ast;
+
+        var asteroidAddress = AsteraX.S.asteroidPrefabs[Random.Range(0, AsteraX.S.asteroidPrefabs.Count)];
+
+        AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(asteroidAddress);
+        yield return handle;
+
+        ast = handle.Result.GetComponent<Asteroid>();
+
+        ast.type = type;
+
+        ast.transform.localPosition = position;
+
+        ast.transform.rotation = Random.rotation;
+
     }
 }
