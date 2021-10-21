@@ -30,7 +30,7 @@ public class MiniBoss : MonoBehaviour
 
     private Vector3 outScreenPos;
 
-    [SerializeField] private GameObject EnemyPrefab;
+    public GameObject EnemyPrefab;
     private GameObject enemy;
 
     private int point;
@@ -43,6 +43,10 @@ public class MiniBoss : MonoBehaviour
 
     private void Awake()
     {
+        ListEnemyData = LoadDatabase.Instance.data_enemy;
+        bossData = LoadDatabase.Instance.data_miniboss;
+
+
         currenEnemy = 1;
         numberOfCurrentEnemy = bossData.EnemyList[currenEnemy];
 
@@ -65,13 +69,13 @@ public class MiniBoss : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
         {
             Destroy(enemy);
             MoveOut();
         }
-#endif
+//#endif
     }
 
     private void OnDestroyedEnemy()
@@ -134,9 +138,9 @@ public class MiniBoss : MonoBehaviour
 
         if (pos == outScreenPos)
         {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
             AsteraX.S.isBossAppear = false;
-#endif
+//#endif
             this.PostEvent(GameEvent.OnDestroyedMiniBoss, point);
             Destroy(gameObject);
         }

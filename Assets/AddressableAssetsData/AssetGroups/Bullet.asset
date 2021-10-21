@@ -23,30 +23,45 @@ MonoBehaviour:
     m_SerializedLabels:
     - bullet
     - preload
-    m_MainAsset: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
-      type: 3}
-    m_TargetAsset: {fileID: 1657914042213664, guid: aaa92dc15743449d6a6cef54e2b09e8c,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 0e9c239fd33d94404b671bc44ab4f6b4
     m_Address: BulletForBoss
     m_ReadOnly: 0
     m_SerializedLabels:
     - bullet
     - preload
-    m_MainAsset: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
-      type: 3}
-    m_TargetAsset: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b6594ed918e30452b95fe25bfc836ce1
     m_Address: EnemyBullet
     m_ReadOnly: 0
     m_SerializedLabels:
     - bullet
     - preload
-    m_MainAsset: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
-      type: 3}
-    m_TargetAsset: {fileID: 1657914042213664, guid: b6594ed918e30452b95fe25bfc836ce1,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 0b25b4910f6b345118376af0b501ef46
+    m_Address: shot_prefab_enemy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    m_MainAsset: {fileID: 136330, guid: 0b25b4910f6b345118376af0b501ef46, type: 3}
+    m_TargetAsset: {fileID: 136330, guid: 0b25b4910f6b345118376af0b501ef46, type: 3}
+  - m_GUID: 9a0c3383523899643a8d0661cfaca4e4
+    m_Address: shot_prefab_ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    m_MainAsset: {fileID: 136330, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
+    m_TargetAsset: {fileID: 136330, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
+  - m_GUID: 9d5dbdf2d3c3c6b4eadc51123699d237
+    m_Address: Laser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 62ce9bdb096b44b4f92baa6004c081dd, type: 2}
   m_SchemaSet:

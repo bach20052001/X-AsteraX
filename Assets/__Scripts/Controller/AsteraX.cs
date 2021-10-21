@@ -15,7 +15,7 @@ public class AsteraX : MonoBehaviour
     static private AsteraX _S;
 
     static List<Asteroid> ASTEROIDS;
-    public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
+    [HideInInspector] public List<Asteroid_SO> asteroidsData = new List<Asteroid_SO>();
 
     public GameObject Asteroids;
 
@@ -41,9 +41,12 @@ public class AsteraX : MonoBehaviour
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
-    public List<IResourceLocation> asteroidPrefabs = new List<IResourceLocation>();
+    //public List<IResourceLocation> asteroidPrefabs = new List<IResourceLocation>();
 
-    private List<GameObject> listSpaceShips = new List<GameObject>();
+    public List<GameObject> asteroidPrefabs = new List<GameObject>();
+
+
+    public List<GameObject> listSpaceShips = new List<GameObject>();
 
     private GameObject playerShip;
 
@@ -142,13 +145,9 @@ public class AsteraX : MonoBehaviour
 
     private void OnEnable()
     {
-        if (LevelManager.Instance.currentLevel > 10)
+        if (SaveDataManager.Instance.playerData.level > 10)
         {
             background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[1];
-            if (LevelManager.Instance.currentLevel == 11)
-            {
-                GUIController.Instance.LoadScore(SaveDataManager.Instance.LoadScore());
-            }
         }
         else
         {
@@ -167,27 +166,29 @@ public class AsteraX : MonoBehaviour
 
         sceneController = SceneController.Instance;
 
-        InitAsset();
-        //InitListPlayership();
+        asteroidsData = LoadDatabase.Instance.data_asteroid;
+        //InitAsset();
+        InitListPlayership();
 
 
-        playerShip = LoadDatabase.Instance.Delta;
-        //if (sceneController != null)
-        //{
-        //    playerShip = listSpaceShips[sceneController.SelectedIndex];
-        //}
+        //playerShip = LoadDatabase.Instance.Delta;
+        if (sceneController != null)
+        {
+            playerShip = listSpaceShips[sceneController.SelectedIndex];
+        }
 
-        //else
-        //{
-        //    playerShip = listSpaceShips[1];
-        //}
+        else
+        {
+            playerShip = listSpaceShips[1];
+        }
 
         Instantiate(playerShip);
 
         TransitionState(BaseGameState.PLAY);
 
-        asteroidPrefabs = LoadDatabase.Instance.AsteroidLocations;
-        Debug.Log(asteroidPrefabs.Count);
+        //asteroidPrefabs = LoadDatabase.Instance.asteroids;
+
+        //Debug.Log(asteroidPrefabs.Count);
 
         for (int i = 0; i < ListObjectPooling.Count; i++)
         {
@@ -257,6 +258,15 @@ public class AsteraX : MonoBehaviour
     private void OnNextLevelHandler()
     {
         StartCoroutine(NextLevelWait());
+        if (SaveDataManager.Instance.playerData.level > 10)
+        {
+            background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[1];
+        }
+        else
+        {
+            background.GetComponent<SpriteRenderer>().sprite = backgroundSprites[0];
+
+        }
     }
 
     private IEnumerator NextLevelWait()
@@ -266,11 +276,11 @@ public class AsteraX : MonoBehaviour
         TransitionState(BaseGameState.PLAY);
     }
 
-#endregion
+    #endregion
 
     private IEnumerator InitSpawn()
     {
-       this.PostEvent(GameEvent.OnLoadMainScene, levelManager.level);
+        this.PostEvent(GameEvent.OnLoadMainScene, levelManager.level);
 
         yield return new WaitForSeconds(1.5f);
 
@@ -284,16 +294,13 @@ public class AsteraX : MonoBehaviour
 
     private void SpawnAsteroids()
     {
-        Debug.Log(levelManager.level);
         foreach (var Asteroid in levelManager.LevelScriptableObject[levelManager.level].Asteroids)
         {
-            Debug.Log(Asteroid.Key + "::"+ Asteroid.Value);
-
-            StartCoroutine(SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value));
+            SpawnNumberAsteroid(Asteroid.Key, Asteroid.Value);
         }
     }
 
-#region Handler Event
+    #region Handler Event
     public Vector3 SafePosition()
     {
         int preventSpawnInEdges = 2;
@@ -357,9 +364,15 @@ public class AsteraX : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(0.75f);
-
+        SaveDataManager.Instance.ResetDataAndExport();
         GUIController.Instance.ShowGameOver();
         LevelManager.Instance.ResetLevel();
+    }
+
+    public GameObject GetAsteroidPrefab()
+    {
+        int ndx = UnityEngine.Random.Range(0, asteroidPrefabs.Count);
+        return asteroidPrefabs[ndx];
     }
 
     private void OnPlayerShipDestroyedHanler()
@@ -398,16 +411,16 @@ public class AsteraX : MonoBehaviour
     {
         if (!levelManager.breakPoint)
         {
-#if UNITY_EDITOR
+            //#if UNITY_EDITOR
             isBossAppear = false;
-#endif
+            //#endif
             StartCoroutine(LevelPassing());
         }
         else
         {
-#if UNITY_EDITOR
+            //#if UNITY_EDITOR
             isBossAppear = true;
-#endif
+            //#endif
             SpawnBoss(levelManager.bossType);
         }
     }
@@ -447,22 +460,15 @@ public class AsteraX : MonoBehaviour
         SpawnAsteroids();
     }
 
-    IEnumerator SpawnNumberAsteroid(int type, int n)
+    void SpawnNumberAsteroid(int type, int n)
     {
-        Debug.Log("Number Asteroid : " + n);
-        Debug.Log(asteroidPrefabs.Count);
         for (int i = 0; i < n; i++)
         {
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:SpawnParentAsteroid("+i+")");
 #endif
-            var asteroidAddress = asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)];
 
-            AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(asteroidAddress);
-            yield return handle;
-
-            Asteroid ast = handle.Result.GetComponent<Asteroid>();
-
+            Asteroid ast = Asteroid.SpawnAsteroid();
             ast.transform.parent = Asteroids.transform;
             // Find a good location for the Asteroid to spawn
             Vector3 pos;
@@ -471,15 +477,17 @@ public class AsteraX : MonoBehaviour
                 pos = ScreenBounds.RANDOM_ON_SCREEN_LOC;
             } while ((pos - PlayerShip.POSITION).magnitude < MIN_ASTEROID_DIST_FROM_PLAYER_SHIP);
 
-            ast.transform.position = pos;
+            ast.transform.position = new Vector3(pos.x, pos.y, 0);
             ast.type = type;
         }
     }
 
-#endregion
+    #endregion
 
     public void QuitGame()
     {
+        SaveDataManager.Instance.ExportData();
+
         if (sceneController != null)
         {
             sceneController.QuitGame();
@@ -535,12 +543,12 @@ public class AsteraX : MonoBehaviour
         }
 
         Asteroids.SetActive(false);
-#if UNITY_EDITOR
+        //#if UNITY_EDITOR
         if (!isBossAppear)
         {
             NextLevelOrFightBoss();
         }
-#endif
+        //#endif
     }
 
     public void Pause()
@@ -617,7 +625,6 @@ public class AsteraX : MonoBehaviour
     // ---------------- End Section ---------------- //
 
     // ----------------Only in EDITOR--------------- //
-#if UNITY_EDITOR
 
     public bool isBossAppear = false;
 
@@ -637,6 +644,5 @@ public class AsteraX : MonoBehaviour
             }
         }
     }
-#endif
     // ----------------------------------------------- //
 }

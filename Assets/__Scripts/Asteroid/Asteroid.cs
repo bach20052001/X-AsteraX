@@ -52,7 +52,7 @@ public class Asteroid : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         InitData();
 
@@ -60,6 +60,7 @@ public class Asteroid : MonoBehaviour
 
         InitAsteroid();
     }
+
     private int index;
 
     private void InitData()
@@ -175,7 +176,6 @@ public class Asteroid : MonoBehaviour
 
         if (otherGO.CompareTag("Bullet") || otherGO.transform.root.gameObject.CompareTag("Player"))
         {
-
             if (otherGO.CompareTag("Bullet"))
             {
                 healthController.damaged();
@@ -232,35 +232,25 @@ public class Asteroid : MonoBehaviour
     {
         for (int i = 0; i < AsteraX.AsteroidsSO.numSmallerAsteroidsToSpawn; i++)
         {
-            StartCoroutine(Spawn(type, position));
+            Asteroid ast;
+
+            ast = SpawnAsteroid();
+
+            ast.type = type;
+
+            ast.transform.rotation = Random.rotation;
+
+            ast.transform.localPosition = new Vector3(position.x, position.y, 0);
+
+            ast.gameObject.name = gameObject.name + "_" + i.ToString("00");
+
         }
     }
 
-    //static public void SpawnAsteroids(int type, Vector3 position,int n)
-    //{
-    //    for (int i = 0; i < n; i++)
-    //    {
-    //        StartCoroutine(Spawn(type, position));
-    //    }
-    //}
-
-
-    private IEnumerator Spawn(int type, Vector3 position)
+    static public Asteroid SpawnAsteroid()
     {
-        Asteroid ast;
-
-        var asteroidAddress = AsteraX.S.asteroidPrefabs[Random.Range(0, AsteraX.S.asteroidPrefabs.Count)];
-
-        AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(asteroidAddress);
-        yield return handle;
-
-        ast = handle.Result.GetComponent<Asteroid>();
-
-        ast.type = type;
-
-        ast.transform.localPosition = position;
-
-        ast.transform.rotation = Random.rotation;
-
+        GameObject aGO = Instantiate<GameObject>(AsteraX.S.GetAsteroidPrefab(), AsteraX.S.Asteroids.transform);
+        Asteroid ast = aGO.GetComponent<Asteroid>();
+        return ast;
     }
 }

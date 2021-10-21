@@ -36,6 +36,8 @@ public class LevelManager : MonoBehaviour
 
         currentLevel++;
 
+        SaveDataManager.Instance.playerData.level = currentLevel;
+
         if (LevelScriptableObject[level].HasBoss && currentLevel <= 10)
         {
             breakPoint = true;
@@ -54,15 +56,30 @@ public class LevelManager : MonoBehaviour
         breakPoint = false;
     }
 
+    public void LoadLevel()
+    {
+        currentLevel = SaveDataManager.Instance.playerData.level;
+        if (currentLevel < 1) currentLevel = 1;
+
+        level = Mathf.Clamp(currentLevel - 1, 0, 10);
+
+        if (LevelScriptableObject[level].HasBoss && currentLevel <= 10)
+        {
+            breakPoint = true;
+            bossType = LevelScriptableObject[level].BossType;
+        }
+        else
+        {
+            breakPoint = false;
+        }
+    }
 
     [Header("Set in Inspector")]
     [Tooltip("This sets the AsteroidsScriptableObject to be used throughout the game.")]
-    [HideInInspector] public List<LevelScriptableObject> LevelScriptableObject;
+    public List<LevelScriptableObject> LevelScriptableObject;
 
     private void Awake()
     {
-        LevelScriptableObject = LoadDatabase.Instance.data_level;
-             
         if (instance == null)
         {
             instance = this;
@@ -75,6 +92,8 @@ public class LevelManager : MonoBehaviour
 
         DontDestroyOnLoad(instance);
 
-        ResetLevel();
+        LevelScriptableObject = LoadDatabase.Instance.data_level;
+
+        LoadLevel();
     }
 }

@@ -1755,12 +1755,25 @@ MonoBehaviour:
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosionOP: {fileID: 237831443}
-  shipExplosion: {fileID: 0}
-  warp: {fileID: 0}
-  Magnetic: {fileID: 0}
+  shipExplosion: {fileID: 1625365507237398, guid: e8335af2e6e050a4c9342af2fda58d35,
+    type: 3}
+  warp: {fileID: 1231110749491679348, guid: 1a9a2c60f6548c846837acb381b1f03d, type: 3}
+  Magnetic: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
+    type: 3}
   magneticFactory: {fileID: 1842951576}
-  MiniBoss: {fileID: 0}
-  SuperBoss: {fileID: 0}
+  asteroidPrefabs:
+  - {fileID: 1029653053436338, guid: 1293b0763d7d344e0b908c097078ac09, type: 3}
+  - {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2, type: 3}
+  - {fileID: 1317570492134680, guid: a6d3ccfc58a1f41368479aabb6050561, type: 3}
+  listSpaceShips:
+  - {fileID: 7640424413477587657, guid: 63c93b8624b3a49f4839b2246bb34b66, type: 3}
+  - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
+  - {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab, type: 3}
+  - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
+  MiniBoss: {fileID: 3854107484062449326, guid: 36908327b22f1470b8504cd0d39a9e7c,
+    type: 3}
+  SuperBoss: {fileID: 8570772132499355697, guid: ec550988987384c0c973105c21894b5a,
+    type: 3}
   ListObjectPooling:
   - {fileID: 601180199}
   - {fileID: 1000392218}
@@ -5480,10 +5493,8 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 16772486
   shipBody: {fileID: 0}
-  Magnetic:
-    m_AssetGUID: 1c8e933d288f546d9b8c2e4a001ea310
-    m_SubObjectName: 
-    m_SubObjectType: 
+  Magnetic: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
+    type: 3}
   force: 7.5
 --- !u!4 &1842951577
 Transform:
@@ -5920,7 +5931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22468432, guid: 7ffda55ee71685646aacbb22ab8fec4d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22468432, guid: 7ffda55ee71685646aacbb22ab8fec4d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6669,7 +6680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
       propertyPath: m_AnchorMax.x

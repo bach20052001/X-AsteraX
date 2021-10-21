@@ -32,30 +32,29 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(AffectToPlayer());
+        }
+
         if (collision.gameObject.CompareTag("Bullet"))
         {
             currentHP--;
 
-            this.PostEvent(GameEvent.OnEnemyDamaged, (float) currentHP/ HP);
+            this.PostEvent(GameEvent.OnEnemyDamaged, (float)currentHP / HP);
 
             GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
             explosion.transform.position = transform.position;
 
             collision.gameObject.SetActive(false);
 
-            if (currentHP == 0)
+            if (currentHP <= 0)
             {
                 this.PostEvent(GameEvent.OnDestroyedEnemy, point);
                 Destroy(gameObject);
             }
         }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(AffectToPlayer());
-        }
     }
-
 
     private IEnumerator AffectToPlayer()
     {

@@ -50,12 +50,16 @@ public class SuperBoss : MonoBehaviour
     private bool isLaserActive;
 
     private bool isReadyToAttack = false;
-    public List<ParticleSystem> FXBeforeDestroy = new List<ParticleSystem>();
 
     private float xRange = 8;
 
     private AttackMode mode;
     private Laser laser;
+
+    //private void Awake()
+    //{
+    //    bossData = LoadDatabase.Instance.data_superboss;
+    //}
 
     [System.Obsolete]
     void Start()
@@ -120,7 +124,10 @@ public class SuperBoss : MonoBehaviour
             player = FindObjectOfType<PlayerShip>();
         }
 
-        player.TransitionModeControl(Mode.Animation);
+        if (player != null)
+        {
+            player.TransitionModeControl(Mode.Animation);
+        }
 
         while (state == State.Fight)
         {
@@ -172,7 +179,10 @@ public class SuperBoss : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        player.TransitionModeControl(modeWhenFinish);
+        if (player != null)
+        {
+            player.TransitionModeControl(modeWhenFinish);
+        }
     }
 
     [System.Obsolete]
@@ -192,11 +202,6 @@ public class SuperBoss : MonoBehaviour
 
             DecreaseEnergy((int)Mathf.Abs(255 * currentHP / HP));
 
-            if (currentHP <= 20)
-            {
-                FXBeforeDestroy[1].gameObject.SetActive(true);
-            }
-
             GameObject explosion = AsteraX.S.explosionOP.GetUnactiveObject();
 
             explosion.transform.position = collision.contacts[0].point;
@@ -212,12 +217,12 @@ public class SuperBoss : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
+        //#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
         {
             BeforeDestroy();
         }
-#endif
+        //#endif
         if (AsteraX.GameState == AsteraX.BaseGameState.PLAY && state == State.Fight)
         {
             if (isReadyToAttack)
@@ -251,9 +256,9 @@ public class SuperBoss : MonoBehaviour
 
     private void BeforeDestroy()
     {
-#if UNITY_EDITOR
+        //#if UNITY_EDITOR
         AsteraX.S.isBossAppear = false;
-#endif
+        //#endif
         state = State.Destroyed;
 
         StopAllCoroutines();
@@ -263,11 +268,6 @@ public class SuperBoss : MonoBehaviour
         isReadyToAttack = false;
 
         laser.enabled = false;
-
-        for (int i = 0; i < FXBeforeDestroy.Count; i++)
-        {
-            FXBeforeDestroy[i].gameObject.SetActive(true);
-        }
 
         StartCoroutine(MoveTo(outPosition, true, Mode.Normal));
     }

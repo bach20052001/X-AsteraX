@@ -75,6 +75,11 @@ public class DownloadData : MonoBehaviour
         AllListLoad();
 
         updateDateWarn.SetActive(true);
+
+        if (!Directory.Exists(localUrl))
+        {
+            Directory.CreateDirectory(localUrl);
+        }
     }
 
     private void AllListLoad()

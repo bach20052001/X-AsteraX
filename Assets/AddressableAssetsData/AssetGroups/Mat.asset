@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Mat
+  m_EditorClassIdentifier: 
+  m_GroupName: Mat
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 03494fbc420114ca39c265608ff7539a
+  m_SerializeEntries:
+  - m_GUID: 454dc58e84dcb47f0ac327ddd284ea97
+    m_Address: BulletMatRed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - material
+    m_MainAsset: {fileID: 2100000, guid: 454dc58e84dcb47f0ac327ddd284ea97, type: 2}
+    m_TargetAsset: {fileID: 2100000, guid: 454dc58e84dcb47f0ac327ddd284ea97, type: 2}
+  - m_GUID: 21def0c21858847b6841362c81ac9c65
+    m_Address: BulletMatBlue
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - material
+    m_MainAsset: {fileID: 2100000, guid: 21def0c21858847b6841362c81ac9c65, type: 2}
+    m_TargetAsset: {fileID: 2100000, guid: 21def0c21858847b6841362c81ac9c65, type: 2}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 62ce9bdb096b44b4f92baa6004c081dd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 928dc730014624dbda3384e453965ba0, type: 2}
+    - {fileID: 11400000, guid: 4cb822c0723dc48c8baef5e1b797c534, type: 2}

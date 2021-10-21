@@ -68,7 +68,7 @@ public class ShipInfomation : MonoBehaviour
         if (SaveDataManager.Instance != null)
         {
             SaveDataManager.Instance.playerData = playerData;
-            SaveDataManager.Instance.ExportDataToExit();
+            SaveDataManager.Instance.ExportData();
         }
 
     }
@@ -82,9 +82,9 @@ public class ShipInfomation : MonoBehaviour
         {
             SaveDataManager.Instance.playerData = new PlayerData();
         }
-        
+
         playerData = SaveDataManager.Instance.playerData;
-       
+
         if (playerData != null)
         {
             currentSelected = playerData.selectedIndex;

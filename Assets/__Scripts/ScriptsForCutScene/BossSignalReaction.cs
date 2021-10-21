@@ -25,6 +25,11 @@ public class BossSignalReaction : MonoBehaviour
 
     // Start is called before the first frame update
 
+    //private void Awake()
+    //{
+    //    bullet = LoadDatabase.Instance.enemyBulletCinematic;
+    //}
+
     public void ShootPlayer()
     {
         for (int i = 0; i < ListGun.Count; i++)

@@ -33,7 +33,7 @@ public class MagneticFactory : MonoBehaviour
 
     private SceneController sceneController;
 
-    public AssetReference Magnetic;
+    public GameObject Magnetic;
 
     [HideInInspector] public float force = 7.5f;
 
@@ -63,14 +63,16 @@ public class MagneticFactory : MonoBehaviour
             originalSpeed = sceneController.shipInfo[sceneController.SelectedIndex].speed * 12.5f / 5f;
             speedInMagneticField = originalSpeed / 2f;
         }
+
+        //Magnetic = LoadDatabase.Instance.Magnetic;
     }
 
     public GameObject CreateMagnetic()
     {
-        //GameObject magnetic = Instantiate(Magnetic);
+        GameObject magnetic = Instantiate(Magnetic);
 
-        //magnetic.GetComponent<Magnetic>().Promote(player, rb, originalSpeed, speedInMagneticField, originalColor ,colorInMagneticField, shipBody, force);
+        magnetic.GetComponent<Magnetic>().Promote(player, rb, originalSpeed, speedInMagneticField, originalColor, colorInMagneticField, shipBody, force);
 
-        return null;
+        return magnetic;
     }
 }
