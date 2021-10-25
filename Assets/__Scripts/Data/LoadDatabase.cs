@@ -176,11 +176,10 @@ public class LoadDatabase : MonoBehaviour
         AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync("scene");
         while (!downloadScene.IsDone)
         {
-            Debug.Log(downloadScene.GetDownloadStatus().Percent);
+            //Debug.Log(downloadScene.GetDownloadStatus().Percent);
             slider.value = downloadScene.GetDownloadStatus().Percent;
             yield return null;
         }
-        Addressables.Release(downloadScene);
 
         // Preloading Assets
         processReport.text = "Loading...";
@@ -195,7 +194,6 @@ public class LoadDatabase : MonoBehaviour
 
         yield return loadMat;
 
-        Addressables.Release(loadMat);
 
 
         AsyncOperationHandle<IList<GameObject>> loadWithSingleKeyHandle = Addressables.LoadAssetsAsync<GameObject>(preloadLabel.labelString, obj =>
@@ -206,6 +204,10 @@ public class LoadDatabase : MonoBehaviour
         yield return loadWithSingleKeyHandle;
 
         assetsResult = loadWithSingleKeyHandle.Result;
+
+
+        Addressables.Release(downloadScene);
+        Addressables.Release(loadMat);
         Addressables.Release(loadWithSingleKeyHandle);
 
         SceneController.Instance.NextScene();
