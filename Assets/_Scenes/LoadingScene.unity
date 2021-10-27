@@ -223,6 +223,10 @@ MonoBehaviour:
     m_LabelString: asteroid
   preloadLabel:
     m_LabelString: preload
+  sceneLabel:
+    m_LabelString: scene
+  matLabel:
+    m_LabelString: material
   minibossName: MiniBoss
   superbossName: SuperBoss
   enemyName: Enemy

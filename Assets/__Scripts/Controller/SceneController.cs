@@ -50,6 +50,8 @@ public class SceneController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        //PreLoadScene();
     }
 
     private void Start()
@@ -77,6 +79,14 @@ public class SceneController : MonoBehaviour
         StartCoroutine(PlayNextWithoutAni());
     }
 
+
+    public void PreLoadScene()
+    {
+        for (int i = 0; i < listSceneNames.Count; i++)
+        {
+            Addressables.LoadSceneAsync(listSceneNames[i], LoadSceneMode.Single, false);
+        }
+    }
     
     private IEnumerator LoadScene(int index)
     {

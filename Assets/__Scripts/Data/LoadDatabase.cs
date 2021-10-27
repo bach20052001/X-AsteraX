@@ -48,6 +48,8 @@ public class LoadDatabase : MonoBehaviour
 
     public AssetLabelReference asteroidLabel;
     public AssetLabelReference preloadLabel;
+    public AssetLabelReference sceneLabel;
+    public AssetLabelReference matLabel;
 
 
     [Header("Addressable Name")]
@@ -137,31 +139,21 @@ public class LoadDatabase : MonoBehaviour
 
     public IEnumerator StartDownloadDependencies()
     {
-        string key = "preload";
-
         Caching.ClearCache();
 
         //Debug.Log("LoadDependencies");
         processReport.text = "Downloading...";
 
-        AsyncOperationHandle downloadMat = Addressables.DownloadDependenciesAsync("material");
-        while (!downloadMat.IsDone)
-        {
-            //Debug.Log(downloadMat.GetDownloadStatus().Percent);
-            slider.value = downloadMat.GetDownloadStatus().Percent;
-            yield return null;
-        }
-        Addressables.Release(downloadMat);
 
-
-        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(key);
+        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(preloadLabel.labelString);
+        AsyncOperationHandle downloadDependencies;
         yield return getDownloadSize;
 
         Debug.Log(getDownloadSize.Result);
 
         if (getDownloadSize.Result > 0)
         {
-            AsyncOperationHandle downloadDependencies = Addressables.DownloadDependenciesAsync(key);
+            downloadDependencies = Addressables.DownloadDependenciesAsync(preloadLabel.labelString);
             while (!downloadDependencies.IsDone)
             {
                 //Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
@@ -169,11 +161,9 @@ public class LoadDatabase : MonoBehaviour
                 yield return null;
             }
             Debug.Log("Download Assets Finished");
-            Addressables.Release(downloadDependencies);
-
         }
 
-        AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync("scene");
+        AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync(sceneLabel.labelString);
         while (!downloadScene.IsDone)
         {
             //Debug.Log(downloadScene.GetDownloadStatus().Percent);
@@ -187,121 +177,105 @@ public class LoadDatabase : MonoBehaviour
         // Load Asteroid
 
         fileName.gameObject.SetActive(true);
-        AsyncOperationHandle<IList<Material>> loadMat = Addressables.LoadAssetsAsync<Material>("material", obj =>
+        AsyncOperationHandle loadMat = Addressables.LoadAssetsAsync<Material>(matLabel.labelString, obj =>
         {
             fileName.text = obj.name;
         });
 
         yield return loadMat;
 
+        //AsyncOperationHandle<IList<GameObject>> loadWithSingleKeyHandle = Addressables.LoadAssetsAsync<GameObject>(preloadLabel.labelString, obj =>
+        //{
+        //    fileName.text = obj.name;
+        //});
+
+        //yield return loadWithSingleKeyHandle;
+
+        //assetsResult = loadWithSingleKeyHandle.Result;
 
 
-        AsyncOperationHandle<IList<GameObject>> loadWithSingleKeyHandle = Addressables.LoadAssetsAsync<GameObject>(preloadLabel.labelString, obj =>
+        //Addressables.Release(downloadScene);
+        //Addressables.Release(loadMat);
+        //Addressables.Release(loadWithSingleKeyHandle);
+
+
+
+        List<AsyncOperationHandle> aohs = new List<AsyncOperationHandle>();
+
+        AsyncOperationHandle aoh = Addressables.LoadAssetAsync<GameObject>(minibossName);
+        yield return aoh;
+        Miniboss = aoh.Result as GameObject;
+
+        AsyncOperationHandle aoh1 = Addressables.LoadAssetAsync<GameObject>(superbossName);
+        yield return aoh1;
+        Superboss = aoh1.Result as GameObject;
+
+        AsyncOperationHandle aoh2 = Addressables.LoadAssetAsync<GameObject>(enemyName);
+        yield return aoh2;
+        Enemy = aoh2.Result as GameObject;
+
+        AsyncOperationHandle aoh3 = Addressables.LoadAssetAsync<GameObject>(bulletPVAName);
+        yield return aoh3;
+        bulletPVA = aoh3.Result as GameObject;
+
+        AsyncOperationHandle aoh4 = Addressables.LoadAssetAsync<GameObject>(bulletPVBName);
+        yield return aoh4;
+        bulletPVB = aoh4.Result as GameObject;
+
+        AsyncOperationHandle aoh5 = Addressables.LoadAssetAsync<GameObject>(bulletBVPName);
+        yield return aoh5;
+        bulletBVP = aoh5.Result as GameObject;
+
+        AsyncOperationHandle aoh6 = Addressables.LoadAssetAsync<GameObject>(laserName);
+        yield return aoh6;
+        Laser = aoh6.Result as GameObject;
+
+        AsyncOperationHandle aoh7 = Addressables.LoadAssetAsync<GameObject>(shipBulletName);
+        yield return aoh7;
+        shipBulletCinematic = aoh7.Result as GameObject;
+
+        AsyncOperationHandle aoh8 = Addressables.LoadAssetAsync<GameObject>(enemyBulletName);
+        yield return aoh8;
+        enemyBulletCinematic = aoh8.Result as GameObject;
+
+        AsyncOperationHandle aoh9 = Addressables.LoadAssetAsync<GameObject>(magneticName);
+        yield return aoh9;
+        Magnetic = aoh9.Result as GameObject;
+
+        AsyncOperationHandle aoh10 = Addressables.LoadAssetAsync<GameObject>(shipSummonName);
+        yield return aoh10;
+        shipSummon = aoh10.Result as GameObject;
+
+        AsyncOperationHandle aoh11 = Addressables.LoadAssetAsync<GameObject>(explosionName);
+        yield return aoh11;
+        explosion = aoh11.Result as GameObject;
+
+        AsyncOperationHandle aoh12 = Addressables.LoadAssetAsync<GameObject>("Scorpion");
+        yield return aoh12;
+        Scorpion = aoh12.Result as GameObject;
+
+        AsyncOperationHandle aoh13 = Addressables.LoadAssetAsync<GameObject>("Delta");
+        yield return aoh13;
+        Delta = aoh13.Result as GameObject;
+
+        AsyncOperationHandle aoh14 = Addressables.LoadAssetAsync<GameObject>("Scylla");
+        yield return aoh14;
+        Scylla = aoh14.Result as GameObject;
+
+        AsyncOperationHandle aoh15 = Addressables.LoadAssetAsync<GameObject>("T-Bag");
+        yield return aoh15;
+        TBag = aoh15.Result as GameObject;
+
+        AsyncOperationHandle aoh16 = Addressables.LoadAssetsAsync<GameObject>(asteroidLabel.labelString, obj =>
         {
-            fileName.text = obj.name;
+            asteroids.Add(obj);
         });
+        yield return aoh16;
 
-        yield return loadWithSingleKeyHandle;
-
-        assetsResult = loadWithSingleKeyHandle.Result;
-
-
-        Addressables.Release(downloadScene);
-        Addressables.Release(loadMat);
-        Addressables.Release(loadWithSingleKeyHandle);
 
         SceneController.Instance.NextScene();
-
-
-        //List<AsyncOperationHandle> aohs = new List<AsyncOperationHandle>();
-
-        //AsyncOperationHandle aoh = Addressables.LoadAssetAsync<GameObject>(minibossName);
-        //yield return aoh;
-        //Miniboss = aoh.Result as GameObject;
-        //aohs.Add(aoh);
-
-        //AsyncOperationHandle aoh1 = Addressables.LoadAssetAsync<GameObject>(superbossName);
-        //yield return aoh1;
-        //Superboss = aoh1.Result as GameObject;
-        //aohs.Add(aoh1);
-
-        //AsyncOperationHandle aoh2 = Addressables.LoadAssetAsync<GameObject>(enemyName);
-        //yield return aoh2;
-        //Enemy = aoh2.Result as GameObject;
-        //aohs.Add(aoh2);
-
-        //AsyncOperationHandle aoh3 = Addressables.LoadAssetAsync<GameObject>(bulletPVAName);
-        //yield return aoh3;
-        //bulletPVA = aoh3.Result as GameObject;
-        //aohs.Add(aoh3);
-
-        //AsyncOperationHandle aoh4 = Addressables.LoadAssetAsync<GameObject>(bulletPVBName);
-        //yield return aoh4;
-        //bulletPVB = aoh4.Result as GameObject;
-        //aohs.Add(aoh4);
-
-        //AsyncOperationHandle aoh5 = Addressables.LoadAssetAsync<GameObject>(bulletBVPName);
-        //yield return aoh5;
-        //bulletBVP = aoh5.Result as GameObject;
-        //aohs.Add(aoh5);
-
-        //AsyncOperationHandle aoh6 = Addressables.LoadAssetAsync<GameObject>(laserName);
-        //yield return aoh6;
-        //Laser = aoh6.Result as GameObject;
-        //aohs.Add(aoh6);
-
-        //AsyncOperationHandle aoh7 = Addressables.LoadAssetAsync<GameObject>(shipBulletName);
-        //yield return aoh7;
-        //shipBulletCinematic = aoh7.Result as GameObject;
-        //aohs.Add(aoh7);
-
-        //AsyncOperationHandle aoh8 = Addressables.LoadAssetAsync<GameObject>(enemyBulletName);
-        //yield return aoh8;
-        //enemyBulletCinematic = aoh8.Result as GameObject;
-        //aohs.Add(aoh8);
-
-        //AsyncOperationHandle aoh9 = Addressables.LoadAssetAsync<GameObject>(magneticName);
-        //yield return aoh9;
-        //Magnetic = aoh9.Result as GameObject;
-        //aohs.Add(aoh9);
-
-        //AsyncOperationHandle aoh10 = Addressables.LoadAssetAsync<GameObject>(shipSummonName);
-        //yield return aoh10;
-        //shipSummon = aoh10.Result as GameObject;
-        //aohs.Add(aoh10);
-
-        //AsyncOperationHandle aoh11 = Addressables.LoadAssetAsync<GameObject>(explosionName);
-        //yield return aoh11;
-        //explosion = aoh11.Result as GameObject;
-        //aohs.Add(aoh11);
-
-        //AsyncOperationHandle aoh12 = Addressables.LoadAssetAsync<GameObject>("Scorpion");
-        //yield return aoh12;
-        //Scorpion = aoh12.Result as GameObject;
-        //aohs.Add(aoh12);
-
-        //AsyncOperationHandle aoh13 = Addressables.LoadAssetAsync<GameObject>("Delta");
-        //yield return aoh13;
-        //Delta = aoh13.Result as GameObject;
-        //aohs.Add(aoh13);
-
-        //AsyncOperationHandle aoh14 = Addressables.LoadAssetAsync<GameObject>("Scylla");
-        //yield return aoh14;
-        //Scylla = aoh14.Result as GameObject;
-        //aohs.Add(aoh14);
-
-        //AsyncOperationHandle aoh15 = Addressables.LoadAssetAsync<GameObject>("T-Bag");
-        //yield return aoh15;
-        //TBag = aoh15.Result as GameObject;
-        //aohs.Add(aoh15);
-
-        //AsyncOperationHandle aoh16 = Addressables.LoadAssetsAsync<GameObject>(asteroidLabel.labelString, obj =>
-        //{
-        //    asteroids.Add(obj);
-        //});
-        //yield return aoh16;
-        //aohs.Add(aoh16);
     }
+
 
 
     private void ReadJson()
