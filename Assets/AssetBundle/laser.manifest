@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 681487685
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cabb8dd3fd9776159fffc26c6062fde4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b02943683de7210e6a744de2e47b53a7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7ea4308861e24ac4caa06d26e151d595, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 120
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/ErbGameArt/3D Lasers Pack/Prefabs/Laser beam 2.prefab
+Dependencies: []

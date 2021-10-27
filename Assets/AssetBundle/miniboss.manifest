@@ -1,0 +1,48 @@
+ManifestFileVersion: 0
+CRC: 3102909965
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 850459764ea0b8a123ef40936ece514a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9c3640d562cb4a2a405800e0c96bdbba
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 005ed75631b4b4f638ddf66288c574c4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 709b374799ad0453ba00ec34098a7c6b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 003b3b91ad5424268bca09e89349213a, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Boss/Boss 1.prefab
+Dependencies:
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/enemy

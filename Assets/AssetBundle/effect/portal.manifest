@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 334736776
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b30d4eb5ebe3935923570e7fec852edc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4506e2cf3d5ee6f4e2b0bf56ea6ac409
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Particles/pf_vfx-ult_demo_psys_loop_hyperspace.prefab
+Dependencies: []
