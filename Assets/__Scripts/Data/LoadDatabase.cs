@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.UI;
@@ -94,6 +95,7 @@ public class LoadDatabase : MonoBehaviour
     public GameObject Delta;
     public GameObject Scylla;
     public GameObject TBag;
+    private IList<IResourceLocation> resourceLocations;
 
     public List<GameObject> asteroids = new List<GameObject>();
 
@@ -137,39 +139,81 @@ public class LoadDatabase : MonoBehaviour
         StartCoroutine(StartDownloadDependencies());
     }
 
-    public IEnumerator StartDownloadDependencies()
+    IEnumerator UpdateCatalogs()
     {
-        Caching.ClearCache();
+        List<string> catalogsToUpdate = new List<string>();
+        AsyncOperationHandle<List<string>> checkForUpdateHandle = Addressables.CheckForCatalogUpdates();
+        checkForUpdateHandle.Completed += op =>
+        {
+            catalogsToUpdate.AddRange(op.Result);
+        };
+        yield return checkForUpdateHandle;
+        if (catalogsToUpdate.Count > 0)
+        {
+            AsyncOperationHandle<List<IResourceLocator>> updateHandle = Addressables.UpdateCatalogs(catalogsToUpdate);
+            yield return updateHandle;
+        }
+        //AsyncOperationHandle<IResourceLocator> handle = Addressables.LoadContentCatalogAsync("path_to_secondary_catalog", true);
+        //yield return handle;
+    }
 
-        //Debug.Log("LoadDependencies");
-        processReport.text = "Downloading...";
+    public IEnumerator DownloadDependencies(AssetLabelReference label)
+    {
+        var loadResourceLocationsAsync = Addressables.LoadResourceLocationsAsync(label);
+        yield return loadResourceLocationsAsync;
+        resourceLocations = loadResourceLocationsAsync.Result;
 
+        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(label.labelString);
 
-        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(preloadLabel.labelString);
         AsyncOperationHandle downloadDependencies;
         yield return getDownloadSize;
 
-        Debug.Log(getDownloadSize.Result);
-
         if (getDownloadSize.Result > 0)
         {
-            downloadDependencies = Addressables.DownloadDependenciesAsync(preloadLabel.labelString);
+            downloadDependencies = Addressables.DownloadDependenciesAsync(resourceLocations);
             while (!downloadDependencies.IsDone)
             {
-                //Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
                 slider.value = downloadDependencies.GetDownloadStatus().Percent;
                 yield return null;
             }
-            Debug.Log("Download Assets Finished");
+            Debug.Log("Download " + label.labelString +" Finished");
         }
+    }
 
-        AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync(sceneLabel.labelString);
-        while (!downloadScene.IsDone)
-        {
-            //Debug.Log(downloadScene.GetDownloadStatus().Percent);
-            slider.value = downloadScene.GetDownloadStatus().Percent;
-            yield return null;
-        }
+    public IEnumerator StartDownloadDependencies()
+    {
+        yield return StartCoroutine(UpdateCatalogs());
+
+        Caching.ClearCache();
+
+        processReport.text = "Downloading...";
+
+        //AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(preloadLabel.labelString);
+        //AsyncOperationHandle downloadDependencies;
+        //yield return getDownloadSize;
+
+        //if (getDownloadSize.Result > 0)
+        //{
+        //    downloadDependencies = Addressables.DownloadDependenciesAsync(preloadLabel.labelString);
+        //    while (!downloadDependencies.IsDone)
+        //    {
+        //        //Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
+        //        slider.value = downloadDependencies.GetDownloadStatus().Percent;
+        //        yield return null;
+        //    }
+        //    Debug.Log("Download Assets Finished");
+        //}
+
+        yield return StartCoroutine(DownloadDependencies(preloadLabel));
+        yield return StartCoroutine(DownloadDependencies(sceneLabel));
+
+        //AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync(sceneLabel.labelString);
+        //while (!downloadScene.IsDone)
+        //{
+        //    //Debug.Log(downloadScene.GetDownloadStatus().Percent);
+        //    slider.value = downloadScene.GetDownloadStatus().Percent;
+        //    yield return null;
+        //}
 
         // Preloading Assets
         processReport.text = "Loading...";
