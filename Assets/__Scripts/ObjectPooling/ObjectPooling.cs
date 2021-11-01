@@ -14,7 +14,7 @@ public class ObjectPooling : MonoBehaviour
 {
     public ObjectType type;
 
-    public GameObject gameObjectPrefab;
+    private GameObject gameObjectPrefab;
 
     private List<GameObject> listGameObject = new List<GameObject>();
 
@@ -24,6 +24,23 @@ public class ObjectPooling : MonoBehaviour
 
     void Awake()
     {
+        switch (type)
+        {
+            case ObjectType.BulletPlayerVsAsteroid:
+                gameObjectPrefab = LoadDatabase.Instance.bulletPVA;
+                break;
+            case ObjectType.BulletPlayerVsBoss:
+                gameObjectPrefab = LoadDatabase.Instance.bulletPVB;
+                break;
+            case ObjectType.BulletEnemy:
+                gameObjectPrefab = LoadDatabase.Instance.bulletBVP;
+                break;
+            case ObjectType.Explosion:
+                gameObjectPrefab = LoadDatabase.Instance.explosion;
+                break;
+        }
+
+
         for (int i = 0; i < initialSize; i++)
         {
             InitialObject();

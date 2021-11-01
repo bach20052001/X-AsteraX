@@ -245,9 +245,9 @@ MonoBehaviour:
   Miniboss: {fileID: 0}
   Superboss: {fileID: 0}
   Enemy: {fileID: 0}
-  bulletPVA: {fileID: 0}
-  bulletPVB: {fileID: 0}
-  bulletBVP: {fileID: 0}
+  bulletPVA: {fileID: 1657914042213664, guid: a84c1393fe02d470fbbf4893642e7342, type: 3}
+  bulletPVB: {fileID: 1657914042213664, guid: b2a99d620e03f43d9ac8ed495b784318, type: 3}
+  bulletBVP: {fileID: 1657914042213664, guid: a48e59e0d38fd430f9585a68540e5b83, type: 3}
   Laser: {fileID: 0}
   shipBulletCinematic: {fileID: 0}
   enemyBulletCinematic: {fileID: 0}

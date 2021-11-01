@@ -50,8 +50,6 @@ public class LoadDatabase : MonoBehaviour
     public AssetLabelReference asteroidLabel;
     public AssetLabelReference preloadLabel;
     public AssetLabelReference sceneLabel;
-    public AssetLabelReference matLabel;
-
 
     [Header("Addressable Name")]
     [SerializeField] private string minibossName;
@@ -182,69 +180,23 @@ public class LoadDatabase : MonoBehaviour
 
     public IEnumerator StartDownloadDependencies()
     {
-        yield return StartCoroutine(UpdateCatalogs());
+        fileName.gameObject.SetActive(false);
+
+        //yield return StartCoroutine(UpdateCatalogs());
 
         Caching.ClearCache();
 
         processReport.text = "Downloading...";
 
-        //AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(preloadLabel.labelString);
-        //AsyncOperationHandle downloadDependencies;
-        //yield return getDownloadSize;
-
-        //if (getDownloadSize.Result > 0)
-        //{
-        //    downloadDependencies = Addressables.DownloadDependenciesAsync(preloadLabel.labelString);
-        //    while (!downloadDependencies.IsDone)
-        //    {
-        //        //Debug.Log(downloadDependencies.GetDownloadStatus().Percent);
-        //        slider.value = downloadDependencies.GetDownloadStatus().Percent;
-        //        yield return null;
-        //    }
-        //    Debug.Log("Download Assets Finished");
-        //}
-
         yield return StartCoroutine(DownloadDependencies(preloadLabel));
         yield return StartCoroutine(DownloadDependencies(sceneLabel));
-
-        //AsyncOperationHandle downloadScene = Addressables.DownloadDependenciesAsync(sceneLabel.labelString);
-        //while (!downloadScene.IsDone)
-        //{
-        //    //Debug.Log(downloadScene.GetDownloadStatus().Percent);
-        //    slider.value = downloadScene.GetDownloadStatus().Percent;
-        //    yield return null;
-        //}
 
         // Preloading Assets
         processReport.text = "Loading...";
 
-        // Load Asteroid
-
-        fileName.gameObject.SetActive(true);
-        AsyncOperationHandle loadMat = Addressables.LoadAssetsAsync<Material>(matLabel.labelString, obj =>
-        {
-            fileName.text = obj.name;
-        });
-
-        yield return loadMat;
-
-        //AsyncOperationHandle<IList<GameObject>> loadWithSingleKeyHandle = Addressables.LoadAssetsAsync<GameObject>(preloadLabel.labelString, obj =>
-        //{
-        //    fileName.text = obj.name;
-        //});
-
-        //yield return loadWithSingleKeyHandle;
-
-        //assetsResult = loadWithSingleKeyHandle.Result;
-
-
         //Addressables.Release(downloadScene);
         //Addressables.Release(loadMat);
         //Addressables.Release(loadWithSingleKeyHandle);
-
-
-
-        List<AsyncOperationHandle> aohs = new List<AsyncOperationHandle>();
 
         AsyncOperationHandle aoh = Addressables.LoadAssetAsync<GameObject>(minibossName);
         yield return aoh;
@@ -257,18 +209,6 @@ public class LoadDatabase : MonoBehaviour
         AsyncOperationHandle aoh2 = Addressables.LoadAssetAsync<GameObject>(enemyName);
         yield return aoh2;
         Enemy = aoh2.Result as GameObject;
-
-        AsyncOperationHandle aoh3 = Addressables.LoadAssetAsync<GameObject>(bulletPVAName);
-        yield return aoh3;
-        bulletPVA = aoh3.Result as GameObject;
-
-        AsyncOperationHandle aoh4 = Addressables.LoadAssetAsync<GameObject>(bulletPVBName);
-        yield return aoh4;
-        bulletPVB = aoh4.Result as GameObject;
-
-        AsyncOperationHandle aoh5 = Addressables.LoadAssetAsync<GameObject>(bulletBVPName);
-        yield return aoh5;
-        bulletBVP = aoh5.Result as GameObject;
 
         AsyncOperationHandle aoh6 = Addressables.LoadAssetAsync<GameObject>(laserName);
         yield return aoh6;
@@ -315,7 +255,6 @@ public class LoadDatabase : MonoBehaviour
             asteroids.Add(obj);
         });
         yield return aoh16;
-
 
         SceneController.Instance.NextScene();
     }
