@@ -34,10 +34,6 @@ public class LoadDatabase : MonoBehaviour
     [Header("PlayershipPath")]
     public List<string> playershipAssetPath;
 
-    //--Bullet--//
-    [Header("BulletPath")]
-    public List<string> bulletAssetPath;
-
     //--BossAndEnemy--//
     [Header("BossAndEnemyPath")]
     public string minibossPath;
@@ -65,7 +61,6 @@ public class LoadDatabase : MonoBehaviour
     public List<string> shipNames;
     public List<string> asteroidNames;
     public List<string> explosionNames;
-    public List<string> bulletNames;
     public List<string> sceneNames;
 
     public GameObject spark;
@@ -82,10 +77,7 @@ public class LoadDatabase : MonoBehaviour
     public AssetBundle lightingmain;
     public AssetBundle lightingcutscene;
     public AssetBundle profilecutscene;
-    public AssetBundle bulletMat;
     public AssetBundle timeline;
-    public AssetBundle shotMatBlue;
-    public AssetBundle shotMatRed;
 
     public AssetBundle signals;
 
@@ -151,31 +143,42 @@ public class LoadDatabase : MonoBehaviour
     private void Start()
     {
         enemyShotCinematic = Resources.Load<GameObject>("shot_prefab_enemy");
-        //Debug.Log(enemyShotCinematic.name);
         playershipShotCinematic = Resources.Load<GameObject>("shot_prefab_ship");
-        //Debug.Log(playershipShotCinematic.name);
     }
 
-    public void StartRead()
+    public IEnumerator StartRead()
     {
         ReadJson();
         LoadJsonToSO();
-        LoadBulletMat();
+        LoadLighting();
         LoadEffect();
         LoadAssets();
         LoadEnemy();
-        LoadCinematic();
-        StartCoroutine(LoadScene());
+
+        yield return StartCoroutine(LoadCinematic());
+        yield return new WaitForEndOfFrame();
+        yield return StartCoroutine(LoadScene());
     }
 
-    private void LoadCinematic()
+    private IEnumerator LoadCinematic()
     {
-        StartCoroutine(Download(Path.Combine(assetPath, "bosscine"), "Boss 2", cinematicEnemyPath, (obj) => {
+        var bundleLoadRequest = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "signal"));
+        yield return bundleLoadRequest;
+        signals = bundleLoadRequest.assetBundle;
+        var bundleLoadRequest2 = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "timeline"));
+        yield return bundleLoadRequest2;
+        timeline = bundleLoadRequest2.assetBundle;
+
+        yield return new WaitForEndOfFrame();
+
+        yield return StartCoroutine(Download(Path.Combine(assetPath, "bosscine"), "Boss 2", cinematicEnemyPath, (obj) => {
             enemyCinematic = obj;
         }));
-        StartCoroutine(Download(Path.Combine(assetPath, "playershipcine"), "Playership", cinematicPlayerPath, (obj) => {
+        yield return StartCoroutine(Download(Path.Combine(assetPath, "playershipcine"), "Playership", cinematicPlayerPath, (obj) => {
             playershipCinematic = obj;
         }));
+
+        yield return new WaitForEndOfFrame();
     }
 
     IEnumerator Download(string url, string assetName, string assetUrl, List<GameObject> listTarget)
@@ -232,39 +235,29 @@ public class LoadDatabase : MonoBehaviour
         }));
     }
 
-    public void LoadBulletMat()
+    public void LoadLighting()
     {
         lightingmain = AssetBundle.LoadFromFile(Path.Combine(assetPath, "lightingdatamain"));
         lightingcutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutscenelighting"));
         profilecutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutsceneprofiles"));
-        bulletMat = AssetBundle.LoadFromFile(Path.Combine(assetPath, "bulletmaterial"));
-        shotMatBlue = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmatblue"));
-        shotMatRed = AssetBundle.LoadFromFile(Path.Combine(assetPath, "shotmatred"));
     }
 
     public void LoadEnemy()
     {
-        string localPath = Path.Combine(assetPath, "miniboss");
-        StartCoroutine(Download(localPath, "Boss 1", minibossPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "miniboss"), "Boss 1", minibossPath, (obj) => {
             miniboss = obj;
         }));
-
-        localPath = Path.Combine(assetPath, "enemy");
-        StartCoroutine(Download(localPath, "Enemy", enemyPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "enemy"), "Enemy", enemyPath, (obj) => {
             enemy = obj;
         }));
-
-        localPath = Path.Combine(assetPath, "superboss");
-        StartCoroutine(Download(localPath, "Boss 2", superbossPath, (obj) => {
+        StartCoroutine(Download(Path.Combine(assetPath, "superboss"), "Boss 2", superbossPath, (obj) => {
             superboss = obj;
         }));
     }
 
     private IEnumerator LoadScene()
     {
-        signals = AssetBundle.LoadFromFile(Path.Combine(assetPath, "signal"));
-
-        timeline = AssetBundle.LoadFromFile(Path.Combine(assetPath, "timeline"));
+        yield return new WaitForEndOfFrame();
 
         for (int i = 0; i < sceneAssetPath.Count; i++)
         {
@@ -285,28 +278,19 @@ public class LoadDatabase : MonoBehaviour
 
     private void LoadAssets()
     {
-        string localPath = Path.Combine(assetPath, "playership");
         for (int i = 0;i < playershipAssetPath.Count;i++)
         {
-            StartCoroutine(Download(Path.Combine(localPath, shipNames[i]), shipNames[i], playershipAssetPath[i], listPlayerships));
+            StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "playership"), shipNames[i]), shipNames[i], playershipAssetPath[i], listPlayerships));
         }
 
-        localPath = Path.Combine(assetPath, "asteroid");
         for (int i = 0; i < asteroidAssetPath.Count; i++)
         {
-            StartCoroutine(Download(Path.Combine(localPath, asteroidNames[i]), "Asteroid_" + asteroidNames[i], asteroidAssetPath[i], listAsteroids));
+            StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "asteroid"), asteroidNames[i]), "Asteroid_" + asteroidNames[i], asteroidAssetPath[i], listAsteroids));
         }
 
-        localPath = Path.Combine(assetPath, "bullet");
-        for (int i = 0; i < bulletAssetPath.Count; i++)
-        {
-            StartCoroutine(Download(Path.Combine(localPath, bulletNames[i]), bulletNames[i], bulletAssetPath[i], listBullet));
-        }
-
-        localPath = Path.Combine(assetPath, "explosion");
         for (int i = 0; i < explosionPath.Count; i++)
         {
-            StartCoroutine(Download(Path.Combine(localPath, explosionNames[i]), explosionNames[i], explosionPath[i], listExplosion));
+            StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "explosion"), explosionNames[i]), explosionNames[i], explosionPath[i], listExplosion));
         }
     }
 

@@ -32,8 +32,18 @@ public class PopupProcess : EditorWindow
             window.Close();
         }
     }
+
     void OnInspectorUpdate()
     {
         Repaint();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            EditorUtility.ClearProgressBar();
+            window.Close();
+        }
     }
 }

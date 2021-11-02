@@ -322,7 +322,7 @@ public class DownloadData : MonoBehaviour
                     else
                     {
                         sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
-                        LoadDatabase.Instance.StartRead();
+                        StartCoroutine(LoadDatabase.Instance.StartRead());
                     }
                 }
             });
@@ -375,7 +375,7 @@ public class DownloadData : MonoBehaviour
                     else
                     {
                         sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
-                        LoadDatabase.Instance.StartRead();
+                        StartCoroutine(LoadDatabase.Instance.StartRead());
                     }
                 }
             });
@@ -420,7 +420,7 @@ public class DownloadData : MonoBehaviour
 
                 if (downloadProgess == downloadList.Count)
                 {
-                    LoadDatabase.Instance.StartRead();
+                    StartCoroutine(LoadDatabase.Instance.StartRead());
                 }
             });
         }

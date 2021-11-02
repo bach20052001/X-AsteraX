@@ -14,7 +14,6 @@ public class BuildCustom
     static int uploaded = 0;
     static int numberOfBuildInDay = 0;
     public static float progess = 0;
-    static DateTime previousBuild;
 
     // Add a menu item named "Do Something" to MyMenu in the menu bar.
     [MenuItem("Build Tool/Build... &b")]
@@ -36,18 +35,13 @@ public class BuildCustom
         string scenePath = Path.Combine("Assets", "_Scenes");
         string[] levels = new string[] { Path.Combine(scenePath, "LoadingScene") + ".unity" };
 
-        if (previousBuild.Day == DateTime.Now.Day && previousBuild.Month == DateTime.Now.Month && previousBuild.Year == DateTime.Now.Year)
-        {
-            numberOfBuildInDay++;
-        }
-        else
-        {
-            numberOfBuildInDay = 0;
-        }
 
         string buildName = "AsteraX" + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + numberOfBuildInDay.ToString() + ".apk";
 
-        previousBuild = DateTime.Now;
+        while (File.Exists(Path.Combine(path, buildName)))
+        {
+            buildName = "AsteraX" + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + (++numberOfBuildInDay).ToString() + ".apk";
+        }
 
 #if UNITY_ANDROID
         BuildPipeline.BuildPlayer(levels, Path.Combine(path, buildName), BuildTarget.Android, BuildOptions.None);
@@ -138,7 +132,6 @@ public class BuildCustom
             if (Path.GetExtension(file.FullName) == "")
             {
                 string localFile = file.FullName;
-
                 // Create a reference to the file you want to upload
                 StorageReference riversRef = parentreference.Child(baseDir.Name).Child(file.Name);
 
@@ -156,7 +149,7 @@ public class BuildCustom
                             StorageMetadata metadata = task.Result;
                             string md5Hash = metadata.Md5Hash;
 
-                            uploaded++;
+                            ++uploaded;
 
                             //UnityEngine.Debug.Log("Finished uploading...");
                             if (uploaded < numberOfFile)
@@ -164,7 +157,7 @@ public class BuildCustom
                                 //Debug.Log(uploaded + "/" + numberOfFile);
                                 progess = (float)((float)uploaded / (float)numberOfFile);
                             }
-                            else if (uploaded == numberOfFile)
+                            else
                             {
                                 //Debug.Log(uploaded + "/" + numberOfFile);
                                 progess = 1f;

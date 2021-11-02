@@ -435,7 +435,10 @@ MonoBehaviour:
   listPlayerships: []
   listAsteroids: []
   listExplosion: []
-  listBullet: []
+  listBullet:
+  - {fileID: 1657914042213664, guid: 102aa664805d542b8a2da91fb3f4abae, type: 3}
+  - {fileID: 1657914042213664, guid: 6a827038c87b549d8bc90da15a6bb083, type: 3}
+  - {fileID: 1657914042213664, guid: 78fb1530e5898404caa46702b2a8d4d9, type: 3}
   listScenes: []
   sceneAssetPath:
   - Assets/_Scenes/Welcome.unity
@@ -451,12 +454,6 @@ MonoBehaviour:
   - Assets/SpaceShip/ShipPrefab/Delta.prefab
   - Assets/SpaceShip/ShipPrefab/Scylla.prefab
   - Assets/SpaceShip/ShipPrefab/T-Bag.prefab
-  bulletAssetPath:
-  - Assets/Prefabs/BulletForAsteroid.prefab
-  - Assets/Prefabs/BulletForBoss.prefab
-  - Assets/Prefabs/EnemyBullet.prefab
-  - Assets/Resources/shot_prefab_enemy.prefab
-  - Assets/Resources/shot_prefab_ship.prefab
   minibossPath: Assets/Boss/Boss 1.prefab
   enemyPath: Assets/Boss/Enemy.prefab
   superbossPath: Assets/Boss/Boss 2.prefab
@@ -491,12 +488,6 @@ MonoBehaviour:
   - wfx_explosion starsmoke
   - wfx_fire natural broad (no smoke)
   - wfx_fire natural circle (no smoke)
-  bulletNames:
-  - bulletforasteroid
-  - bulletforboss
-  - enemybullet
-  - shot_prefab_enemy
-  - shot_prefab_ship
   sceneNames:
   - welcome
   - manage
@@ -513,10 +504,7 @@ MonoBehaviour:
   lightingmain: {fileID: 0}
   lightingcutscene: {fileID: 0}
   profilecutscene: {fileID: 0}
-  bulletMat: {fileID: 0}
   timeline: {fileID: 0}
-  shotMatBlue: {fileID: 0}
-  shotMatRed: {fileID: 0}
   signals: {fileID: 0}
   enemyShotCinematic: {fileID: 0}
   playershipShotCinematic: {fileID: 0}
@@ -1483,16 +1471,13 @@ MonoBehaviour:
   - superboss
   - ui_effect
   - welcome
-  - bulletmaterial
   - cutscenelighting
   - cutsceneprofiles
   - lightingdatamain
-  - timeline
-  - shotmatblue
-  - shotmatred
-  - bosscine
-  - playershipcine
   - signal
+  - timeline
+  - playershipcine
+  - bosscine
   asteroidUrls:
   - a
   - b
@@ -1507,12 +1492,7 @@ MonoBehaviour:
   - shield
   - t-bag
   - traileffect
-  bulletUrls:
-  - bulletforasteroid
-  - bulletforboss
-  - enemybullet
-  - shot_prefab_enemy
-  - shot_prefab_ship
+  bulletUrls: []
   explosionUrls:
   - asteroidexplosion1prefab
   - wfx_explosion starsmoke
