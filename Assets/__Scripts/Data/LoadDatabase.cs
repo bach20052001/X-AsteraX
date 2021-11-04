@@ -151,6 +151,8 @@ public class LoadDatabase : MonoBehaviour
             AsyncOperationHandle<List<IResourceLocator>> updateHandle = Addressables.UpdateCatalogs(catalogsToUpdate);
             yield return updateHandle;
         }
+
+        yield return new WaitForEndOfFrame();
         //AsyncOperationHandle<IResourceLocator> handle = Addressables.LoadContentCatalogAsync("path_to_secondary_catalog", true);
         //yield return handle;
     }
@@ -168,6 +170,7 @@ public class LoadDatabase : MonoBehaviour
 
         if (getDownloadSize.Result > 0)
         {
+            Addressables.ClearDependencyCacheAsync(label.labelString);
             downloadDependencies = Addressables.DownloadDependenciesAsync(resourceLocations);
             while (!downloadDependencies.IsDone)
             {
@@ -176,15 +179,20 @@ public class LoadDatabase : MonoBehaviour
             }
             Debug.Log("Download " + label.labelString +" Finished");
         }
+        else
+        {
+            Debug.Log("Nothing to Download");
+            slider.value = 1f;
+        }
     }
 
     public IEnumerator StartDownloadDependencies()
     {
         fileName.gameObject.SetActive(false);
 
-        //yield return StartCoroutine(UpdateCatalogs());
+        processReport.text = "Checking for update...";
 
-        Caching.ClearCache();
+        yield return StartCoroutine(UpdateCatalogs());
 
         processReport.text = "Downloading...";
 
@@ -258,7 +266,6 @@ public class LoadDatabase : MonoBehaviour
 
         SceneController.Instance.NextScene();
     }
-
 
 
     private void ReadJson()

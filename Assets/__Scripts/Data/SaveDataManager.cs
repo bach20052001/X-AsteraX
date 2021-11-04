@@ -103,7 +103,6 @@ public class SaveDataManager : MonoBehaviour
     {
 
         playerData.point = 0;
-        playerData.level = 1;
         ExportData();
     }
 }
