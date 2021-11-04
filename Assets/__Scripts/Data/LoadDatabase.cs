@@ -163,14 +163,18 @@ public class LoadDatabase : MonoBehaviour
         yield return loadResourceLocationsAsync;
         resourceLocations = loadResourceLocationsAsync.Result;
 
-        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(label.labelString);
+        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(resourceLocations);
 
         AsyncOperationHandle downloadDependencies;
         yield return getDownloadSize;
 
         if (getDownloadSize.Result > 0)
         {
-            Addressables.ClearDependencyCacheAsync(label.labelString);
+            if (File.Exists(Path.Combine(Application.persistentDataPath, "com.unity.addressables")))
+            {
+                Addressables.ClearDependencyCacheAsync(resourceLocations);
+            }
+
             downloadDependencies = Addressables.DownloadDependenciesAsync(resourceLocations);
             while (!downloadDependencies.IsDone)
             {

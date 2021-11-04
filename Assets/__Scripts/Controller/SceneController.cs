@@ -35,11 +35,11 @@ public class SceneController : MonoBehaviour
 
     const float delay = 0.6f;
 
-    public int SelectedIndex = -1;
+    public int SelectedIndex = 0;
 
     private void Awake()
     {
-        SelectedIndex = -1;
+        SelectedIndex = 0;
 
         if (instance == null)
         {
@@ -54,18 +54,19 @@ public class SceneController : MonoBehaviour
         //PreLoadScene();
     }
 
+    public void InitPlayerData()
+    {
+        playerData = SaveDataManager.Instance.playerData;
+
+        SelectedIndex = playerData.selectedIndex;
+    }
+
     private void Start()
     {
         if (SaveDataManager.Instance.playerData == null)
         {
             SaveDataManager.Instance.playerData = new PlayerData();
         }
-
-        playerData = SaveDataManager.Instance.playerData;
-
-        SelectedIndex = playerData.selectedIndex;
-
-
         DontDestroyOnLoad(this.gameObject);
     }
 

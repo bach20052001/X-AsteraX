@@ -53,12 +53,19 @@ public class SaveDataManager : MonoBehaviour
 
             File.WriteAllText(dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
         }
+        else
+        {
+            LoadDataPersistent();
+        }
+
 
 
         if (playerData.level < 1)
         {
             playerData.level = 1;
         }
+
+        SceneController.Instance.InitPlayerData();
 
         dataPath = Path.Combine(dataPath, "PlayerData.json");
     }

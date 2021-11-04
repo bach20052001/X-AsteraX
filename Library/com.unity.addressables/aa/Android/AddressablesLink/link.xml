@@ -56,28 +56,21 @@
     <type fullname="UnityEngine.UI.ScrollRect" preserve="all" />
   </assembly>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="MiniBoss_SO" preserve="all" />
     <type fullname="WelcomeController" preserve="all" />
-    <type fullname="Asteroid_SO" preserve="all" />
-    <type fullname="Ship_SO" preserve="all" />
-    <type fullname="Skill_SO" preserve="all" />
     <type fullname="JustRotate" preserve="all" />
-    <type fullname="SuperBoss_SO" preserve="all" />
-    <type fullname="LoadDatabase" preserve="all" />
-    <type fullname="LevelScriptableObject" preserve="all" />
-    <type fullname="Bullet_SO" preserve="all" />
-    <type fullname="Enemy_SO" preserve="all" />
     <type fullname="PanelManager" preserve="all" />
     <type fullname="Coin" preserve="all" />
     <type fullname="ShipInfomation" preserve="all" />
     <type fullname="ScaleSpriteToFillOrthographicCamera" preserve="all" />
     <type fullname="DanielLochner.Assets.SimpleScrollSnap.SimpleScrollSnap" preserve="all" />
     <type fullname="TiltWindow" preserve="all" />
+    <type fullname="Asteroid_SO" preserve="all" />
     <type fullname="UltimateJoystick" preserve="all" />
     <type fullname="ScreenBounds" preserve="all" />
     <type fullname="LevelManager" preserve="all" />
     <type fullname="AchiementManager" preserve="all" />
     <type fullname="GUIController" preserve="all" />
+    <type fullname="LevelScriptableObject" preserve="all" />
     <type fullname="ObjectPooling" preserve="all" />
     <type fullname="SoundManager" preserve="all" />
     <type fullname="AsteraX" preserve="all" />
@@ -87,11 +80,15 @@
     <type fullname="CFX_AutoDestructShuriken" preserve="all" />
     <type fullname="ShakeCamera" preserve="all" />
     <type fullname="PlayerSignalReation" preserve="all" />
+    <type fullname="MiniBoss_SO" preserve="all" />
     <type fullname="Laser" preserve="all" />
     <type fullname="OffScreenWrapper" preserve="all" />
+    <type fullname="SuperBoss_SO" preserve="all" />
     <type fullname="SuperBoss" preserve="all" />
+    <type fullname="Enemy_SO" preserve="all" />
     <type fullname="MiniBoss" preserve="all" />
     <type fullname="TiltWithVelocity" preserve="all" />
+    <type fullname="Skill_SO" preserve="all" />
     <type fullname="TurretPointAtMouse" preserve="all" />
     <type fullname="PlayerShip" preserve="all" />
     <type fullname="TurretRotateWithJoy" preserve="all" />
@@ -101,6 +98,7 @@
     <type fullname="Bullet" preserve="all" />
     <type fullname="EGA_Laser" preserve="all" />
     <type fullname="VolumetricLines.VolumetricLineBehavior" preserve="all" />
+    <type fullname="Bullet_SO" preserve="all" />
     <type fullname="Magnetic" preserve="all" />
   </assembly>
   <assembly fullname="UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">

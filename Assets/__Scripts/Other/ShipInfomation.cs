@@ -76,8 +76,11 @@ public class ShipInfomation : MonoBehaviour
     private void Start()
     {
         sceneController = SceneController.Instance;
-        SaveDataManager.Instance.LoadDataPersistent();
+
+        //SaveDataManager.Instance.LoadDataPersistent();
+
         ships = SceneController.Instance.shipInfo;
+
         if (SaveDataManager.Instance.playerData == null)
         {
             SaveDataManager.Instance.playerData = new PlayerData();
