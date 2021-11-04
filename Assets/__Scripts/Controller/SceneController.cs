@@ -51,7 +51,7 @@ public class SceneController : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        //PreLoadScene();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void InitPlayerData()
@@ -59,15 +59,6 @@ public class SceneController : MonoBehaviour
         playerData = SaveDataManager.Instance.playerData;
 
         SelectedIndex = playerData.selectedIndex;
-    }
-
-    private void Start()
-    {
-        if (SaveDataManager.Instance.playerData == null)
-        {
-            SaveDataManager.Instance.playerData = new PlayerData();
-        }
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void NextScene()

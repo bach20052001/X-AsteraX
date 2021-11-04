@@ -51,14 +51,14 @@ public class SaveDataManager : MonoBehaviour
 
             playerData.level = 1;
 
-            File.WriteAllText(dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
+            File.WriteAllText(Path.Combine(dataPath, "PlayerData.json"), JsonUtility.ToJson(playerData));
+            dataPath = Path.Combine(dataPath, "PlayerData.json");
         }
         else
         {
+            dataPath = Path.Combine(dataPath, "PlayerData.json");
             LoadDataPersistent();
         }
-
-
 
         if (playerData.level < 1)
         {
@@ -66,8 +66,6 @@ public class SaveDataManager : MonoBehaviour
         }
 
         SceneController.Instance.InitPlayerData();
-
-        dataPath = Path.Combine(dataPath, "PlayerData.json");
     }
 
     private void Start()
