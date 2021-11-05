@@ -54,13 +54,13 @@ public class SaveDataManager : MonoBehaviour
             File.WriteAllText(dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
         }
 
+        dataPath = Path.Combine(dataPath, "PlayerData.json");
+        LoadDataPersistent();
 
         if (playerData.level < 1)
         {
             playerData.level = 1;
-        }
-
-        dataPath = Path.Combine(dataPath, "PlayerData.json");
+        }      
     }
 
     private void Start()
@@ -103,7 +103,6 @@ public class SaveDataManager : MonoBehaviour
     {
 
         playerData.point = 0;
-        playerData.level = 1;
         ExportData();
     }
 }

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3279372565
+CRC: 3947157636
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9d7adceea91bcfac3ffe33299e734bbb
+    Hash: 5bba6dd4897de159c9287245d249f289
   TypeTreeHash:
     serializedVersion: 2
     Hash: 77c3707916189f23b87276b25e0cdbcb
@@ -57,4 +57,4 @@ Assets:
 Dependencies:
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/flame
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/shield
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/signal
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/timelineandsignal

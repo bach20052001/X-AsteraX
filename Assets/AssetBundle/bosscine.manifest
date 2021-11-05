@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3168905291
+CRC: 3046879311
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b68b9b37f9cb2d2aa14005e5e77eaadd
+    Hash: b0cd7ee6a53b43c2828ae25f33213627
   TypeTreeHash:
     serializedVersion: 2
     Hash: ac2fb4de58f6f89cf5ebfaf35c4bf5fd
@@ -55,5 +55,5 @@ Dependencies:
   natural broad (no smoke)
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/explosion/wfx_fire
   natural circle (no smoke)
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/signal
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/spark
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/timelineandsignal

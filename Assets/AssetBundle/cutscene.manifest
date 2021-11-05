@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 652205192
+CRC: 371237464
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b51ff3aa213e21f81a7c5974f0195b36
+    Hash: 26ba454f39a0bc6250373687f39a3416
   TypeTreeHash:
     serializedVersion: 2
     Hash: eac466e8cc5041fcbfeab5b63d16c944
@@ -142,12 +142,9 @@ Assets:
 - Assets/_Scenes/CutScene.unity
 Dependencies:
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/alphamove
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/bosscine
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/bullet/shot_prefab_enemy
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/bullet/shot_prefab_ship
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/cutscenelighting
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/cutsceneprofiles
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/effect/portal
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playershipcine
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/signal
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/timeline
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/timelineandsignal

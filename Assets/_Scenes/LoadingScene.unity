@@ -504,8 +504,7 @@ MonoBehaviour:
   lightingmain: {fileID: 0}
   lightingcutscene: {fileID: 0}
   profilecutscene: {fileID: 0}
-  timeline: {fileID: 0}
-  signals: {fileID: 0}
+  timelineAndSignals: {fileID: 0}
   enemyShotCinematic: {fileID: 0}
   playershipShotCinematic: {fileID: 0}
   enemyCinematic: {fileID: 0}
@@ -1478,10 +1477,7 @@ MonoBehaviour:
   - cutscenelighting
   - cutsceneprofiles
   - lightingdatamain
-  - signal
-  - timeline
-  - playershipcine
-  - bosscine
+  - timelineandsignal
   asteroidUrls:
   - a
   - b

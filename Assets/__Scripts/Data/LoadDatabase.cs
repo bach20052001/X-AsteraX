@@ -54,8 +54,8 @@ public class LoadDatabase : MonoBehaviour
     public string shipAppearEffectPath;
     public string cinematicPlayerShotPath;
     public string cinematicEnemyShotPath;
-    public string cinematicPlayerPath;
-    public string cinematicEnemyPath;
+    //public string cinematicPlayerPath;
+    //public string cinematicEnemyPath;
 
 
     public List<string> shipNames;
@@ -77,16 +77,14 @@ public class LoadDatabase : MonoBehaviour
     public AssetBundle lightingmain;
     public AssetBundle lightingcutscene;
     public AssetBundle profilecutscene;
-    public AssetBundle timeline;
-
-    public AssetBundle signals;
+    public AssetBundle timelineAndSignals;
 
     [Header("Bullet")]
     public GameObject enemyShotCinematic;
     public GameObject playershipShotCinematic;
 
-    public GameObject enemyCinematic;
-    public GameObject playershipCinematic;
+    //public GameObject enemyCinematic;
+    //public GameObject playershipCinematic;
 
     private string database_spaceship;
     private string database_level;
@@ -162,21 +160,9 @@ public class LoadDatabase : MonoBehaviour
 
     private IEnumerator LoadCinematic()
     {
-        var bundleLoadRequest = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "signal"));
+        var bundleLoadRequest = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "timelineandsignal"));
         yield return bundleLoadRequest;
-        signals = bundleLoadRequest.assetBundle;
-        var bundleLoadRequest2 = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "timeline"));
-        yield return bundleLoadRequest2;
-        timeline = bundleLoadRequest2.assetBundle;
-
-        yield return new WaitForEndOfFrame();
-
-        yield return StartCoroutine(Download(Path.Combine(assetPath, "bosscine"), "Boss 2", cinematicEnemyPath, (obj) => {
-            enemyCinematic = obj;
-        }));
-        yield return StartCoroutine(Download(Path.Combine(assetPath, "playershipcine"), "Playership", cinematicPlayerPath, (obj) => {
-            playershipCinematic = obj;
-        }));
+        timelineAndSignals = bundleLoadRequest.assetBundle;
 
         yield return new WaitForEndOfFrame();
     }
