@@ -72,10 +72,16 @@ public class MiniBoss : MonoBehaviour
 //#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Destroy(enemy);
-            MoveOut();
+            DestroySelf();
         }
 //#endif
+    }
+
+    public void DestroySelf()
+    {
+        AsteraX.S.isBossAppear = false;
+        Destroy(enemy);
+        MoveOut();
     }
 
     private void OnDestroyedEnemy()

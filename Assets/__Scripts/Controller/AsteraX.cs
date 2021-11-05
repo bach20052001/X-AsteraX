@@ -510,7 +510,7 @@ public class AsteraX : MonoBehaviour
         }
     }
 
-    private void RemoveAllAsteroid()
+    public void RemoveAllAsteroid()
     {
         for (int i = 0; i < Asteroids.transform.childCount; i++)
         {
@@ -611,11 +611,6 @@ public class AsteraX : MonoBehaviour
             {
                 RemoveAllAsteroid();
 
-            }
-
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                isBossAppear = false;
             }
         }
     }

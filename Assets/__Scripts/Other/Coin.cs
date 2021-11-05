@@ -55,8 +55,13 @@ public class Coin : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            coins += 1000;
-            amountOfCoin.text = coins.ToString();
+            AddCoin();
         }
+    }
+
+    public void AddCoin()
+    {
+        coins += 1000;
+        amountOfCoin.text = coins.ToString();
     }
 }
