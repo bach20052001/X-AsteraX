@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class PopupProcess : EditorWindow
         window = GetWindow(typeof(PopupProcess));
         window.Show();
     }
+
     void OnGUI()
     {
         progress = BuildCustom.progess;
@@ -31,19 +33,11 @@ public class PopupProcess : EditorWindow
             EditorUtility.ClearProgressBar();
             window.Close();
         }
+        Repaint();
     }
 
     void OnInspectorUpdate()
     {
         Repaint();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            EditorUtility.ClearProgressBar();
-            window.Close();
-        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Threading.Tasks;
 using Firebase.Storage;
@@ -79,6 +80,21 @@ public class BuildCustom
     public static string GetSceneNameByBuildIndex(int buildIndex)
     {
         return GetSceneNameFromScenePath(SceneUtility.GetScenePathByBuildIndex(buildIndex));
+    }
+
+    public static void Run_OneTask()
+    {
+        // Create a new progress indicator
+        int progressId = Progress.Start("Running one task");
+
+        // Report the progress status at anytime
+        for (int frame = 0; frame <= 10000; ++frame)
+        {
+            Progress.Report(progressId, frame / 1000.0f);
+        }
+
+        // The task is finished. Remove the associated progress indicator.
+        Progress.Remove(progressId);
     }
 
     private static string GetSceneNameFromScenePath(string scenePath)
