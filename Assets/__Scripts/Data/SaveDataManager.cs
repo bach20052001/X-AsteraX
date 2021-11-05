@@ -52,13 +52,10 @@ public class SaveDataManager : MonoBehaviour
             playerData.level = 1;
 
             File.WriteAllText(Path.Combine(dataPath, "PlayerData.json"), JsonUtility.ToJson(playerData));
-            dataPath = Path.Combine(dataPath, "PlayerData.json");
         }
-        else
-        {
-            dataPath = Path.Combine(dataPath, "PlayerData.json");
-            LoadDataPersistent();
-        }
+
+        dataPath = Path.Combine(dataPath, "PlayerData.json");
+        LoadDataPersistent();
 
         if (playerData.level < 1)
         {

@@ -507,6 +507,7 @@ public class AsteraX : MonoBehaviour
     public void QuitToWc()
     {
         Time.timeScale = 1;
+
         if (sceneController != null)
         {
             sceneController.QuitToWelcome();
