@@ -101,6 +101,16 @@ public class SaveDataManager : MonoBehaviour
         ExportData();
     }
 
+    private void OnApplicationPause()
+    {
+        ExportData();
+    }
+
+    private void OnApplicationQuit()
+    {
+        ExportData();
+    }
+
     public void ResetDataAndExport()
     {
 

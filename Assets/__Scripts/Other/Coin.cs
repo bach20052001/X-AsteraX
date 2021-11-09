@@ -27,8 +27,17 @@ public class Coin : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerPrefs.SetInt("AmountOfCoins", coins);
-        PlayerPrefs.Save();
+        SaveCoinData();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveCoinData();
+    }
+
+    private void OnApplicationPause()
+    {
+        SaveCoinData();
     }
 
     private void OnEnable()
@@ -63,5 +72,11 @@ public class Coin : MonoBehaviour
     {
         coins += 1000;
         amountOfCoin.text = coins.ToString();
+    }
+
+    private void SaveCoinData()
+    {
+        PlayerPrefs.SetInt("AmountOfCoins", coins);
+        PlayerPrefs.Save();
     }
 }
