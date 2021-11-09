@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3290943785
+CRC: 1809051386
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -64,13 +64,8 @@ AssetBundleManifest:
     Info_18:
       Name: cutscene
       Dependencies:
-        Dependency_0: alphamove
-        Dependency_1: cutsceneprofiles
-        Dependency_2: cutscenelighting
-        Dependency_3: effect/portal
-        Dependency_4: timelineandsignal
-        Dependency_5: bosscine
-        Dependency_6: playershipcine
+        Dependency_0: cutscenelighting
+        Dependency_1: timelineandsignal
     Info_19:
       Name: playership/scylla
       Dependencies:
@@ -143,7 +138,12 @@ AssetBundleManifest:
       Dependencies: {}
     Info_34:
       Name: timelineandsignal
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: alphamove
+        Dependency_1: cutsceneprofiles
+        Dependency_2: effect/portal
+        Dependency_3: bosscine
+        Dependency_4: playershipcine
     Info_35:
       Name: bosscine
       Dependencies:

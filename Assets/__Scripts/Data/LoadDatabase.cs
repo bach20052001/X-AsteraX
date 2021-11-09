@@ -107,6 +107,8 @@ public class LoadDatabase : MonoBehaviour
     private string dataPath;
     private string assetPath;
 
+    public List<UnityEngine.Object> listScene = new List<UnityEngine.Object>();
+
     public List<string> listToLoad = new List<string>();
     public List<string> listNameAB = new List<string>();
 
@@ -245,6 +247,7 @@ public class LoadDatabase : MonoBehaviour
         if (assetBundleLoader.Obj != null)
             Debug.Log("Success");
 
+        listScene.Add(assetBundleLoader.Obj);
         listTarget.Add(assetBundleLoader.sceneName);
         yield return null;
     }
