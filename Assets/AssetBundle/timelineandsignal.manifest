@@ -1,39 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1290461808
+CRC: 1858233396
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e487e8a0811cc44e46b58c836ddc385f
+    Hash: 3ec2f1a70880c99205a721ab4e1489c2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 37203d69b13b1086e5c3b5f0348c7803
+    Hash: e8d92106206dcf0fbf26d0cb54bf5a73
 HashAppended: 0
 ClassTypes:
-- Class: 1
-  Script: {instanceID: 0}
-- Class: 4
-  Script: {instanceID: 0}
-- Class: 21
-  Script: {instanceID: 0}
-- Class: 23
-  Script: {instanceID: 0}
-- Class: 28
-  Script: {instanceID: 0}
-- Class: 33
-  Script: {instanceID: 0}
-- Class: 43
-  Script: {instanceID: 0}
-- Class: 48
-  Script: {instanceID: 0}
-- Class: 54
-  Script: {instanceID: 0}
-- Class: 64
-  Script: {instanceID: 0}
-- Class: 65
-  Script: {instanceID: 0}
 - Class: 83
-  Script: {instanceID: 0}
-- Class: 108
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: d6fa2d92fc1b3f34da284357edf89c3b, type: 3}
@@ -41,8 +17,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 8b22792c3b570444eb18cb78c2af3a74, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e31079270b001494da1f496a16800939, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2a16748d9461eae46a725db9776d5390, type: 3}
 - Class: 114
@@ -52,24 +26,10 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e518b0c70a293464caee79f4ce141f5c, type: 3}
 - Class: 115
-  Script: {instanceID: 0}
-- Class: 134
-  Script: {instanceID: 0}
-- Class: 135
-  Script: {instanceID: 0}
-- Class: 198
-  Script: {instanceID: 0}
-- Class: 199
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
@@ -78,19 +38,8 @@ Assets:
 - Assets/Signal/ChangeSkyBox.signal
 - Assets/Signal/ShipStop.signal
 - Assets/Signal/LastShot.signal
-- Assets/Cine/Playership.prefab
 - Assets/Signal/BossShoot.signal
 - Assets/Signal/PlayerShot.signal
-- Assets/Cine/Boss 2.prefab
 - Assets/Signal/GoToAnotherGalax.signal
 - Assets/Signal/BossExplosion.signal
-Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/explosion/wfx_explosion
-  starsmoke
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/explosion/wfx_fire
-  natural broad (no smoke)
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/explosion/wfx_fire
-  natural circle (no smoke)
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/flame
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/shield
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/spark
+Dependencies: []

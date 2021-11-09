@@ -322,6 +322,7 @@ public class DownloadData : MonoBehaviour
                     else
                     {
                         sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        updateDateWarn.GetComponentInChildren<Text>().text = "Loading...";
                         StartCoroutine(LoadDatabase.Instance.StartRead());
                     }
                 }
@@ -375,6 +376,7 @@ public class DownloadData : MonoBehaviour
                     else
                     {
                         sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        updateDateWarn.GetComponentInChildren<Text>().text = "Loading...";
                         StartCoroutine(LoadDatabase.Instance.StartRead());
                     }
                 }
@@ -420,6 +422,7 @@ public class DownloadData : MonoBehaviour
 
                 if (downloadProgess == downloadList.Count)
                 {
+                    updateDateWarn.GetComponentInChildren<Text>().text = "Loading...";
                     StartCoroutine(LoadDatabase.Instance.StartRead());
                 }
             });

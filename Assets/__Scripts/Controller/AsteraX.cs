@@ -34,7 +34,7 @@ public class AsteraX : MonoBehaviour
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
-    private List<GameObject> asteroidPrefabs;
+    public List<GameObject> asteroidPrefabs;
     public List<GameObject> listSpaceShips;
 
     private GameObject playerShip;
@@ -145,22 +145,9 @@ public class AsteraX : MonoBehaviour
         }
     }
 
-    private void LoadAB()
-    {
-        warp = LoadDatabase.Instance.shipAppearEffect;
-        shipExplosion = LoadDatabase.Instance.listExplosion[0];
-        asteroidPrefabs = LoadDatabase.Instance.listAsteroids;
-        listSpaceShips = LoadDatabase.Instance.listPlayerships;
-        asteroidsData = LoadDatabase.Instance.data_asteroid;
-        MiniBoss = LoadDatabase.Instance.miniboss;
-        SuperBoss = LoadDatabase.Instance.superboss;
-        warp = LoadDatabase.Instance.shipAppearEffect;
-        sceneController = SceneController.Instance;
-    }
 
     private void Awake()
     {
-        LoadAB();
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:Awake()");
 #endif

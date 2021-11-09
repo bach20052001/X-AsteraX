@@ -472,8 +472,6 @@ MonoBehaviour:
   shipAppearEffectPath: Assets/Prefabs/Warp2.prefab
   cinematicPlayerShotPath: Assets/Resources/shot_prefab_ship.prefab
   cinematicEnemyShotPath: Assets/Resources/shot_prefab_enemy.prefab
-  cinematicPlayerPath: Assets/Cine/Playership.prefab
-  cinematicEnemyPath: Assets/Cine/Boss 2.prefab
   shipNames:
   - scorpion
   - delta
@@ -507,8 +505,6 @@ MonoBehaviour:
   timelineAndSignals: {fileID: 0}
   enemyShotCinematic: {fileID: 0}
   playershipShotCinematic: {fileID: 0}
-  enemyCinematic: {fileID: 0}
-  playershipCinematic: {fileID: 0}
   dataAsteroid:
     data_asteroid: []
   dataLevel:
@@ -538,6 +534,12 @@ MonoBehaviour:
     Speed: 0
     Description: 
     BulletType: 0
+  listToLoad: []
+  listNameAB: []
+  assetBundle: {fileID: 0}
+  manifest: {fileID: 0}
+  listAB: []
+  ObjectsFromAB: []
 --- !u!4 &457709697
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,6 +1480,10 @@ MonoBehaviour:
   - cutsceneprofiles
   - lightingdatamain
   - timelineandsignal
+  - AssetBundle
+  - AssetBundle.manifest
+  - bosscine
+  - playershipcine
   asteroidUrls:
   - a
   - b
@@ -2173,7 +2179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Checking game data.
+  m_Text: Calculate download size
 --- !u!222 &2131022813
 CanvasRenderer:
   m_ObjectHideFlags: 0

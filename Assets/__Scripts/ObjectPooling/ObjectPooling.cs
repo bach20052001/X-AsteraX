@@ -27,11 +27,6 @@ public class ObjectPooling : MonoBehaviour
         {
             gameObjectPrefab = LoadDatabase.Instance.listBullet[((int)type)];
         }
-
-        else
-        {
-            gameObjectPrefab = LoadDatabase.Instance.listExplosion[0];
-        }
     }
 
     private void Start()

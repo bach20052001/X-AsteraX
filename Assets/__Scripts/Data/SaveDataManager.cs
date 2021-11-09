@@ -105,4 +105,19 @@ public class SaveDataManager : MonoBehaviour
         playerData.point = 0;
         ExportData();
     }
+
+
+
+    // ============== SAVE PROGESS =================== //
+
+    private void OnApplicationPause(bool pause)
+    {
+        ExportData();
+    }
+
+    private void OnApplicationQuit()
+    {
+        ExportData();
+    }
+
 }

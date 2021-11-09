@@ -587,7 +587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  gameObjectPrefab: {fileID: 0}
+  gameObjectPrefab: {fileID: 1625365507237398, guid: e8335af2e6e050a4c9342af2fda58d35,
+    type: 3}
   initialSize: 7
 --- !u!1 &241423275
 GameObject:
@@ -1687,7 +1688,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  gameObjectPrefab: {fileID: 0}
+  gameObjectPrefab: {fileID: 1657914042213664, guid: 102aa664805d542b8a2da91fb3f4abae,
+    type: 3}
   initialSize: 7
 --- !u!4 &601180200
 Transform:
@@ -1753,12 +1755,23 @@ MonoBehaviour:
   Asteroids: {fileID: 1143490788}
   Gate: {fileID: 509460380}
   explosionOP: {fileID: 237831443}
-  shipExplosion: {fileID: 0}
-  warp: {fileID: 0}
+  shipExplosion: {fileID: 1625365507237398, guid: e8335af2e6e050a4c9342af2fda58d35,
+    type: 3}
+  warp: {fileID: 1231110749491679348, guid: 1a9a2c60f6548c846837acb381b1f03d, type: 3}
   magneticFactory: {fileID: 1842951576}
-  listSpaceShips: []
-  MiniBoss: {fileID: 0}
-  SuperBoss: {fileID: 0}
+  asteroidPrefabs:
+  - {fileID: 1029653053436338, guid: 1293b0763d7d344e0b908c097078ac09, type: 3}
+  - {fileID: 1669921439223048, guid: 5513cde93bb3343768ced35921a9c3c2, type: 3}
+  - {fileID: 1317570492134680, guid: a6d3ccfc58a1f41368479aabb6050561, type: 3}
+  listSpaceShips:
+  - {fileID: 7640424413477587657, guid: 63c93b8624b3a49f4839b2246bb34b66, type: 3}
+  - {fileID: 3579517005255351835, guid: 42d7cdf17591d47538db6c50ad7bf691, type: 3}
+  - {fileID: 7148226280545706359, guid: 5af5fadec93394529a1f27ffcfcb8bab, type: 3}
+  - {fileID: 3004515505294674004, guid: f67b736c564054f7d8c94c510be2ea63, type: 3}
+  MiniBoss: {fileID: 3854107484062449326, guid: 36908327b22f1470b8504cd0d39a9e7c,
+    type: 3}
+  SuperBoss: {fileID: 8570772132499355697, guid: ec550988987384c0c973105c21894b5a,
+    type: 3}
   ListObjectPooling:
   - {fileID: 601180199}
   - {fileID: 1000392218}
@@ -2978,7 +2991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  gameObjectPrefab: {fileID: 0}
+  gameObjectPrefab: {fileID: 1657914042213664, guid: 6a827038c87b549d8bc90da15a6bb083,
+    type: 3}
   initialSize: 7
 --- !u!1 &1038603698
 GameObject:
@@ -5477,7 +5491,8 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 16772486
   shipBody: {fileID: 0}
-  Magnetic: {fileID: 0}
+  Magnetic: {fileID: 1229204583961088086, guid: 1c8e933d288f546d9b8c2e4a001ea310,
+    type: 3}
   force: 7.5
 --- !u!4 &1842951577
 Transform:
@@ -6438,7 +6453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  gameObjectPrefab: {fileID: 0}
+  gameObjectPrefab: {fileID: 1657914042213664, guid: 78fb1530e5898404caa46702b2a8d4d9,
+    type: 3}
   initialSize: 7
 --- !u!1001 &2133938770
 PrefabInstance:

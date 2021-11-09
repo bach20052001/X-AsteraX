@@ -107,6 +107,9 @@ public class LoadDatabase : MonoBehaviour
     private string dataPath;
     private string assetPath;
 
+    public List<string> listToLoad = new List<string>();
+    public List<string> listNameAB = new List<string>();
+
     private static LoadDatabase instance;
 
     public static LoadDatabase Instance
@@ -121,8 +124,16 @@ public class LoadDatabase : MonoBehaviour
         }
     }
 
+    public AssetBundle assetBundle;
+    public AssetBundleManifest manifest;
+    public List<AssetBundle> listAB = new List<AssetBundle>();
+    public List<UnityEngine.Object> ObjectsFromAB = new List<UnityEngine.Object>();
+
     private void Awake()
     {
+        dataPath = Path.Combine(Application.persistentDataPath, "Data");
+        assetPath = Path.Combine(Application.persistentDataPath, "Asset");
+
         if (instance == null)
         {
             instance = this;
@@ -133,29 +144,68 @@ public class LoadDatabase : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-
-        dataPath = Path.Combine(Application.persistentDataPath, "Data");
-        assetPath = Path.Combine(Application.persistentDataPath, "Asset");
     }
 
     private void Start()
     {
         enemyShotCinematic = Resources.Load<GameObject>("shot_prefab_enemy");
         playershipShotCinematic = Resources.Load<GameObject>("shot_prefab_ship");
+
     }
 
     public IEnumerator StartRead()
     {
         ReadJson();
         LoadJsonToSO();
-        LoadLighting();
-        LoadEffect();
-        LoadAssets();
-        LoadEnemy();
 
-        yield return StartCoroutine(LoadCinematic());
+        yield return StartCoroutine(LoadAllList());
+        //yield return new WaitForEndOfFrame();
+        //yield return StartCoroutine(LoadCinematic());
         yield return new WaitForEndOfFrame();
         yield return StartCoroutine(LoadScene());
+    }
+
+    private IEnumerator LoadAllList()
+    {
+        var loadAb = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "AssetBundle"));
+
+        yield return loadAb;
+
+        assetBundle = loadAb.assetBundle;
+
+        if (assetBundle == null) yield break;
+
+        var loadManifest = assetBundle.LoadAssetAsync<AssetBundleManifest>("assetbundlemanifest");
+
+        yield return loadManifest;
+
+        manifest = loadManifest.asset as AssetBundleManifest;
+
+        if (manifest == null) yield break;
+
+        LoadSceneAndDepend();
+
+        for (int i = 0; i < listToLoad.Count; i++)
+        {
+            var ab = AssetBundle.LoadFromFileAsync(listToLoad[i]);
+
+            yield return ab;
+
+            AssetBundle abr = ab.assetBundle;
+
+            yield return abr;
+
+            var loadall = abr.LoadAllAssetsAsync();
+
+            yield return loadall;
+
+            foreach (UnityEngine.Object obj in loadall.allAssets)
+            {
+                ObjectsFromAB.Add(obj);
+            }
+
+            Debug.Log("Load " + abr.name + " finished");
+        }
     }
 
     private IEnumerator LoadCinematic()
@@ -187,7 +237,7 @@ public class LoadDatabase : MonoBehaviour
             Debug.Log("Success");
         }
     }
-   
+
     IEnumerator DownloadScene(string url, string assetName, string assetUrl, List<string> listTarget)
     {
         AssetBundleLoader assetBundleLoader = new AssetBundleLoader();
@@ -199,55 +249,61 @@ public class LoadDatabase : MonoBehaviour
         yield return null;
     }
 
-    private void LoadEffect()
-    {
-        StartCoroutine(Download(Path.Combine(assetPath, "spark"), "Sparks", sparkPath, (obj) => {
-            spark = obj;
-        }));
-        StartCoroutine(Download(Path.Combine(assetPath, "effect", "portal"), "pf_vfx-ult_demo_psys_loop_hyperspace", portalPath, (obj) => {
-            portal = obj;
-        }));
+    //private void LoadEffect()
+    //{
+    //    StartCoroutine(Download(Path.Combine(assetPath, "spark"), "Sparks", sparkPath, (obj) =>
+    //    {
+    //        spark = obj;
+    //    }));
+    //    StartCoroutine(Download(Path.Combine(assetPath, "effect", "portal"), "pf_vfx-ult_demo_psys_loop_hyperspace", portalPath, (obj) =>
+    //    {
+    //        portal = obj;
+    //    }));
 
-        StartCoroutine(Download(Path.Combine(assetPath, "laser"), "Laser beam 2", laserPath, (obj) => {
-            Laser = obj;
-        }));
+    //    StartCoroutine(Download(Path.Combine(assetPath, "laser"), "Laser beam 2", laserPath, (obj) =>
+    //    {
+    //        Laser = obj;
+    //    }));
 
-        StartCoroutine(Download(Path.Combine(assetPath, "asteroid", "effect"), "Asteroid_Effect", asteroideffectPath, (obj) => {
-            asteroidEffect = obj;
-        }));
+    //    StartCoroutine(Download(Path.Combine(assetPath, "asteroid", "effect"), "Asteroid_Effect", asteroideffectPath, (obj) =>
+    //    {
+    //        asteroidEffect = obj;
+    //    }));
 
-        StartCoroutine(Download(Path.Combine(assetPath, "effect", "shipappear"), "Warp2", shipAppearEffectPath, (obj) => {
-            shipAppearEffect = obj;
-        }));
-    }
+    //    StartCoroutine(Download(Path.Combine(assetPath, "effect", "shipappear"), "Warp2", shipAppearEffectPath, (obj) =>
+    //    {
+    //        shipAppearEffect = obj;
+    //    }));
+    //}
 
-    public void LoadLighting()
-    {
-        lightingmain = AssetBundle.LoadFromFile(Path.Combine(assetPath, "lightingdatamain"));
-        lightingcutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutscenelighting"));
-        profilecutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutsceneprofiles"));
-    }
+    //public void LoadLighting()
+    //{
+    //    lightingmain = AssetBundle.LoadFromFile(Path.Combine(assetPath, "lightingdatamain"));
+    //    lightingcutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutscenelighting"));
+    //    profilecutscene = AssetBundle.LoadFromFile(Path.Combine(assetPath, "cutsceneprofiles"));
+    //}
 
-    public void LoadEnemy()
-    {
-        StartCoroutine(Download(Path.Combine(assetPath, "miniboss"), "Boss 1", minibossPath, (obj) => {
-            miniboss = obj;
-        }));
-        StartCoroutine(Download(Path.Combine(assetPath, "enemy"), "Enemy", enemyPath, (obj) => {
-            enemy = obj;
-        }));
-        StartCoroutine(Download(Path.Combine(assetPath, "superboss"), "Boss 2", superbossPath, (obj) => {
-            superboss = obj;
-        }));
-    }
+    //public void LoadEnemy()
+    //{
+    //    StartCoroutine(Download(Path.Combine(assetPath, "miniboss"), "Boss 1", minibossPath, (obj) =>
+    //    {
+    //        miniboss = obj;
+    //    }));
+    //    StartCoroutine(Download(Path.Combine(assetPath, "enemy"), "Enemy", enemyPath, (obj) =>
+    //    {
+    //        enemy = obj;
+    //    }));
+    //    StartCoroutine(Download(Path.Combine(assetPath, "superboss"), "Boss 2", superbossPath, (obj) =>
+    //    {
+    //        superboss = obj;
+    //    }));
+    //}
 
     private IEnumerator LoadScene()
     {
-        yield return new WaitForEndOfFrame();
-
         for (int i = 0; i < sceneAssetPath.Count; i++)
         {
-            StartCoroutine(DownloadScene(Path.Combine(assetPath, sceneNames[i]), sceneNames[i], sceneAssetPath[i], listScenes));
+            yield return StartCoroutine(DownloadScene(Path.Combine(assetPath, sceneNames[i]), sceneNames[i], sceneAssetPath[i], listScenes));
         }
 
         while (listScenes.Count < sceneAssetPath.Count)
@@ -262,23 +318,23 @@ public class LoadDatabase : MonoBehaviour
         SceneController.Instance.NextSceneAB();
     }
 
-    private void LoadAssets()
-    {
-        for (int i = 0;i < playershipAssetPath.Count;i++)
-        {
-            StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "playership"), shipNames[i]), shipNames[i], playershipAssetPath[i], listPlayerships));
-        }
+    //private void LoadAssets()
+    //{
+    //    for (int i = 0; i < playershipAssetPath.Count; i++)
+    //    {
+    //        StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "playership"), shipNames[i]), shipNames[i], playershipAssetPath[i], listPlayerships));
+    //    }
 
-        for (int i = 0; i < asteroidAssetPath.Count; i++)
-        {
-            StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "asteroid"), asteroidNames[i]), "Asteroid_" + asteroidNames[i], asteroidAssetPath[i], listAsteroids));
-        }
+    //    for (int i = 0; i < asteroidAssetPath.Count; i++)
+    //    {
+    //        StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "asteroid"), asteroidNames[i]), "Asteroid_" + asteroidNames[i], asteroidAssetPath[i], listAsteroids));
+    //    }
 
-        for (int i = 0; i < explosionPath.Count; i++)
-        {
-            StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "explosion"), explosionNames[i]), explosionNames[i], explosionPath[i], listExplosion));
-        }
-    }
+    //    for (int i = 0; i < explosionPath.Count; i++)
+    //    {
+    //        StartCoroutine(Download(Path.Combine(Path.Combine(assetPath, "explosion"), explosionNames[i]), explosionNames[i], explosionPath[i], listExplosion));
+    //    }
+    //}
 
     private void ReadJson()
     {
@@ -465,6 +521,35 @@ public class LoadDatabase : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             SceneController.Instance.NextSceneAB();
+        }
+    }
+
+    public void LoadSceneAndDepend()
+    {
+        for (int i = 0; i < sceneNames.Count; i++)
+        {
+            LoadOrder(sceneNames[i]);
+        }
+    } 
+
+    public void LoadOrder(string name)
+    {
+        string[] dependencies = manifest.GetAllDependencies(name);
+
+        if (dependencies == null || dependencies.Length == 0)
+        {
+            return;
+        }
+
+        foreach (string dependency in dependencies)
+        {
+            if (!listToLoad.Contains(Path.Combine(assetPath, dependency)))
+            {
+                LoadOrder(dependency);
+                listToLoad.Add(Path.Combine(assetPath, dependency));
+                listNameAB.Add(dependency);
+            }
+
         }
     }
 }

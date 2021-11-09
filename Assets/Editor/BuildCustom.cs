@@ -145,7 +145,8 @@ public class BuildCustom
 
         foreach (var file in files)
         {
-            if (Path.GetExtension(file.FullName) == "")
+            //Debug.Log(file.Name);
+            if (Path.GetExtension(file.FullName) == "" || file.Name == "AssetBundle.manifest")
             {
                 string localFile = file.FullName;
                 // Create a reference to the file you want to upload
