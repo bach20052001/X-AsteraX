@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3947157636
+CRC: 579306905
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5bba6dd4897de159c9287245d249f289
+    Hash: c63002443b4fe88cda52e29c2b257e15
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 77c3707916189f23b87276b25e0cdbcb
+    Hash: 258f7937d59ed33499a53a7c433fa394
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,25 +25,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 54
-  Script: {instanceID: 0}
-- Class: 65
-  Script: {instanceID: 0}
-- Class: 83
-  Script: {instanceID: 0}
 - Class: 108
-  Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: d6fa2d92fc1b3f34da284357edf89c3b, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e518b0c70a293464caee79f4ce141f5c, type: 3}
-- Class: 115
-  Script: {instanceID: 0}
-- Class: 134
   Script: {instanceID: 0}
 - Class: 135
   Script: {instanceID: 0}
@@ -53,8 +35,8 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Cine/Playership.prefab
-Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/flame
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/shield
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/timelineandsignal
+- Assets/SpaceShip/ShipModel/ScyllaCine.prefab
+- Assets/SpaceShip/ShipModel/DeltaCine.prefab
+- Assets/SpaceShip/ShipModel/ScorpionCine.prefab
+- Assets/SpaceShip/ShipModel/T-BagCine.prefab
+Dependencies: []

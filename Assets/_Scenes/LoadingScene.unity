@@ -534,6 +534,7 @@ MonoBehaviour:
     Speed: 0
     Description: 
     BulletType: 0
+  listScene: []
   listToLoad: []
   listNameAB: []
   assetBundle: {fileID: 0}
@@ -1479,11 +1480,10 @@ MonoBehaviour:
   - cutscenelighting
   - cutsceneprofiles
   - lightingdatamain
-  - timelineandsignal
   - AssetBundle
   - AssetBundle.manifest
-  - bosscine
   - playershipcine
+  - timelineandsignnals
   asteroidUrls:
   - a
   - b

@@ -34,7 +34,7 @@ public class AsteraX : MonoBehaviour
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
-    public List<GameObject> asteroidPrefabs;
+    [HideInInspector] public List<GameObject> asteroidPrefabs;
     public List<GameObject> listSpaceShips;
 
     private GameObject playerShip;
@@ -151,6 +151,7 @@ public class AsteraX : MonoBehaviour
 #if DEBUG_AsteraX_LogMethods
         Debug.Log("AsteraX:Awake()");
 #endif
+        LoadAB();
 
         S = this;
 
@@ -180,6 +181,13 @@ public class AsteraX : MonoBehaviour
         this.RegisterListener(GameEvent.OnDestroyedMiniBoss, (param) => OnDestroyBossHandler());
         this.RegisterListener(GameEvent.OnDestroyedSuperBoss, (param) => OnDestroySuperBossHandler());
 
+    }
+
+    private void LoadAB()
+    {
+        asteroidPrefabs = LoadDatabase.Instance.listAsteroids;
+        asteroidsData = LoadDatabase.Instance.data_asteroid;
+        sceneController = SceneController.Instance;
     }
 
     void Start()

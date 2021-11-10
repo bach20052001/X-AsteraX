@@ -197,12 +197,21 @@ public class LoadDatabase : MonoBehaviour
 
             yield return abr;
 
+            if (abr.name == "timelineandsignnals")
+            {
+                continue;
+            }
+            
             var loadall = abr.LoadAllAssetsAsync();
 
             yield return loadall;
 
             foreach (UnityEngine.Object obj in loadall.allAssets)
             {
+                if (obj.GetType() == typeof(GameObject) && (obj as GameObject).GetComponent<Asteroid>() != null && !listAsteroids.Contains(obj as GameObject))
+                {
+                    listAsteroids.Add(obj as GameObject);
+                }
                 ObjectsFromAB.Add(obj);
             }
 

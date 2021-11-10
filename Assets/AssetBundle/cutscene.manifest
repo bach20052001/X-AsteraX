@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1528673772
+CRC: 3199614819
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 207a8e9402412004e830d5d72d973e73
+    Hash: 71347c3a13d099522d5aea04eedfbaeb
   TypeTreeHash:
     serializedVersion: 2
     Hash: eac466e8cc5041fcbfeab5b63d16c944
@@ -142,4 +142,7 @@ Assets:
 - Assets/_Scenes/CutScene.unity
 Dependencies:
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/cutscenelighting
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/timelineandsignal
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/cutsceneprofiles
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playershipcine
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/spark
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/timelineandsignnals

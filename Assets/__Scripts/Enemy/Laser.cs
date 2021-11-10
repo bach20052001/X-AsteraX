@@ -25,10 +25,10 @@ public class Laser : MonoBehaviour
     {
         Destroy(Instance);
 
-        if (PrefabLaser == null)
-        {
-            PrefabLaser = LoadDatabase.Instance.Laser;
-        }
+        //if (PrefabLaser == null)
+        //{
+        //    PrefabLaser = LoadDatabase.Instance.Laser;
+        //}
 
         Instance = Instantiate(PrefabLaser, FirePoint.transform.position, Quaternion.identity);
         Instance.transform.parent = transform;
@@ -38,10 +38,10 @@ public class Laser : MonoBehaviour
         StartCoroutine(ChangeDirection());
     }
 
-    private void Awake()
-    {
-        PrefabLaser = LoadDatabase.Instance.Laser;
-    }
+    //private void Awake()
+    //{
+    //    PrefabLaser = LoadDatabase.Instance.Laser;
+    //}
 
     private void Start()
     {

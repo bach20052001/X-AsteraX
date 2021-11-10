@@ -30,7 +30,7 @@ public class MiniBoss : MonoBehaviour
 
     private Vector3 outScreenPos;
 
-    private GameObject EnemyPrefab;
+    public GameObject EnemyPrefab;
     private GameObject enemy;
 
     private int point;
@@ -44,7 +44,7 @@ public class MiniBoss : MonoBehaviour
     private void Awake()
     {
         ListEnemyData = LoadDatabase.Instance.data_enemy;
-        EnemyPrefab = LoadDatabase.Instance.enemy;
+        //EnemyPrefab = LoadDatabase.Instance.enemy;
         bossData = LoadDatabase.Instance.data_miniboss;
 
         currenEnemy = 1;

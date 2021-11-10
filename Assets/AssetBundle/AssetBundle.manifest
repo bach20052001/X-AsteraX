@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1809051386
+CRC: 2174103110
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -60,12 +60,16 @@ AssetBundleManifest:
       Dependencies: {}
     Info_17:
       Name: superboss
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: laser
     Info_18:
       Name: cutscene
       Dependencies:
-        Dependency_0: cutscenelighting
-        Dependency_1: timelineandsignal
+        Dependency_0: cutsceneprofiles
+        Dependency_1: spark
+        Dependency_2: cutscenelighting
+        Dependency_3: playershipcine
+        Dependency_4: timelineandsignnals
     Info_19:
       Name: playership/scylla
       Dependencies:
@@ -137,24 +141,8 @@ AssetBundleManifest:
       Name: lightingdatamain
       Dependencies: {}
     Info_34:
-      Name: timelineandsignal
-      Dependencies:
-        Dependency_0: alphamove
-        Dependency_1: cutsceneprofiles
-        Dependency_2: effect/portal
-        Dependency_3: bosscine
-        Dependency_4: playershipcine
-    Info_35:
-      Name: bosscine
-      Dependencies:
-        Dependency_0: explosion/wfx_explosion starsmoke
-        Dependency_1: explosion/wfx_fire natural circle (no smoke)
-        Dependency_2: explosion/wfx_fire natural broad (no smoke)
-        Dependency_3: spark
-        Dependency_4: timelineandsignal
-    Info_36:
       Name: playershipcine
-      Dependencies:
-        Dependency_0: playership/shield
-        Dependency_1: flame
-        Dependency_2: timelineandsignal
+      Dependencies: {}
+    Info_35:
+      Name: timelineandsignnals
+      Dependencies: {}

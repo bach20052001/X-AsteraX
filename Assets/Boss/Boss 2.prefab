@@ -53174,4 +53174,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 1153801245448506624}
-  PrefabLaser: {fileID: 0}
+  PrefabLaser: {fileID: 1395565506770744, guid: 9d5dbdf2d3c3c6b4eadc51123699d237,
+    type: 3}
