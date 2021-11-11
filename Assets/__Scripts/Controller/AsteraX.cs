@@ -34,7 +34,7 @@ public class AsteraX : MonoBehaviour
     private static LevelManager levelManager;
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
-    [HideInInspector] public List<GameObject> asteroidPrefabs;
+    public List<GameObject> asteroidPrefabs;
     public List<GameObject> listSpaceShips;
 
     private GameObject playerShip;
@@ -185,7 +185,7 @@ public class AsteraX : MonoBehaviour
 
     private void LoadAB()
     {
-        asteroidPrefabs = LoadDatabase.Instance.listAsteroids;
+        //asteroidPrefabs = LoadDatabase.Instance.listAsteroids;
         asteroidsData = LoadDatabase.Instance.data_asteroid;
         sceneController = SceneController.Instance;
     }

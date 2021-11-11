@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadDatabase : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class LoadDatabase : MonoBehaviour
     public SuperBoss_SO data_superboss;
     public MiniBoss_SO data_miniboss;
 
-    public List<GameObject> listPlayerships;
-    public List<GameObject> listAsteroids;
-    public List<GameObject> listExplosion;
+    //public List<GameObject> listPlayerships;
+    //public List<GameObject> listAsteroids;
+    //public List<GameObject> listExplosion;
     public List<GameObject> listBullet;
     public List<string> listScenes;
 
@@ -26,58 +27,58 @@ public class LoadDatabase : MonoBehaviour
     [Header("ScenePath")]
     public List<string> sceneAssetPath;
 
-    //--Asteroid--//
-    [Header("AsteroidPath")]
-    public List<string> asteroidAssetPath;
+    ////--Asteroid--//
+    //[Header("AsteroidPath")]
+    //public List<string> asteroidAssetPath;
 
-    //--PlayershipPath--//
-    [Header("PlayershipPath")]
-    public List<string> playershipAssetPath;
+    ////--PlayershipPath--//
+    //[Header("PlayershipPath")]
+    //public List<string> playershipAssetPath;
 
-    //--BossAndEnemy--//
-    [Header("BossAndEnemyPath")]
-    public string minibossPath;
-    public string enemyPath;
-    public string superbossPath;
+    ////--BossAndEnemy--//
+    //[Header("BossAndEnemyPath")]
+    //public string minibossPath;
+    //public string enemyPath;
+    //public string superbossPath;
 
-    [Header("ExplosionPath")]
-    public List<string> explosionPath;
+    //[Header("ExplosionPath")]
+    //public List<string> explosionPath;
 
-    [Header("LightingPath")]
-    public List<string> lightingPath;
+    //[Header("LightingPath")]
+    //public List<string> lightingPath;
 
-    //--Effect--//
-    public string sparkPath;
-    public string portalPath;
-    public string laserPath;
-    public string asteroideffectPath;
-    public string shipAppearEffectPath;
-    public string cinematicPlayerShotPath;
-    public string cinematicEnemyShotPath;
+    ////--Effect--//
+    //public string sparkPath;
+    //public string portalPath;
+    //public string laserPath;
+    //public string asteroideffectPath;
+    //public string shipAppearEffectPath;
+    //public string cinematicPlayerShotPath;
+    //public string cinematicEnemyShotPath;
     //public string cinematicPlayerPath;
     //public string cinematicEnemyPath;
 
 
-    public List<string> shipNames;
-    public List<string> asteroidNames;
-    public List<string> explosionNames;
+    //public List<string> shipNames;
+    //public List<string> asteroidNames;
+    //public List<string> explosionNames;
     public List<string> sceneNames;
 
-    public GameObject spark;
-    public GameObject portal;
-    public GameObject Laser;
+    //public GameObject spark;
+    //public GameObject portal;
+    //public GameObject Laser;
 
-    public GameObject asteroidEffect;
-    public GameObject shipAppearEffect;
+    //public GameObject asteroidEffect;
+    //public GameObject shipAppearEffect;
 
-    public GameObject miniboss;
-    public GameObject enemy;
-    public GameObject superboss;
+    //public GameObject miniboss;
+    //public GameObject enemy;
+    //public GameObject superboss;
 
-    public AssetBundle lightingmain;
-    public AssetBundle lightingcutscene;
-    public AssetBundle profilecutscene;
-    public AssetBundle timelineAndSignals;
+    //public AssetBundle lightingmain;
+    //public AssetBundle lightingcutscene;
+    //public AssetBundle profilecutscene;
+    //public AssetBundle timelineAndSignals;
 
     [Header("Bullet")]
     public GameObject enemyShotCinematic;
@@ -107,10 +108,13 @@ public class LoadDatabase : MonoBehaviour
     private string dataPath;
     private string assetPath;
 
+
     public List<UnityEngine.Object> listScene = new List<UnityEngine.Object>();
 
     public List<string> listToLoad = new List<string>();
     public List<string> listNameAB = new List<string>();
+
+    public Slider progess;
 
     private static LoadDatabase instance;
 
@@ -129,7 +133,7 @@ public class LoadDatabase : MonoBehaviour
     public AssetBundle assetBundle;
     public AssetBundleManifest manifest;
     public List<AssetBundle> listAB = new List<AssetBundle>();
-    public List<UnityEngine.Object> ObjectsFromAB = new List<UnityEngine.Object>();
+    //public List<UnityEngine.Object> ObjectsFromAB = new List<UnityEngine.Object>();
 
     private void Awake()
     {
@@ -195,6 +199,8 @@ public class LoadDatabase : MonoBehaviour
 
             AssetBundle abr = ab.assetBundle;
 
+            listAB.Add(abr);
+
             yield return abr;
 
             if (abr.name == "timelineandsignnals")
@@ -206,27 +212,29 @@ public class LoadDatabase : MonoBehaviour
 
             yield return loadall;
 
-            foreach (UnityEngine.Object obj in loadall.allAssets)
-            {
-                if (obj.GetType() == typeof(GameObject) && (obj as GameObject).GetComponent<Asteroid>() != null && !listAsteroids.Contains(obj as GameObject))
-                {
-                    listAsteroids.Add(obj as GameObject);
-                }
-                ObjectsFromAB.Add(obj);
-            }
+            //foreach (UnityEngine.Object obj in loadall.allAssets)
+            //{
+            //    if (obj.GetType() == typeof(GameObject) && (obj as GameObject).GetComponent<Asteroid>() != null && !listAsteroids.Contains(obj as GameObject))
+            //    {
+            //        listAsteroids.Add(obj as GameObject);
+            //    }
+            //    ObjectsFromAB.Add(obj);
+            //}
+
+            progess.value = (float) i / listToLoad.Count;
 
             Debug.Log("Load " + abr.name + " finished");
         }
     }
 
-    private IEnumerator LoadCinematic()
-    {
-        var bundleLoadRequest = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "timelineandsignal"));
-        yield return bundleLoadRequest;
-        timelineAndSignals = bundleLoadRequest.assetBundle;
+    //private IEnumerator LoadCinematic()
+    //{
+    //    var bundleLoadRequest = AssetBundle.LoadFromFileAsync(Path.Combine(assetPath, "timelineandsignal"));
+    //    yield return bundleLoadRequest;
+    //    timelineAndSignals = bundleLoadRequest.assetBundle;
 
-        yield return new WaitForEndOfFrame();
-    }
+    //    yield return new WaitForEndOfFrame();
+    //}
 
     IEnumerator Download(string url, string assetName, string assetUrl, List<GameObject> listTarget)
     {

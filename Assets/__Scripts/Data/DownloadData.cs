@@ -18,7 +18,6 @@ public class DownloadData : MonoBehaviour
     [SerializeField] private List<string> fileUrls = new List<string>();
     [SerializeField] private List<string> asteroidUrls = new List<string>();
     [SerializeField] private List<string> playershipUrls = new List<string>();
-    [SerializeField] private List<string> bulletUrls = new List<string>();
     [SerializeField] private List<string> explosionUrls = new List<string>();
     [SerializeField] private List<string> effectUrls = new List<string>();
 
@@ -26,7 +25,6 @@ public class DownloadData : MonoBehaviour
     private string assetUrl;
     private string playershipAssetURl;
     private string asteroidAssetURl;
-    private string bulletAssetURl;
     private string effectAssetURl;
     private string explosionAssetURl;
     //===============//
@@ -62,7 +60,6 @@ public class DownloadData : MonoBehaviour
     private StorageReference playershipBundleRef;
     private StorageReference effectBundleRef;
     private StorageReference explosionBundleRef;
-    private StorageReference bulletBundleRef;
     //================//
 
     private Dictionary<StorageReference, string> listAssetBundleRef = new Dictionary<StorageReference, string>();
@@ -86,7 +83,6 @@ public class DownloadData : MonoBehaviour
 
         playershipAssetURl = Path.Combine(assetUrl, "playership");
         asteroidAssetURl = Path.Combine(assetUrl, "asteroid");
-        bulletAssetURl = Path.Combine(assetUrl, "bullet");
         explosionAssetURl = Path.Combine(assetUrl, "explosion");
         effectAssetURl = Path.Combine(assetUrl, "effect");
 
@@ -102,7 +98,6 @@ public class DownloadData : MonoBehaviour
         playershipBundleRef = assetBundleRef.Child("playership");
         explosionBundleRef = assetBundleRef.Child("explosion");
         effectBundleRef = assetBundleRef.Child("effect");
-        bulletBundleRef = assetBundleRef.Child("bullet");
 
         dataHasDownloaded = Directory.Exists(localUrl);
         assetHasDownloaded = Directory.Exists(assetUrl);
@@ -142,7 +137,6 @@ public class DownloadData : MonoBehaviour
         LoadStorageReference(fileUrls, assetBundleRef, assetUrl, listAssetBundleRef);
         LoadStorageReference(asteroidUrls, asteroidBundleRef, asteroidAssetURl, listAssetBundleRef);
         LoadStorageReference(playershipUrls, playershipBundleRef, playershipAssetURl, listAssetBundleRef);
-        LoadStorageReference(bulletUrls, bulletBundleRef, bulletAssetURl, listAssetBundleRef);
         LoadStorageReference(effectUrls, effectBundleRef, effectAssetURl, listAssetBundleRef);
         LoadStorageReference(explosionUrls, explosionBundleRef, explosionAssetURl, listAssetBundleRef);
     }
@@ -450,11 +444,6 @@ public class DownloadData : MonoBehaviour
         if (!Directory.Exists(asteroidAssetURl))
         {
             Directory.CreateDirectory(asteroidAssetURl);
-        }
-
-        if (!Directory.Exists(bulletAssetURl))
-        {
-            Directory.CreateDirectory(bulletAssetURl);
         }
 
         if (!Directory.Exists(effectAssetURl))
