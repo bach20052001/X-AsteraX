@@ -2,11 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using Firebase.Extensions;
+using RobinBird.FirebaseTools.Storage.Addressables;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.UI;
 
 public class LoadDatabase : MonoBehaviour
@@ -134,8 +138,45 @@ public class LoadDatabase : MonoBehaviour
     {
         ReadJson();
         LoadJsonToSO();
-        StartCoroutine(StartDownloadDependencies());
+
+        Addressables.ResourceManager.ResourceProviders.Add(new FirebaseStorageAssetBundleProvider());
+        Addressables.ResourceManager.ResourceProviders.Add(new FirebaseStorageJsonAssetProvider());
+        Addressables.ResourceManager.ResourceProviders.Add(new FirebaseStorageHashProvider());
+
+        Addressables.InternalIdTransformFunc += FirebaseAddressablesCache.IdTransformFunc;
+
+        List<AssetLabelReference> labels = new List<AssetLabelReference>();
+
+        labels.Add(preloadLabel);
+        labels.Add(sceneLabel);
+
+        DownloadDependencies(labels);
+
+        // Make sure to continue on MAIN THREAD for addressables initialization
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+        {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                //   app = Firebase.FirebaseApp.DefaultInstance;
+
+                Debug.Log("FIREBASE INIT FINISHED");
+                FirebaseAddressablesManager.IsFirebaseSetupFinished = true;
+                StartCoroutine(StartLoadDependencies());
+                // Set a flag here to indicate whether Firebase is ready to use by your app.
+            }
+            else
+            {
+                UnityEngine.Debug.LogError(System.String.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
     }
+
+
 
     IEnumerator UpdateCatalogs()
     {
@@ -157,58 +198,77 @@ public class LoadDatabase : MonoBehaviour
         //yield return handle;
     }
 
-    public IEnumerator DownloadDependencies(AssetLabelReference label)
+    private int index = 0;
+
+    public void DownloadDependencies(List<AssetLabelReference> labels)
     {
-        var loadResourceLocationsAsync = Addressables.LoadResourceLocationsAsync(label);
-        yield return loadResourceLocationsAsync;
-        resourceLocations = loadResourceLocationsAsync.Result;
+        processReport.text = "Getting download size";
 
-        AsyncOperationHandle<long> getDownloadSize = Addressables.GetDownloadSizeAsync(resourceLocations);
-
-        AsyncOperationHandle downloadDependencies;
-        yield return getDownloadSize;
-
-        if (getDownloadSize.Result > 0)
-        {
-            if (File.Exists(Path.Combine(Application.persistentDataPath, "com.unity.addressables")))
+        FirebaseAddressablesCache.PreWarmDependencies(labels[index].labelString,
+            () =>
             {
-                Addressables.ClearDependencyCacheAsync(resourceLocations);
-            }
+                var loadResourceLocationsAsync = Addressables.LoadResourceLocationsAsync(labels[index]);
 
-            downloadDependencies = Addressables.DownloadDependenciesAsync(resourceLocations);
-            while (!downloadDependencies.IsDone)
-            {
-                slider.value = downloadDependencies.GetDownloadStatus().Percent;
-                yield return null;
-            }
-            Debug.Log("Download " + label.labelString +" Finished");
-        }
-        else
-        {
-            Debug.Log("Nothing to Download");
-            slider.value = 1f;
-        }
+                loadResourceLocationsAsync.Completed += handle =>
+                {
+                    resourceLocations = handle.Result;
+
+                    var handler = Addressables.GetDownloadSizeAsync(resourceLocations);
+
+                    handler.Completed += handle =>
+                    {
+                        if (handle.Status == AsyncOperationStatus.Failed)
+                        {
+                            Debug.LogError($"Get Download size failed because of error: {handle.OperationException}");
+                        }
+                        else
+                        {
+                            Debug.Log($"Got download size of: {handle.Result}");
+                        }
+
+                        Debug.Log(handle.Result);
+
+                        if (handle.Result > 0)
+                        {
+                            if (File.Exists(Path.Combine(Application.persistentDataPath, "com.unity.addressables")))
+                            {
+                                Addressables.ClearDependencyCacheAsync(resourceLocations);
+                            }
+
+                            processReport.text = "Downloading...";
+
+                            var download = Addressables.DownloadDependenciesAsync(resourceLocations);
+
+                            download.Completed +=
+                            operationHandle =>
+                            {
+                                var dependencyList = (List<IAssetBundleResource>)operationHandle.Result;
+                                foreach (IAssetBundleResource resource in dependencyList)
+                                {
+                                    AssetBundle assetBundle = resource.GetAssetBundle();
+                                    Debug.Log($"Downloaded dependency: {assetBundle}");
+                                }
+
+                                Debug.Log("Download " + labels[index].labelString + " finished");
+
+                                ++index;
+
+                                if (index < labels.Count)
+                                {
+                                    DownloadDependencies(labels);
+                                }
+                            };
+                        }
+                    };
+                };
+            });
     }
 
-    public IEnumerator StartDownloadDependencies()
+    public IEnumerator StartLoadDependencies()
     {
         fileName.gameObject.SetActive(false);
 
-        processReport.text = "Checking for update...";
-
-        yield return StartCoroutine(UpdateCatalogs());
-
-        processReport.text = "Downloading...";
-
-        yield return StartCoroutine(DownloadDependencies(preloadLabel));
-        yield return StartCoroutine(DownloadDependencies(sceneLabel));
-
-        // Preloading Assets
         processReport.text = "Loading...";
-
-        //Addressables.Release(downloadScene);
-        //Addressables.Release(loadMat);
-        //Addressables.Release(loadWithSingleKeyHandle);
 
         AsyncOperationHandle aoh = Addressables.LoadAssetAsync<GameObject>(minibossName);
         yield return aoh;
