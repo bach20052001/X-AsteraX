@@ -273,7 +273,8 @@ public class DownloadData : MonoBehaviour
                     }
                     else
                     {
-                        //sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        downloadProgessDisplay.gameObject.SetActive(false);
+                        sliderProgess.value = 1f;
                         LoadDatabase.Instance.StartRead();
                     }
                 }
@@ -326,6 +327,8 @@ public class DownloadData : MonoBehaviour
                     }
                     else
                     {
+                        downloadProgessDisplay.gameObject.SetActive(false);
+                        sliderProgess.value = 1f;
                         LoadDatabase.Instance.StartRead();
                     }
                 }
