@@ -369,8 +369,11 @@ public class DownloadData : MonoBehaviour
                     Debug.LogWarning("Download failed" + downloadContent.Value);
                 }
 
+
                 if (downloadProgess == downloadList.Count)
                 {
+                    downloadProgessDisplay.gameObject.SetActive(false);
+                    sliderProgess.value = 1f;
                     LoadDatabase.Instance.StartRead();
                 }
             });

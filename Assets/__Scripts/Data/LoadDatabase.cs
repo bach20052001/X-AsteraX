@@ -132,12 +132,15 @@ public class LoadDatabase : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         dataPath = Path.Combine(Application.persistentDataPath, "Data");
+
+        StartCoroutine(UpdateCatalogs());
     }
 
     public void StartRead()
     {
         ReadJson();
         LoadJsonToSO();
+
 
         Addressables.ResourceManager.ResourceProviders.Add(new FirebaseStorageAssetBundleProvider());
         Addressables.ResourceManager.ResourceProviders.Add(new FirebaseStorageJsonAssetProvider());
@@ -147,10 +150,12 @@ public class LoadDatabase : MonoBehaviour
 
         List<AssetLabelReference> labels = new List<AssetLabelReference>();
 
+
         labels.Add(preloadLabel);
         labels.Add(sceneLabel);
 
         DownloadDependencies(labels);
+
 
         // Make sure to continue on MAIN THREAD for addressables initialization
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
@@ -192,10 +197,6 @@ public class LoadDatabase : MonoBehaviour
             AsyncOperationHandle<List<IResourceLocator>> updateHandle = Addressables.UpdateCatalogs(catalogsToUpdate);
             yield return updateHandle;
         }
-
-        yield return new WaitForEndOfFrame();
-        //AsyncOperationHandle<IResourceLocator> handle = Addressables.LoadContentCatalogAsync("path_to_secondary_catalog", true);
-        //yield return handle;
     }
 
     private int index = 0;
@@ -237,18 +238,16 @@ public class LoadDatabase : MonoBehaviour
 
                             processReport.text = "Downloading...";
 
-                            var download = Addressables.DownloadDependenciesAsync(resourceLocations);
+                            AsyncOperationHandle download = Addressables.DownloadDependenciesAsync(resourceLocations);
+
+
+                            download.Task.ContinueWithOnMainThread(handle => {
+                                slider.GetComponent<SliderRunTo1>().enabled = true;
+                            });
 
                             download.Completed +=
                             operationHandle =>
                             {
-                                var dependencyList = (List<IAssetBundleResource>)operationHandle.Result;
-                                foreach (IAssetBundleResource resource in dependencyList)
-                                {
-                                    AssetBundle assetBundle = resource.GetAssetBundle();
-                                    Debug.Log($"Downloaded dependency: {assetBundle}");
-                                }
-
                                 Debug.Log("Download " + labels[index].labelString + " finished");
 
                                 ++index;

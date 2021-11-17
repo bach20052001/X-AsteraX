@@ -788,7 +788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: 1
   slider: {fileID: 0}
-  speed: 1
+  speed: 0.15
 --- !u!1001 &643097594
 PrefabInstance:
   m_ObjectHideFlags: 0

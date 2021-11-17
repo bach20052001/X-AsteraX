@@ -1,31 +1,31 @@
 using System;
-using System.Collections;
 using System.IO;
 using System.Threading.Tasks;
+using Firebase.Extensions;
 using Firebase.Storage;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Build;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
+
 
 public class BuildCustom
 {
     static FirebaseStorage storage;
     static StorageReference gsReference;
+    static StorageReference androidRef;
     static int numberOfFile = 0;
     static int uploaded = 0;
     static int numberOfBuildInDay = 0;
     public static float progess = 0;
 
     // Add a menu item named "Do Something" to MyMenu in the menu bar.
-    [MenuItem("Build Tool/Build... &b")]
+    [MenuItem("Build Tool/Build and Update addressables... &b")]
     static void Build()
     {
         BuildApplication();
-        BuildAssetBundleAndUploadToFirebase();
+        BuildAddressableAndUploadToFirebase();
     }
 
     static void BuildApplication()
@@ -55,32 +55,28 @@ public class BuildCustom
 #endif
     }
 
-    static void BuildAssetBundleAndUploadToFirebase()
+    [MenuItem("Build Tool/Update and Load Addressables to Firebase only")]
+    static void BuildAddressableAndUploadToFirebase()
     {
         storage = FirebaseStorage.DefaultInstance;
         gsReference = storage.GetReferenceFromUrl("gs://x-asterax.appspot.com/");
+        StorageReference addressableRef = gsReference.Child("Addressables");
+        androidRef = addressableRef.Child("Android");
+
+        string localPath = Path.Combine(Path.GetDirectoryName(Application.dataPath), "ServerData", "Android");
 
         while (BuildPipeline.isBuildingPlayer)
         {
             Debug.Log("");
         }
 
-        
-
-        //CreateAssetBundles.BuildAllAssetBundles();
-
-        while (BuildPipeline.isBuildingPlayer)
-        {
-            Debug.Log("");
-        }
-
-        //PopupProcess.Init();
+        BuildAddressables();
 
         numberOfFile = 0;
         uploaded = 0;
 
-        CountingUploadFile(new DirectoryInfo(Path.Combine("Assets", "AssetBundle")));
-        RecursiveUploadFile(new DirectoryInfo(Path.Combine("Assets", "AssetBundle")), gsReference);
+        CountingUploadFile(new DirectoryInfo(localPath));
+        RecursiveUploadFile(new DirectoryInfo(localPath), androidRef);
     }
 
     public static string GetSceneNameByBuildIndex(int buildIndex)
@@ -121,13 +117,7 @@ public class BuildCustom
 
         var files = baseDir.GetFiles();
 
-        foreach (var file in files)
-        {
-            if (Path.GetExtension(file.FullName) == "")
-            {
-                numberOfFile++;
-            }
-        }
+        numberOfFile += files.Length;
 
         foreach (var dir in baseDir.EnumerateDirectories())
         {
@@ -137,7 +127,7 @@ public class BuildCustom
 
     private static void RecursiveUploadFile(DirectoryInfo baseDir, StorageReference parent)
     {
-        StorageReference parentreference = parent;
+        StorageReference parentReference = parent;
 
         //UnityEngine.Debug.Log(parentreference.ToString());
 
@@ -149,13 +139,13 @@ public class BuildCustom
 
         var files = baseDir.GetFiles();
 
+        //Upload
         foreach (var file in files)
         {
+            //Debug.Log(file.Name);
             string localFile = file.FullName;
             // Create a reference to the file you want to upload
-            StorageReference riversRef = parentreference.Child(baseDir.Name).Child(file.Name);
-
-            //UnityEngine.Debug.Log(localFile + " " + riversRef);
+            StorageReference riversRef = parentReference.Child(file.Name);
 
             riversRef.PutFileAsync(localFile)
                 .ContinueWith((Task<StorageMetadata> task) =>
@@ -170,60 +160,92 @@ public class BuildCustom
                         string md5Hash = metadata.Md5Hash;
 
                         ++uploaded;
+                        Debug.Log(uploaded + "/" + numberOfFile);
 
-                            //UnityEngine.Debug.Log("Finished uploading...");
-                            if (uploaded < numberOfFile)
+                        if (uploaded < numberOfFile)
                         {
-                                //Debug.Log(uploaded + "/" + numberOfFile);
-                                progess = (float)((float)uploaded / (float)numberOfFile);
+                            progess = (float)((float)uploaded / (float)numberOfFile);
                         }
                         else
                         {
-                                //Debug.Log(uploaded + "/" + numberOfFile);
-                                progess = 1f;
+                            progess = 1f;
                         }
-
-                            //Debug.Log(PopupProcess.uploadProgess);
-                        }
+                    }
                 });
         }
 
         foreach (var dir in baseDir.EnumerateDirectories())
         {
-            RecursiveUploadFile(dir, parentreference.Child(baseDir.Name));
+            RecursiveUploadFile(dir, parentReference.Child(baseDir.Name));
         }
     }
 
     public static void BuildAddressables()
     {
-        Debug.Log(
-            $"Building Addressables Player Content to {Addressables.BuildPath}/{EditorUserBuildSettings.activeBuildTarget}");
+        var path = Path.GetFullPath(Path.Combine("Assets", "AddressableAssetsData", "Android", "addressables_content_state.bin"));
 
-        var settings = AddressableAssetSettingsDefaultObject.Settings;
-        if (settings == null)
+        string localPath = Path.Combine(Path.GetDirectoryName(Application.dataPath), "ServerData", "Android");
+
+        DirectoryInfo directoryInfo = new DirectoryInfo(localPath);
+
+        RecursiveDelete(directoryInfo, androidRef);
+
+        if (!string.IsNullOrEmpty(path))
         {
-            Debug.LogError("Addressable Asset Settings does not exist.");
-            return;
-        }
-        if (Directory.Exists(Addressables.BuildPath))
-        {
-            try
-            {
-                Directory.Delete(Addressables.BuildPath, true);
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
+            Debug.Log(path);
+            var buildAddressable = ContentUpdateScript.BuildContentUpdate(AddressableAssetSettingsDefaultObject.Settings, path);
+
+            var time = buildAddressable.Duration;
         }
 
-        //var buildContext = new AddressablesBuildDataBuilderContext(settings,
-        //    BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget),
-        //    EditorUserBuildSettings.activeBuildTarget, EditorUserBuildSettings.development,
-        //    false, "1");
-        //settings.ActivePlayerDataBuilder.BuildData<AddressablesPlayerBuildResult>(buildContext);
-
-        //AddressableAssetSettings.BuildPlayerContent.;
+        PopupProcess.Init();
     }
 
+    public static void RecursiveDelete(DirectoryInfo di, StorageReference parent)
+    {
+        foreach (FileInfo file in di.GetFiles())
+        {
+            StorageReference riversRef = parent.Child(file.Name);
+
+            //UnityEngine.Debug.Log(localFile + " " + riversRef);
+            if (riversRef != null)
+            {
+                riversRef.DeleteAsync().ContinueWithOnMainThread(task =>
+                {
+                    if (task.IsCompleted)
+                    {
+                        Debug.Log("File deleted successfully.");
+                    }
+                    else
+                    {
+                        Debug.Log("Nothing to delete");
+                    }
+                });
+            }
+
+            file.Delete();
+        }
+
+        foreach (DirectoryInfo dir in di.GetDirectories())
+        {
+            StorageReference subRef = parent.Child(di.Name);
+
+            RecursiveDelete(dir, subRef);
+
+            subRef.DeleteAsync().ContinueWithOnMainThread(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    Debug.Log("File deleted successfully.");
+                }
+                else
+                {
+                    Debug.Log("Nothing to delete");
+                }
+            });
+
+            dir.Delete();
+        }
+    }
 }
+

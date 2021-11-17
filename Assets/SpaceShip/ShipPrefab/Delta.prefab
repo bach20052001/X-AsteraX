@@ -189,14 +189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40decbcba9acc490fb9455a2af977d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipParameter: {fileID: 11400000, guid: 1e987fa6e77bb41fc92b347e1392df84, type: 2}
   skilldata: {fileID: 11400000, guid: 9eed74139145346ed8f755a29e672bf6, type: 2}
   canControl: 1
   modeControl: 0
   gun: {fileID: 4002326634235811655}
-  Muzzles:
-  - {fileID: 3313352813186958514}
-  - {fileID: 4554778515078406769}
   Shield: {fileID: 3207709063053664594}
   shotPoints:
   - {fileID: 830736457354552809}
@@ -586,18 +582,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3504860636478951681}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3313352813186958514 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2114617019799115187, guid: 612cc25c54ea545539c7a01d642a22ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504860636478951681}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4554778515078406769 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1123110174006424432, guid: 612cc25c54ea545539c7a01d642a22ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504860636478951681}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6163828612283484442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,6 +653,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999793094879123550, guid: ce7f65cd657aabe4f9680a393dc3298b,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999793094879123550, guid: ce7f65cd657aabe4f9680a393dc3298b,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999793094879123550, guid: ce7f65cd657aabe4f9680a393dc3298b,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce7f65cd657aabe4f9680a393dc3298b, type: 3}
