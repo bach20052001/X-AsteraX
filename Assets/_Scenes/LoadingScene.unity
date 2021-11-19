@@ -827,6 +827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameDebugConsole
       objectReference: {fileID: 0}
+    - target: {fileID: 132536, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 173314, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1428,6 +1432,7 @@ MonoBehaviour:
   - AssetBundle.manifest
   - playershipcine
   - timelineandsignnals
+  - spriteatlas
   asteroidUrls:
   - a
   - b
@@ -1442,7 +1447,6 @@ MonoBehaviour:
   - shield
   - t-bag
   - traileffect
-  bulletUrls: []
   explosionUrls:
   - asteroidexplosion1prefab
   - wfx_explosion starsmoke
@@ -2210,6 +2214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cheat Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954899357561740866, guid: 1ea4e7e5a48e74ca6a3431f4bb320ac7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954899357561740894, guid: 1ea4e7e5a48e74ca6a3431f4bb320ac7,
         type: 3}

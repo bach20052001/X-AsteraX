@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3873582934
+CRC: 642707875
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e680985fb3c9f7e9e0e10d3326ce936c
+    Hash: ca7a98127eaa7436b9cb16b2d842d1dd
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 987772a71eb7bb4e7296b4f5af2e7880
+    Hash: 2dfd49f0f7e8db04b9640d2ce7c226d9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -96,6 +96,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 506026779b06b460aa9493c0ef53f4a6, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 3f40cbbec5c254cf9ab00e96eac64dd7, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 6865468d48671d44883db6523c42f240, type: 3}
@@ -159,6 +161,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 258
   Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
 - Class: 850595691
   Script: {instanceID: 0}
 - Class: 1818360608
@@ -179,4 +183,5 @@ Dependencies:
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/scorpion
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/scylla
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/t-bag
+- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/spriteatlas
 - /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/superboss
