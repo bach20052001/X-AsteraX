@@ -145,6 +145,10 @@ public class AsteraX : MonoBehaviour
         }
     }
 
+    public GameObject GetPlayerShipInstance()
+    {
+        return playerShip;
+    }
 
     private void Awake()
     {

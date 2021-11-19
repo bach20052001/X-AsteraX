@@ -21,6 +21,11 @@ public class Laser : MonoBehaviour
 
     private readonly List<Vector3> listDirect = new List<Vector3>();
 
+    public void AimPlayer(PlayerShip target)
+    {
+        player = target;
+    }
+
     void OnEnable()
     {
         Destroy(Instance);

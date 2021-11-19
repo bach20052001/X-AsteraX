@@ -75,8 +75,11 @@ public class SuperBoss : MonoBehaviour
 
         bulletPooling = AsteraX.S.ListDataBullet[(BulletMode)bossData.BulletType];
 
+        if (FindObjectOfType<PlayerShip>() != null)
+        {
+            player = FindObjectOfType<PlayerShip>();
+        }
 
-        player = FindObjectOfType<PlayerShip>();
         laser = GetComponent<Laser>();
 
         leftPosition = new Vector3(-xRange, 5, 0);
@@ -89,12 +92,17 @@ public class SuperBoss : MonoBehaviour
             playerStartPos = player.PlayerShipStartPos();
         }
 
+
         positionCanMove.Add(leftPosition);
         positionCanMove.Add(rightPosition);
         positionCanMove.Add(startPosition);
 
         state = State.Fight;
-        MoveToFightPosition();
+
+        if (player != null)
+        {
+            MoveToFightPosition();
+        }
 
         dfRed = (byte)(energy.startColor.r * 255);
         dfGreen = (byte)(energy.startColor.g * 255);
@@ -104,7 +112,7 @@ public class SuperBoss : MonoBehaviour
         StartCoroutine(ChangePosition());
     }
 
-    private void MoveToFightPosition()
+    public void MoveToFightPosition()
     {
         StartCoroutine(MoveToStartFight());
     }
@@ -153,8 +161,11 @@ public class SuperBoss : MonoBehaviour
             }
             else
             {
-                player = FindObjectOfType<PlayerShip>();
-                player.transform.position = playerStartPos;
+                if (FindObjectOfType<PlayerShip>() != null)
+                {
+                    player = FindObjectOfType<PlayerShip>();
+                    player.transform.position = playerStartPos;
+                }
             }
         }
 

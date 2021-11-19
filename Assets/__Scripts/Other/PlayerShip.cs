@@ -185,6 +185,12 @@ public class PlayerShip : MonoBehaviour
         shipSpeed = maxSpeed * shipParameter.speed / 5;
 
         StartCoroutine(ShieldWhenActive());
+
+        if (FindObjectOfType<SuperBoss>() != null && modeControl != Mode.FightingBoss)
+        {
+            FindObjectOfType<SuperBoss>().MoveToFightPosition();
+            FindObjectOfType<Laser>().AimPlayer(this);
+        }
     }
 
     IEnumerator ShieldWhenActive()
