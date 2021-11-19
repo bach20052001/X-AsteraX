@@ -24,8 +24,8 @@ public class BuildCustom
     [MenuItem("Build Tool/Build and Update addressables... &b")]
     static void Build()
     {
-        BuildApplication();
         BuildAddressableAndUploadToFirebase();
+        BuildApplication();
     }
 
     static void BuildApplication()
