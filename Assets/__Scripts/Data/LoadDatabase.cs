@@ -133,7 +133,7 @@ public class LoadDatabase : MonoBehaviour
 
         dataPath = Path.Combine(Application.persistentDataPath, "Data");
 
-        StartCoroutine(UpdateCatalogs());
+        //StartCoroutine(UpdateCatalogs());
     }
 
     public void StartRead()
