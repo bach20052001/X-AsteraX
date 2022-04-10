@@ -61,6 +61,8 @@ public class SaveDataManager : MonoBehaviour
         {
             playerData.level = 1;
         }      
+        
+        // Debug.Log((dataPath));
     }
 
     private void Start()
@@ -101,7 +103,6 @@ public class SaveDataManager : MonoBehaviour
 
     public void ResetDataAndExport()
     {
-
         playerData.point = 0;
         ExportData();
     }

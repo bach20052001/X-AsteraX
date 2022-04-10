@@ -223,7 +223,7 @@ public class LoadDatabase : MonoBehaviour
 
             progess.value = (float) i / listToLoad.Count;
 
-            Debug.Log("Load " + abr.name + " finished");
+            // Debug.Log("Load " + abr.name + " finished");
         }
     }
 
