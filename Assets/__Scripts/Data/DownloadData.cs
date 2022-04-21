@@ -322,7 +322,7 @@ public class DownloadData : MonoBehaviour
                 }
             });
         }
-        yield return new WaitForEndOfFrame();
+        yield return null;
     }
 
     private IEnumerator CheckDataVersion(List<string> Names, StorageReference reference, string url)
@@ -376,7 +376,7 @@ public class DownloadData : MonoBehaviour
                 }
             });
         }
-        yield return new WaitForEndOfFrame();
+        yield return null;
     }
 
     private void PopupDownload()
@@ -421,7 +421,7 @@ public class DownloadData : MonoBehaviour
                 }
             });
         }
-        yield return new WaitForEndOfFrame();
+        yield return null;
     }
 
     private void CreateGameAssetFile()

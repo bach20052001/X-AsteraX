@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1342174455
+CRC: 2812665089
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8905925c41b27a9494acb91c17642abb
+    Hash: 619178ffaa6929c82be390a04c817f8b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7bdf5fd626b4b860cc7054dce41d62a2
@@ -43,4 +43,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Boss/Enemy.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/traileffect
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/playership/traileffect

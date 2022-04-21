@@ -3,9 +3,111 @@
   <component name="ChangeListManager">
     <list default="true" id="acc22068-55c9-4e1b-80e7-b773d7b0f2bc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.X-AsteraX/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.X-AsteraX/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/BuildCustom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/BuildCustom.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutSceneAR.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutSceneAR.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Editor/CreateAssetBundles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Editor/CreateAssetBundles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/alphamove" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/alphamove" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/alphamove.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/alphamove.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutscene" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutscene" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutscene.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutscene.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/enemy" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/enemy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/enemy.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/enemy.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke)" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke)" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke).manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke).manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke)" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke)" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke).manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke).manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/flame" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/flame" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/flame.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/flame.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/laser" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/laser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/laser.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/laser.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/main" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/main.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/main.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/manage" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/manage" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/manage.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/manage.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/miniboss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/miniboss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/miniboss.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/miniboss.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spark" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spark" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spark.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spark.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/superboss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/superboss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/superboss.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/superboss.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/welcome" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/welcome" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/welcome.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/welcome.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Boss/Boss 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss/Boss 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Boss/Boss 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss/Boss 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Boss/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_ship0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_ship0.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_turret0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_turret0.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/Prefab/SpaceShip2_v2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/Prefab/SpaceShip2_v2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/DeltaCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/DeltaCine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScorpionCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScorpionCine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScyllaCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScyllaCine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/T-BagCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/T-BagCine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Delta.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Delta.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scorpion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scorpion.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scylla.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scylla.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Shield.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Shield.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/T-Bag.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/T-Bag.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/LoadingScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/LoadingScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Data/DownloadData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Data/DownloadData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Data/LoadDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Data/LoadDatabase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Other/PlayerShip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Other/PlayerShip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scifi-gun-pack/Prefab/SM_GrenadeLauncher.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scifi-gun-pack/Prefab/SM_GrenadeLauncher.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +128,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="rider.run.widget.enabled.cache" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -65,6 +167,8 @@
       <workItem from="1648879618581" duration="203000" />
       <workItem from="1649581188166" duration="2603000" />
       <workItem from="1649608346364" duration="1122000" />
+      <workItem from="1650518339126" duration="366000" />
+      <workItem from="1650555878947" duration="1888000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,8 @@ public enum Mode
 {
     Animation,
     Normal,
-    FightingBoss
+    FightingBoss,
+    Arcade
 }
 
 [RequireComponent(typeof(Rigidbody))]
@@ -270,6 +271,14 @@ public class PlayerShip : MonoBehaviour
                         this.transform.up = currentVel;
                     }
                 }
+            }
+            else if (modeControl == Mode.Arcade)
+            {
+#if UNITY_EDITOR
+
+#elif UNITY_ANDROID || UNITY_IOS
+                
+#endif
             }
         }
         else

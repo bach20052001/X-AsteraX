@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2816311882
+CRC: 2216392339
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0a44badb815f1377ab7357417fff29e7
+    Hash: 649bb8327fc44ef8731c5b6b9e79c75f
   TypeTreeHash:
     serializedVersion: 2
     Hash: f45f066a439903cb0be814c2bf0d1e48
@@ -45,4 +45,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Boss/Boss 2.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/laser
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/laser

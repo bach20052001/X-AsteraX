@@ -24305,7 +24305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 712330674}
   - component: {fileID: 712330675}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: PostProcessing
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 5f51e0b22aa8cb84b9f422576ce87ff9, type: 3}
@@ -33797,7 +33797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886992149}
   - component: {fileID: 886992148}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33822,7 +33822,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -33855,7 +33855,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -34280,7 +34280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1312094350}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 5020a3518963fc641bd19914e71dba13, type: 3}
@@ -77660,8 +77660,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069470196}
-  m_LocalRotation: {x: -0.03385845, y: 0.28295887, z: 0.009995542, w: 0.95848215}
-  m_LocalPosition: {x: 2.6804934, y: -0.20000005, z: -30.948792}
+  m_LocalRotation: {x: 0.061534066, y: -0.26599416, z: -0.016979562, w: -0.9618588}
+  m_LocalPosition: {x: 9.2456, y: 3.712422, z: -18.574852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77682,7 +77682,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 2069470197}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1000192
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 1
   antialiasingMode: 1
@@ -77752,13 +77752,13 @@ Camera:
     height: 1
   near clip plane: 0.001
   far clip plane: 1000
-  field of view: 54
+  field of view: 35
   orthographic: 0
   orthographic size: 5
   m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 213761
+    m_Bits: 738049
   m_RenderingPath: 2
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -77871,7 +77871,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097094433}
-  m_LocalRotation: {x: -0.04216308, y: 0.7274433, z: 0.044880435, w: 0.6833991}
+  m_LocalRotation: {x: -0.04216309, y: 0.72744334, z: 0.044880446, w: 0.6833991}
   m_LocalPosition: {x: 0.5999999, y: -0.6, z: 3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -92914,7 +92914,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8570772132127501010}
   m_Enabled: 0
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -102540,7 +102540,7 @@ GameObject:
   - component: {fileID: 5229730330571913700}
   - component: {fileID: 5229730330571913703}
   - component: {fileID: 5229730330571913702}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: pf_vfx-ult_demo_psys_loop_hyperspace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108256,7 +108256,7 @@ GameObject:
   - component: {fileID: 5229730331200397978}
   - component: {fileID: 5229730331200397976}
   - component: {fileID: 5229730331200397979}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112833,7 +112833,7 @@ GameObject:
   - component: {fileID: 5229730331236999757}
   - component: {fileID: 5229730331236999755}
   - component: {fileID: 5229730331236999754}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: inner shockwaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112865,7 +112865,7 @@ GameObject:
   - component: {fileID: 5229730332381684086}
   - component: {fileID: 5229730332381684084}
   - component: {fileID: 5229730332381684087}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: points twister
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124306,7 +124306,7 @@ GameObject:
   - component: {fileID: 5229730332423347586}
   - component: {fileID: 5229730332423347584}
   - component: {fileID: 5229730332423347587}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: embers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128897,7 +128897,7 @@ GameObject:
   - component: {fileID: 5229730332528604124}
   - component: {fileID: 5229730332528604122}
   - component: {fileID: 5229730332528604125}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134608,7 +134608,7 @@ GameObject:
   - component: {fileID: 5229730332605069655}
   - component: {fileID: 5229730332605069653}
   - component: {fileID: 5229730332605069652}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: outer shockwaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}

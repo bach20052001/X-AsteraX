@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4179815991
+CRC: 1897122248
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 82c49883ab64ca9f09fbb6bebb1c60d0
+    Hash: 44a83c96741db0e1adc906f41962a234
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a2558b3fb7e20195f06a7da96e9c0891
+    Hash: 87b1cfe1ba1fc97c8c716e8a36d32e8b
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,25 +42,25 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: bbaca29e8f23b411fbc2176fb01c3086, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: b8960321e10f80b4c844cd91bf1ea437, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 3192cb7637b99417fa115b03342faee0, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: cbe5884d591dd46ddb37976cc38bff11, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 14df00ade90d0450c8b2a684dc1287ae, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 54aaa385a9b88e84e9d50b9804aaa24e, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: c5b01eb497714c1449cb2df46eb5ac6f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: bbaca29e8f23b411fbc2176fb01c3086, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3192cb7637b99417fa115b03342faee0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cbe5884d591dd46ddb37976cc38bff11, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 124
@@ -93,5 +93,5 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_Scenes/Manage.unity
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/spriteatlas
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/ui_effect
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/spriteatlas
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/ui_effect

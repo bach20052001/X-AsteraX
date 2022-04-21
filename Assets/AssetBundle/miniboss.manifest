@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2663516688
+CRC: 2919238273
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 70fa866db49bec828b6281c7eb20620c
+    Hash: c2d73de12907e654028b887fc09fef30
   TypeTreeHash:
     serializedVersion: 2
     Hash: f7535f86c05d7a3913eabdd1644131f8
@@ -45,4 +45,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Boss/Boss 1.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/enemy
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/enemy

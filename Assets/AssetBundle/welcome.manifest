@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 472353223
+CRC: 2262407656
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a695750c11aa86baa0e1f9177308771f
+    Hash: a2b95716a448b88b129ab946d73b1d16
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 83720da3ec19eaa9e06e0845a0b140f8
+    Hash: cb74d92e6237cae0d4f0fd3044d68de6
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -40,11 +40,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 05133f0b95664498da3f1d4218acd42c, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: f038eca21917e8a4b8b3fae275990700, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 506026779b06b460aa9493c0ef53f4a6, type: 3}
 - Class: 115
@@ -71,4 +71,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_Scenes/Welcome.unity
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/spriteatlas
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/spriteatlas

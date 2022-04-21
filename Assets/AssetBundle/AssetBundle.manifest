@@ -1,154 +1,146 @@
 ManifestFileVersion: 0
-CRC: 2938863730
+CRC: 3393576298
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: explosion/wfx_explosion starsmoke
-      Dependencies: {}
+      Name: miniboss
+      Dependencies:
+        Dependency_0: enemy
     Info_1:
-      Name: timelineandsignnals
-      Dependencies: {}
-    Info_2:
-      Name: cutsceneprofiles
-      Dependencies: {}
-    Info_3:
       Name: playershipcine
       Dependencies: {}
+    Info_2:
+      Name: timelineandsignnals
+      Dependencies: {}
+    Info_3:
+      Name: effect/portal
+      Dependencies: {}
     Info_4:
-      Name: playership/scylla
-      Dependencies:
-        Dependency_0: playership/canon1
-        Dependency_1: playership/shield
-        Dependency_2: playership/traileffect
+      Name: playership/shield
+      Dependencies: {}
     Info_5:
-      Name: asteroid/c
+      Name: flame
       Dependencies: {}
     Info_6:
-      Name: lightingdatamain
-      Dependencies: {}
-    Info_7:
-      Name: enemy
-      Dependencies:
-        Dependency_0: playership/traileffect
-    Info_8:
-      Name: laser
-      Dependencies: {}
-    Info_9:
-      Name: playership/canon1
+      Name: playership/canon2
       Dependencies:
         Dependency_0: effect/shoteffect
+    Info_7:
+      Name: explosion/asteroidexplosion1prefab
+      Dependencies: {}
+    Info_8:
+      Name: ui_effect
+      Dependencies: {}
+    Info_9:
+      Name: asteroid/b
+      Dependencies: {}
     Info_10:
-      Name: explosion/wfx_fire natural circle (no smoke)
+      Name: playership/traileffect
       Dependencies: {}
     Info_11:
-      Name: cutscenelighting
+      Name: cutsceneprofiles
       Dependencies: {}
     Info_12:
-      Name: asteroid/effect
+      Name: spriteatlas
       Dependencies: {}
     Info_13:
-      Name: playership/scorpion
-      Dependencies:
-        Dependency_0: playership/canon1
-        Dependency_1: playership/shield
-        Dependency_2: playership/traileffect
+      Name: explosion/wfx_fire natural broad (no smoke)
+      Dependencies: {}
     Info_14:
-      Name: asteroid/a
+      Name: effect/shoteffect
       Dependencies: {}
     Info_15:
+      Name: alphamove
+      Dependencies: {}
+    Info_16:
+      Name: spark
+      Dependencies: {}
+    Info_17:
+      Name: explosion/wfx_explosion starsmoke
+      Dependencies: {}
+    Info_18:
       Name: main
       Dependencies:
-        Dependency_0: playership/scylla
-        Dependency_1: asteroid/c
-        Dependency_2: lightingdatamain
-        Dependency_3: asteroid/effect
-        Dependency_4: playership/scorpion
-        Dependency_5: asteroid/a
-        Dependency_6: superboss
-        Dependency_7: playership/t-bag
-        Dependency_8: effect/shipappear
-        Dependency_9: playership/delta
-        Dependency_10: miniboss
-        Dependency_11: spriteatlas
-        Dependency_12: explosion/asteroidexplosion1prefab
-        Dependency_13: asteroid/b
-    Info_16:
-      Name: superboss
-      Dependencies:
-        Dependency_0: laser
-    Info_17:
+        Dependency_0: miniboss
+        Dependency_1: explosion/asteroidexplosion1prefab
+        Dependency_2: asteroid/b
+        Dependency_3: spriteatlas
+        Dependency_4: playership/scylla
+        Dependency_5: asteroid/c
+        Dependency_6: asteroid/effect
+        Dependency_7: playership/scorpion
+        Dependency_8: asteroid/a
+        Dependency_9: superboss
+        Dependency_10: playership/t-bag
+        Dependency_11: effect/shipappear
+        Dependency_12: playership/delta
+    Info_19:
       Name: cutscene
       Dependencies:
-        Dependency_0: timelineandsignnals
-        Dependency_1: cutsceneprofiles
-        Dependency_2: playershipcine
-        Dependency_3: cutscenelighting
-        Dependency_4: spark
-    Info_18:
-      Name: playership/t-bag
-      Dependencies:
-        Dependency_0: playership/canon1
-        Dependency_1: playership/shield
-        Dependency_2: playership/traileffect
-    Info_19:
+        Dependency_0: playershipcine
+        Dependency_1: timelineandsignnals
+        Dependency_2: cutsceneprofiles
+        Dependency_3: spark
+    Info_20:
       Name: welcome
       Dependencies:
         Dependency_0: spriteatlas
-    Info_20:
+    Info_21:
+      Name: playership/scylla
+      Dependencies:
+        Dependency_0: playership/shield
+        Dependency_1: playership/traileffect
+        Dependency_2: playership/canon1
+    Info_22:
+      Name: asteroid/c
+      Dependencies: {}
+    Info_23:
+      Name: enemy
+      Dependencies:
+        Dependency_0: playership/traileffect
+    Info_24:
+      Name: laser
+      Dependencies: {}
+    Info_25:
+      Name: playership/canon1
+      Dependencies:
+        Dependency_0: effect/shoteffect
+    Info_26:
+      Name: explosion/wfx_fire natural circle (no smoke)
+      Dependencies: {}
+    Info_27:
+      Name: manage
+      Dependencies:
+        Dependency_0: ui_effect
+        Dependency_1: spriteatlas
+    Info_28:
+      Name: asteroid/effect
+      Dependencies: {}
+    Info_29:
+      Name: playership/scorpion
+      Dependencies:
+        Dependency_0: playership/shield
+        Dependency_1: playership/traileffect
+        Dependency_2: playership/canon1
+    Info_30:
+      Name: asteroid/a
+      Dependencies: {}
+    Info_31:
+      Name: superboss
+      Dependencies:
+        Dependency_0: laser
+    Info_32:
+      Name: playership/t-bag
+      Dependencies:
+        Dependency_0: playership/shield
+        Dependency_1: playership/traileffect
+        Dependency_2: playership/canon1
+    Info_33:
       Name: effect/shipappear
       Dependencies: {}
-    Info_21:
+    Info_34:
       Name: playership/delta
       Dependencies:
         Dependency_0: playership/shield
         Dependency_1: playership/canon2
         Dependency_2: playership/traileffect
-    Info_22:
-      Name: miniboss
-      Dependencies:
-        Dependency_0: enemy
-    Info_23:
-      Name: spriteatlas
-      Dependencies: {}
-    Info_24:
-      Name: effect/portal
-      Dependencies: {}
-    Info_25:
-      Name: playership/shield
-      Dependencies: {}
-    Info_26:
-      Name: flame
-      Dependencies: {}
-    Info_27:
-      Name: manage
-      Dependencies:
-        Dependency_0: spriteatlas
-        Dependency_1: ui_effect
-    Info_28:
-      Name: playership/canon2
-      Dependencies:
-        Dependency_0: effect/shoteffect
-    Info_29:
-      Name: explosion/asteroidexplosion1prefab
-      Dependencies: {}
-    Info_30:
-      Name: asteroid/b
-      Dependencies: {}
-    Info_31:
-      Name: playership/traileffect
-      Dependencies: {}
-    Info_32:
-      Name: explosion/wfx_fire natural broad (no smoke)
-      Dependencies: {}
-    Info_33:
-      Name: effect/shoteffect
-      Dependencies: {}
-    Info_34:
-      Name: ui_effect
-      Dependencies: {}
-    Info_35:
-      Name: alphamove
-      Dependencies: {}
-    Info_36:
-      Name: spark
-      Dependencies: {}

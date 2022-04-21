@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 642707875
+CRC: 831631545
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ca7a98127eaa7436b9cb16b2d842d1dd
+    Hash: 40c5611bdaba6cd290dac11aaf138794
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2dfd49f0f7e8db04b9640d2ce7c226d9
+    Hash: aa8a8670e103085d4aeedb72fb9e9062
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -60,17 +60,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 005ed75631b4b4f638ddf66288c574c4, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e31a3ad21da634acea2f2093822c4fcb, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0aa30a43a88dc4067b7bbf610ad66edd, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 525cd1a664407ed43a6bd81bda4dad3c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 6467fc034524d452685ee17e3a2e597c, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0b2497b2d24984ff3ba3c5598787c28f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 7ea4308861e24ac4caa06d26e151d595, type: 3}
 - Class: 114
@@ -80,21 +72,41 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: b26647e8674a04c53b18fb7604177526, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: bf976a0c4af274277a13c3e0f547f3f3, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 973da2538d15dc04a9fc7c4ea4033e29, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 79288ff96c4b94761b2a82e804667a78, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: bc89785c29280544a842c3582984f070, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 95dbe7b9137cfbd4aabc746123fc4e2f, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 3192cb7637b99417fa115b03342faee0, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 458074f5a8c344c2ebcb9e1e9686c70a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 14df00ade90d0450c8b2a684dc1287ae, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 40decbcba9acc490fb9455a2af977d10, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 86bcc660340394c0c9c0cf5e60978154, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ac05fa88f37f84120b45a830d68341b2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 40c0a76c93ee24a0ebd3f759ae9e8dd4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 005ed75631b4b4f638ddf66288c574c4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e31a3ad21da634acea2f2093822c4fcb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0aa30a43a88dc4067b7bbf610ad66edd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b2497b2d24984ff3ba3c5598787c28f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 973da2538d15dc04a9fc7c4ea4033e29, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 79288ff96c4b94761b2a82e804667a78, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3192cb7637b99417fa115b03342faee0, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 506026779b06b460aa9493c0ef53f4a6, type: 3}
 - Class: 114
@@ -106,27 +118,15 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 3ea78e6e515af426e90030ca039fbd59, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 458074f5a8c344c2ebcb9e1e9686c70a, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 14df00ade90d0450c8b2a684dc1287ae, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 40decbcba9acc490fb9455a2af977d10, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 38f89ba93c04c42d184f868bb053d6a6, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 709b374799ad0453ba00ec34098a7c6b, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: ad8f92d79a41244b1936247d711f4e9a, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 86bcc660340394c0c9c0cf5e60978154, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: ac05fa88f37f84120b45a830d68341b2, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 6954cf6f679b5407e8f7fd02ed565bb4, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 003b3b91ad5424268bca09e89349213a, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 40c0a76c93ee24a0ebd3f759ae9e8dd4, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 120
@@ -171,17 +171,16 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_Scenes/Main.unity
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/asteroid/a
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/asteroid/b
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/asteroid/c
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/asteroid/effect
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/effect/shipappear
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/explosion/asteroidexplosion1prefab
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/lightingdatamain
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/miniboss
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/delta
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/scorpion
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/scylla
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/playership/t-bag
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/spriteatlas
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/superboss
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/asteroid/a
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/asteroid/b
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/asteroid/c
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/asteroid/effect
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/effect/shipappear
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/explosion/asteroidexplosion1prefab
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/miniboss
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/playership/delta
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/playership/scorpion
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/playership/scylla
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/playership/t-bag
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/spriteatlas
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/superboss

@@ -328,13 +328,14 @@ public class LoadDatabase : MonoBehaviour
 
         while (listScenes.Count < sceneAssetPath.Count)
         {
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
 
-        yield return new WaitForEndOfFrame();
+        yield return null;
         SceneController.Instance.scenePaths = listScenes;
 
-        yield return new WaitForEndOfFrame();
+        yield return null;
+
         SceneController.Instance.NextSceneAB();
     }
 

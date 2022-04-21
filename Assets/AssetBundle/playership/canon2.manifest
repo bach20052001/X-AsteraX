@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2768249835
+CRC: 400177636
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 053ed5a7a7c63fd8da3028498d559862
+    Hash: 3b3f3362ea79f62209180d44cd0fe749
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3e6d716abff16c067ca3faec0e1da910
@@ -39,4 +39,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/SpaceShip/ShipPrefab/Canon 2.prefab
 Dependencies:
-- /Users/ma074/Documents/X-AsteraX-master/X-AsteraX/Assets/AssetBundle/effect/shoteffect
+- H:/BachhhStudies/BachhhUnity/X-AsteraX/Assets/AssetBundle/effect/shoteffect
