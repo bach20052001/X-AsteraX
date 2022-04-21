@@ -17,10 +17,16 @@ public class BuildCustom
     public static float progess = 0;
 
     // Add a menu item named "Do Something" to MyMenu in the menu bar.
-    [MenuItem("Build Tool/Build... &b")]
+    [MenuItem("Build Tool/Build App And Upload DLC to Firebase Storage &b")]
     static void Build()
     {
         BuildApplication();
+        BuildAssetBundleAndUploadToFirebase();
+    }
+
+    [MenuItem("Build Tool/Upload DLC to Firebase Storage &n")]
+    static void UploadOnlyDLC()
+    {
         BuildAssetBundleAndUploadToFirebase();
     }
 
@@ -61,7 +67,7 @@ public class BuildCustom
             Debug.Log("");
         }
 
-        CreateAssetBundles.BuildAllAssetBundles();
+        CreateAssetBundles.BuildAllAssetBundlesAndroid();
 
         while (BuildPipeline.isBuildingPlayer)
         {

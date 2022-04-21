@@ -6,10 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/CutSceneAR.unity
-    guid: 3ee80323c8f848e488e98aa62ba27ccb
+    path: Assets/_Scenes/LoadingScene.unity
+    guid: b11f05a641fca4d5cabfddafa50deb6a
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c1ad2c3beb4772c499f19ed72bc21f7a,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: f86414d61b3935447a9ed52de71d7a70,
       type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 4598bd8aca6954f64b5a9c297e9e9c09,
       type: 2}
