@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteAtlas: {fileID: 100100200, guid: 86fc89e5cf87341af99bd4845d719a60, type: 3}
-  listSprites: []
   listUI:
   - {fileID: 114144223119391183}
   - {fileID: 114162311007432823}
@@ -1638,7 +1637,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1048375
 --- !u!114 &114942522361949465
 MonoBehaviour:
   m_ObjectHideFlags: 0

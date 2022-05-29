@@ -10,5 +10,7 @@ public class PlayerData
     public int point;
 
     public int level;
+
+    public int coin;
 }
 

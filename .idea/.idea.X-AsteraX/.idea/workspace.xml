@@ -3,116 +3,239 @@
   <component name="ChangeListManager">
     <list default="true" id="acc22068-55c9-4e1b-80e7-b773d7b0f2bc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.X-AsteraX/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.X-AsteraX/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/AssetBundle.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/alphamove" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/alphamove" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/alphamove.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/alphamove.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/a.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/b.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/c.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/asteroid/effect.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutscene" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutscene" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutscene.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutscene.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/cutsceneprofiles.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/portal.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shipappear.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/effect/shoteffect.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/enemy" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/enemy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/enemy.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/enemy.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/asteroidexplosion1prefab.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_explosion starsmoke.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke)" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke)" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke).manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural broad (no smoke).manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke)" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke)" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke).manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/explosion/wfx_fire natural circle (no smoke).manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/flame" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/flame" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/flame.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/flame.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/laser" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/laser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/laser.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/laser.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/main" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/main.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/main.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/manage" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/manage" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/manage.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/manage.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/miniboss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/miniboss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/miniboss.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/miniboss.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon1.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/canon2.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/delta.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scorpion.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/scylla.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/shield.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/t-bag.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playership/traileffect.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/playershipcine.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spark" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spark" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spark.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spark.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/spriteatlas.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/superboss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/superboss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/superboss.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/superboss.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/timelineandsignnals.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/ui_effect.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/welcome" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/welcome" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetBundle/welcome.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetBundle/welcome.manifest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Boss/Boss 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss/Boss 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Boss/Boss 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss/Boss 2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Boss/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_ship0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_ship0.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_turret0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prefab Ship Parts/asteroids_turret0.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/Prefab/SpaceShip2_v2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/Prefab/SpaceShip2_v2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/DeltaCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/DeltaCine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScorpionCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScorpionCine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScyllaCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/ScyllaCine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/T-BagCine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipModel/T-BagCine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Canon 2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Delta.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Delta.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scorpion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scorpion.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scylla.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Scylla.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Shield.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/Shield.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/T-Bag.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/ShipPrefab/T-Bag.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene/LightingData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/CutScene/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_analytics.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_analytics.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_analytics_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_analytics_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_auth.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_auth.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_auth_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_auth_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_cloud_messaging.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_cloud_messaging.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_cloud_messaging_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_cloud_messaging_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_config.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_config.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_config_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_config_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_crashlytics.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_crashlytics.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_crashlytics_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_crashlytics_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_database.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_database.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_database_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_database_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_dynamic_links.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_dynamic_links.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_dynamic_links_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_dynamic_links_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_functions.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_functions.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_functions_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_functions_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_storage.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_storage.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_storage_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/fb_storage_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/firebase_lockup.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/firebase_lockup.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/firebase_lockup_dark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/Firebase/firebase_lockup_dark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.166.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.166.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.166.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.166.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.166.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.166.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.166.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.166.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/LICENSE.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/LICENSE.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/external-dependency-manager_version-1.2.166_manifest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/external-dependency-manager_version-1.2.166_manifest.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/AppDependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/AppDependencies.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/AppDependencies.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/AppDependencies.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/AuthDependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/AuthDependencies.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/AuthDependencies.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/AuthDependencies.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/Firebase.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/Firebase.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/Firebase.Editor.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/Firebase.Editor.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/FirebaseAuth_version-8.2.0_manifest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/FirebaseAuth_version-8.2.0_manifest.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/FirebaseStorage_version-8.2.0_manifest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/FirebaseStorage_version-8.2.0_manifest.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/StorageDependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/StorageDependencies.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/StorageDependencies.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/StorageDependencies.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/generate_xml_from_google_services_json.exe.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/generate_xml_from_google_services_json.exe.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/generate_xml_from_google_services_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/generate_xml_from_google_services_json.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/generate_xml_from_google_services_json.py.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/generate_xml_from_google_services_json.py.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/network_request.exe.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/network_request.exe.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/network_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/network_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Editor/network_request.py.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Editor/network_request.py.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.App.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.App.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.App.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.App.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Auth.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Auth.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Auth.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Auth.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Platform.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Platform.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Platform.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Platform.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Storage.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Storage.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Storage.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.Storage.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.TaskExtension.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.TaskExtension.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.TaskExtension.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Firebase.TaskExtension.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Google.MiniJson.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Google.MiniJson.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/Google.MiniJson.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/Google.MiniJson.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.App.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.App.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.App.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.App.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Auth.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Auth.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Auth.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Auth.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Storage.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Storage.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Storage.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/iOS/Firebase.Storage.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-8_2_0.bundle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-8_2_0.bundle.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-8_2_0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-8_2_0.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-8_2_0.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-8_2_0.so.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.bundle" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.bundle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.bundle.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.bundle.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.so" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.so.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.so.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.bundle" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.bundle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.bundle.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.bundle.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.so" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.so.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/Plugins/x86_64/FirebaseCppStorage.so.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/8.2.0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/8.2.0/firebase-app-unity-8.2.0.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/8.2.0/firebase-app-unity-8.2.0.pom.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/8.2.0/firebase-app-unity-8.2.0.srcaar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/8.2.0/firebase-app-unity-8.2.0.srcaar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/maven-metadata.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/maven-metadata.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/maven-metadata.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/maven-metadata.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/8.2.0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/8.2.0/firebase-auth-unity-8.2.0.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/8.2.0/firebase-auth-unity-8.2.0.pom.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/8.2.0/firebase-auth-unity-8.2.0.srcaar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/8.2.0/firebase-auth-unity-8.2.0.srcaar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/maven-metadata.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/maven-metadata.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/maven-metadata.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/maven-metadata.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/8.2.0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/8.2.0/firebase-storage-unity-8.2.0.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/8.2.0/firebase-storage-unity-8.2.0.pom.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/8.2.0/firebase-storage-unity-8.2.0.srcaar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/8.2.0/firebase-storage-unity-8.2.0.srcaar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/maven-metadata.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/maven-metadata.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/maven-metadata.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Firebase/m2repository/com/google/firebase/firebase-storage-unity/maven-metadata.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Compat.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Compat.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Compat.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Compat.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Tasks.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Tasks.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Tasks.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/Unity.Tasks.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/AndroidManifest.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/AndroidManifest.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/project.properties.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/project.properties.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/res.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/res.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/res/values.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/res/values.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/res/values/google-services.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseApp.androidlib/res/values/google-services.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.annotation.annotation-1.1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.annotation.annotation-1.1.0.jar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.arch.core.core-common-2.0.0.jar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.arch.core.core-common-2.0.0.jar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.arch.core.core-runtime-2.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.arch.core.core-runtime-2.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.asynclayoutinflater.asynclayoutinflater-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.asynclayoutinflater.asynclayoutinflater-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.browser.browser-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.browser.browser-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.collection.collection-1.0.0.jar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.collection.collection-1.0.0.jar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.coordinatorlayout.coordinatorlayout-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.coordinatorlayout.coordinatorlayout-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.core.core-1.2.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.core.core-1.2.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.cursoradapter.cursoradapter-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.cursoradapter.cursoradapter-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.customview.customview-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.customview.customview-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.documentfile.documentfile-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.documentfile.documentfile-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.drawerlayout.drawerlayout-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.drawerlayout.drawerlayout-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.fragment.fragment-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.fragment.fragment-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.interpolator.interpolator-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.interpolator.interpolator-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.legacy.legacy-support-core-ui-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.legacy.legacy-support-core-ui-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.legacy.legacy-support-core-utils-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.legacy.legacy-support-core-utils-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-common-2.0.0.jar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-common-2.0.0.jar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-livedata-2.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-livedata-2.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-livedata-core-2.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-livedata-core-2.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-runtime-2.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-runtime-2.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-viewmodel-2.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.lifecycle.lifecycle-viewmodel-2.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.loader.loader-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.loader.loader-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.localbroadcastmanager.localbroadcastmanager-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.localbroadcastmanager.localbroadcastmanager-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.print.print-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.print.print-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.slidingpanelayout.slidingpanelayout-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.slidingpanelayout.slidingpanelayout-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.swiperefreshlayout.swiperefreshlayout-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.swiperefreshlayout.swiperefreshlayout-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.versionedparcelable.versionedparcelable-1.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.versionedparcelable.versionedparcelable-1.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.viewpager.viewpager-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/androidx.viewpager.viewpager-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-ads-identifier-17.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-ads-identifier-17.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-auth-api-phone-17.4.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-auth-api-phone-17.4.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-base-17.6.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-base-17.6.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-basement-17.6.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-basement-17.6.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-19.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-19.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-api-19.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-api-19.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-base-19.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-base-19.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-impl-19.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-impl-19.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-sdk-19.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-sdk-19.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-sdk-api-19.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-measurement-sdk-api-19.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-safetynet-17.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-safetynet-17.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-stats-17.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-stats-17.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-tasks-17.2.1.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-tasks-17.2.1.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-analytics-19.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-analytics-19.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-annotations-16.0.0.jar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-annotations-16.0.0.jar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-app-unity-8.2.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-app-unity-8.2.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-appcheck-interop-16.0.0-beta01.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-appcheck-interop-16.0.0-beta01.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-auth-21.0.1.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-auth-21.0.1.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-auth-interop-20.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-auth-interop-20.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-auth-unity-8.2.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-auth-unity-8.2.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-common-20.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-common-20.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-components-17.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-components-17.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-installations-17.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-installations-17.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-installations-interop-17.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-installations-interop-17.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-measurement-connector-19.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-measurement-connector-19.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-storage-20.0.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-storage-20.0.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-storage-unity-8.2.0.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.firebase.firebase-storage-unity-8.2.0.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppApp.a" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppApp.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppApp.a.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppApp.a.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppAuth.a" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppAuth.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppAuth.a.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppAuth.a.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppStorage.a" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppStorage.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppStorage.a.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/iOS/Firebase/libFirebaseCppStorage.a.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/Network.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/Network.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceShip/Network/Delta.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceShip/Network/Delta.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/google-services-desktop.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/google-services-desktop.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/google-services-desktop.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/google-services-desktop.json.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/LoadingScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/LoadingScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/LightingData.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Main/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Manage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Manage.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Welcome.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Welcome.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Data/DownloadData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Data/DownloadData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Data/LoadDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Data/LoadDatabase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Other/PlayerShip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Other/PlayerShip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scifi-gun-pack/Prefab/SM_GrenadeLauncher.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scifi-gun-pack/Prefab/SM_GrenadeLauncher.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Data/PlayerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/__Scripts/Data/SaveDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scripts/Data/SaveDataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/AndroidResolverDependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/AndroidResolverDependencies.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.arfoundation@4.1.9/Runtime/AR/ARRaycastManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.6.4/Runtime/Editor/BurstLoader.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -169,6 +292,9 @@
       <workItem from="1649608346364" duration="1122000" />
       <workItem from="1650518339126" duration="366000" />
       <workItem from="1650555878947" duration="1888000" />
+      <workItem from="1653838021313" duration="2111000" />
+      <workItem from="1653842334697" duration="4707000" />
+      <workItem from="1653848332455" duration="190000" />
     </task>
     <servers />
   </component>

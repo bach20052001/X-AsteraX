@@ -21,86 +21,88 @@ public class DownloadData : MonoBehaviour
     [SerializeField] private List<string> explosionUrls = new List<string>();
     [SerializeField] private List<string> effectUrls = new List<string>();
 
-    private string localUrl;
-    private string assetUrl;
-    private string playershipAssetURl;
-    private string asteroidAssetURl;
-    private string effectAssetURl;
-    private string explosionAssetURl;
+    private string _localUrl;
+    private string _assetUrl;
+    private string _playershipAssetURl;
+    private string _asteroidAssetURl;
+    private string _effectAssetURl;
+    private string _explosionAssetURl;
     //===============//
 
-    public Text fileNameDisplay;
-    public Text downloadProgessDisplay;
-    public Text alertFileSize;
+    [SerializeField] private Text fileNameDisplay;
+    [SerializeField] private Text downloadProcessDisplay;
+    [SerializeField] private Text alertFileSize;
 
-    public Button downloadButton;
-    public Slider sliderProgess;
+    [SerializeField] private Button downloadButton;
+    [SerializeField] private Slider sliderProcess;
 
-    private int progess = 0;
-    private int progessCheckversion = 0;
-    private int downloadProgess = 0;
+    private int _process = 0;
+    private int _processCheckVersion = 0;
+    private int _downloadProcess = 0;
 
 
 
-    private bool dataHasDownloaded = false;
-    private bool assetHasDownloaded = false;
+    private bool _dataHasDownloaded = false;
+    private bool _assetHasDownloaded = false;
 
-    private float downloadSize = 0f;
+    private float _downloadSize = 0f;
 
-    public GameObject noInternetNoti;
-    public Animator downloadPanel;
-    public GameObject updateDateWarn;
+    [SerializeField] private GameObject noInternetNotification;
+    [SerializeField] private Animator downloadPanel;
+    [SerializeField] private GameObject updateDateWarn;
 
     //==Firebase URL==//
-    private FirebaseStorage storage;
-    private StorageReference gsReference;
-    private StorageReference dataRef;
-    private StorageReference assetBundleRef;
-    private StorageReference asteroidBundleRef;
-    private StorageReference playershipBundleRef;
-    private StorageReference effectBundleRef;
-    private StorageReference explosionBundleRef;
+    private FirebaseStorage _storage;
+    private StorageReference _gsReference;
+    private StorageReference _dataRef;
+    private StorageReference _assetBundleRef;
+    private StorageReference _asteroidBundleRef;
+    private StorageReference _playershipBundleRef;
+    private StorageReference _effectBundleRef;
+    private StorageReference _explosionBundleRef;
     //================//
 
-    private Dictionary<StorageReference, string> listAssetBundleRef = new Dictionary<StorageReference, string>();
-    private Dictionary<StorageReference, string> listDataRef = new Dictionary<StorageReference, string>();
-    private Dictionary<StorageReference, string> downloadList = new Dictionary<StorageReference, string>();
-    private Dictionary<StorageReference, string> allList = new Dictionary<StorageReference, string>();
+    private Dictionary<StorageReference, string> _listAssetBundleRef = new Dictionary<StorageReference, string>();
+    private Dictionary<StorageReference, string> _listDataRef = new Dictionary<StorageReference, string>();
+    private Dictionary<StorageReference, string> _downloadList = new Dictionary<StorageReference, string>();
+    private Dictionary<StorageReference, string> _allList = new Dictionary<StorageReference, string>();
 
 
-    public bool isInternetConnection = false;
+    private bool _isFirebaseReady = false;
+    private bool _isInternetConnection = false;
+    private static readonly int HasDownloaded = Animator.StringToHash("hasDownloaded");
 
     private void Awake()
     {
-        listAssetBundleRef.Clear();
-        listDataRef.Clear();
-        downloadList.Clear();
-        allList.Clear();
+        _listAssetBundleRef.Clear();
+        _listDataRef.Clear();
+        _downloadList.Clear();
+        _allList.Clear();
 
-        localUrl = Path.Combine(Application.persistentDataPath, "Data");
+        _localUrl = Path.Combine(Application.persistentDataPath, "Data");
 
-        assetUrl = Path.Combine(Application.persistentDataPath, "Asset");
+        _assetUrl = Path.Combine(Application.persistentDataPath, "Asset");
 
-        playershipAssetURl = Path.Combine(assetUrl, "playership");
-        asteroidAssetURl = Path.Combine(assetUrl, "asteroid");
-        explosionAssetURl = Path.Combine(assetUrl, "explosion");
-        effectAssetURl = Path.Combine(assetUrl, "effect");
+        _playershipAssetURl = Path.Combine(_assetUrl, "playership");
+        _asteroidAssetURl = Path.Combine(_assetUrl, "asteroid");
+        _explosionAssetURl = Path.Combine(_assetUrl, "explosion");
+        _effectAssetURl = Path.Combine(_assetUrl, "effect");
 
-        storage = FirebaseStorage.DefaultInstance;
+        _storage = FirebaseStorage.DefaultInstance;
 
-        gsReference = storage.GetReferenceFromUrl("gs://x-asterax.appspot.com/");
+        _gsReference = _storage.GetReferenceFromUrl("gs://x-asterax.appspot.com/");
 
-        dataRef = gsReference.Child("Data");
+        _dataRef = _gsReference.Child("Data");
 
-        assetBundleRef = gsReference.Child("AssetBundle");
+        _assetBundleRef = _gsReference.Child("AssetBundle");
 
-        asteroidBundleRef = assetBundleRef.Child("asteroid");
-        playershipBundleRef = assetBundleRef.Child("playership");
-        explosionBundleRef = assetBundleRef.Child("explosion");
-        effectBundleRef = assetBundleRef.Child("effect");
+        _asteroidBundleRef = _assetBundleRef.Child("asteroid");
+        _playershipBundleRef = _assetBundleRef.Child("playership");
+        _explosionBundleRef = _assetBundleRef.Child("explosion");
+        _effectBundleRef = _assetBundleRef.Child("effect");
 
-        dataHasDownloaded = Directory.Exists(localUrl);
-        assetHasDownloaded = Directory.Exists(assetUrl);
+        _dataHasDownloaded = Directory.Exists(_localUrl);
+        _assetHasDownloaded = Directory.Exists(_assetUrl);
 
         LoadAssetContent();
         LoadDataContent();
@@ -108,14 +110,23 @@ public class DownloadData : MonoBehaviour
 
         updateDateWarn.SetActive(true);
     }
+    
 
+    private void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token) {
+        UnityEngine.Debug.Log("Received Registration Token: " + token.Token);
+    }
+
+    private void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e) {
+        UnityEngine.Debug.Log("Received a new message from: " + e.Message.From);
+    }
+    
     private void AllListLoad()
     {
-        allList = listDataRef;
+        _allList = _listDataRef;
 
-        foreach (KeyValuePair<StorageReference, string> entry in listAssetBundleRef)
+        foreach (KeyValuePair<StorageReference, string> entry in _listAssetBundleRef)
         {
-            allList.Add(entry.Key, entry.Value);
+            _allList.Add(entry.Key, entry.Value);
         }
     }
 
@@ -134,23 +145,40 @@ public class DownloadData : MonoBehaviour
 
     private void LoadAssetContent()
     {
-        LoadStorageReference(fileUrls, assetBundleRef, assetUrl, listAssetBundleRef);
-        LoadStorageReference(asteroidUrls, asteroidBundleRef, asteroidAssetURl, listAssetBundleRef);
-        LoadStorageReference(playershipUrls, playershipBundleRef, playershipAssetURl, listAssetBundleRef);
-        LoadStorageReference(effectUrls, effectBundleRef, effectAssetURl, listAssetBundleRef);
-        LoadStorageReference(explosionUrls, explosionBundleRef, explosionAssetURl, listAssetBundleRef);
+        LoadStorageReference(fileUrls, _assetBundleRef, _assetUrl, _listAssetBundleRef);
+        LoadStorageReference(asteroidUrls, _asteroidBundleRef, _asteroidAssetURl, _listAssetBundleRef);
+        LoadStorageReference(playershipUrls, _playershipBundleRef, _playershipAssetURl, _listAssetBundleRef);
+        LoadStorageReference(effectUrls, _effectBundleRef, _effectAssetURl, _listAssetBundleRef);
+        LoadStorageReference(explosionUrls, _explosionBundleRef, _explosionAssetURl, _listAssetBundleRef);
     }
 
     private void LoadDataContent()
     {
-        LoadStorageReference(fileNames, dataRef, localUrl, listDataRef);
+        LoadStorageReference(fileNames, _dataRef, _localUrl, _listDataRef);
     }
 
-    void Start()
+    private void Start()
     {
-        StartCoroutine(CheckDataVersion(allList));
-    }
+        StartCoroutine(CheckDataVersion(_allList));
+        
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available) {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                var app = Firebase.FirebaseApp.DefaultInstance;
+                Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+                Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
+                // Set a flag here to indicate whether Firebase is ready to use by your app.
+            } else {
+                UnityEngine.Debug.LogError(System.String.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
 
+    }
+    
     private IEnumerator NothingToDownloadAndNextScene()
     {
         yield return new WaitForEndOfFrame();
@@ -162,7 +190,7 @@ public class DownloadData : MonoBehaviour
         CreateGameAssetFile();
 
         updateDateWarn.GetComponentInChildren<Text>().text = "Downloading...";
-        downloadProgessDisplay.gameObject.SetActive(true);
+        downloadProcessDisplay.gameObject.SetActive(true);
         fileNameDisplay.gameObject.SetActive(true);
 
         StartCoroutine(CheckInternetConnection(isConnected =>
@@ -170,18 +198,18 @@ public class DownloadData : MonoBehaviour
             if (isConnected)
             {
                 Download();
-                dataHasDownloaded = true;
-                downloadPanel.SetBool("hasDownloaded", dataHasDownloaded);
+                _dataHasDownloaded = true;
+                downloadPanel.SetBool(HasDownloaded, _dataHasDownloaded);
             }
             else
-            {   if (downloadPanel.GetBool("hasDownloaded"))
+            {   if (downloadPanel.GetBool(HasDownloaded))
                 {
                     downloadPanel.gameObject.SetActive(true);
-                    downloadPanel.SetBool("hasDownloaded", false);
+                    downloadPanel.SetBool(HasDownloaded, false);
                 }
 
                 downloadButton.GetComponentInChildren<Text>().text = "Try Again";
-                noInternetNoti.SetActive(true);
+                noInternetNotification.SetActive(true);
             }
         }
         ));
@@ -208,7 +236,7 @@ public class DownloadData : MonoBehaviour
 
     private void GetDataFilesize(List<StorageReference> storageRef)
     {
-        progess = 0;
+        _process = 0;
         foreach (StorageReference reference in storageRef)
         {
             Task task = reference.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
@@ -217,7 +245,7 @@ public class DownloadData : MonoBehaviour
                 {
 
                     StorageMetadata meta = taskk.Result;
-                    downloadSize += (float)meta.SizeBytes / 1024;
+                    _downloadSize += (float)meta.SizeBytes / 1024;
                 }
             });
 
@@ -225,12 +253,12 @@ public class DownloadData : MonoBehaviour
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
-                    progess++;
+                    _process++;
                 }
 
-                if (progess == storageRef.Count)
+                if (_process == storageRef.Count)
                 {
-                    alertFileSize.text = "You need to download " + downloadSize + "KB gamedata";
+                    alertFileSize.text = "You need to download " + _downloadSize + "KB gamedata";
                     PopupDownload();
                 }
             });
@@ -241,8 +269,9 @@ public class DownloadData : MonoBehaviour
     {
         Debug.Log("Calculate download size");
         updateDateWarn.GetComponentInChildren<Text>().text = "Calculate download size";
-        progess = 0;
+        _process = 0;
         List<StorageReference> listRef = new List<StorageReference>(list.Keys);
+        
         foreach (StorageReference reference in listRef)
         {
             Task task = reference.GetMetadataAsync().ContinueWithOnMainThread(taskk =>
@@ -250,7 +279,7 @@ public class DownloadData : MonoBehaviour
                 if (!taskk.IsFaulted && !taskk.IsCanceled)
                 {
                     StorageMetadata meta = taskk.Result;
-                    downloadSize += (float) meta.SizeBytes / 1024;
+                    _downloadSize += (float) meta.SizeBytes / 1024;
                 }
             });
 
@@ -258,12 +287,12 @@ public class DownloadData : MonoBehaviour
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
-                    progess++;
+                    _process++;
                 }
 
-                if (progess == list.Count)
+                if (_process == list.Count)
                 {
-                    alertFileSize.text = "You need to download " + downloadSize + "KB gamedata";
+                    alertFileSize.text = "You need to download " + _downloadSize + "KB gamedata";
                     PopupDownload();
                 }
             });
@@ -273,7 +302,7 @@ public class DownloadData : MonoBehaviour
     private IEnumerator CheckDataVersion(Dictionary<StorageReference, string> list)
     {
         Debug.Log("Checking data");
-        progessCheckversion = 0;
+        _processCheckVersion = 0;
         foreach (KeyValuePair<StorageReference, string> entry in list)
         {
             string localPath = entry.Value;
@@ -292,9 +321,9 @@ public class DownloadData : MonoBehaviour
 
                     if (DateTime.Compare(lastUpdateInFirebase, lastUpdateInSystem) > 0)
                     {
-                        if (!downloadList.ContainsKey(fileRef))
+                        if (!_downloadList.ContainsKey(fileRef))
                         {
-                            downloadList.Add(fileRef, localPath);
+                            _downloadList.Add(fileRef, localPath);
                         }
                     }
                 }
@@ -304,18 +333,18 @@ public class DownloadData : MonoBehaviour
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
-                    progessCheckversion++;
+                    _processCheckVersion++;
                 }
 
-                if (progessCheckversion == list.Count)
+                if (_processCheckVersion == list.Count)
                 {
-                    if (downloadList.Count > 0)
+                    if (_downloadList.Count > 0)
                     {
-                        GetDataFilesize(downloadList);
+                        GetDataFilesize(_downloadList);
                     }
                     else
                     {
-                        sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        sliderProcess.GetComponent<SliderRunTo1>().enabled = true;
                         updateDateWarn.GetComponentInChildren<Text>().text = "Loading...";
                         StartCoroutine(LoadDatabase.Instance.StartRead());
                     }
@@ -346,9 +375,9 @@ public class DownloadData : MonoBehaviour
 
                     if (DateTime.Compare(lastUpdateInFirebase, lastUpdateInSystem) > 0)
                     {
-                        if (!downloadList.ContainsKey(fileRef))
+                        if (!_downloadList.ContainsKey(fileRef))
                         {
-                            downloadList.Add(fileRef, localPath);
+                            _downloadList.Add(fileRef, localPath);
                         }
                     }
                 }
@@ -358,18 +387,18 @@ public class DownloadData : MonoBehaviour
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
-                    progessCheckversion++;
+                    _processCheckVersion++;
                 }
 
-                if (progessCheckversion == Names.Count)
+                if (_processCheckVersion == Names.Count)
                 {
-                    if (downloadList.Count > 0)
+                    if (_downloadList.Count > 0)
                     {
-                        GetDataFilesize(downloadList);
+                        GetDataFilesize(_downloadList);
                     }
                     else
                     {
-                        sliderProgess.GetComponent<SliderRunTo1>().enabled = true;
+                        sliderProcess.GetComponent<SliderRunTo1>().enabled = true;
                         updateDateWarn.GetComponentInChildren<Text>().text = "Loading...";
                         StartCoroutine(LoadDatabase.Instance.StartRead());
                     }
@@ -387,9 +416,9 @@ public class DownloadData : MonoBehaviour
 
     IEnumerator DownloadHandler()
     {
-        downloadProgess = 0;
+        _downloadProcess = 0;
 
-        foreach (KeyValuePair<StorageReference, string> downloadContent in downloadList)
+        foreach (KeyValuePair<StorageReference, string> downloadContent in _downloadList)
         {
             string localPath = downloadContent.Value;
             StorageReference reference = downloadContent.Key;
@@ -398,15 +427,15 @@ public class DownloadData : MonoBehaviour
             new StorageProgress<DownloadState>(state =>
             {
                 fileNameDisplay.text = downloadContent.Value;
-                sliderProgess.value = (float)state.BytesTransferred / state.TotalByteCount;
-                downloadProgessDisplay.text = String.Format("{0}/{1} B", state.BytesTransferred, state.TotalByteCount);
+                sliderProcess.value = (float)state.BytesTransferred / state.TotalByteCount;
+                downloadProcessDisplay.text = String.Format("{0}/{1} B", state.BytesTransferred, state.TotalByteCount);
             }), CancellationToken.None);
 
             task.ContinueWithOnMainThread(resultTask =>
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
-                    downloadProgess += 1;
+                    _downloadProcess += 1;
                     Debug.Log("Download finished." + downloadContent.Value);
                 }
                 else
@@ -414,7 +443,7 @@ public class DownloadData : MonoBehaviour
                     Debug.LogWarning("Download failed" + downloadContent.Value);
                 }
 
-                if (downloadProgess == downloadList.Count)
+                if (_downloadProcess == _downloadList.Count)
                 {
                     updateDateWarn.GetComponentInChildren<Text>().text = "Loading...";
                     StartCoroutine(LoadDatabase.Instance.StartRead());
@@ -426,34 +455,34 @@ public class DownloadData : MonoBehaviour
 
     private void CreateGameAssetFile()
     {
-        if (!Directory.Exists(localUrl))
+        if (!Directory.Exists(_localUrl))
         {
-            Directory.CreateDirectory(localUrl);
+            Directory.CreateDirectory(_localUrl);
         }
 
-        if (!Directory.Exists(assetUrl))
+        if (!Directory.Exists(_assetUrl))
         {
-            Directory.CreateDirectory(assetUrl);
+            Directory.CreateDirectory(_assetUrl);
         }
 
-        if (!Directory.Exists(playershipAssetURl))
+        if (!Directory.Exists(_playershipAssetURl))
         {
-            Directory.CreateDirectory(playershipAssetURl);
+            Directory.CreateDirectory(_playershipAssetURl);
         }
 
-        if (!Directory.Exists(asteroidAssetURl))
+        if (!Directory.Exists(_asteroidAssetURl))
         {
-            Directory.CreateDirectory(asteroidAssetURl);
+            Directory.CreateDirectory(_asteroidAssetURl);
         }
 
-        if (!Directory.Exists(effectAssetURl))
+        if (!Directory.Exists(_effectAssetURl))
         {
-            Directory.CreateDirectory(effectAssetURl);
+            Directory.CreateDirectory(_effectAssetURl);
         }
 
-        if (!Directory.Exists(explosionAssetURl))
+        if (!Directory.Exists(_explosionAssetURl))
         {
-            Directory.CreateDirectory(explosionAssetURl);
+            Directory.CreateDirectory(_explosionAssetURl);
         }
     }
 
@@ -466,21 +495,21 @@ public class DownloadData : MonoBehaviour
         {
             case UnityWebRequest.Result.ConnectionError:
                 callback(false);
-                isInternetConnection = false;
+                _isInternetConnection = false;
                 break;
 
             case UnityWebRequest.Result.DataProcessingError:
                 callback(false);
-                isInternetConnection = false;
+                _isInternetConnection = false;
                 break;
 
             case UnityWebRequest.Result.ProtocolError:
                 callback(false);
-                isInternetConnection = false;
+                _isInternetConnection = false;
                 break;
 
             case UnityWebRequest.Result.Success:
-                isInternetConnection = true;
+                _isInternetConnection = true;
                 callback(true);
                 break;
         }

@@ -107,8 +107,6 @@ public class SaveDataManager : MonoBehaviour
         ExportData();
     }
 
-
-
     // ============== SAVE PROGESS =================== //
 
     private void OnApplicationPause(bool pause)

@@ -382,7 +382,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &457709696
 MonoBehaviour:
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1048375
 --- !u!114 &573992316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,6 +674,11 @@ PrefabInstance:
     - target: {fileID: 1971450854635356, guid: 62478a9de78029f4d8aa0081d905a95b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114080454564255476, guid: 62478a9de78029f4d8aa0081d905a95b,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 1048375
       objectReference: {fileID: 0}
     - target: {fileID: 114315172949078860, guid: 62478a9de78029f4d8aa0081d905a95b,
         type: 3}
@@ -877,6 +882,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22428984, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
@@ -1314,11 +1323,11 @@ GameObject:
   - component: {fileID: 1357955110}
   - component: {fileID: 1357955111}
   m_Layer: 0
-  m_Name: Download
+  m_Name: InitialFirebaseAndDownload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1357955110
 Transform:
@@ -1400,14 +1409,13 @@ MonoBehaviour:
   - shipappear
   - shoteffect
   fileNameDisplay: {fileID: 107160401}
-  downloadProgessDisplay: {fileID: 37157403}
+  downloadProcessDisplay: {fileID: 1507022264}
   alertFileSize: {fileID: 440589509}
   downloadButton: {fileID: 2084335991}
-  sliderProgess: {fileID: 1500684382}
-  noInternetNoti: {fileID: 1568630404}
+  sliderProcess: {fileID: 1500684382}
+  noInternetNotification: {fileID: 1568630404}
   downloadPanel: {fileID: 2109219275}
   updateDateWarn: {fileID: 2131022810}
-  isInternetConnection: 0
 --- !u!114 &1500684382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114410905162598814, guid: 62478a9de78029f4d8aa0081d905a95b,
@@ -1418,6 +1426,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1507022264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114680912870940490, guid: 62478a9de78029f4d8aa0081d905a95b,
+    type: 3}
+  m_PrefabInstance: {fileID: 643097594}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1568630404
@@ -1597,7 +1617,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1766292595
 MonoBehaviour:
@@ -2113,7 +2133,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &2144051436
 MonoBehaviour:
@@ -2132,6 +2152,7 @@ MonoBehaviour:
     bought: 
     point: 0
     level: 0
+    coin: 0
 --- !u!4 &2144051437
 Transform:
   m_ObjectHideFlags: 0
