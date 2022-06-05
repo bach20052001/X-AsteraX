@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/PhoneAuth.unity
+    guid: 1d4ff5ca34a38c743936185255c8e8c5
+  - enabled: 1
     path: Assets/_Scenes/LoadingScene.unity
     guid: b11f05a641fca4d5cabfddafa50deb6a
   m_configObjects:

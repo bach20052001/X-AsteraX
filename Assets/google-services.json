@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "708450592589-ti7sgof4eoal1f5post2abo79qjlpj33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.BachhhNguyen.AsteraX",
+            "certificate_hash": "7dd1846476a142a5e0df81c6a2a94d94ffd3144c"
+          }
+        },
+        {
           "client_id": "708450592589-2vbnk2uk4qmsroqssgbmjhmn18cta4ln.apps.googleusercontent.com",
           "client_type": 3
         }
