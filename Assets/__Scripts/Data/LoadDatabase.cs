@@ -339,6 +339,8 @@ public class LoadDatabase : MonoBehaviour
         SceneController.Instance.NextSceneAB();
     }
 
+    
+    
     //private void LoadAssets()
     //{
     //    for (int i = 0; i < playershipAssetPath.Count; i++)

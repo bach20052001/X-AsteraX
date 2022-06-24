@@ -170,6 +170,11 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    public void GoToAr()
+    {
+        SceneManager.LoadSceneAsync("CutSceneAR");
+    }
+    
     public void ReturnToExistScene()
     {
         currentScene--;

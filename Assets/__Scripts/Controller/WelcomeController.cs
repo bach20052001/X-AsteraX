@@ -8,7 +8,8 @@ public class WelcomeController : MonoBehaviour
     public Button StartGame;
     public Button Manage;
     public Button Exit;
-
+    public Button ar;
+    
     private SceneController sceneController;
 
     private void Awake()
@@ -33,6 +34,9 @@ public class WelcomeController : MonoBehaviour
         });
         Exit.onClick.AddListener(delegate {
             sceneController.QuitGame();
+        });
+        ar.onClick.AddListener(delegate {
+            sceneController.GoToAr();
         });
     }
 }
